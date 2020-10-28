@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -48,10 +48,10 @@ public class TgInfoAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getTgInfo")
-	public Mono<JsonGrid> getTgInfo(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getTgInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		TgInfoDomain tgInfoDomain = GsonUtils.readValue(body, TgInfoDomain.class);
-		return Mono.just(new JsonGrid(tgInfoDomain, tgInfoService.findByWhere(tgInfoDomain)));
+		return Mono.just(new HttpResultPagination(tgInfoDomain, tgInfoService.findByWhere(tgInfoDomain)));
 	}
 
 	@ResponseBody

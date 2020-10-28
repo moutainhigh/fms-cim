@@ -26,10 +26,10 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -106,12 +106,12 @@ public class TransformerAssetsAction {
 	 * */
 	@ResponseBody
 	@PostMapping(params = "method=getTransformerAssetsByWhere")
-	public Mono<JsonGrid> getTransformerAssetsByWhere(@RequestBody String body)
+	public Mono<HttpResultPagination> getTransformerAssetsByWhere(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException{
 
 		TransformerAssetsDomain t = GsonUtils.readValue(body, TransformerAssetsDomain.class);
 
-		return Mono.just(new JsonGrid(t,transformerAssetsService.getTransformerAssetsByWhere(t)));
+		return Mono.just(new HttpResultPagination(t,transformerAssetsService.getTransformerAssetsByWhere(t)));
 	}
 
 

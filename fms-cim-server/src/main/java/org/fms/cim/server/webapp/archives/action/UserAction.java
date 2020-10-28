@@ -38,10 +38,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -68,10 +68,10 @@ public class UserAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getUserInfo")
-	public Mono<JsonGrid> getUserInfo(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getUserInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		UserDomain userDomain = GsonUtils.readValue(body, UserDomain.class);
-		return Mono.just(new JsonGrid(userDomain, userService.findByWhere(userDomain)));
+		return Mono.just(new HttpResultPagination(userDomain, userService.findByWhere(userDomain)));
 	}
 
 	@RequestMapping(params = "method=getUserByKey")
@@ -208,12 +208,12 @@ public class UserAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getUsersByCustomerNo")
-	public JsonGrid getUsersByCustomerNo(@RequestBody String customer)
+	public HttpResultPagination getUsersByCustomerNo(@RequestBody String customer)
 			throws JsonParseException, JsonMappingException, IOException {
 		CustomerDomain customerDomain = GsonUtils.readValue(customer, CustomerDomain.class);
 		UserDomain userDomain = new UserDomain();
 		userDomain.setCustomerId(customerDomain.getId());
-		return new JsonGrid(userDomain, userService.getUsersByCustomerNo(userDomain));
+		return new HttpResultPagination(userDomain, userService.getUsersByCustomerNo(userDomain));
 	}
 
 	@ResponseBody
