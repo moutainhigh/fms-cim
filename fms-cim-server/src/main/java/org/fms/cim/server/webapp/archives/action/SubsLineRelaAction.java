@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 @ControllerAdvice
 @RequestMapping("subsLineRela")
@@ -32,11 +32,11 @@ public class SubsLineRelaAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getsubsLineRela")
-	public JsonGrid getsubsLineRela(@RequestBody String body)
+	public HttpResultPagination getsubsLineRela(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SubsLineRelaDomain subsLineRelaDomain = GsonUtils.readValue(body,
 				SubsLineRelaDomain.class);
-		return new JsonGrid(subsLineRelaDomain,subsLineRelaService.findByWhere(subsLineRelaDomain));
+		return new HttpResultPagination(subsLineRelaDomain,subsLineRelaService.findByWhere(subsLineRelaDomain));
 	}
 	
 

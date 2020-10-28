@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -36,10 +36,10 @@ public class SfPowerBankAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getSfPowerBank")
-	public JsonGrid getSfPowerBank(@RequestBody String body)
+	public HttpResultPagination getSfPowerBank(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SfPowerBankDomain t = GsonUtils.readValue(body, SfPowerBankDomain.class);
-		return new JsonGrid(t,sfPowerBankService.findByWhere(t));
+		return new HttpResultPagination(t,sfPowerBankService.findByWhere(t));
 	}
 	
 	@ResponseBody

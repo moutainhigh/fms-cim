@@ -29,10 +29,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -52,10 +52,10 @@ public class SettlementAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getSettlement")
-	public JsonGrid getSettlement(@RequestBody String body)
+	public HttpResultPagination<?> getSettlement(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-		return new JsonGrid(settlementDomain,settlementService.findByWhere(settlementDomain));
+		return new HttpResultPagination(settlementDomain,settlementService.findByWhere(settlementDomain));
 	}
 
 	@ResponseBody
@@ -92,27 +92,27 @@ public class SettlementAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementByNo")
-	public JsonGrid getSettlementByNo(@RequestBody String body)
+	public HttpResultPagination<?> getSettlementByNo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-		return new JsonGrid(settlementDomain,settlementService.findByNo(settlementDomain));
+		return new HttpResultPagination(settlementDomain,settlementService.findByNo(settlementDomain));
 	}
 	
 	
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementMeterRel")
-	public JsonGrid getSettlementMeterRel(@RequestBody String body)
+	public HttpResultPagination<?> getSettlementMeterRel(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-		return new JsonGrid(settlementDomain,settlementService.getSettlementMeterRel(settlementDomain));
+		return new HttpResultPagination(settlementDomain,settlementService.getSettlementMeterRel(settlementDomain));
 	}
 
 	@ResponseBody
 	@PostMapping(params = "method=getNoSettlementMeter")
-	public JsonGrid getNoSettlementMeter(@RequestBody String body)
+	public HttpResultPagination<?> getNoSettlementMeter(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementMeterRelDomain t = GsonUtils.readValue(body, SettlementMeterRelDomain.class);
-		return new JsonGrid(t,settlementService.getNoSettlementMeter(t));
+		return new HttpResultPagination(t,settlementService.getNoSettlementMeter(t));
 	}
 
 	@ResponseBody
@@ -308,10 +308,10 @@ public class SettlementAction {
 
     @ResponseBody
     @PostMapping(params = "method=findClearSettlementByWhere")
-    public JsonGrid findClearSettlementByWhere(@RequestBody String body)
+    public HttpResultPagination findClearSettlementByWhere(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-        return new JsonGrid(settlementDomain,settlementService.findClearSettlementByWhere(settlementDomain));
+        return new HttpResultPagination(settlementDomain,settlementService.findClearSettlementByWhere(settlementDomain));
     }
     
     

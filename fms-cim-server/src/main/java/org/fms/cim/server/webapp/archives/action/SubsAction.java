@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -37,10 +37,10 @@ public class SubsAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getSubs")
-	public JsonGrid getSubs(@RequestBody String body)
+	public HttpResultPagination getSubs(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SubsDomain subsDomain = GsonUtils.readValue(body, SubsDomain.class);
-		return new JsonGrid(subsDomain,subsService.findByWhere(subsDomain));
+		return new HttpResultPagination(subsDomain,subsService.findByWhere(subsDomain));
 	}
 	
 	@ResponseBody
