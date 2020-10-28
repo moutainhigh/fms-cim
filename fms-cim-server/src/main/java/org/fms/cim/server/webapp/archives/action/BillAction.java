@@ -12,6 +12,8 @@ import org.fms.cim.common.service.IMeterService;
 import org.fms.cim.common.service.ISettlementMeterRelService;
 import org.fms.cim.common.service.ISettlementService;
 import org.fms.cim.common.service.ISystemCommonConfigService;
+import org.fms.cim.common.strategy.no.SequenceEnvironment;
+import org.fms.cim.common.strategy.no.SequenceStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,8 +28,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.riozenc.cim.web.strategy.SequenceEnvironment;
-import com.riozenc.cim.web.strategy.SequenceStrategy;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 

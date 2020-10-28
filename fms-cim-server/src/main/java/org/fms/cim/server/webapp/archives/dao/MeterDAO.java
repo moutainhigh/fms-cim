@@ -20,7 +20,6 @@ import org.fms.cim.common.domain.archives.UserDomain;
 import org.fms.cim.common.domain.assets.InductorAssetsDomain;
 import org.fms.cim.common.domain.assets.MeterAssetsDomain;
 
-import com.riozenc.cim.api.annotation.SynchronizeTrigger;
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
@@ -30,7 +29,6 @@ import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 public class MeterDAO extends AbstractTransactionDAOSupport implements BaseDAO<MeterDomain> {
 
 	@Override
-	@SynchronizeTrigger
 	public int insert(MeterDomain t) {
 		return getPersistanceManager().insert(getNamespace() + ".insert", t);
 	}
@@ -41,7 +39,6 @@ public class MeterDAO extends AbstractTransactionDAOSupport implements BaseDAO<M
 	}
 
 	@Override
-	@SynchronizeTrigger
 	public int update(MeterDomain t) {
 		return getPersistanceManager().update(getNamespace() + ".update", t);
 	}
@@ -132,7 +129,6 @@ public class MeterDAO extends AbstractTransactionDAOSupport implements BaseDAO<M
 		return getPersistanceManager().find(getNamespace() + ".meterNoDC", t);
 	}
 	
-	@SynchronizeTrigger
 	public int reUpdate(MeterDomain meter) {
 		// TODO Auto-generated method stub
 		return getPersistanceManager().update(getNamespace() + ".reUpdate", meter);

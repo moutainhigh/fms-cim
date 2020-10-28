@@ -7,7 +7,6 @@ import org.apache.ibatis.session.ExecutorType;
 import org.fms.cim.common.domain.archives.MeterDomain;
 import org.fms.cim.common.domain.archives.TransformerMeterRelationDomain;
 
-import com.riozenc.cim.api.annotation.SynchronizeTrigger;
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
@@ -32,7 +31,6 @@ public class MeterTransRelDAO extends AbstractTransactionDAOSupport{
 
     }
 
-	@SynchronizeTrigger
     public int addTransformerByMeterRel(List<TransformerMeterRelationDomain> list) {
         return getPersistanceManager(ExecutorType.BATCH).insertList(getNamespace() + ".addTransformerByMeterRel", list);
     }
@@ -49,7 +47,6 @@ public class MeterTransRelDAO extends AbstractTransactionDAOSupport{
         return getPersistanceManager().find(getNamespace() + ".getMeterByWriteSectionId", t);
     }
 
-	@SynchronizeTrigger
 	public int updateTransLoss(TransformerMeterRelationDomain e) {
         return getPersistanceManager().update(getNamespace() + ".updateTransLoss", e);
 	}

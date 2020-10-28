@@ -23,7 +23,6 @@ import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 public class MeterMeterAssetsRelDAO extends AbstractTransactionDAOSupport implements BaseDAO<MeterMeterAssetsRelDomain> {
 
 	@Override
-//	@SynchronizeTrigger
 	public int insert(MeterMeterAssetsRelDomain t) {
 		return getPersistanceManager().insert(getNamespace() + ".insert", t);
 	}
@@ -34,7 +33,6 @@ public class MeterMeterAssetsRelDAO extends AbstractTransactionDAOSupport implem
 	}
 
 	@Override
-//	@SynchronizeTrigger
 	public int update(MeterMeterAssetsRelDomain t) {
 		return getPersistanceManager().update(getNamespace() + ".update", t);
 	}
