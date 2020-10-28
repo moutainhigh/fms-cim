@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -77,10 +77,10 @@ public class InductorAssetsAction  {
 	 */
 	@ResponseBody
 	@PostMapping(params = "method=getInductorAssetsByManager")
-	public Mono<JsonGrid> getAssetsByManager(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getAssetsByManager(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		InductorAssetsDomain t = GsonUtils.readValue(body, InductorAssetsDomain.class);
-		return Mono.just(new JsonGrid(t,inductorAssetsService.getInductorAssetsByManager(t)));
+		return Mono.just(new HttpResultPagination(t,inductorAssetsService.getInductorAssetsByManager(t)));
 	}
 
 	/**
@@ -88,10 +88,10 @@ public class InductorAssetsAction  {
 	 */
 	@ResponseBody
 	@PostMapping(params = "method=getInductorAssets")
-	public Mono<JsonGrid> getInductorAssets(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getInductorAssets(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		InductorAssetsDomain t = GsonUtils.readValue(body, InductorAssetsDomain.class);
-		return Mono.just(new JsonGrid(t,inductorAssetsService.findByWhere(t)));
+		return Mono.just(new HttpResultPagination(t,inductorAssetsService.findByWhere(t)));
 	}
 
 	/**

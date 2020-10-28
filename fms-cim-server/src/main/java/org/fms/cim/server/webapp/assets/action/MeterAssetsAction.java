@@ -31,11 +31,11 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -115,12 +115,12 @@ public class MeterAssetsAction {
      */
     @ResponseBody
     @PostMapping(params = "method=getMeterAssets")
-    public Mono<JsonGrid> getMeterAssets(@RequestBody String body) {
+    public Mono<HttpResultPagination<?>> getMeterAssets(@RequestBody String body) {
         MeterAssetsDomain t = GsonUtils.readValue(body, MeterAssetsDomain.class);
 
         List<MeterAssetsDomain> list = meterAssetsService.findByWhere(t);
 
-        JsonGrid grid = new JsonGrid(t, list);
+        HttpResultPagination<?> grid = new HttpResultPagination(t, list);
 
         return Mono.just(grid);
     }
@@ -128,7 +128,7 @@ public class MeterAssetsAction {
     //装无功表
     @ResponseBody
     @PostMapping(params = "method=getMeterAssetsByFunctionCode")
-    public Mono<JsonGrid> getMeterAssetsByFunctionCode(@RequestBody String body) throws IOException {
+    public Mono<HttpResultPagination<?>> getMeterAssetsByFunctionCode(@RequestBody String body) throws IOException {
         Page page = GsonUtils.readValue(body, Page.class);
         //筛选 该计量点下的有功表
         String meterId = JSONUtil.readValue(body, JsonNode.class).get("meterId").toString();
@@ -148,7 +148,7 @@ public class MeterAssetsAction {
             });
         }
 
-        JsonGrid grid = new JsonGrid(page, meterAssetsEntities);
+        HttpResultPagination<?> grid = new HttpResultPagination(page, meterAssetsEntities);
 
         return Mono.just(grid);
     }

@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -81,12 +81,12 @@ public class InductorAssetsUseRecordAction  {
 	 * */
 	@ResponseBody
 	@PostMapping(params = "method=getInductorAssetsUseRecordByWhere")
-	public Mono<JsonGrid> getInductorAssetsUseRecordByWhere(@RequestBody String body) {
+	public Mono<HttpResultPagination<?>> getInductorAssetsUseRecordByWhere(@RequestBody String body) {
 		InductorAssetsUseRecordDomain t = GsonUtils.readValue(body, InductorAssetsUseRecordDomain.class);
 
 		List<InductorAssetsUseRecordDomain> list = inductorAssetsUseRecordService.findByWhere(t);
 
-		JsonGrid grid = new JsonGrid(t, list);
+		HttpResultPagination<?> grid = new HttpResultPagination(t, list);
 
 		return Mono.just(grid);
 	}
