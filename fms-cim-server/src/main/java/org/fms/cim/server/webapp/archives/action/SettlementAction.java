@@ -43,19 +43,19 @@ public class SettlementAction {
 	@Autowired
 	@Qualifier("settlementServiceImpl")
 	private ISettlementService settlementService;
-	
-    @Autowired
-    private RestTemplate restTemplate;
+
 	@Autowired
-    @Qualifier("appNoSequenceStrategy")
-    private SequenceStrategy appNoSequenceStrategy;
+	private RestTemplate restTemplate;
+	@Autowired
+	@Qualifier("appNoSequenceStrategy")
+	private SequenceStrategy appNoSequenceStrategy;
 
 	@ResponseBody
 	@PostMapping(params = "method=getSettlement")
 	public HttpResultPagination<?> getSettlement(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-		return new HttpResultPagination(settlementDomain,settlementService.findByWhere(settlementDomain));
+		return new HttpResultPagination(settlementDomain, settlementService.findByWhere(settlementDomain));
 	}
 
 	@ResponseBody
@@ -65,7 +65,7 @@ public class SettlementAction {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
 		return settlementService.findByKey(settlementDomain);
 	}
-	
+
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementsByBusinessPlaceCodeAndInvoiceType")
 	public List<SettlementDomain> getSettlementsByBusinessPlaceCodeAndInvoiceType(@RequestBody String body) {
@@ -95,16 +95,15 @@ public class SettlementAction {
 	public HttpResultPagination<?> getSettlementByNo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-		return new HttpResultPagination(settlementDomain,settlementService.findByNo(settlementDomain));
+		return new HttpResultPagination(settlementDomain, settlementService.findByNo(settlementDomain));
 	}
-	
-	
+
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementMeterRel")
 	public HttpResultPagination<?> getSettlementMeterRel(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-		return new HttpResultPagination(settlementDomain,settlementService.getSettlementMeterRel(settlementDomain));
+		return new HttpResultPagination(settlementDomain, settlementService.getSettlementMeterRel(settlementDomain));
 	}
 
 	@ResponseBody
@@ -112,7 +111,7 @@ public class SettlementAction {
 	public HttpResultPagination<?> getNoSettlementMeter(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementMeterRelDomain t = GsonUtils.readValue(body, SettlementMeterRelDomain.class);
-		return new HttpResultPagination(t,settlementService.getNoSettlementMeter(t));
+		return new HttpResultPagination(t, settlementService.getNoSettlementMeter(t));
 	}
 
 	@ResponseBody
@@ -123,11 +122,11 @@ public class SettlementAction {
 
 		SettlementDomain tt = new SettlementDomain();
 		tt.setSettlementNo(t.getSettlementNo());
-		//结算户编号查重
-		//TODO 结算户号生成
+		// 结算户编号查重
+		// TODO 结算户号生成
 		List<SettlementDomain> list = settlementService.findByNo(tt);
-		if(list.size()>0) {
-			
+		if (list.size() > 0) {
+
 			return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增结算户信息失败,结算户编号重复"));
 
 //			String deptId = getDept(t.getBusinessPlaceCode());
@@ -144,9 +143,9 @@ public class SettlementAction {
 		}
 		t.setStatus((byte) 1);
 		t.setCreateDate(new Date());
-		
+
 		int count = settlementService.insert(t);
-		if(count>0) {
+		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "新增结算户信息成功"));
 		}
 		return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增结算户信息失败"));
@@ -159,7 +158,7 @@ public class SettlementAction {
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
 		int count = settlementService.update(settlementDomain);
-		if(count>0) {
+		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "更新结算户信息成功"));
 		}
 		return Mono.just(new HttpResult<>(HttpResult.ERROR, "更新结算户信息失败"));
@@ -172,15 +171,16 @@ public class SettlementAction {
 
 		JsonNode jsonNode = JSONUtil.readValue(body, JsonNode.class);
 
-		List<SettlementMeterRelDomain> list =
-				JSONUtil.readValue(jsonNode.get("rel").toString(), new TypeReference<List<SettlementMeterRelDomain>>() {});
+		List<SettlementMeterRelDomain> list = JSONUtil.readValue(jsonNode.get("rel").toString(),
+				new TypeReference<List<SettlementMeterRelDomain>>() {
+				});
 
-		for(SettlementMeterRelDomain t : list) {
+		for (SettlementMeterRelDomain t : list) {
 			t.setCreateDate(new Date());
-			t.setStatus((byte)1);
+			t.setStatus((byte) 1);
 		}
 		int count = settlementService.addSettlementMeterRelBySettlement(list);
-		if(count>0) {
+		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "添加关系成功"));
 		}
 		return Mono.just(new HttpResult<>(HttpResult.ERROR, "添加关系失败"));
@@ -194,13 +194,13 @@ public class SettlementAction {
 //
 //		List<SettlementMeterRelDomain> list =
 //				JSONUtil.readValue(jsonNode.get("rel").toString(), new TypeReference<List<SettlementMeterRelDomain>>() {});
-		for(SettlementMeterRelDomain t : list) {
-			if (t.getId()==null) {
+		for (SettlementMeterRelDomain t : list) {
+			if (t.getId() == null) {
 				return Mono.just(new HttpResult<>(HttpResult.ERROR, "删除关系失败,关系ID为空"));
 			}
 		}
 		int count = settlementService.deleteSettlementMeterRelBySettlement(list);
-		if(count>0) {
+		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "删除关系成功"));
 		}
 		return Mono.just(new HttpResult<>(HttpResult.ERROR, "删除关系失败"));
@@ -212,38 +212,40 @@ public class SettlementAction {
 			throws JsonParseException, JsonMappingException, IOException {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
 		int count = settlementService.update(settlementDomain);
-		if(count>0) {
+		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "更新结算户信息成功"));
 		}
 		return Mono.just(new HttpResult<>(HttpResult.ERROR, "更新结算户信息失败"));
 	}
-	
+
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementByIds")
 	public Mono<HttpResult> getSettlementByIds(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
-		
-		List<Long> settlementIdList = JSONUtil.readValue(body, new TypeReference<List<Long>>() {});
+
+		List<Long> settlementIdList = JSONUtil.readValue(body, new TypeReference<List<Long>>() {
+		});
 
 		List<SettlementDomain> settlementList = settlementService.findSettlementByIds(settlementIdList);
-	
-		return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "获取结算户信息成功",settlementList));
-	
+
+		return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "获取结算户信息成功", settlementList));
+
 	}
 
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementbyMeterIds")
 	public HttpResult getSettlementbyMeterIds(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
-		
+
 //		JsonNode jsonNode = JSONUtil.readValue(body, JsonNode.class);
-		
-		List<Long> settlementIdList = JSONUtil.readValue(body, new TypeReference<List<Long>>() {});
+
+		List<Long> settlementIdList = JSONUtil.readValue(body, new TypeReference<List<Long>>() {
+		});
 
 		List<SettlementDomain> settlementList = settlementService.getSettlementbyMeterIds(settlementIdList);
-	
-		return new HttpResult<>(HttpResult.SUCCESS, "获取结算户信息成功",settlementList);
-	
+
+		return new HttpResult<>(HttpResult.SUCCESS, "获取结算户信息成功", settlementList);
+
 	}
 
 	// 获取短信用户和电话号码
@@ -251,11 +253,11 @@ public class SettlementAction {
 	@PostMapping(params = "method=findSettlementsByMeterIds")
 	public List<SettlementDomain> findSettlementsByMeterIds(@RequestBody String settlementDomain) {
 		Map map = GsonUtils.readValue(settlementDomain, Map.class);
-		SettlementDomain settlement = GsonUtils.readValue(GsonUtils.toJson(map.get("settlement")), SettlementDomain.class);
-		return settlementService
-				.getSettlementbyMeterIds(settlement.getMeterIds());
+		SettlementDomain settlement = GsonUtils.readValue(GsonUtils.toJson(map.get("settlement")),
+				SettlementDomain.class);
+		return settlementService.getSettlementbyMeterIds(settlement.getMeterIds());
 	}
-	
+
 	@ResponseBody
 	@PostMapping(params = "method=querySettlementsByIds")
 	public List<SettlementDomain> querySettlementsByIds(@RequestBody String body) {
@@ -267,35 +269,29 @@ public class SettlementAction {
 			if (body.indexOf(startBodyStrList) == -1 || body.lastIndexOf(endBodyStrList) == -1) {
 				return new ArrayList<>(0);
 			}
-			String substring = body.substring(body.indexOf(startBodyStrList),
-					body.lastIndexOf(endBodyStrList)+1);
-			List<Long> settlementIds =
-					GsonUtils.readValueToList(substring, Long.class);
+			String substring = body.substring(body.indexOf(startBodyStrList), body.lastIndexOf(endBodyStrList) + 1);
+			List<Long> settlementIds = GsonUtils.readValueToList(substring, Long.class);
 			return settlementService.findSettlementByIds(settlementIds);
 		} else {
-			List<Long> settlementIds =
-					GsonUtils.readValueToList(body, Long.class);
+			List<Long> settlementIds = GsonUtils.readValueToList(body, Long.class);
 			return settlementService.findSettlementByIds(settlementIds);
 		}
 
 	}
 
-
-
-	//根据结算户ids 查结算户信息
+	// 根据结算户ids 查结算户信息
 	@ResponseBody
 	@PostMapping(params = "method=findBySettlementNos")
-	public List<SettlementDomain> findBySettlementNos(@RequestBody String body){
+	public List<SettlementDomain> findBySettlementNos(@RequestBody String body) {
 		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
 		return settlementService.findBySettlementNos(settlementDomain);
 	}
 
-	//根据计量点id查计量点与结算户关系
+	// 根据计量点id查计量点与结算户关系
 	@ResponseBody
 	@PostMapping(params = "method=getSettlementMeterRelByMeterIds")
-	public List<SettlementMeterRelDomain> getSettlementMeterRelByMeterIds(@RequestBody String body){
-		List<Long> meterIds =
-				GsonUtils.readValueToList(body,Long.class);
+	public List<SettlementMeterRelDomain> getSettlementMeterRelByMeterIds(@RequestBody String body) {
+		List<Long> meterIds = GsonUtils.readValueToList(body, Long.class);
 		return settlementService.getSettlementMeterRelByMeterIds(meterIds);
 	}
 
@@ -306,22 +302,25 @@ public class SettlementAction {
 		return settlementService.findSettlementIdByWhere(settlementDomain);
 	}
 
-    @ResponseBody
-    @PostMapping(params = "method=findClearSettlementByWhere")
-    public HttpResultPagination findClearSettlementByWhere(@RequestBody String body)
-            throws JsonParseException, JsonMappingException, IOException {
-        SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
-        return new HttpResultPagination(settlementDomain,settlementService.findClearSettlementByWhere(settlementDomain));
-    }
-    
-    
-	public String getDept(Long businessPlaceCode) throws JsonParseException, JsonMappingException, IOException{
-        String resultJson = restTemplate.getForObject("http://AUTH-CENTER/auth/dept/getDeptById/" + businessPlaceCode,
-                String.class);
-        HttpResult<HashMap<String,Object>> httpResult2 = JSONUtil.readValue(resultJson,
-                new TypeReference<HttpResult<HashMap<String,Object>>>() {});		
-        return httpResult2.getResultData().get("deptId").toString();
-        
+	@ResponseBody
+	@PostMapping(params = "method=findClearSettlementByWhere")
+
+	public HttpResultPagination<?> findClearSettlementByWhere(@RequestBody String body)
+
+			throws JsonParseException, JsonMappingException, IOException {
+		SettlementDomain settlementDomain = GsonUtils.readValue(body, SettlementDomain.class);
+		return new HttpResultPagination(settlementDomain,
+				settlementService.findClearSettlementByWhere(settlementDomain));
 	}
-	
+
+	public String getDept(Long businessPlaceCode) throws JsonParseException, JsonMappingException, IOException {
+		String resultJson = restTemplate.getForObject("http://AUTH-CENTER/auth/dept/getDeptById/" + businessPlaceCode,
+				String.class);
+		HttpResult<HashMap<String, Object>> httpResult2 = JSONUtil.readValue(resultJson,
+				new TypeReference<HttpResult<HashMap<String, Object>>>() {
+				});
+		return httpResult2.getResultData().get("deptId").toString();
+
+	}
+
 }

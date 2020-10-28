@@ -37,7 +37,7 @@ public class SubsAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getSubs")
-	public HttpResultPagination getSubs(@RequestBody String body)
+	public HttpResultPagination<?> getSubs(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SubsDomain subsDomain = GsonUtils.readValue(body, SubsDomain.class);
 		return new HttpResultPagination(subsDomain,subsService.findByWhere(subsDomain));

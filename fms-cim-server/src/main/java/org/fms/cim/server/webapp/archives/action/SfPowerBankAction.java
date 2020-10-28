@@ -36,7 +36,7 @@ public class SfPowerBankAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getSfPowerBank")
-	public HttpResultPagination getSfPowerBank(@RequestBody String body)
+	public HttpResultPagination<?> getSfPowerBank(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SfPowerBankDomain t = GsonUtils.readValue(body, SfPowerBankDomain.class);
 		return new HttpResultPagination(t,sfPowerBankService.findByWhere(t));

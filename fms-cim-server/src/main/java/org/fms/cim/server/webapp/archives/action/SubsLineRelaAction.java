@@ -32,7 +32,7 @@ public class SubsLineRelaAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getsubsLineRela")
-	public HttpResultPagination getsubsLineRela(@RequestBody String body)
+	public HttpResultPagination<?> getsubsLineRela(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		SubsLineRelaDomain subsLineRelaDomain = GsonUtils.readValue(body,
 				SubsLineRelaDomain.class);
