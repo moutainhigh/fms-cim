@@ -23,10 +23,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -75,12 +75,12 @@ public class MeterAssetsUseRecordAction  {
 	 * */
 	@ResponseBody
 	@PostMapping(params = "method=getMeterAssetsUseRecord")
-	public Mono<JsonGrid> getMeterAssetsUseRecord(@RequestBody String body) {
+	public Mono<HttpResultPagination> getMeterAssetsUseRecord(@RequestBody String body) {
 		MeterAssetsUseRecordDomain e = GsonUtils.readValue(body, MeterAssetsUseRecordDomain.class);
 
 		List<MeterAssetsUseRecordDomain> list = meterAssetsUseRecordService.findByWhere(e);
 
-		JsonGrid grid = new JsonGrid(e, list);
+		HttpResultPagination grid = new HttpResultPagination(e, list);
 
 		return Mono.just(grid);
 	}

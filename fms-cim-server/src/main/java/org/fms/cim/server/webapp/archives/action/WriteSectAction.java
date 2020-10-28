@@ -27,10 +27,10 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -131,20 +131,20 @@ public class WriteSectAction {
 
 	@RequestMapping(params = "method=getWriteSect")
 	@ResponseBody
-	public Mono<JsonGrid> getWriteSect(@RequestBody WriteSectDomain e) {
-		return Mono.just(new JsonGrid(e, writeSectService.findByWhere(e)));
+	public Mono<HttpResultPagination<?>> getWriteSect(@RequestBody WriteSectDomain e) {
+		return Mono.just(new HttpResultPagination(e, writeSectService.findByWhere(e)));
 	}
 	
 
 	@RequestMapping(params = "method=getWriteSectAndInitNum")
 	@ResponseBody
-	public Mono<JsonGrid> getWriteSectAndInitNum(@RequestBody WriteSectDomain e) {
+	public Mono<HttpResultPagination<?>> getWriteSectAndInitNum(@RequestBody WriteSectDomain e) {
 		//前台不干，后台加的。使用该方法时注意条件。
 		e.setStatus((byte) 1);
 		List<WriteSectDomain> writeSectList = writeSectService.findByWhere(e);
 		HttpResult rh = writeSectService.getMeterInitSituation(writeSectList,e.getMon());
 		
-		return Mono.just(new JsonGrid(e, rh.getResultData()));
+		return Mono.just(new HttpResultPagination(e, (List) rh.getResultData()));
 	}
 	
 	@RequestMapping(params = "method=getWriteSectByKey")

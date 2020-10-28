@@ -30,7 +30,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
@@ -52,10 +51,10 @@ public class TransformerAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getTransformerByUser")
-	public Mono<JsonGrid> getTransformerByUser(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getTransformerByUser(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		UserDomain userDomain = GsonUtils.readValue(body, UserDomain.class);
-		return Mono.just(new JsonGrid(userDomain, transformerService.getTransformerByUser(userDomain)));
+		return Mono.just(new HttpResultPagination(userDomain, transformerService.getTransformerByUser(userDomain)));
 	}
 
 	@ResponseBody
@@ -75,20 +74,20 @@ public class TransformerAction {
 	 */
 	@ResponseBody
 	@PostMapping(params = "method=getAvaTransformerByWhere")
-	public Mono<JsonGrid> getAvaTransformerByWhere(@RequestBody String body)
+	public Mono<HttpResultPagination> getAvaTransformerByWhere(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 
 		TransformerDomain t = GsonUtils.readValue(body, TransformerDomain.class);
 
-		return Mono.just(new JsonGrid(t, transformerService.getAvaTransformerByWhere(t)));
+		return Mono.just(new HttpResultPagination(t, transformerService.getAvaTransformerByWhere(t)));
 	}
 
 	@ResponseBody
 	@PostMapping(params = "method=getTransformer")
-	public Mono<JsonGrid> getTransformer(@RequestBody String body)
+	public Mono<HttpResultPagination> getTransformer(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		TransformerDomain t = GsonUtils.readValue(body, TransformerDomain.class);
-		return Mono.just(new JsonGrid(t, transformerService.findByWhere(t)));
+		return Mono.just(new HttpResultPagination(t, transformerService.findByWhere(t)));
 	}
 
 	/**

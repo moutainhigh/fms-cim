@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -38,10 +38,10 @@ public class TransformerMeterRelAction {
 
     @ResponseBody
     @PostMapping(params = "method=getMeterByTransformer")
-    public Mono<JsonGrid> getMeterByTransformer(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getMeterByTransformer(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         TransformerDomain t = GsonUtils.readValue(body, TransformerDomain.class);
-        return Mono.just(new JsonGrid(t, transformerMeterRelationService.getMeterByTransformer(t)));
+        return Mono.just(new HttpResultPagination(t, transformerMeterRelationService.getMeterByTransformer(t)));
     }
 
     @ResponseBody
