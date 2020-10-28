@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -36,10 +36,10 @@ public class BankAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getBank")
-	public JsonGrid getBank(@RequestBody String body)
+	public  HttpResultPagination<?> getBank(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		BankDomain t = GsonUtils.readValue(body, BankDomain.class);
-		return new JsonGrid(t,bankService.findByWhere(t));
+		return new  HttpResultPagination(t,bankService.findByWhere(t));
 	}
 	
 	@ResponseBody

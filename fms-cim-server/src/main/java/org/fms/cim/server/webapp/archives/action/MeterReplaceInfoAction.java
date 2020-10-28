@@ -27,10 +27,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -89,7 +89,7 @@ public class MeterReplaceInfoAction {
 	//装拆表专用电能表资产查询
 	@ResponseBody
 	@PostMapping(params = "method=findMeterAssetsByDept")
-	public Mono<JsonGrid> findMeterAssetsByDept(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> findMeterAssetsByDept(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException{
 		
 		
@@ -131,7 +131,7 @@ public class MeterReplaceInfoAction {
 	//查历史记录
 	@ResponseBody
 	@PostMapping(params = "method=getMeterReplaceInfoByMpedId")
-	public Mono<JsonGrid> getMeterReplaceInfoByMpedId(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getMeterReplaceInfoByMpedId(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		MeterDomain e = GsonUtils.readValue(body, MeterDomain.class);
 		MeterReplaceDomain receiveReplace=GsonUtils.readValue(body,MeterReplaceDomain.class);
@@ -139,16 +139,16 @@ public class MeterReplaceInfoAction {
 		mr.setMeterId(e.getId());
 		//根据设备类型
   //    mr.setEquipmentType(receiveReplace.getEquipmentType());
-		return Mono.just(new JsonGrid(e,meterReplaceInfoService.findByMeter(mr)));
+		return Mono.just(new HttpResultPagination(e,meterReplaceInfoService.findByMeter(mr)));
 
 	}
 	
 	@ResponseBody
 	@PostMapping(params = "method=getMeterReplaceInfoByWhere")
-	public Mono<JsonGrid> getMeterReplaceInfoByWhere(@RequestBody String body)
+	public Mono<HttpResultPagination<?>> getMeterReplaceInfoByWhere(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		MeterReplaceDomain e = GsonUtils.readValue(body, MeterReplaceDomain.class);
-		return Mono.just(new JsonGrid(e,meterReplaceInfoService.findByWhere(e)));
+		return Mono.just(new HttpResultPagination(e,meterReplaceInfoService.findByWhere(e)));
 
 	}
 	

@@ -29,10 +29,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -103,21 +103,21 @@ public class CustomerAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getCustomer")
-	public Mono<JsonGrid> getCustomer(@RequestBody String body)
+	public Mono< HttpResultPagination<?>> getCustomer(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		CustomerDomain customerDomain = GsonUtils.readValue(body, CustomerDomain.class);
 //		customerDomain.setStatus((byte)1);
-		return Mono.just(new JsonGrid(customerDomain, customerService.findByWhere(customerDomain)));
+		return Mono.just(new  HttpResultPagination(customerDomain, customerService.findByWhere(customerDomain)));
 
 	}
 
 	//根据户号和户名精确查询
 	@ResponseBody
 	@PostMapping(params = "method=getCustomerByNo")
-	public Mono<JsonGrid> getCustomerByNo(@RequestBody String body)
+	public Mono< HttpResultPagination<?>> getCustomerByNo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		CustomerDomain customerDomain = GsonUtils.readValue(body, CustomerDomain.class);
-		return Mono.just(new JsonGrid(customerDomain, customerService.getCustomerByNo(customerDomain)));
+		return Mono.just(new  HttpResultPagination(customerDomain, customerService.getCustomerByNo(customerDomain)));
 
 	}
 	

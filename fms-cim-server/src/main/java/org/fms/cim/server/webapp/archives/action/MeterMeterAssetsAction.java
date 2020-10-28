@@ -29,10 +29,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.google.gson.reflect.TypeToken;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -73,7 +73,7 @@ public class MeterMeterAssetsAction {
     //获取抄表区段序号
     @ResponseBody
     @PostMapping(params = "method=getAssetsRelByWriteSect")
-    public Mono<JsonGrid> getAssetsRelByWriteSect(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getAssetsRelByWriteSect(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
 
         WriteSectDomain t = JSONUtil.readValue(body, WriteSectDomain.class);
@@ -81,7 +81,7 @@ public class MeterMeterAssetsAction {
         if(t.getId()==null&&t.getWriteSectId()!=null) {
         	t.setId(t.getWriteSectId());
         }
-        return Mono.just(new JsonGrid(t, meterMeterAssetsService.getMeterOrderByWriteSect(t)));
+        return Mono.just(new HttpResultPagination(t, meterMeterAssetsService.getMeterOrderByWriteSect(t)));
     }
 
     //移动抄表区段

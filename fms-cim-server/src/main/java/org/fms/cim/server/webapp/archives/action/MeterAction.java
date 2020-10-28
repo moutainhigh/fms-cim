@@ -44,7 +44,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
@@ -93,10 +92,10 @@ public class MeterAction {
      */
     @ResponseBody
     @PostMapping(params = "method=getMeterByUser")
-    public JsonGrid getMeterByUser(@RequestBody String body)
+    public  HttpResultPagination<?> getMeterByUser(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         UserDomain userDomain = GsonUtils.readValue(body, UserDomain.class);
-        return new JsonGrid(userDomain, meterService.getMeterByUser(userDomain));
+        return new  HttpResultPagination(userDomain, meterService.getMeterByUser(userDomain));
     }
 
     /**
@@ -104,10 +103,10 @@ public class MeterAction {
      */
     @ResponseBody
     @PostMapping(params = "method=getMeterByWhere")
-    public Mono<JsonGrid> getMeterByWhere(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getMeterByWhere(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         MeterDomain e = GsonUtils.readValue(body, MeterDomain.class);
-        return Mono.just(new JsonGrid(e, meterService.findByWhere(e)));
+        return Mono.just(new HttpResultPagination(e, meterService.findByWhere(e)));
     }
 
     /**
@@ -115,9 +114,9 @@ public class MeterAction {
      */
     @ResponseBody
     @PostMapping(params = "method=getMeterByCustomer")
-    public Mono<JsonGrid> getMetersByCustomer(@RequestBody String body) {
+    public Mono<HttpResultPagination<?>> getMetersByCustomer(@RequestBody String body) {
         MeterDomain e = GsonUtils.readValue(body, MeterDomain.class);
-        return Mono.just(new JsonGrid(e, meterService.getMeterByCustomer(e)));
+        return Mono.just(new HttpResultPagination(e, meterService.getMeterByCustomer(e)));
     }
 
     @ResponseBody
@@ -429,10 +428,10 @@ public class MeterAction {
     //无线路计量点查询
     @ResponseBody
     @PostMapping(params = "method=getNolineMeter")
-    public JsonGrid getNolineMeter(@RequestBody String body) {
+    public HttpResultPagination<?> getNolineMeter(@RequestBody String body) {
     	MeterDomain t = GsonUtils.readValue(body, MeterDomain.class);
     //    return meterService.getNolineMeter(t);
-        return new JsonGrid(t,meterService.getNolineMeter(t));
+        return new HttpResultPagination(t,meterService.getNolineMeter(t));
 
     }
 
@@ -442,10 +441,10 @@ public class MeterAction {
      */
     @ResponseBody
     @PostMapping(params = "method=findClearMeterDoaminByWhere")
-    public Mono<JsonGrid> findClearMeterDoaminByWhere(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> findClearMeterDoaminByWhere(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         MeterDomain e = GsonUtils.readValue(body, MeterDomain.class);
-        return Mono.just(new JsonGrid(e, meterService.findClearMeterDoaminByWhere(e)));
+        return Mono.just(new HttpResultPagination(e, meterService.findClearMeterDoaminByWhere(e)));
     }
 
 
@@ -454,10 +453,10 @@ public class MeterAction {
      */
     @ResponseBody
     @PostMapping(params = "method=getMeterByCustIdCancelTableJoin")
-    public Mono<JsonGrid> getMeterByCustIdCancelTableJoin(@RequestBody String body) {
+    public Mono<HttpResultPagination<?>> getMeterByCustIdCancelTableJoin(@RequestBody String body) {
         MeterDomain e = GsonUtils.readValue(body, MeterDomain.class);
         if(e.getCustomerId()==null || "".equals(e.getCustomerId())){
-            return Mono.just(new JsonGrid(e, new ArrayList<>()));
+            return Mono.just(new HttpResultPagination(e, new ArrayList<>()));
         }
         List<Long> customerIds=new ArrayList<>();
         customerIds.add(e.getCustomerId());
@@ -465,7 +464,7 @@ public class MeterAction {
                 userService.getUserByCustomerIds(customerIds);
 
         if(userDomains==null ||userDomains.size()<1){
-            return Mono.just(new JsonGrid(e, new ArrayList<>()));
+            return Mono.just(new HttpResultPagination(e, new ArrayList<>()));
         }
         Map<Long,UserDomain> userDomainMap =
                 userDomains.stream()
@@ -503,7 +502,7 @@ public class MeterAction {
             }
         });
 
-        return Mono.just(new JsonGrid(e, meterDomains));
+        return Mono.just(new HttpResultPagination(e, meterDomains));
     }
 
 }

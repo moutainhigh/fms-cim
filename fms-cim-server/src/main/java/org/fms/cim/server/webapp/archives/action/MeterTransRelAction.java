@@ -18,10 +18,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -33,20 +33,20 @@ public class MeterTransRelAction {
     private IMeterTransRelService meterTransRelService;
     @ResponseBody
     @PostMapping(params = "method=getTransformerByNoMeterRel")
-    public Mono<JsonGrid> getTransformerByNoMeterRel(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getTransformerByNoMeterRel(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         MeterDomain t = GsonUtils.readValue(body, MeterDomain.class);
         List<MeterDomain> list = meterTransRelService.getTransformerByNoMeterRel(t);
-        return Mono.just(new JsonGrid(t, list));
+        return Mono.just(new HttpResultPagination(t, list));
     }
 
     @ResponseBody
     @PostMapping(params = "method=getTransformerByMeterRel")
-    public Mono<JsonGrid> getTransformerByMeterRel(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getTransformerByMeterRel(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         MeterDomain t = GsonUtils.readValue(body, MeterDomain.class);
         List<MeterDomain> list = meterTransRelService.getTransformerByMeterRel(t);
-        return Mono.just(new JsonGrid(t, list));
+        return Mono.just(new HttpResultPagination(t, list));
     }
 
     /**
@@ -54,10 +54,10 @@ public class MeterTransRelAction {
      * */
     @ResponseBody
     @PostMapping(params = "method=getMeterByWriteSectionId")
-    public Mono<JsonGrid> getMeterByWriteSectionId(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getMeterByWriteSectionId(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
         MeterDomain e = GsonUtils.readValue(body, MeterDomain.class);
-        return Mono.just(new JsonGrid(e, meterTransRelService.getMeterByWriteSectionId(e)));
+        return Mono.just(new HttpResultPagination(e, meterTransRelService.getMeterByWriteSectionId(e)));
     }
 
     //TODO 方法很垃圾需要修改	绑定变压器组关系
@@ -126,11 +126,11 @@ public class MeterTransRelAction {
      * */
     @ResponseBody
     @PostMapping(params = "method=getMeterByTransRel")
-    public Mono<JsonGrid> getMeterByTransRel(@RequestBody String body)
+    public Mono<HttpResultPagination<?>> getMeterByTransRel(@RequestBody String body)
             throws JsonParseException, JsonMappingException, IOException {
     	TransformerMeterRelationDomain e = GsonUtils.readValue(body, TransformerMeterRelationDomain.class);
     	
-    	return Mono.just(new JsonGrid(e, meterTransRelService.getMeterByTransRel(e)));
+    	return Mono.just(new HttpResultPagination(e, meterTransRelService.getMeterByTransRel(e)));
     }
 
 }

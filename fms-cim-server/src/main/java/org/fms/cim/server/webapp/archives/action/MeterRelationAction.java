@@ -25,10 +25,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -42,11 +42,11 @@ public class MeterRelationAction {
 	
 	@ResponseBody
 	@PostMapping(params = "method=getMeterRel")
-	public JsonGrid getMeterRel(@RequestBody String body)
+	public HttpResultPagination<?> getMeterRel(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {		
 		MeterRelationDomain t = GsonUtils.readValue(body, MeterRelationDomain.class);
 		
-		return new JsonGrid(t,meterRelationService.findByWhere(t));
+		return new HttpResultPagination(t,meterRelationService.findByWhere(t));
 	}
 
 	

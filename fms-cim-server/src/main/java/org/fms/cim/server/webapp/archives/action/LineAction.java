@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.riozenc.cim.web.config.JsonGrid;
 import com.riozenc.titanTool.common.json.utils.GsonUtils;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
@@ -39,11 +39,11 @@ public class LineAction {
 	//通过findByWhere获取全部线路信息（仅通过线路档案）---------------------可能业扩要用
 	@ResponseBody
 	@PostMapping(params = "method=getLine")
-	public JsonGrid getAllLineInfo(@RequestBody String body)
+	public HttpResultPagination<?> getAllLineInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		LineDomain t = GsonUtils.readValue(body, LineDomain.class);
 
-		return new JsonGrid(t,lineService.findByWhere(t));
+		return new  HttpResultPagination(t,lineService.findByWhere(t));
 	}
 	
 	@ResponseBody
