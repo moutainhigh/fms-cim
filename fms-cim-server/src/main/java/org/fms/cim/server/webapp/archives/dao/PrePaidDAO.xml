@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.riozenc.cim.webapp.archives.dao.PrePaidDAO">
+
+
+<select id="getSettlementAndMeter" parameterType="MeterDomain" resultType="MeterDomain" useCache="false">
+	SELECT
+		S.ID settlementId,
+		S.SETTLEMENT_NO,
+		S.SETTLEMENT_NAME,
+		S.SETTLEMENT_PHONE,
+		M.*
+	FROM
+		METER_INFO M
+		LEFT JOIN SETTLEMENT_METER_REL SMR ON M.ID = SMR.METER_ID
+		LEFT JOIN SETTLEMENT_INFO S ON SMR.SETTLEMENT_ID = S.ID 
+	<where>
+		<if test="fkFlag !=null"> 
+		 and M.FK_FLAG = #{fkFlag}
+		</if>
+		<if test="status !=null"> 
+		 and STATUS = #{status}
+		</if>
+	</where>
+</select>
+
+
+</mapper>
