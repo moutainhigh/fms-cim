@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.SettlementDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.SettlementDAO">
     <sql id="Base_Column_List">
 		ID,CUSTOMER_ID,SETTLEMENT_NO,SETTLEMENT_NAME,SETTLEMENT_PHONE,CHARGE_MODE_TYPE,CONNECT_BANK,OPENDING_BANK,BANK_NO,CREATE_DATE,
 		REMARK,STATUS,ACCOUNT_NAME,ACCOUNT_NO,CUSCC,BUSINESS_PLACE_CODE,INVOICE_TYPE,INVOICE_PRINT_TYPE,ADDRESS

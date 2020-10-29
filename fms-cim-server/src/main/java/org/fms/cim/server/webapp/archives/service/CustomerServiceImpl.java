@@ -22,7 +22,7 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class CustomerServiceImpl implements ICustomerService {
 
-	@TransactionDAO("master")
+	@TransactionDAO
 	private CustomerDAO customerDAO;
 
 	@Override
