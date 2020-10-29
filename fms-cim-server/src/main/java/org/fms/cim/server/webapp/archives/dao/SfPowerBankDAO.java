@@ -14,7 +14,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
-@TransactionDAO()
+@TransactionDAO
 public class SfPowerBankDAO extends AbstractTransactionDAOSupport implements BaseDAO<SfPowerBankDomain> {
 
 	@Override

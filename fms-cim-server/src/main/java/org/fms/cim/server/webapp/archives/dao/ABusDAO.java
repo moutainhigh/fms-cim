@@ -9,8 +9,8 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
-@TransactionDAO()
-public class ABusDAO extends AbstractTransactionDAOSupport implements BaseDAO<ABusDomain>{
+@TransactionDAO
+public class ABusDAO extends AbstractTransactionDAOSupport implements BaseDAO<ABusDomain> {
 
 	@Override
 	public int insert(ABusDomain t) {
@@ -42,6 +42,5 @@ public class ABusDAO extends AbstractTransactionDAOSupport implements BaseDAO<AB
 		// TODO Auto-generated method stub
 		return getPersistanceManager().find(getNamespace() + ".findByWhere", t);
 	}
-
 
 }

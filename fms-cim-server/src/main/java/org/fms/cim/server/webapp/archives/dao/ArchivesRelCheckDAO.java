@@ -11,7 +11,7 @@ import java.util.List;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 
-@TransactionDAO()
+@TransactionDAO
 public class ArchivesRelCheckDAO extends AbstractTransactionDAOSupport {
 
 	public List<HashMap<String, Object>> meterCheck(List<Long> meterIds) {
