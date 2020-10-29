@@ -42,25 +42,132 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 	private Long tgId;// 所属台区
 	private Long guid; // 原系统用户ID
 	private String meterBoxNumber; // 表箱号 METER_BOX_NUMBER
-
 	private Date createDate;// 创建日期 CREATE_DATE datetime FALSE FALSE FALSE
 	private String remark;// 备注 REMARK varchar(256) 256 FALSE FALSE FALSE
 	private Byte status;// 客户状态 STATUS smallint
-
 	private String writeSectNo; // 抄表段号
 	private String writeSectName;// 抄表段名称
 	private Byte sectUserType;// 区段用户类型 SECT_USER_TYPE smallint FALSE FALSE FALSE
 	private String customerNo;
 	private String customerName;
 	private String tgName; // 台区名称
-
 	private String lineCode;
-
 	private Integer startMon;
 	private Integer endMon;
 	private Date endDate;
 	private List<Long> customerIds;
+	private String type;//类型TYPE varchar(8) 
+	private Long lineId;//线路编码LINE_ID bigint 
+	private String rrioCode;//重要性等级RRIO_CODE varchar(8) 
+	private String transferCode;//转供标志TRANSFER_CODE varchar(8) 
+	private String linkMan;//联系人LINK_MAN varchar(32) 
+	private String lin1;//联系电话1TEL1 varchar(256) 
+	private String lin2;//联系电话2TEL2 varchar(256) 
+	private String vipCode;//重点用户VIP_CODE varchar(8) 
+	private Integer weight;//排序WEIGHT int
+	private Long creatorId;//创建者CREATOR_ID bigint 
+	private Long lastModifierId;//最后修改者LAST_MODIFIER_ID bigint 
+	private String lastModifierTime;//最后修改时间LAST_MODIFIER_TIME varchar(20) 
 	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Long getLineId() {
+		return lineId;
+	}
+
+	public void setLineId(Long lineId) {
+		this.lineId = lineId;
+	}
+
+	public String getRrioCode() {
+		return rrioCode;
+	}
+
+	public void setRrioCode(String rrioCode) {
+		this.rrioCode = rrioCode;
+	}
+
+	public String getTransferCode() {
+		return transferCode;
+	}
+
+	public void setTransferCode(String transferCode) {
+		this.transferCode = transferCode;
+	}
+
+	public String getLinkMan() {
+		return linkMan;
+	}
+
+	public void setLinkMan(String linkMan) {
+		this.linkMan = linkMan;
+	}
+
+	public String getLin1() {
+		return lin1;
+	}
+
+	public void setLin1(String lin1) {
+		this.lin1 = lin1;
+	}
+
+	public String getLin2() {
+		return lin2;
+	}
+
+	public void setLin2(String lin2) {
+		this.lin2 = lin2;
+	}
+
+	public String getVipCode() {
+		return vipCode;
+	}
+
+	public void setVipCode(String vipCode) {
+		this.vipCode = vipCode;
+	}
+
+	public Integer getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Integer weight) {
+		this.weight = weight;
+	}
+
+	public Long getCreatorId() {
+		return creatorId;
+	}
+
+	public void setCreatorId(Long creatorId) {
+		this.creatorId = creatorId;
+	}
+
+	public Long getLastModifierId() {
+		return lastModifierId;
+	}
+
+	public void setLastModifierId(Long lastModifierId) {
+		this.lastModifierId = lastModifierId;
+	}
+
+	
+
+	public String getLastModifierTime() {
+		return lastModifierTime;
+	}
+
+	public void setLastModifierTime(String lastModifierTime) {
+		this.lastModifierTime = lastModifierTime;
+	}
+
 	public String getTgName() {
 		return tgName;
 	}
