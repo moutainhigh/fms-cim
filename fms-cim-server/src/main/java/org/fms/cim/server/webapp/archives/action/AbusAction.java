@@ -20,6 +20,13 @@ import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * 
+ * 母线
+ * 
+ * @author czy
+ *
+ */
 @ControllerAdvice
 @RequestMapping("abus")
 public class AbusAction {
