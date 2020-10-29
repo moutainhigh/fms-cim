@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.CustomerDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.CustomerDAO">
 		<sql id = "Base_Column_List">
 				ID,CUSTOMER_NO,CUSTOMER_NAME,CUSTOMER_NAME_SPELL,ADDRESS,ADDRESS_SPELL,CARD_TYPE,CARD_NO,LINK_MAN,CONTACT_INFORMATION,
 				CREATE_DATE,CANCEL_DATE,REMARK,STATUS,SPARE_LINK_MAN,SPARE_CONTACT_INFORMATION,BUSINESS_PLACE_CODE,WE_CHAT_FLAG,INSIDE_FLAG
