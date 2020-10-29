@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.SubsDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.SubsDAO">
 
 	<sql id="Base_Column_List">
 		ID,SUBS_NO,SUBS_NAME,SHORT_NAME,VOLT_TYPE,ADDRESS,SUBS_TYPE,
-		SUBS_PROP,MT_NUM,MT_CAP,CREATE_DATE,STATUS,BUSINESS_PLACE_CODE
+		SUBS_PROP,MT_NUM,MT_CAP,CREATE_DATE,STATUS,BUSINESS_PLACE_CODE,
+		F_ORG_ID,KH_FLAG,RUN_STATUS_CODE,DATA_SRC,DATA_ID,AREA_CODE,WEIGHT,
+         GUID,REMARK,CREATOR_ID,LAST_MODIFIER_ID,LAST_MODIFIER_TIME,VOLT_CODE
 	</sql>
 
 	<select id="findByKey" parameterType="SubsDomain"
@@ -59,6 +61,47 @@
 			<if test="businessPlaceCode !=null">
 				and BUSINESS_PLACE_CODE = #{businessPlaceCode}
 			</if>
+		
+			<if test="fOrgId !=null">
+				and F_ORG_ID = #{fOrgId}
+			</if>
+			<if test="khFlag !=null">
+				and KH_FLAG = #{khFlag}
+			</if>
+			<if test="runStatusCode !=null">
+				and RUN_STATUS_CODE = #{runStatusCode}
+			</if>
+			<if test="dateSrc !=null">
+				and DATA_SRC = #{dateSrc}
+			</if>
+			<if test="dateId !=null">
+				and DATA_ID = #{dateId}
+			</if>
+			<if test="areaCode !=null">
+				and AREA_CODE = #{areaCode}
+			</if>
+			<if test="weight !=null">
+				and WEIGHT = #{weight}
+			</if>
+			<if test="guid !=null">
+				and GUID = #{guid}
+			</if>
+			<if test="remark !=null">
+				and REMARK = #{remark}
+			</if>
+			<if test="creatorId !=null">
+				and CREATOR_ID = #{creatorId}
+			</if>
+			
+			<if test="lastModifierId !=null">
+				and LAST_MODIFIER_ID = #{lastModifierId}
+			</if>
+			<if test="lastModifierTime !=null">
+				and LAST_MODIFIER_TIME = #{lastModifierTime}
+			</if>
+			<if test="voltCode !=null">
+				and VOLT_CODE = #{voltCode}
+			</if>
 			<if test="ids != null and ids.size > 0">
 				and ID in
 				<foreach item="item" index="index" collection="ids" open="("
@@ -93,7 +136,7 @@
 		<include refid="Base_Column_List" />
 		)
 		values
-		(#{id},#{subsNo},#{subsName},#{shortName},#{voltType},#{address},#{subsType},#{subsProp},#{mtNum},#{mtCap},#{createDate},#{status},#{businessPlaceCode})
+		(#{id},#{subsNo},#{subsName},#{shortName},#{voltType},#{address},#{subsType},#{subsProp},#{mtNum},#{mtCap},#{createDate},#{status},#{businessPlaceCode},{fOrgId},{khFlag},{runStatusCode},{dateSrc},{dateId},{areaCode},{weight},{guid},{remark},{creatorId},{lastModifierId},{lastModifierTime},{voltCode})
 	</insert>
 	<update id="update" parameterType="SubsDomain" flushCache="true">
 		update SUBS_INFO
@@ -133,6 +176,46 @@
 			</if>
 			<if test="businessPlaceCode !=null">
 				BUSINESS_PLACE_CODE = #{businessPlaceCode},
+			</if>
+			<if test="fOrgId !=null">
+				 F_ORG_ID = #{fOrgId},
+			</if>
+			<if test="khFlag !=null">
+				 KH_FLAG = #{khFlag},
+			</if>
+			<if test="runStatusCode !=null">
+				RUN_STATUS_CODE = #{runStatusCode},
+			</if>
+			<if test="dateSrc !=null">
+				DATA_SRC = #{dateSrc},
+			</if>
+			<if test="dateId !=null">
+			 DATA_ID = #{dateId},
+			</if>
+			<if test="areaCode !=null">
+				 AREA_CODE = #{areaCode},
+			</if>
+			<if test="weight !=null">
+				 WEIGHT = #{weight},
+			</if>
+			<if test="guid !=null">
+				 GUID = #{guid},
+			</if>
+			<if test="remark !=null">
+				 REMARK = #{remark},
+			</if>
+			<if test="creatorId !=null">
+				 CREATOR_ID = #{creatorId},
+			</if>
+			
+			<if test="lastModifierId !=null">
+				 LAST_MODIFIER_ID = #{lastModifierId},
+			</if>
+			<if test="lastModifierTime !=null">
+				LAST_MODIFIER_TIME = #{lastModifierTime},
+			</if>
+			<if test="voltCode !=null">
+				 VOLT_CODE = #{voltCode},
 			</if>
 		</set>
 		<where>
