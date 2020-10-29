@@ -11,7 +11,7 @@ import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 
-@TransactionDAO()
+@TransactionDAO
 public class MeterTransRelDAO extends AbstractTransactionDAOSupport{
     @PaginationSupport
     public List<MeterDomain> getTransformerByNoMeterRel(MeterDomain t) {

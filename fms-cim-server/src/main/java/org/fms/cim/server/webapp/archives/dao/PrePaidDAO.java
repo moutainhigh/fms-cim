@@ -12,7 +12,7 @@ import org.fms.cim.common.domain.archives.MeterDomain;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 
-@TransactionDAO()
+@TransactionDAO
 public class PrePaidDAO extends AbstractTransactionDAOSupport  {
 
 	public List<MeterDomain> getSettlementAndMeter(MeterDomain meterDomain) {

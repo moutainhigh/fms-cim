@@ -15,7 +15,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
-@TransactionDAO("read")
+@TransactionDAO
 public class CustomerDAO extends AbstractTransactionDAOSupport implements BaseDAO<CustomerDomain> {
 
 	@Override

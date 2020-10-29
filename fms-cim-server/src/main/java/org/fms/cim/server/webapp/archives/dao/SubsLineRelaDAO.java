@@ -15,7 +15,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
-@TransactionDAO()
+@TransactionDAO
 public class SubsLineRelaDAO extends AbstractTransactionDAOSupport implements BaseDAO<SubsLineRelaDomain> {
 
 	@Override

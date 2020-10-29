@@ -15,7 +15,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
-@TransactionDAO()
+@TransactionDAO
 public class MeterInductorAssetsRelDAO extends AbstractTransactionDAOSupport implements BaseDAO<MeterInductorAssetsRelDomain> {
 
 	@Override

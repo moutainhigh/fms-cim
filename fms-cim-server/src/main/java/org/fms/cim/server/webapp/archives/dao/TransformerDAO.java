@@ -22,7 +22,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
-@TransactionDAO("read")
+@TransactionDAO
 public class TransformerDAO extends AbstractTransactionDAOSupport implements BaseDAO<TransformerDomain> {
 
 	@Override
