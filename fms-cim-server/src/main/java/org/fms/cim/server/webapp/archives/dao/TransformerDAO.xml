@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.TransformerDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.TransformerDAO">
     <sql id="Base_Column_List">
         ID,TRANSFORMER_ASSETS_ID,TRANSFORMER_NO,DESK_NAME,CAPACITY,TRANSFORMER_GROUP_NO,
 		IS_PUB_TYPE,TRANSFORMER_LOSS_TYPE,BUSINESS_PLACE_CODE,RUN_DATE,STAND_TIME,VOLT_TYPE,CHARGE_MAN,

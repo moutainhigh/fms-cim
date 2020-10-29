@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.MeterDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.MeterDAO">
     <sql id="Base_Column_List">
 		ID,METER_NO,METER_ORDER,METER_NAME,METER_ASSETS_ID,SET_ADDRESS,CT_ASSETS_ID,PT_ASSETS_ID,CT_VALUE,PT_VALUE,PRICE_TYPE,BASIC_PRICE,
 		NEED_INDEX,VOLT_LEVEL_TYPE,METER_TYPE,METER_CLASS_TYPE,MS_TYPE,ELEC_TYPE_CODE,BASE_MONEY_FLAG,COS_TYPE,TRADE_TYPE,
