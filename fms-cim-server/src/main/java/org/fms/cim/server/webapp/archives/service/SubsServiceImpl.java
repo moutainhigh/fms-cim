@@ -17,7 +17,7 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class SubsServiceImpl implements ISubsService {
 
-	@TransactionDAO
+	@TransactionDAO("read")
 	private SubsDAO subsDAO;
 
 	@Override

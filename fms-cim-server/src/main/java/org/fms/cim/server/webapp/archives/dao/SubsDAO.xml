@@ -62,9 +62,7 @@
 				and BUSINESS_PLACE_CODE = #{businessPlaceCode}
 			</if>
 		
-			<if test="fOrgId !=null">
-				and F_ORG_ID = #{fOrgId}
-			</if>
+			
 			<if test="khFlag !=null">
 				and KH_FLAG = #{khFlag}
 			</if>
@@ -80,22 +78,16 @@
 			<if test="areaCode !=null">
 				and AREA_CODE = #{areaCode}
 			</if>
-			<if test="weight !=null">
-				and WEIGHT = #{weight}
-			</if>
+			
 			<if test="guid !=null">
 				and GUID = #{guid}
 			</if>
 			<if test="remark !=null">
 				and REMARK = #{remark}
 			</if>
-			<if test="creatorId !=null">
-				and CREATOR_ID = #{creatorId}
-			</if>
 			
-			<if test="lastModifierId !=null">
-				and LAST_MODIFIER_ID = #{lastModifierId}
-			</if>
+			
+			
 			<if test="lastModifierTime !=null">
 				and LAST_MODIFIER_TIME = #{lastModifierTime}
 			</if>

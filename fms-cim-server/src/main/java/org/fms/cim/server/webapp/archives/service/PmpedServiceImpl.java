@@ -17,7 +17,7 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class PmpedServiceImpl implements IPmpedService {
 
-	@TransactionDAO
+	@TransactionDAO("read")
 	private PMpedDAO pmpedDAO;
 
 	@Override
