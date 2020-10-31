@@ -128,7 +128,7 @@
 		<include refid="Base_Column_List" />
 		)
 		values
-		(#{id},#{subsNo},#{subsName},#{shortName},#{voltType},#{address},#{subsType},#{subsProp},#{mtNum},#{mtCap},#{createDate},#{status},#{businessPlaceCode},{fOrgId},{khFlag},{runStatusCode},{dateSrc},{dateId},{areaCode},{weight},{guid},{remark},{creatorId},{lastModifierId},{lastModifierTime},{voltCode})
+		(#{id},#{subsNo},#{subsName},#{shortName},#{voltType},#{address},#{subsType},#{subsProp},#{mtNum},#{mtCap},#{createDate},#{status},#{businessPlaceCode},#{fOrgId},#{khFlag},#{runStatusCode},#{dateSrc},#{dateId},#{areaCode},#{weight},#{guid},#{remark},#{creatorId},#{lastModifierId},#{lastModifierTime},#{voltCode})
 	</insert>
 	<update id="update" parameterType="SubsDomain" flushCache="true">
 		update SUBS_INFO
