@@ -27,9 +27,9 @@ public class SubsDomain extends ManagerParamEntity implements MybatisEntity {
 	private String subsNo; //变电站编码
 	private String subsName; //名称
 	private String shortName; //拼音简写
-	private Byte voltType; //电压等级
+	private String voltType; //电压等级
 	private String address; //变电站地址
-	private Byte subsType; //厂站类型
+	private String subsType; //厂站类型
 	private Byte subsProp; //电厂性质
 	private Byte mtNum; //主变台数
 	private BigDecimal mtCap; //主变容量
@@ -194,24 +194,30 @@ public class SubsDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setShortName(String shortName) {
 		this.shortName = shortName;
 	}
-	public Byte getVoltType() {
-		return voltType;
-	}
-	public void setVoltType(Byte voltType) {
-		this.voltType = voltType;
-	}
+	
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Byte getSubsType() {
+	
+	public String getVoltType() {
+		return voltType;
+	}
+
+	public void setVoltType(String voltType) {
+		this.voltType = voltType;
+	}
+
+	public String getSubsType() {
 		return subsType;
 	}
-	public void setSubsType(Byte subsType) {
+
+	public void setSubsType(String subsType) {
 		this.subsType = subsType;
 	}
+
 	public Byte getSubsProp() {
 		return subsProp;
 	}
