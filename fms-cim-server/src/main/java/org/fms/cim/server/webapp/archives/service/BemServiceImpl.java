@@ -317,7 +317,7 @@ public class BemServiceImpl implements IBemService {
 		rmap.put("result", false);
 		rmap.put("message", "客户新增开始！");
 		Date now = new Date();
-		customerInfo.setStatus((byte)1);
+		customerInfo.setStatus("1");
 		customerInfo.setId(null);
 		customerInfo.setCreateDate(now);
 

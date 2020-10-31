@@ -72,7 +72,7 @@ public class BillServiceImpl implements IBillService {
 				tempSettlement.setSettlementNo(no);
 				tempSettlement.setBankNo(bankNo);
 				tempSettlement.setBusinessPlaceCode(businessPlaceCode);
-				tempSettlement.setChargeModeType(chargeModeType==null?null:chargeModeType.byteValue());
+				tempSettlement.setChargeModeType(chargeModeType==null?null:chargeModeType.toString());
 				tempSettlement.setPageSize(-1);
 				meterList = meterDAO.getMetersBySettlement(tempSettlement);
 				
@@ -134,7 +134,7 @@ public class BillServiceImpl implements IBillService {
 				tempSettlement.setSettlementNo(no);
 				tempSettlement.setBankNo(bankNo);
 				tempSettlement.setBusinessPlaceCode(businessPlaceCode);
-				tempSettlement.setChargeModeType(chargeModeType==null?null:chargeModeType.byteValue());
+				tempSettlement.setChargeModeType(chargeModeType==null?null:chargeModeType.toString());
 				tempSettlement.setPageSize(-1);
 				meterList = meterDAO.getMetersBySettlement(tempSettlement);
 

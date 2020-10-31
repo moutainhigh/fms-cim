@@ -141,7 +141,7 @@ public class SettlementAction {
 //			t.setSettlementNo(settlementNo);
 
 		}
-		t.setStatus((byte) 1);
+		t.setStatus("1");
 		t.setCreateDate(new Date());
 
 		int count = settlementService.insert(t);
