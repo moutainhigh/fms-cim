@@ -61,7 +61,7 @@ public class CustomerAction {
 	public Mono<HttpResult> addCustomerInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		CustomerDomain customerDomain = GsonUtils.readValue(body, CustomerDomain.class);
-System.out.println("11111111111111111111111111111");
+
 		//如果户号空，生成户号
 		if(customerDomain.getCustomerNo()==null) {
 			
@@ -83,7 +83,7 @@ System.out.println("11111111111111111111111111111");
 //
 //			}
 		}
-		System.out.println("22222222222222222222222222222222222");
+
 		// 判断customer_no是否重复
 		CustomerDomain tt = new CustomerDomain();
 		tt.setCustomerNo(customerDomain.getCustomerNo());
@@ -94,13 +94,13 @@ System.out.println("11111111111111111111111111111");
 		customerDomain.setCreateDate(new Date());
 		customerDomain.setStatus("1");
 		int i = customerService.insert(customerDomain);
-		System.out.println("3333333");
+
 		if (i > 0) {
 			return Mono.just(new HttpResult(HttpResult.SUCCESS, "新增客户信息成功.",customerDomain));
 		}
 		return Mono.just(new HttpResult(HttpResult.ERROR, "新增客户信息失败."));
 	}
-	
+
 	@ResponseBody
 	@PostMapping(params = "method=getCustomer")
 	public Mono< HttpResultPagination<?>> getCustomer(@RequestBody String body)

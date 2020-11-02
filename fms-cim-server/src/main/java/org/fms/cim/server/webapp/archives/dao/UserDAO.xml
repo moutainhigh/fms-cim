@@ -114,11 +114,11 @@
 			<if test="linkMan !=null">
 				and LINK_MAN = #{linkMan}
 			</if>
-			<if test="lin1 !=null">
-				and TEL1 = #{lin1}
+			<if test="tel1 !=null">
+				and TEL1 = #{tel1}
 			</if>
-			<if test="lin2 !=null">
-				and TEL2 = #{lin2}
+			<if test="tel2 !=null">
+				and TEL2 = #{tel2}
 			</if>
 			<if test="vipCode !=null">
 				and VIP_CODE = #{vipCode}
@@ -166,7 +166,7 @@
 		<include refid="Base_Column_List" />
 		)
 		values
-		(#{id},#{customerId},#{userNo},#{userName},#{address},#{businessPlaceCode},#{writeSectId},#{allCapacity},#{loadType},#{isHighType},#{tempType},#{creditRankType},#{writeType},#{userType},#{elecType},#{voltLevelType},#{tgId},#{guid},#{meterBoxNumber},#{createDate},#{remark},#{status})
+		(#{id},#{customerId},#{userNo},#{userName},#{address},#{businessPlaceCode},#{writeSectId},#{allCapacity},#{loadType},#{isHighType},#{tempType},#{creditRankType},#{writeType},#{userType},#{elecType},#{voltLevelType},#{tgId},#{guid},#{meterBoxNumber},#{createDate},#{remark},#{status},#{type},#{lineId},#{rrioCode},#{transferCode},#{linkMan},#{lin1},#{lin2},#{vipCode},#{weight},#{creatorId},#{lastModifierId},#{lastModifierTime})
 	</insert>
 	<update id="update" parameterType="UserDomain" flushCache="true">
 		update USER_INFO
@@ -249,11 +249,11 @@
 			<if test="linkMan !=null">
 				LINK_MAN = #{linkMan},
 			</if>
-			<if test="lin1 !=null">
-				TEL1 = #{lin1},
+			<if test="tel1 !=null">
+				TEL1 = #{tel1},
 			</if>
-			<if test="lin2 !=null">
-				TEL2 = #{lin2},
+			<if test="tel2 !=null">
+				TEL2 = #{tel2},
 			</if>
 			<if test="vipCode !=null">
 				VIP_CODE = #{vipCode},

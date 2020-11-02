@@ -123,7 +123,7 @@ public class UserAction {
 		MeterDomain meterDomain = new MeterDomain();
 		meterDomain.setUserId(userDomain.getId());
 		meterDomain.setWriteSectionId(userDomain.getWriteSectId());
-		meterDomain.setStatus(userDomain.getStatus());
+		meterDomain.setStatus(userDomain.getStatus().toString());
 		meterService.updateWriteSectIdByUserId(meterDomain);
 		
 		if (count > 0) {
@@ -160,7 +160,7 @@ public class UserAction {
 
 		}
 
-		userDomain.setStatus((byte) 1);
+		userDomain.setStatus("1");
 		userDomain.setCreateDate(new Date());
 
 		int count = userService.insert(userDomain);

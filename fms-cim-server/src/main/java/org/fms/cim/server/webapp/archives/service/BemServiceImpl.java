@@ -362,7 +362,7 @@ public class BemServiceImpl implements IBemService {
 		rmap.put("message", "用电户新增开始！");
 		Date now = new Date();
 
-		userInfo.setStatus((byte)1);
+		userInfo.setStatus("1");
 		userInfo.setId(null);
 		userInfo.setCreateDate(now);
 		UserDomain tempUser = new UserDomain();

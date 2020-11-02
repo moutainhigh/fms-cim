@@ -94,17 +94,17 @@ public class BatchAddUserServiceImpl implements IBatchAddUserService {
 		userDomain.setUserName(tt.getUserName());
 		userDomain.setAddress(tt.getAddress());
 		userDomain.setWriteSectId(writeSecNo_writeSecDomain.get(tt.getWriteSectNo()).getId());
-		userDomain.setLoadType((byte) 3);
-		userDomain.setTempType((byte) 1);
-		userDomain.setWriteType((byte) 1);
-		userDomain.setElecType(tt.getElecType());
-		userDomain.setVoltLevelType((byte) 10);
+		userDomain.setLoadType("3");
+		userDomain.setTempType("1");
+		userDomain.setWriteType("1");
+		userDomain.setElecType(tt.getElecType().toString());
+		userDomain.setVoltLevelType("10");
 		userDomain.setBusinessPlaceCode(businessPlaceCode);
 		userDomain.setCustomerId(customerDomain.getId());
 		userDomain.setUserNo(customerNo); //新生成的户号。不会重复
 		userDomain.setRemark("excel导入");
-		userDomain.setStatus((byte) 1);
-		userDomain.setUserType(tt.getUserType()==null?(byte)10:tt.getUserType());
+		userDomain.setStatus("1");
+		userDomain.setUserType(tt.getUserType()==null?"10":tt.getUserType().toString());
 		
 		UserDomain tu = new UserDomain();
 		tu.setUserNo(userDomain.getUserNo());
@@ -186,7 +186,7 @@ public class BatchAddUserServiceImpl implements IBatchAddUserService {
 		meterDomain.setLadderNum(1);
 		meterDomain.setCreateDate(now);
 		meterDomain.setRemark("excel导入");
-		meterDomain.setStatus((byte) 1);
+		meterDomain.setStatus("1");
 		
 	    MeterDomain tm = new MeterDomain();
 	    tm.setMeterNo(meterDomain.getMeterNo());
