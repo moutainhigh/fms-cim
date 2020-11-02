@@ -166,7 +166,7 @@
 		<include refid="Base_Column_List" />
 		)
 		values
-		(#{id},#{customerId},#{userNo},#{userName},#{address},#{businessPlaceCode},#{writeSectId},#{allCapacity},#{loadType},#{isHighType},#{tempType},#{creditRankType},#{writeType},#{userType},#{elecType},#{voltLevelType},#{tgId},#{guid},#{meterBoxNumber},#{createDate},#{remark},#{status},#{type},#{lineId},#{rrioCode},#{transferCode},#{linkMan},#{lin1},#{lin2},#{vipCode},#{weight},#{creatorId},#{lastModifierId},#{lastModifierTime})
+		(#{id},#{customerId},#{userNo},#{userName},#{address},#{businessPlaceCode},#{writeSectId},#{allCapacity},#{loadType},#{isHighType},#{tempType},#{creditRankType},#{writeType},#{userType},#{elecType},#{voltLevelType},#{tgId},#{guid},#{meterBoxNumber},#{createDate},#{remark},#{status},#{type},#{lineId},#{rrioCode},#{transferCode},#{linkMan},#{tel1},#{tel2},#{vipCode},#{weight},#{creatorId},#{lastModifierId},#{lastModifierTime})
 	</insert>
 	<update id="update" parameterType="UserDomain" flushCache="true">
 		update USER_INFO
