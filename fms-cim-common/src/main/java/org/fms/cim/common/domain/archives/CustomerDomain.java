@@ -29,14 +29,14 @@ public class CustomerDomain extends ManagerParamEntity implements MybatisEntity 
 	private String address;// 地址 ADDRESS VARCHAR(128) 128 FALSE FALSE FALSE
 	private String addressSpell;// 地址拼音 ADDRESS_SPELL VARCHAR(16) 16 FALSE FALSE FALSE
 	private Long deptId;// 所属区域
-	private Byte cardType;// 证件类型 CARD_TYPE smallint FALSE FALSE FALSE
+	private String cardType;// 证件类型 CARD_TYPE smallint FALSE FALSE FALSE
 	private String cardNo;// 证件号 CARD_NO VARCHAR(32) 32 FALSE FALSE FALSE
 	private String linkMan;// 联系人 LINK_MAN VARCHAR(64) 64 FALSE FALSE FALSE
 	private String contactInformation;// 联系方式 CONTACT_INFORMATION VARCHAR(64) 64 FALSE FALSE FALSE
 	private Date createDate;// 立户日期 CREATE_DATE datetime FALSE FALSE FALSE
 	private Date cancelDate;// 销户日期 CANCEL_DATE datetime FALSE FALSE FALSE
 	private String remark;// 备注 REMARK VARCHAR(256) 256 FALSE FALSE FALSE
-	private Byte status;// 客户状态 STATUS smallint FALSE FALSE FALSE
+	private String status;// 客户状态 STATUS smallint FALSE FALSE FALSE
 	private	Byte insideFlag;	//局内外 INSIDE_FLAG
 	private String spareLinkMan;				//	备用联系人	SPARE_LINK_MAN	VARCHAR(64)
 	private String spareContactInformation;				//	备用联系方式	SPARE_CONTACT_INFORMATION	VARCHAR(64)
@@ -94,11 +94,11 @@ public class CustomerDomain extends ManagerParamEntity implements MybatisEntity 
 		this.addressSpell = addressSpell;
 	}
 
-	public Byte getCardType() {
+	public String getCardType() {
 		return cardType;
 	}
 
-	public void setCardType(Byte cardType) {
+	public void setCardType(String cardType) {
 		this.cardType = cardType;
 	}
 
@@ -150,11 +150,11 @@ public class CustomerDomain extends ManagerParamEntity implements MybatisEntity 
 		this.remark = remark;
 	}
 
-	public Byte getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

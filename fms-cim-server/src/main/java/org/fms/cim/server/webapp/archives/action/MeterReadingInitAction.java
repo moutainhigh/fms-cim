@@ -128,7 +128,7 @@ public class MeterReadingInitAction {
 		//去mysql根据用户获取计量点
 		List<MeterDomain> meterListFromMySql = meterService.getMeterByUserIds(userIds);
 		
-		if(userDomain.getStatus()-99 ==0) {
+		if(Integer.parseInt(userDomain.getStatus())-99 ==0) {
 			//去monogo根据用户获取计量点
 			List<MeterDomain> meterListFromMonogo = getElectricMeterFromMonogoByUserIds(userIds);
 

@@ -53,7 +53,7 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 	private BigDecimal qLineLostNum; // 无功线损率or值
 	private Date createDate; // 创建时间
 	private String remark; // 备注
-	private Byte status; // 状态
+	private String status; // 状态
 	private Long tgId; // 所属台区 TG_ID bigint
 	private Long lineId; // 所属线路 LINE_ID bigint
 	private Long subsId; // 所属厂站 SUBS_ID bigint
@@ -489,11 +489,12 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.remark = remark;
 	}
 
-	public Byte getStatus() {
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
