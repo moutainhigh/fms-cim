@@ -29,19 +29,19 @@ public class SettlementDomain extends ManagerParamEntity implements MybatisEntit
 	private String settlementNo;// 结算户编号 SETTLEMENT_NO varchar(16) 16 FALSE FALSE FALSE
 	private String settlementName;// 结算人 SETTLEMENT_NAME varchar(64) 64 FALSE FALSE FALSE
 	private String settlementPhone;// 结算人电话 SETTLEMENT_PHONE varchar(11) 11 FALSE FALSE FALSE
-	private Byte chargeModeType;// 收费方式 CHARGE_MODE_TYPE smallint FALSE FALSE FALSE
-	private Byte connectBank;// 联网银行 CONNECT_BANK smallint FALSE FALSE FALSE
+	private String chargeModeType;// 收费方式 CHARGE_MODE_TYPE smallint FALSE FALSE FALSE
+	private String connectBank;// 联网银行 CONNECT_BANK smallint FALSE FALSE FALSE
 	private Integer opendingBank;// 开户银行
 	private String bankNo;// 银行卡号 BANK_NO varchar(32) 32 FALSE FALSE FALSE
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	private Date createDate;// 创建时间 CREATE_DATE datetime FALSE FALSE FALSE
 	private String remark;// 备注 REMARK varchar(256) 256 FALSE FALSE FALSE
-	private Byte status;// 状态 STATUS smallint FALSE FALSE FALSE
+	private String status;// 状态 STATUS smallint FALSE FALSE FALSE
 	private String accountName; //对公账户名称
 	private String accountNo;	//对公户号
 	private String cuscc;		//统一社会信用代码
 	private Long businessPlaceCode;		//结算区域 BUSINESS_PLACE_CODE
-	private Byte invoiceType; // 发票类型
+	private String invoiceType; // 发票类型
 	private Byte invoicePrintType;//托收户发票打印方式
 	
 	private String address;
@@ -174,21 +174,9 @@ public class SettlementDomain extends ManagerParamEntity implements MybatisEntit
 		this.settlementPhone = settlementPhone;
 	}
 
-	public Byte getChargeModeType() {
-		return chargeModeType;
-	}
 
-	public void setChargeModeType(Byte chargeModeType) {
-		this.chargeModeType = chargeModeType;
-	}
 
-	public Byte getConnectBank() {
-		return connectBank;
-	}
-
-	public void setConnectBank(Byte connectBank) {
-		this.connectBank = connectBank;
-	}
+	
 
 	public String getBankNo() {
 		return bankNo;
@@ -214,13 +202,7 @@ public class SettlementDomain extends ManagerParamEntity implements MybatisEntit
 		this.remark = remark;
 	}
 
-	public Byte getStatus() {
-		return status;
-	}
-
-	public void setStatus(Byte status) {
-		this.status = status;
-	}
+	
 
 	public Long getBusinessPlaceCode() {
 		return businessPlaceCode;
@@ -262,11 +244,36 @@ public class SettlementDomain extends ManagerParamEntity implements MybatisEntit
 		this.invoicePrintType = invoicePrintType;
 	}
 
-	public Byte getInvoiceType() {
+	
+	public String getChargeModeType() {
+		return chargeModeType;
+	}
+
+	public void setChargeModeType(String chargeModeType) {
+		this.chargeModeType = chargeModeType;
+	}
+
+	public String getConnectBank() {
+		return connectBank;
+	}
+
+	public void setConnectBank(String connectBank) {
+		this.connectBank = connectBank;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getInvoiceType() {
 		return invoiceType;
 	}
 
-	public void setInvoiceType(Byte invoiceType) {
+	public void setInvoiceType(String invoiceType) {
 		this.invoiceType = invoiceType;
 	}
 
