@@ -31,20 +31,20 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 	private Long businessPlaceCode;// 营业区域 BUSINESS_PLACE_CODE varchar(8)
 	private Long writeSectId;	// 抄表区段 WRITE_SECT_ID varchar(8)
 	private BigDecimal allCapacity;// 合同容量 ALL_CAPACITY decimal(10,2)
-	private Byte loadType;// 负荷类别 LOAD_TYPE smallint FALSE FALSE FALSE
+	private String loadType;// 负荷类别 LOAD_TYPE smallint FALSE FALSE FALSE
 	private Byte isHighType;// 高可靠性标志 IS_HIGH_TYPE smallint FALSE FALSE FALSE
-	private Byte tempType;// 临时用电标志 TEMP_TYPE smallint FALSE FALSE FALSE
-	private Byte creditRankType;// 信誉等级 CREDIT_RANK_TYPE smallint FALSE FALSE FALSE
-	private Byte writeType;// 抄表周期 WRITE_TYPE smallint FALSE FALSE FALSE
-	private Byte userType;// 分类标识 USER_TYPE smallint FALSE FALSE FALSE
-	private Integer elecType;// 用电类别 ELEC_TYPE_TYPE smallint FALSE FALSE FALSE
-	private Byte voltLevelType;// 电压等级 VOLT_LEVEL_TYPE smallint FALSE FALSE FALSE
+	private String tempType;// 临时用电标志 TEMP_TYPE smallint FALSE FALSE FALSE
+	private String creditRankType;// 信誉等级 CREDIT_RANK_TYPE smallint FALSE FALSE FALSE
+	private String writeType;// 抄表周期 WRITE_TYPE smallint FALSE FALSE FALSE
+	private String userType;// 分类标识 USER_TYPE smallint FALSE FALSE FALSE
+	private String elecType;// 用电类别 ELEC_TYPE_TYPE smallint FALSE FALSE FALSE
+	private String voltLevelType;// 电压等级 VOLT_LEVEL_TYPE smallint FALSE FALSE FALSE
 	private Long tgId;// 所属台区
 	private Long guid; // 原系统用户ID
 	private String meterBoxNumber; // 表箱号 METER_BOX_NUMBER
 	private Date createDate;// 创建日期 CREATE_DATE datetime FALSE FALSE FALSE
 	private String remark;// 备注 REMARK varchar(256) 256 FALSE FALSE FALSE
-	private Byte status;// 客户状态 STATUS smallint
+	private String status;// 客户状态 STATUS smallint
 	private String writeSectNo; // 抄表段号
 	private String writeSectName;// 抄表段名称
 	private Byte sectUserType;// 区段用户类型 SECT_USER_TYPE smallint FALSE FALSE FALSE
@@ -61,8 +61,8 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 	private String rrioCode;//重要性等级RRIO_CODE varchar(8) 
 	private String transferCode;//转供标志TRANSFER_CODE varchar(8) 
 	private String linkMan;//联系人LINK_MAN varchar(32) 
-	private String lin1;//联系电话1TEL1 varchar(256) 
-	private String lin2;//联系电话2TEL2 varchar(256) 
+	private String tel1;//联系电话1TEL1 varchar(256) 
+	private String tel2;//联系电话2TEL2 varchar(256) 
 	private String vipCode;//重点用户VIP_CODE varchar(8) 
 	private Integer weight;//排序WEIGHT int
 	private Long creatorId;//创建者CREATOR_ID bigint 
@@ -110,20 +110,21 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 		this.linkMan = linkMan;
 	}
 
-	public String getLin1() {
-		return lin1;
+
+	public String getTel1() {
+		return tel1;
 	}
 
-	public void setLin1(String lin1) {
-		this.lin1 = lin1;
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
 	}
 
-	public String getLin2() {
-		return lin2;
+	public String getTel2() {
+		return tel2;
 	}
 
-	public void setLin2(String lin2) {
-		this.lin2 = lin2;
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
 	}
 
 	public String getVipCode() {
@@ -240,68 +241,12 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 		this.allCapacity = allCapacity;
 	}
 
-	public Integer getElecType() {
-		return elecType;
-	}
-
-	public void setElecType(Integer elecType) {
-		this.elecType = elecType;
-	}
-
-	public Byte getVoltLevelType() {
-		return voltLevelType;
-	}
-
-	public void setVoltLevelType(Byte voltLevelType) {
-		this.voltLevelType = voltLevelType;
-	}
-
-	public Byte getLoadType() {
-		return loadType;
-	}
-
-	public void setLoadType(Byte loadType) {
-		this.loadType = loadType;
-	}
-
 	public Byte getIsHighType() {
 		return isHighType;
 	}
 
 	public void setIsHighType(Byte isHighType) {
 		this.isHighType = isHighType;
-	}
-
-	public Byte getTempType() {
-		return tempType;
-	}
-
-	public void setTempType(Byte tempType) {
-		this.tempType = tempType;
-	}
-
-	public Byte getCreditRankType() {
-		return creditRankType;
-	}
-
-	public void setCreditRankType(Byte creditRankType) {
-		this.creditRankType = creditRankType;
-	}
-
-	public Byte getWriteType() {
-		return writeType;
-	}
-
-	public void setWriteType(Byte writeType) {
-		this.writeType = writeType;
-	}
-
-	public Byte getUserType() {
-		return userType;
-	}
-
-	public void setUserType(Byte userType) {
-		this.userType = userType;
 	}
 
 	public Date getCreateDate() {
@@ -319,12 +264,69 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
+	
+	public String getLoadType() {
+		return loadType;
+	}
 
-	public Byte getStatus() {
+	public void setLoadType(String loadType) {
+		this.loadType = loadType;
+	}
+
+	public String getTempType() {
+		return tempType;
+	}
+
+	public void setTempType(String tempType) {
+		this.tempType = tempType;
+	}
+
+	public String getCreditRankType() {
+		return creditRankType;
+	}
+
+	public void setCreditRankType(String creditRankType) {
+		this.creditRankType = creditRankType;
+	}
+
+	public String getWriteType() {
+		return writeType;
+	}
+
+	public void setWriteType(String writeType) {
+		this.writeType = writeType;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public String getElecType() {
+		return elecType;
+	}
+
+	public void setElecType(String elecType) {
+		this.elecType = elecType;
+	}
+
+	public String getVoltLevelType() {
+		return voltLevelType;
+	}
+
+	public void setVoltLevelType(String voltLevelType) {
+		this.voltLevelType = voltLevelType;
+	}
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
