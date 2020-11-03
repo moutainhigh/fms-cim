@@ -176,12 +176,13 @@ public class BatchAddUserServiceImpl implements IBatchAddUserService {
 		meterDomain.setPriceType(tt.getPriceType());
 		meterDomain.setUserId(userDomain.getId());
 		meterDomain.setWriteSectionId(userDomain.getWriteSectId());
-		meterDomain.setVoltLevelType((byte) 10);
-		meterDomain.setMeterType((byte) 1);
+		
+		meterDomain.setVoltLevelType("10");
+		meterDomain.setMeterType("1");
 		meterDomain.setElecTypeCode(tt.getElecType());
 		meterDomain.setTradeType(tt.getTradeType());
-		meterDomain.setBaseMoneyFlag((byte) 0);
-		meterDomain.setTsType((byte) 0);
+		meterDomain.setBaseMoneyFlag("0");
+		meterDomain.setTsType("0");
 		meterDomain.setCountTimes((byte) 1);
 		meterDomain.setLadderNum(1);
 		meterDomain.setCreateDate(now);
@@ -211,7 +212,7 @@ public class BatchAddUserServiceImpl implements IBatchAddUserService {
         transformerMeterRelationDomain.setTransformerId(
         		transformerNo_transformerDomain.get(tt.getTransformerNo()).getId());
         transformerMeterRelationDomain.setMeterId(meterDomain.getId());
-        transformerMeterRelationDomain.setMsType((byte) 3);
+        transformerMeterRelationDomain.setMsType((byte)3);
         transformerMeterRelationDomain.setTransLostType((byte) 0);
         transformerMeterRelationDomain.setCreateDate(now);
         transformerMeterRelationDomain.setRemark("excel导入");
