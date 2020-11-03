@@ -19,9 +19,9 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class LineServiceImpl implements ILineService {
 
-	@TransactionDAO
+	@TransactionDAO("read")
 	private LineDAO lineDAO;
-	@TransactionDAO
+	@TransactionDAO("read")
 	private SubsLineRelaDAO subsLineRelaDAO;
 
 

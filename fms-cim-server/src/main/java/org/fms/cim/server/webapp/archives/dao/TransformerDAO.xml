@@ -11,7 +11,7 @@
 		REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFIER_TIME,TRANSFORMER_ASSETS_ID,
 		IS_PUB_TYPE,TRANSFORMER_LOSS_TYPE,STAND_TIME,CHARGE_MAN,PRODUCE_TEAM,SET_FORMAT,
 		AREA_NO,SUPPLY_ROOM,VILLAGE_NO,TRANS_CHANGE,INPUT_NODE_CODE,CAPCITOR_CAPACITY,
-		COS_STD_CODE,STATUS,TRANSFORMER_GROUP_NO,LOSS_TYPE
+		COS_STD_CODE,STATUS,TRANSFORMER_GROUP_NO
     </sql>
 
     <select id="findByKey" parameterType="TransformerDomain"
@@ -325,7 +325,7 @@
         #{createDate},#{lastModifierId},#{lastModifierTime},#{transformerAssetsId},
         #{isPubType},#{transformerLossType},#{standTime},#{chargeMan},#{produceTeam},
         #{setFormat},#{areaNo},#{supplyRoom},#{villageNo},#{transChange},#{inputNodeCode},
-        #{capcitorCapacity},#{cosStdCode},#{status},#{transformerGroupNo},#{LOSS_TYPE})
+        #{capcitorCapacity},#{cosStdCode},#{status},#{transformerGroupNo})
     </insert>
 
     <insert id="insertList" parameterType="TransformerDomain" flushCache="true">

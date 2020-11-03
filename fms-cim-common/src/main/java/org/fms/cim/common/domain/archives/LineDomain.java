@@ -26,17 +26,17 @@ public class LineDomain extends ManagerParamEntity implements MybatisEntity {
 	private Long id;// ID ID bigint TRUE FALSE TRUE
 	private String lineCode; //线路编号
 	private String lineName; //线路名称
-	private Byte voltType; //电压等级
-	private Byte lineType; //线路类型
+	private String voltType; //电压等级
+	private String lineType; //线路类型
 	private Date runDate; //投运日期
 	private String switchNo; //开关号
 	private String lineModel; //线路型号
 	private BigDecimal lineLenght; //线路长度
-	private Byte ratingCurnt; //额定电流
-	private Byte ratingVol; //额定电压
+	private String ratingCurnt; //额定电流
+	private String ratingVol; //额定电压
 	private Date createDate; //创建时间
 	private String remark; //备注
-	private Byte status; //状态
+	private String status; //状态
     private Long businessPlaceCode;  //BUSINESS_PLACE_CODE
     
     private Long pId; //上级线路标识
@@ -105,18 +105,16 @@ public class LineDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setLineName(String lineName) {
 		this.lineName = lineName;
 	}
-	public Byte getVoltType() {
+	
+	public String getVoltType() {
 		return voltType;
 	}
-	public void setVoltType(Byte voltType) {
+
+	public void setVoltType(String voltType) {
 		this.voltType = voltType;
 	}
-	public Byte getLineType() {
-		return lineType;
-	}
-	public void setLineType(Byte lineType) {
-		this.lineType = lineType;
-	}
+
+	
 	public Date getRunDate() {
 		return runDate;
 	}
@@ -141,18 +139,31 @@ public class LineDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setLineLenght(BigDecimal lineLenght) {
 		this.lineLenght = lineLenght;
 	}
-	public Byte getRatingCurnt() {
+	
+	public String getLineType() {
+		return lineType;
+	}
+
+	public void setLineType(String lineType) {
+		this.lineType = lineType;
+	}
+
+	public String getRatingCurnt() {
 		return ratingCurnt;
 	}
-	public void setRatingCurnt(Byte ratingCurnt) {
+
+	public void setRatingCurnt(String ratingCurnt) {
 		this.ratingCurnt = ratingCurnt;
 	}
-	public Byte getRatingVol() {
+
+	public String getRatingVol() {
 		return ratingVol;
 	}
-	public void setRatingVol(Byte ratingVol) {
+
+	public void setRatingVol(String ratingVol) {
 		this.ratingVol = ratingVol;
 	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -165,10 +176,13 @@ public class LineDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public Byte getStatus() {
+	
+
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Byte status) {
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
