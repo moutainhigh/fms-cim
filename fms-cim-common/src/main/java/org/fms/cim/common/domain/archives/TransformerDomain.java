@@ -71,6 +71,26 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 	private String lineCode;
 	private Long customerId;
 	private List<Long> transformerIds;
+	private String userName;//所属用户名
+	private String tgName;//所属用户名
+	
+	
+
+	public String getTgName() {
+		return tgName;
+	}
+
+	public void setTgName(String tgName) {
+		this.tgName = tgName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public List<Long> getTransformerIds() {
 		return transformerIds;

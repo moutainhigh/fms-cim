@@ -21,7 +21,7 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
     private String phoneNo;
 
    // @ExcelProperty(value = "用电分类", index = 5)
-    private Integer elecType;
+    private String elecType;
 
  //   @ExcelProperty(value = "抄表区段", index = 6)
     private String writeSectNo;
@@ -30,10 +30,10 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
     private String transformerNo;
 
 //   @ExcelProperty(value = "行业用电分类", index = 10)
-    private Integer tradeType;
+    private String tradeType;
 
 //    @ExcelProperty(value = "目录电价", index = 12)
-    private Long priceType;
+    private String priceType;
     
  //   @ExcelProperty(value = "父计量点号", index = 13)
     private String pMeterNo;
@@ -107,13 +107,7 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
 		this.phoneNo = phoneNo;
 	}
 
-	public Integer getElecType() {
-		return elecType;
-	}
-
-	public void setElecType(Integer elecType) {
-		this.elecType = elecType;
-	}
+	
 
 	public String getWriteSectNo() {
 		return writeSectNo;
@@ -131,19 +125,32 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
 		this.transformerNo = transformerNo;
 	}
 
-	public Integer getTradeType() {
+
+	
+
+	
+
+	public String getElecType() {
+		return elecType;
+	}
+
+	public void setElecType(String elecType) {
+		this.elecType = elecType;
+	}
+
+	public String getTradeType() {
 		return tradeType;
 	}
 
-	public void setTradeType(Integer tradeType) {
+	public void setTradeType(String tradeType) {
 		this.tradeType = tradeType;
 	}
 
-	public Long getPriceType() {
+	public String getPriceType() {
 		return priceType;
 	}
 
-	public void setPriceType(Long priceType) {
+	public void setPriceType(String priceType) {
 		this.priceType = priceType;
 	}
 

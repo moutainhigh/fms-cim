@@ -33,22 +33,22 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 	private Long ptAssetsId; // PT资产号
 	private String ctValue; // CT变比 暂未使用
 	private String ptValue; // PT变比 暂未使用
-	private Long priceType; // 电价
-	private Long basicPrice;// 基本电价ID
+	private String priceType; // 电价
+	private String basicPrice;// 基本电价ID
 	private BigDecimal needIndex; // 需量定值
-	private Byte voltLevelType; // 计量点电压
-	private Byte meterType; // 计量点类别
-	private Byte meterClassType; // 计量点分类
+	private String voltLevelType; // 计量点电压
+	private String meterType; // 计量点类别
+	private String meterClassType; // 计量点分类
 	private Byte msType; // 计量方式
-	private Integer elecTypeCode; // 用电类别
-	private Byte baseMoneyFlag; // 基本电费计算方法
-	private Byte cosType; // 力率标准
-	private Integer tradeType; // 行业用电分类
-	private Byte tsType; // 分时计费标准
+	private String elecTypeCode; // 用电类别
+	private String baseMoneyFlag; // 基本电费计算方法
+	private String cosType; // 力率标准
+	private String tradeType; // 行业用电分类
+	private String tsType; // 分时计费标准
 	private Byte transLostType; // 变损分摊方式
 	private BigDecimal transLostNum; // 变损率or变损值
 	private BigDecimal qTransLostNum; // 无功变损率or值
-	private Byte lineLostType; // 线损计算方法
+	private String lineLostType; // 线损计算方法
 	private BigDecimal lineLostNum; // 线损率or线损值
 	private BigDecimal qLineLostNum; // 无功线损率or值
 	private Date createDate; // 创建时间
@@ -65,9 +65,9 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 	private Byte billFlag; // 发票打印标识 BILL_FLAG smallint
 	private Byte overdueFineFlag; // 滞纳金标识 OVERDUE_FINE_FLAG smallint
 	private Byte tieredPriceFlag; // 阶梯电价标识 TIERED_PRICE_FLAG smallint
-	private Byte writeMethod; // 抄表方式 WRITE_METHOD
+	private String writeMethod; // 抄表方式 WRITE_METHOD
 	private Byte rateFlag; // 时段 RATE_FLAG
-	private Byte powerCutFlag; // 停电标识 POWER_CUT_FLAG
+	private String powerCutFlag; // 停电标识 POWER_CUT_FLAG
 	private Byte phaseSeq; // 相序
 	private Byte countTimes;// 算费次数
 	private BigDecimal chargingCapacity; // 计费容量 CHARGING_CAPACITY
@@ -329,19 +329,55 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.ptValue = ptValue;
 	}
 
-	public Long getPriceType() {
+	
+
+	public String getPriceType() {
 		return priceType;
 	}
 
-	public void setPriceType(Long priceType) {
+	public void setPriceType(String priceType) {
 		this.priceType = priceType;
 	}
+       
+	
 
-	public Long getBasicPrice() {
+	public String getCosType() {
+		return cosType;
+	}
+
+	public void setCosType(String cosType) {
+		this.cosType = cosType;
+	}
+
+	public String getLineLostType() {
+		return lineLostType;
+	}
+
+	public void setLineLostType(String lineLostType) {
+		this.lineLostType = lineLostType;
+	}
+
+	public String getWriteMethod() {
+		return writeMethod;
+	}
+
+	public void setWriteMethod(String writeMethod) {
+		this.writeMethod = writeMethod;
+	}
+
+	public String getPowerCutFlag() {
+		return powerCutFlag;
+	}
+
+	public void setPowerCutFlag(String powerCutFlag) {
+		this.powerCutFlag = powerCutFlag;
+	}
+
+	public String getBasicPrice() {
 		return basicPrice;
 	}
 
-	public void setBasicPrice(Long basicPrice) {
+	public void setBasicPrice(String basicPrice) {
 		this.basicPrice = basicPrice;
 	}
 
@@ -353,27 +389,33 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.needIndex = needIndex;
 	}
 
-	public Byte getVoltLevelType() {
+	
+
+	
+
+	public String getVoltLevelType() {
 		return voltLevelType;
 	}
 
-	public void setVoltLevelType(Byte voltLevelType) {
+	public void setVoltLevelType(String voltLevelType) {
 		this.voltLevelType = voltLevelType;
 	}
 
-	public Byte getMeterType() {
+	public String getMeterType() {
 		return meterType;
 	}
 
-	public void setMeterType(Byte meterType) {
+	public void setMeterType(String meterType) {
 		this.meterType = meterType;
 	}
 
-	public Byte getMeterClassType() {
+
+
+	public String getMeterClassType() {
 		return meterClassType;
 	}
 
-	public void setMeterClassType(Byte meterClassType) {
+	public void setMeterClassType(String meterClassType) {
 		this.meterClassType = meterClassType;
 	}
 
@@ -385,43 +427,44 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.msType = msType;
 	}
 
-	public Integer getElecTypeCode() {
+	
+	public String getElecTypeCode() {
 		return elecTypeCode;
 	}
 
-	public void setElecTypeCode(Integer elecTypeCode) {
+	public void setElecTypeCode(String elecTypeCode) {
 		this.elecTypeCode = elecTypeCode;
 	}
 
-	public Byte getBaseMoneyFlag() {
+	
+
+	public String getBaseMoneyFlag() {
 		return baseMoneyFlag;
 	}
 
-	public void setBaseMoneyFlag(Byte baseMoneyFlag) {
+	public void setBaseMoneyFlag(String baseMoneyFlag) {
 		this.baseMoneyFlag = baseMoneyFlag;
 	}
 
-	public Byte getCosType() {
-		return cosType;
-	}
+	
 
-	public void setCosType(Byte cosType) {
-		this.cosType = cosType;
-	}
+	
 
-	public Integer getTradeType() {
+	
+
+	public String getTradeType() {
 		return tradeType;
 	}
 
-	public void setTradeType(Integer tradeType) {
+	public void setTradeType(String tradeType) {
 		this.tradeType = tradeType;
 	}
 
-	public Byte getTsType() {
+	public String getTsType() {
 		return tsType;
 	}
 
-	public void setTsType(Byte tsType) {
+	public void setTsType(String tsType) {
 		this.tsType = tsType;
 	}
 
@@ -449,14 +492,7 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.qTransLostNum = qTransLostNum;
 	}
 
-	public Byte getLineLostType() {
-		return lineLostType;
-	}
-
-	public void setLineLostType(Byte lineLostType) {
-		this.lineLostType = lineLostType;
-	}
-
+	
 	public BigDecimal getLineLostNum() {
 		return lineLostNum;
 	}
@@ -586,13 +622,7 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.tieredPriceFlag = tieredPriceFlag;
 	}
 
-	public Byte getWriteMethod() {
-		return writeMethod;
-	}
-
-	public void setWriteMethod(Byte writeMethod) {
-		this.writeMethod = writeMethod;
-	}
+	
 
 	public Byte getRateFlag() {
 		return rateFlag;
@@ -602,13 +632,7 @@ public class MeterDomain extends ManagerParamEntity implements MybatisEntity {
 		this.rateFlag = rateFlag;
 	}
 
-	public Byte getPowerCutFlag() {
-		return powerCutFlag;
-	}
-
-	public void setPowerCutFlag(Byte powerCutFlag) {
-		this.powerCutFlag = powerCutFlag;
-	}
+	
 
 	public Byte getPhaseSeq() {
 		return phaseSeq;
