@@ -29,29 +29,29 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 	private String deskName; // 变压器名称
 	private BigDecimal capacity; // 变压器容量					----
 	private String transformerGroupNo; // 变压器组号
-	private Byte isPubType; // 公用变标志
-	private Byte transformerLossType; // 变损计算方法
+	private String isPubType; // 公用变标志
+	private String transformerLossType; // 变损计算方法
 	private Long businessPlaceCode; // 供电所
 	private Date runDate; // 投运日期
 	private Integer standTime; // 标准时间
 
-	private Byte voltType; // 供电电压							------
+	private String voltType; // 供电电压							------
 	private String chargeMan; // 责任人
-	private Integer produceTeam; // 生产班次
-	private Byte setFormat; // 安装形式
+	private String produceTeam; // 生产班次
+	private String setFormat; // 安装形式
 	private String areaNo; // 片区号
 	private String supplyRoom; // 配电房编号
 	private String villageNo; // 村别
 	private String transChange; // 变台改造情况
 	private String inputNodeCode; // 接入线路对应结束节点编号
 	private BigDecimal capcitorCapacity; // 补偿电容器总容量
-	private Integer cosStdCode; // 考核功率因数
+	private String cosStdCode; // 考核功率因数
 	private Date createDate; // 创建日期
 	private String remark; // 备注
 	private Byte status; // 状态
 	private Long operator;// 操作人ID ID bigint TRUE FALSE TRUE
 	private Long lineId;// 线路ID ID bigint TRUE FALSE TRUE
-	private Byte transformerModelType; // 变压器型号
+	private String transformerModelType; // 变压器型号
 	
 	private String address; // 地理位置
 	private Long consId; // 所属用户
@@ -144,29 +144,10 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.transformerGroupNo = transformerGroupNo;
 	}
 
-	public Byte getIsPubType() {
-		return isPubType;
-	}
+	
 
-	public void setIsPubType(Byte isPubType) {
-		this.isPubType = isPubType;
-	}
-
-	public Byte getTransformerLossType() {
-		return transformerLossType;
-	}
-
-	public void setTransformerLossType(Byte transformerLossType) {
-		this.transformerLossType = transformerLossType;
-	}
-
-	public Long getBusinessPlaceCode() {
-		return businessPlaceCode;
-	}
-
-	public void setBusinessPlaceCode(Long businessPlaceCode) {
-		this.businessPlaceCode = businessPlaceCode;
-	}
+	
+	
 
 	public Date getRunDate() {
 		return runDate;
@@ -184,13 +165,7 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.standTime = standTime;
 	}
 
-	public Byte getVoltType() {
-		return voltType;
-	}
-
-	public void setVoltType(Byte voltType) {
-		this.voltType = voltType;
-	}
+	
 
 	public String getChargeMan() {
 		return chargeMan;
@@ -200,21 +175,9 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.chargeMan = chargeMan;
 	}
 
-	public Integer getProduceTeam() {
-		return produceTeam;
-	}
+	
 
-	public void setProduceTeam(Integer produceTeam) {
-		this.produceTeam = produceTeam;
-	}
-
-	public Byte getSetFormat() {
-		return setFormat;
-	}
-
-	public void setSetFormat(Byte setFormat) {
-		this.setFormat = setFormat;
-	}
+	
 
 	public String getAreaNo() {
 		return areaNo;
@@ -264,11 +227,53 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.capcitorCapacity = capcitorCapacity;
 	}
 
-	public Integer getCosStdCode() {
+	
+
+	public String getIsPubType() {
+		return isPubType;
+	}
+
+	public void setIsPubType(String isPubType) {
+		this.isPubType = isPubType;
+	}
+
+	public String getTransformerLossType() {
+		return transformerLossType;
+	}
+
+	public void setTransformerLossType(String transformerLossType) {
+		this.transformerLossType = transformerLossType;
+	}
+
+	public String getVoltType() {
+		return voltType;
+	}
+
+	public void setVoltType(String voltType) {
+		this.voltType = voltType;
+	}
+
+	public String getProduceTeam() {
+		return produceTeam;
+	}
+
+	public void setProduceTeam(String produceTeam) {
+		this.produceTeam = produceTeam;
+	}
+
+	public String getSetFormat() {
+		return setFormat;
+	}
+
+	public void setSetFormat(String setFormat) {
+		this.setFormat = setFormat;
+	}
+
+	public String getCosStdCode() {
 		return cosStdCode;
 	}
 
-	public void setCosStdCode(Integer cosStdCode) {
+	public void setCosStdCode(String cosStdCode) {
 		this.cosStdCode = cosStdCode;
 	}
 
@@ -304,11 +309,23 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.operator = operator;
 	}
 
-	public Byte getTransformerModelType() {
+	
+
+	
+
+	public Long getBusinessPlaceCode() {
+		return businessPlaceCode;
+	}
+
+	public void setBusinessPlaceCode(Long businessPlaceCode) {
+		this.businessPlaceCode = businessPlaceCode;
+	}
+
+	public String getTransformerModelType() {
 		return transformerModelType;
 	}
 
-	public void setTransformerModelType(Byte transformerModelType) {
+	public void setTransformerModelType(String transformerModelType) {
 		this.transformerModelType = transformerModelType;
 	}
 

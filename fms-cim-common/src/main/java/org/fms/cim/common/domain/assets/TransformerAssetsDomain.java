@@ -30,12 +30,12 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 	private String transformerAssetsNo; // 变压器资产编号
 	private Integer voltageRatio; // 电压比
 	private Integer currentRatio; // 电流比
-	private Byte transformerModelType; // 型号
+	private  String transformerModelType; // 型号
 	private Integer factoryType; // 制造厂家
 	private String madeNo; // 出厂编号
 	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date madeDate; // 出厂日期
-	private Byte ratedVoltage; // 额定电压					----
+	private String ratedVoltage; // 额定电压					----
 	private BigDecimal ratedCurrent; // 额定电流
 	private BigDecimal shortVoltage; // 短路电压
 	private Byte connectType; // 连接组别
@@ -129,11 +129,12 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.currentRatio = currentRatio;
 	}
 
-	public Byte getTransformerModelType() {
+	
+	public String getTransformerModelType() {
 		return transformerModelType;
 	}
 
-	public void setTransformerModelType(Byte transformerModelType) {
+	public void setTransformerModelType(String transformerModelType) {
 		this.transformerModelType = transformerModelType;
 	}
 
@@ -161,11 +162,13 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.madeDate = madeDate;
 	}
 
-	public Byte getRatedVoltage() {
+	
+
+	public String getRatedVoltage() {
 		return ratedVoltage;
 	}
 
-	public void setRatedVoltage(Byte ratedVoltage) {
+	public void setRatedVoltage(String ratedVoltage) {
 		this.ratedVoltage = ratedVoltage;
 	}
 

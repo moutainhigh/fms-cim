@@ -28,7 +28,7 @@ public class ABusDomain extends ManagerParamEntity implements MybatisEntity {
 	private Date runDate; //投运时间
 	private String remark; //备注
 	private String weight; //显示顺序
-	private BigDecimal runStatusCode; //状态
+	private String runStatusCode; //状态
     private Long creatorId; //创建者
     private Date createDate; //创建时间
     private Long lastModifierId; //最后修改者
@@ -93,10 +93,11 @@ public class ABusDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
-	public BigDecimal getRunStatusCode() {
+	
+	public String getRunStatusCode() {
 		return runStatusCode;
 	}
-	public void setRunStatusCode(BigDecimal runStatusCode) {
+	public void setRunStatusCode(String runStatusCode) {
 		this.runStatusCode = runStatusCode;
 	}
 	public Long getCreatorId() {
