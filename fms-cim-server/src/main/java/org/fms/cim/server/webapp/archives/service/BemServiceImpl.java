@@ -520,15 +520,15 @@ public class BemServiceImpl implements IBemService {
 					 * 2:电压互感器
 					 * 3:组合互感器
 					 * */
-					if(ta.getInductorType()==1 && meterInfo.getCtAssetsId() == ta.getId()) {
+					if(ta.getInductorType()=="1" && meterInfo.getCtAssetsId() == ta.getId()) {
 						
 						meterInfo.setCtAssetsId(tl.get(0).getId());
 						isMatch = true;
-					}else if (ta.getInductorType()==2 && meterInfo.getPtAssetsId() == ta.getId()) {
+					}else if (ta.getInductorType()=="2" && meterInfo.getPtAssetsId() == ta.getId()) {
 						
 						meterInfo.setPtAssetsId(tl.get(0).getId());
 						isMatch = true;
-					}else if (ta.getInductorType()==3 && meterInfo.getPtAssetsId() == ta.getId()) {
+					}else if (ta.getInductorType()=="3" && meterInfo.getPtAssetsId() == ta.getId()) {
 
 						meterInfo.setCtAssetsId(tl.get(0).getId());
 						meterInfo.setPtAssetsId(tl.get(0).getId());

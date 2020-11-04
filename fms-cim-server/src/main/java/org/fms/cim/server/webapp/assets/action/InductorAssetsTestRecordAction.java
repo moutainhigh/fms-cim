@@ -144,21 +144,21 @@ public class InductorAssetsTestRecordAction  {
 		List<SystemCommonConfigDomain> ctList = systemCommonConfigService.findByWhere(scc);
 		
 		//名称
-		if(ia.getInductorType()==1) {
+		if(ia.getInductorType()=="1") {
 			iat.setDeviceName("电流互感器");
 			for (SystemCommonConfigDomain ct : ctList) {
 				if(ia.getRatedCtCode()==ct.getParamKey()) {
 					iat.setSpecs(ct.getParamValue());
 				}
 			}
-		}else if(ia.getInductorType()==2) {
+		}else if(ia.getInductorType()=="2") {
 			iat.setDeviceName("电压互感器");
 			for (SystemCommonConfigDomain pt : ptList) {
 				if(ia.getRatedPtCode()==pt.getParamKey()) {
 					iat.setSpecs(pt.getParamValue());
 				}
 			}
-		}else if(ia.getInductorType()==3) {
+		}else if(ia.getInductorType()=="3") {
 			iat.setDeviceName("计量箱");
 		}else {
 			iat.setDeviceName("未知类型");

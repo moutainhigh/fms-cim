@@ -94,8 +94,8 @@ public class ExcelImportAction2 {
         	m.setCreateDate(now);
         	m.setRemark("Excel导入"+now);
         	m.setStatus((byte) 8);
-        	m.setRightAttach((long) 0);
-        	m.setPhaseLine((byte) 0);
+        	m.setRightAttach("0");
+        	m.setPhaseLine("0");
         	m.setSetAddress("户号"+m.getUserNo());
         	ids.add(m.getDeptId());
     	});
@@ -149,8 +149,8 @@ public class ExcelImportAction2 {
             mr.setOperator(tt.getManagerId()==null?0:Long.parseLong(tt.getManagerId()));
             mr.setFactorNum(tt.getFactor()==null?1:tt.getFactor().doubleValue());
             mr.setPhaseSeq((byte) 4);
-            mr.setFunctionCode((long) 1);
-            mr.setPowerDirection((byte) 1);
+            mr.setFunctionCode("1");
+            mr.setPowerDirection("1");
             mr.setTsFlag((long) 0);
             mr.setMeterOrder((byte) 9);
             mr.setP1r0(tt.getEndNum());

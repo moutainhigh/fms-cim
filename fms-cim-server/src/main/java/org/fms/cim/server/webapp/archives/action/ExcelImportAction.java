@@ -188,8 +188,8 @@ public class ExcelImportAction {
         	mr.setOperateType((byte) 1);
         	mr.setCreateDate(now);
         	mr.setPhaseSeq((byte) 4);
-        	mr.setFunctionCode((long) 1);
-        	mr.setPowerDirection((byte) 1);
+        	mr.setFunctionCode("1");
+        	mr.setPowerDirection("1");
         	mr.setStatus((byte) 1);
         	
         	mmarl.add(mmar);

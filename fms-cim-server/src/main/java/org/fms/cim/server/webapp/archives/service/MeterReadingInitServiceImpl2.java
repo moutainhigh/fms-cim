@@ -446,7 +446,8 @@ public class MeterReadingInitServiceImpl2 implements IMeterReadingInitService {
 		// 计量点与表计的关系
 		cimMap.put("meterMeterAssetsRelDomains", 
 				meterMeterAssetsService.getMeterAssetsByMeterIds(meterIdsList)
-				.stream().filter(m->m.getFunctionCode()!=null && m.getFunctionCode()-1==0).collect(Collectors.toList()));
+				//TODO  (qtt)原来此处代码为 .stream().filter(m->m.getFunctionCode()!=null && m.getFunctionCode()-1==0)     // getFunctionCode()原来是byte类型,现在下拉改为String类型,待处理此处逻辑???
+				.stream().filter(m->m.getFunctionCode()!=null ).collect(Collectors.toList()));
 
 		return new HttpResult(HttpResult.SUCCESS,"数据查询完成",cimMap);
 	}

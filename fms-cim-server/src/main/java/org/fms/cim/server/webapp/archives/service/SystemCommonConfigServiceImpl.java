@@ -50,7 +50,7 @@ public class SystemCommonConfigServiceImpl implements ISystemCommonConfigService
 		return systemCommonConfigDAO.findByWhere(t);
 	}
 	@Override
-	public SystemCommonConfigDomain findByKeyValue(String type,Long key){
+	public SystemCommonConfigDomain findByKeyValue(String type,String key){
 		return systemCommonConfigDAO.findByKeyValue(type,key);
 	}
 
