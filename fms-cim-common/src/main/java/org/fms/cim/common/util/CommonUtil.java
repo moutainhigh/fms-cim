@@ -64,133 +64,133 @@ public class CommonUtil {
         //总正有
         WriteFilesDomain zzy=new WriteFilesDomain();
         zzy.setTimeSeg((byte)0);
-        zzy.setPowerDirection((byte)1);
-        zzy.setFunctionCode((byte)1);
+        zzy.setPowerDirection("1");
+        zzy.setFunctionCode("1");
         zzy.setEndNum(meterReplaceLastCode.getP1r0());
         //总段反有
         WriteFilesDomain zfy=new WriteFilesDomain();
         zfy.setTimeSeg((byte)0);
-        zfy.setPowerDirection((byte)2);
-        zfy.setFunctionCode((byte)1);
+        zfy.setPowerDirection("2");
+        zfy.setFunctionCode("1");
         zfy.setEndNum(meterReplaceLastCode.getP2r0());
 
         //总正无
         WriteFilesDomain zzw=new WriteFilesDomain();
         zzw.setTimeSeg((byte)0);
-        zzw.setPowerDirection((byte)1);
-        zzw.setFunctionCode((byte)2);
+        zzw.setPowerDirection("1");
+        zzw.setFunctionCode("2");
         zzw.setEndNum(meterReplaceLastCode.getP3r0());
         //总反无
         WriteFilesDomain zfw=new WriteFilesDomain();
         zfw.setTimeSeg((byte)0);
-        zfw.setPowerDirection((byte)2);
-        zfw.setFunctionCode((byte)2);
+        zfw.setPowerDirection("2");
+        zfw.setFunctionCode("2");
         zfw.setEndNum(meterReplaceLastCode.getP4r0());
 
 
         //尖正有
         WriteFilesDomain jzy=new WriteFilesDomain();
         jzy.setTimeSeg((byte)4);
-        jzy.setPowerDirection((byte)1);
-        jzy.setFunctionCode((byte)1);
+        jzy.setPowerDirection("1");
+        jzy.setFunctionCode("1");
         jzy.setEndNum(meterReplaceLastCode.getP1r1());
         //尖反有
         WriteFilesDomain jfy=new WriteFilesDomain();
         jfy.setTimeSeg((byte)4);
-        jfy.setPowerDirection((byte)2);
-        jfy.setFunctionCode((byte)1);
+        jfy.setPowerDirection("2");
+        jfy.setFunctionCode("1");
         jfy.setEndNum(meterReplaceLastCode.getP2r1());
 
         //尖正无
         WriteFilesDomain jzw=new WriteFilesDomain();
         jzw.setTimeSeg((byte)4);
-        jzw.setPowerDirection((byte)1);
-        jzw.setFunctionCode((byte)2);
+        jzw.setPowerDirection("1");
+        jzw.setFunctionCode("2");
         jzw.setEndNum(meterReplaceLastCode.getP3r1());
         //尖反无
         WriteFilesDomain jfw=new WriteFilesDomain();
         jfw.setTimeSeg((byte)4);
-        jfw.setPowerDirection((byte)2);
-        jfw.setFunctionCode((byte)2);
+        jfw.setPowerDirection("2");
+        jfw.setFunctionCode("2");
         jfw.setEndNum(meterReplaceLastCode.getP4r1());
 
         //峰正有
         WriteFilesDomain fzy=new WriteFilesDomain();
         fzy.setTimeSeg((byte)1);
-        fzy.setPowerDirection((byte)1);
-        fzy.setFunctionCode((byte)1);
+        fzy.setPowerDirection("1");
+        fzy.setFunctionCode("1");
         fzy.setEndNum(meterReplaceLastCode.getP1r2());
         //峰反有
         WriteFilesDomain ffy=new WriteFilesDomain();
         ffy.setTimeSeg((byte)1);
-        ffy.setPowerDirection((byte)2);
-        ffy.setFunctionCode((byte)1);
+        ffy.setPowerDirection("2");
+        ffy.setFunctionCode("1");
         ffy.setEndNum(meterReplaceLastCode.getP2r2());
 
         //峰正无
         WriteFilesDomain fzw=new WriteFilesDomain();
         fzw.setTimeSeg((byte)1);
-        fzw.setPowerDirection((byte)1);
-        fzw.setFunctionCode((byte)2);
+        fzw.setPowerDirection("1");
+        fzw.setFunctionCode("2");
         fzw.setEndNum(meterReplaceLastCode.getP3r2());
         //峰反无
         WriteFilesDomain ffw=new WriteFilesDomain();
         ffw.setTimeSeg((byte)1);
-        ffw.setPowerDirection((byte)2);
-        ffw.setFunctionCode((byte)2);
+        ffw.setPowerDirection("2");
+        ffw.setFunctionCode("2");
         ffw.setEndNum(meterReplaceLastCode.getP4r2());
 
         //平正有
         WriteFilesDomain pzy=new WriteFilesDomain();
         pzy.setTimeSeg((byte)2);
-        pzy.setPowerDirection((byte)1);
-        pzy.setFunctionCode((byte)1);
+        pzy.setPowerDirection("1");
+        pzy.setFunctionCode("1");
         pzy.setEndNum(meterReplaceLastCode.getP1r3());
         //平反有
         WriteFilesDomain pfy=new WriteFilesDomain();
         pfy.setTimeSeg((byte)2);
-        pfy.setPowerDirection((byte)2);
-        pfy.setFunctionCode((byte)1);
+        pfy.setPowerDirection("2");
+        pfy.setFunctionCode("1");
         pfy.setEndNum(meterReplaceLastCode.getP2r3());
 
         //平正无
         WriteFilesDomain pzw=new WriteFilesDomain();
         pzw.setTimeSeg((byte)2);
-        pzw.setPowerDirection((byte)1);
-        pzw.setFunctionCode((byte)2);
+        pzw.setPowerDirection("1");
+        pzw.setFunctionCode("2");
         pzw.setEndNum(meterReplaceLastCode.getP3r3());
         //平反无
         WriteFilesDomain pfw=new WriteFilesDomain();
         pfw.setTimeSeg((byte)2);
-        pfw.setPowerDirection((byte)2);
-        pfw.setFunctionCode((byte)2);
+        pfw.setPowerDirection("2");
+        pfw.setFunctionCode("2");
         pfw.setEndNum(meterReplaceLastCode.getP4r3());
 
 
         //谷正有
         WriteFilesDomain gzy=new WriteFilesDomain();
         gzy.setTimeSeg((byte)3);
-        gzy.setPowerDirection((byte)1);
-        gzy.setFunctionCode((byte)1);
+        gzy.setPowerDirection("1");
+        gzy.setFunctionCode("1");
         gzy.setEndNum(meterReplaceLastCode.getP5r3());
         //谷反有
         WriteFilesDomain gfy=new WriteFilesDomain();
         gfy.setTimeSeg((byte)3);
-        gfy.setPowerDirection((byte)2);
-        gfy.setFunctionCode((byte)1);
+        gfy.setPowerDirection("2");
+        gfy.setFunctionCode("1");
         gfy.setEndNum(meterReplaceLastCode.getP5r3());
 
         //谷正无
         WriteFilesDomain gzw=new WriteFilesDomain();
         gzw.setTimeSeg((byte)3);
-        gzw.setPowerDirection((byte)1);
-        gzw.setFunctionCode((byte)2);
+        gzw.setPowerDirection("1");
+        gzw.setFunctionCode("2");
         gzw.setEndNum(meterReplaceLastCode.getP5r3());
         //谷反无
         WriteFilesDomain gfw=new WriteFilesDomain();
         gfw.setTimeSeg((byte)3);
-        gfw.setPowerDirection((byte)2);
-        gfw.setFunctionCode((byte)2);
+        gfw.setPowerDirection("2");
+        gfw.setFunctionCode("2");
         gfw.setEndNum(meterReplaceLastCode.getP5r3());
 
         writeFilesDomains.add(zfw);

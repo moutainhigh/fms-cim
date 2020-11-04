@@ -21,7 +21,7 @@ public class SystemCommonConfigDomain extends ManagerParamEntity implements Myba
 	@TablePrimaryKey
 	private Long id;// ID ID bigint TRUE FALSE TRUE
 	private String type;
-	private Long paramKey; //名称
+	private String paramKey; //名称
 	private String paramValue; 
 	private Byte status;
 	private String paramName;
@@ -48,11 +48,11 @@ public class SystemCommonConfigDomain extends ManagerParamEntity implements Myba
 		this.type = type;
 	}
 
-	public Long getParamKey() {
+	public String getParamKey() {
 		return paramKey;
 	}
 
-	public void setParamKey(Long paramKey) {
+	public void setParamKey(String paramKey) {
 		this.paramKey = paramKey;
 	}
 

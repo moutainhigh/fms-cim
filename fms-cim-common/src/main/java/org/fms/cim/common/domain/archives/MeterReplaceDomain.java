@@ -89,8 +89,8 @@ public class MeterReplaceDomain extends ManagerParamEntity implements MybatisEnt
 	private Integer currentMon;	//PT变比
 	private Integer calcMon;	//生效月份
 	private Byte phaseSeq; //相序
-	private Long functionCode; //功能代码
-	private Byte powerDirection; //功率方向
+	private String functionCode; //功能代码
+	private String powerDirection; //功率方向
 	private Long tsFlag; //分时标志
 	private Byte meterOrder; //表序号
     private Byte inductorOrder; //互感器序号
@@ -499,19 +499,19 @@ public class MeterReplaceDomain extends ManagerParamEntity implements MybatisEnt
 		this.phaseSeq = phaseSeq;
 	}
 
-	public Long getFunctionCode() {
+	public String getFunctionCode() {
 		return functionCode;
 	}
 
-	public void setFunctionCode(Long functionCode) {
+	public void setFunctionCode(String functionCode) {
 		this.functionCode = functionCode;
 	}
 
-	public Byte getPowerDirection() {
+	public String getPowerDirection() {
 		return powerDirection;
 	}
 
-	public void setPowerDirection(Byte powerDirection) {
+	public void setPowerDirection(String powerDirection) {
 		this.powerDirection = powerDirection;
 	}
 
