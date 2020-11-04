@@ -5,6 +5,7 @@
 package org.fms.cim.server.webapp.archives.action;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.fms.cim.common.domain.archives.MeterMpedRelDomain;
@@ -63,8 +64,9 @@ public class MeterMpedRelAction {
 	public Mono<HttpResult> addBank(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		MeterMpedRelDomain t = GsonUtils.readValue(body, MeterMpedRelDomain.class);
-	
+		t.setCreateDate(new Date());
 		int count = meterMpedRelService.insert(t);
+		
 		if(count>0) {
 			return Mono.just(new HttpResult(HttpResult.SUCCESS, "新增计费点与计量点关系成功"));
 		}

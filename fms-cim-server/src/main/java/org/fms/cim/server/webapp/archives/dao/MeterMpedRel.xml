@@ -9,41 +9,41 @@ select ID,METER_ID,MPED_ID,PHASE_SEQ,FUNCTION_CODE,POWER_DIRECTION,TS_FLAG,CREAT
 </where>
 </select>
 <select id="findByWhere" parameterType="MeterMpedRelDomain" resultType="MeterMpedRelDomain" useCache="true">
-select ID,METER_ID,MPED_ID,PHASE_SEQ,FUNCTION_CODE,POWER_DIRECTION,TS_FLAG,CREATE_DATE,STATUS,FACTOR_NUM,WRITE_SN from METER_MPED_REL_INFO
+select R.ID,R.METER_ID,R.MPED_ID,R.PHASE_SEQ,R.FUNCTION_CODE,R.POWER_DIRECTION,R.TS_FLAG,R.CREATE_DATE,R.STATUS,R.FACTOR_NUM,R.WRITE_SN,M.METER_NO from METER_MPED_REL_INFO R LEFT JOIN METER_INFO M ON R.MPED_ID=M.ID
 <where>
 	
 <if test="id !=null"> 
- and ID = #{id}
+ and R.ID = #{id}
 </if>
 <if test="meterId !=null"> 
- and METER_ID = #{meterId}
+ and R.METER_ID = #{meterId}
 </if>
 <if test="mpedId !=null"> 
- and MPED_ID = #{mpedId}
+ and R.MPED_ID = #{mpedId}
 </if>
 <if test="phaseSeq !=null"> 
- and PHASE_SEQ = #{phaseSeq}
+ and R.PHASE_SEQ = #{phaseSeq}
 </if>
 <if test="functionCode !=null"> 
- and FUNCTION_CODE = #{functionCode}
+ and R.FUNCTION_CODE = #{functionCode}
 </if>
 <if test="powerDirection !=null"> 
- and POWER_DIRECTION = #{powerDirection}
+ and R.POWER_DIRECTION = #{powerDirection}
 </if>
 <if test="tsFlag !=null"> 
- and TS_FLAG = #{tsFlag}
+ and R.TS_FLAG = #{tsFlag}
 </if>
 <if test="createDate !=null"> 
- and CREATE_DATE = #{createDate}
+ and R.CREATE_DATE = #{createDate}
 </if>
 <if test="status !=null"> 
- and STATUS = #{status}
+ and R.STATUS = #{status}
 </if>
 <if test="factorNum !=null"> 
- and FACTOR_NUM = #{factorNum}
+ and R.FACTOR_NUM = #{factorNum}
 </if>
 <if test="writeSn !=null"> 
- and WRITE_SN = #{writeSn}
+ and R.WRITE_SN = #{writeSn}
 </if>
 
 </where>
