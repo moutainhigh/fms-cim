@@ -31,7 +31,7 @@
 	<select id="findByWhere" parameterType="UserDomain"
 		resultType="UserDomain" useCache="true">
 		select
-		hu.*,c.CUSTOMER_NO,c.CUSTOMER_NAME,T.TG_NAME,W.WRITE_SECT_NO,W.WRITE_SECT_NAME
+		hu.*,c.CUSTOMER_NO,c.CUSTOMER_NAME,T.TG_NAME,W.WRITE_SECT_NO,W.WRITE_SECT_NAME,L.LINE_CODE
 		from (
 		select
 		<include refid="Base_Column_List" />
@@ -155,7 +155,7 @@
 		TG_INFO T on T.ID = hu.TG_ID
 		LEFT JOIN WRITE_SECTION_INFO W ON
 		hu.WRITE_SECT_ID =
-		W.ID
+		W.ID LEFT JOIN LINE_INFO L ON L.ID=hu.LINE_ID
 		ORDER BY hu.ID DESC
 	</select>
 	<insert id="insert" parameterType="UserDomain"
