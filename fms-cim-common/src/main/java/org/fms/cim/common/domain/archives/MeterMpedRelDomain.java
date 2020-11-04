@@ -15,14 +15,22 @@ public class MeterMpedRelDomain extends ManagerParamEntity implements MybatisEnt
 	private Long id; //ID	ID	bigint
 	private Long meterId;//计费点ID	METER_ID	bigint
 	private Long mpedId;//计量点ID	MPED_ID	bigint
-	private Byte phaseSeq;//相序	PHASE_SEQ	smallint
-	private Byte functionCode;//功能代码	FUNCTION_CODE	smallint
-	private Byte powerDirection;//功率方向	POWER_DIRECTION	smallint
-	private Byte tsFlag;//分时标识	TS_FLAG	smallint
+	private String phaseSeq;//相序	PHASE_SEQ	smallint
+	private String functionCode;//功能代码	FUNCTION_CODE	smallint
+	private String powerDirection;//功率方向	POWER_DIRECTION	smallint
+	private String tsFlag;//分时标识	TS_FLAG	smallint
 	private Date createDate;//创建时间	CREATE_DATE	datetime
-	private Byte status;//状态	STATUS	smallint
+	private String status;//状态	STATUS	smallint
 	private BigDecimal factorNum;//综合倍率	FACTOR_NUM	decimal
 	private Long writeSn;//抄表序号	WRITE_SN	bigint
+	private String meterNo;
+	
+	public String getMeterNo() {
+		return meterNo;
+	}
+	public void setMeterNo(String meterNo) {
+		this.meterNo = meterNo;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -41,40 +49,41 @@ public class MeterMpedRelDomain extends ManagerParamEntity implements MybatisEnt
 	public void setMpedId(Long mpedId) {
 		this.mpedId = mpedId;
 	}
-	public Byte getPhaseSeq() {
-		return phaseSeq;
-	}
-	public void setPhaseSeq(Byte phaseSeq) {
-		this.phaseSeq = phaseSeq;
-	}
-	public Byte getFunctionCode() {
-		return functionCode;
-	}
-	public void setFunctionCode(Byte functionCode) {
-		this.functionCode = functionCode;
-	}
-	public Byte getPowerDirection() {
-		return powerDirection;
-	}
-	public void setPowerDirection(Byte powerDirection) {
-		this.powerDirection = powerDirection;
-	}
-	public Byte getTsFlag() {
-		return tsFlag;
-	}
-	public void setTsFlag(Byte tsFlag) {
-		this.tsFlag = tsFlag;
-	}
 	public Date getCreateDate() {
 		return createDate;
 	}
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public Byte getStatus() {
+	
+	public String getPhaseSeq() {
+		return phaseSeq;
+	}
+	public void setPhaseSeq(String phaseSeq) {
+		this.phaseSeq = phaseSeq;
+	}
+	public String getFunctionCode() {
+		return functionCode;
+	}
+	public void setFunctionCode(String functionCode) {
+		this.functionCode = functionCode;
+	}
+	public String getPowerDirection() {
+		return powerDirection;
+	}
+	public void setPowerDirection(String powerDirection) {
+		this.powerDirection = powerDirection;
+	}
+	public String getTsFlag() {
+		return tsFlag;
+	}
+	public void setTsFlag(String tsFlag) {
+		this.tsFlag = tsFlag;
+	}
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public BigDecimal getFactorNum() {
