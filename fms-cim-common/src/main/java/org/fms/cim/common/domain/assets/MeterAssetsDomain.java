@@ -68,7 +68,7 @@ public class MeterAssetsDomain extends ManagerParamEntity implements MybatisEnti
 	private Long deptId; // 营业区域
 	private Date createDate; // 创建时间
 	private String remark; // 备注
-	private Byte status; // 状态
+	private String status; // 状态
 	private String batchNo; // BATCH_NO 批次
 	private String setAddress; // 安装位置
 	private String sealNo;
@@ -300,10 +300,11 @@ public class MeterAssetsDomain extends ManagerParamEntity implements MybatisEnti
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public Byte getStatus() {
+	
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public String getBatchNo() {
