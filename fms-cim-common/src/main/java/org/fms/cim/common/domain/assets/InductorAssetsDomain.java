@@ -45,7 +45,7 @@ public class InductorAssetsDomain extends ManagerParamEntity implements MybatisE
 	private Long deptId;	//部门id
 	private Date createDate; // 创建时间
 	private String remark; // 备注
-	private Byte status; // 状态
+	private String status; // 状态
 	private String batchNo; // BATCH_NO 批次
 	private String rightAttach; // 产权归属 RIGHT_ATTACH 
 	private String manID; // 持有人MAN_ID 
@@ -166,10 +166,10 @@ public class InductorAssetsDomain extends ManagerParamEntity implements MybatisE
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public Byte getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public String getBatchNo() {
