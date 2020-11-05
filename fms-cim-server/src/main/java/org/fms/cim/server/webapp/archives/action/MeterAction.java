@@ -33,6 +33,7 @@ import org.fms.cim.common.service.IMeterService;
 import org.fms.cim.common.service.ISystemCommonConfigService;
 import org.fms.cim.common.service.IUserService;
 import org.fms.cim.common.service.IWriteSectService;
+import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -294,19 +295,19 @@ public class MeterAction {
                     meterAssetsEntity = meterAssetsService.findMeterEntityByWhere(m.getMeterAssetsId());
                     meterAssetsEntity.setParent("0");
                     // 电能表信息
-                    SystemCommonConfigDomain systemCommonConfigDomain = systemCommonConfigService
+                    SystemCommonConfigVO systemCommonConfigVO = systemCommonConfigService
                             .findByKeyValue("FUNC_KIND_CODE", String.valueOf(meterAssetsEntity.getFuncKindCode()));
                     // 构造前台消息
                     meterAssetsEntity.setMeterId(m.getMeterId());
-                    meterAssetsEntity.setShowName4(systemCommonConfigDomain.getParamValue());
+                    meterAssetsEntity.setShowName4(systemCommonConfigVO.getParamValue());
                     meterAssetsEntity.setMadeDate(m.getCreateDate());
                     meterAssetsEntity.setTsFlag(m.getTsFlag());
-                    systemCommonConfigDomain = systemCommonConfigService.findByKeyValue("FUNCTION_CODE",
+                    systemCommonConfigVO = systemCommonConfigService.findByKeyValue("FUNCTION_CODE",
                     		String.valueOf(m.getFunctionCode()));
-                    meterAssetsEntity.setShowName5(systemCommonConfigDomain.getParamValue());
-                    systemCommonConfigDomain = systemCommonConfigService.findByKeyValue("POWER_DIRECTION",
+                    meterAssetsEntity.setShowName5(systemCommonConfigVO.getParamValue());
+                    systemCommonConfigVO = systemCommonConfigService.findByKeyValue("POWER_DIRECTION",
                     		String.valueOf(m.getPowerDirection()));
-                    meterAssetsEntity.setShowName6(systemCommonConfigDomain.getParamValue());
+                    meterAssetsEntity.setShowName6(systemCommonConfigVO.getParamValue());
                     meterAssetsEntity.setPowerDirection(m.getPowerDirection());
                     meterAssetsEntity.setPhaseSeq(m.getPhaseSeq());
                     meterAssetsEntity.setFunctionCode(m.getFunctionCode());
