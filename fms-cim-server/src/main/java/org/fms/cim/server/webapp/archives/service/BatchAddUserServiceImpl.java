@@ -203,7 +203,7 @@ public class BatchAddUserServiceImpl implements IBatchAddUserService {
         settlementMeterRelDomain.setMeterId(meterDomain.getId());
         settlementMeterRelDomain.setCreateDate(now);
         settlementMeterRelDomain.setRemark("excel导入");
-        settlementMeterRelDomain.setStatus((byte) 1);
+        settlementMeterRelDomain.setStatus("1");
         if (settlementMeterRelDAO.insert(settlementMeterRelDomain) != 1) {
             return new HttpResult<>(HttpResult.ERROR, "新增结算户与计量点关系信息失败，入库失败");
         }

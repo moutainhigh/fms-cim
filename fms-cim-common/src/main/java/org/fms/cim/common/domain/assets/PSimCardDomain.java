@@ -32,13 +32,13 @@ public class PSimCardDomain extends ManagerParamEntity implements MybatisEntity 
 	private String telecomsOperator;
 	private String ip;
 	private String apn;
-	private String orgNo;
+	private Long orgNo;
 	private Date runDate;
 	private Date stopDate;
 	private String statusCode;
 	private String lotId;
-	private String collarPerson;
-	private String collarOrgNo;
+	private Long collarPerson;
+	private Long collarOrgNo;
 	private Date sendDate;
 	private Date returnDate;
 	private String remark;
@@ -82,10 +82,10 @@ public class PSimCardDomain extends ManagerParamEntity implements MybatisEntity 
 	public void setApn(String apn) {
 		this.apn = apn;
 	}
-	public String getOrgNo() {
+	public Long getOrgNo() {
 		return orgNo;
 	}
-	public void setOrgNo(String orgNo) {
+	public void setOrgNo(Long orgNo) {
 		this.orgNo = orgNo;
 	}
 	public Date getRunDate() {
@@ -112,16 +112,16 @@ public class PSimCardDomain extends ManagerParamEntity implements MybatisEntity 
 	public void setLotId(String lotId) {
 		this.lotId = lotId;
 	}
-	public String getCollarPerson() {
+	public Long getCollarPerson() {
 		return collarPerson;
 	}
-	public void setCollarPerson(String collarPerson) {
+	public void setCollarPerson(Long collarPerson) {
 		this.collarPerson = collarPerson;
 	}
-	public String getCollarOrgNo() {
+	public Long getCollarOrgNo() {
 		return collarOrgNo;
 	}
-	public void setCollarOrgNo(String collarOrgNo) {
+	public void setCollarOrgNo(Long collarOrgNo) {
 		this.collarOrgNo = collarOrgNo;
 	}
 	public Date getSendDate() {

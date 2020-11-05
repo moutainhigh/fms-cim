@@ -23,6 +23,9 @@
        <include refid="Base_Column_List"/>
         from P_SIM_CARD
         <where>
+         	<if test="cardNo !=null">
+                and CARD_NO = #{cardNo}
+            </if>
             <if test="gprsCode !=null">
                 and GPRS_CODE = #{gprsCode}
             </if>

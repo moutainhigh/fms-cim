@@ -177,7 +177,7 @@ public class SettlementAction {
 
 		for (SettlementMeterRelDomain t : list) {
 			t.setCreateDate(new Date());
-			t.setStatus((byte) 1);
+			t.setStatus("1");
 		}
 		int count = settlementService.addSettlementMeterRelBySettlement(list);
 		if (count > 0) {

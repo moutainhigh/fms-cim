@@ -77,7 +77,7 @@ public class TransformerAssetsAction {
 		t.setTransformerAssetsNo(transformerAssetsNo);
 
 		if(t.getStatus()==null) {
-			t.setStatus((byte) 0);
+			t.setStatus("0");
 		}
 		t.setCreateDate(new Date());
 		int i = transformerAssetsService.insert(t);
