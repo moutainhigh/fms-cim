@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.ATmnlDAO">
+    <sql id="Base_Column_List">
+		ID,CODE,NAME,TYPE,ASSET_NO,TERMINAL_ADDR,PROTOCOL_CODE,MODEL_CODE,LOT_ID,
+		MANUFACTURER,COLL_MODE,MADE_DATE,BUSINESS_PLACE_CODE,DEPT_ID,REMOVE_OPERATOR_NO,
+		RMV_DATE,INSTALLER_NO,INST_LOC,CHECKER_NO,INST_DATE,CHK_DATE,DESCARD_OPERATOR_NO,
+		DESCARD_DATE,CUR_STATUS_CODE,PERSON_RESP_NO,TEL,LIFE_TIME,REMARK,DELIVER_DATE,
+		WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFIER_TIME
+    </sql>
+
+    <select id="findByKey" parameterType="ATmnlDomain"
+            resultType="ATmnlDomain" useCache="true">
+        select
+        <include refid="Base_Column_List"/>
+        from A_TMNL
+        <where>
+            and ID = #{id}
+
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="ATmnlDomain"
+            resultType="ATmnlDomain" useCache="true">
+        select
+       <include refid="Base_Column_List"/>
+        from A_TMNL
+        <where>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="type !=null">
+                and TYPE = #{type}
+            </if>
+            <if test="assetNo !=null">
+                and ASSET_NO = #{assetNo}
+            </if>
+            <if test="terminalAddr !=null">
+                and TERMINAL_ADDR = #{terminalAddr}
+            </if>
+            <if test="protocolCode !=null">
+                and PROTOCOL_CODE = #{protocolCode}
+            </if>
+            <if test="modelCode !=null">
+                and MODEL_CODE = #{modelCode}
+            </if>
+            <if test="lotId !=null">
+                and LOT_ID = #{lotId}
+            </if>
+            <if test="manufacturer !=null">
+                and MANUFACTURER = #{manufacturer}
+            </if>
+            <if test="collMode !=null">
+                and COLL_MODE = #{collMode}
+            </if>
+            <if test="madeDate !=null">
+                and MADE_DATE = #{madeDate}
+            </if>
+            <if test="businesPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businesPlaceCode}
+            </if>
+            <if test="depeId !=null">
+                and DEPT_ID = #{depeId}
+            </if>
+            <if test="removeOperatorNo !=null">
+                and REMOVE_OPERATOR_NO = #{removeOperatorNo}
+            </if>
+            
+            
+            <if test="rmvDate !=null">
+                and RMV_DATE = #{rmvDate}
+            </if>
+            <if test="installerNo !=null">
+                and INSTALLER_NO = #{installerNo}
+            </if>
+            <if test="instLoc !=null">
+                and INST_LOC = #{instLoc}
+            </if>
+            <if test="checkerNo !=null">
+                and CHECKER_NO = #{checkerNo}
+            </if>
+            <if test="instDate !=null">
+                and INST_DATE = #{instDate}
+            </if>
+            <if test="chkDate !=null">
+                and CHK_DATE = #{chkDate}
+            </if>
+            <if test="descardOperatorNo !=null">
+                and DESCARD_OPERATOR_NO = #{descardOperatorNo}
+            </if>
+            <if test="descardDate !=null">
+                and DESCARD_DATE = #{descardDate}
+            </if>
+            <if test="curStatusCode !=null">
+                and CUR_STATUS_CODE = #{curStatusCode}
+            </if>
+            <if test="personRespNo !=null">
+                and PERSON_RESP_NO = #{personRespNo}
+            </if>
+            
+            
+             <if test="tel !=null">
+                and TEL = #{tel}
+            </if>
+            <if test="lifeTime !=null">
+                and LIFE_TIME = #{lifeTime}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="deliverDate !=null">
+                and DELIVER_DATE = #{deliverDate}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifierTime !=null">
+                and LAST_MODIFIER_TIME = #{lastModifierTime}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="ATmnlDomain" useGeneratedKeys="true" keyProperty="id" flushCache="true">
+        insert into
+        A_TMNL(
+        <include refid="Base_Column_List"/>
+        )
+        values
+        (#{id},#{code},#{name},#{type},#{assetNo},
+        #{terminalAddr},#{protocolCode},#{modelCode},#{lotId},#{manufacturer},#{collMode},
+        #{madeDate},#{businesPlaceCode},#{depeId},#{removeOperatorNo},
+        #{rmvDate},#{installerNo},#{instLoc},#{checkerNo},#{instDate},
+        #{chkDate},#{descardOperatorNo},#{descardDate},#{curStatusCode},#{personRespNo},#{tel},
+        #{lifeTime},#{remark},#{deliverDate},#{weight},
+        #{creatorId},#{createDate},#{lastModifierId},#{lastModifierTime})
+    </insert>
+    
+    <update id="update" parameterType="ATmnlDomain" flushCache="true">
+        update A_TMNL
+        <set>
+        	<if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="type !=null">
+                TYPE = #{type},
+            </if>
+            <if test="assetNo !=null">
+                ASSET_NO = #{assetNo},
+            </if>
+            <if test="terminalAddr !=null">
+                TERMINAL_ADDR = #{terminalAddr},
+            </if>
+            <if test="protocolCode !=null">
+                PROTOCOL_CODE = #{protocolCode},
+            </if>
+            <if test="modelCode !=null">
+                MODEL_CODE = #{modelCode},
+            </if>
+            <if test="lotId !=null">
+                LOT_ID = #{lotId},
+            </if>
+            <if test="manufacturer !=null">
+                MANUFACTURER = #{manufacturer},
+            </if>
+            <if test="collMode !=null">
+                COLL_MODE = #{collMode},
+            </if>
+            <if test="madeDate !=null">
+                MADE_DATE = #{madeDate},
+            </if>
+            <if test="businesPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businesPlaceCode},
+            </if>
+            <if test="depeId !=null">
+                DEPT_ID = #{depeId},
+            </if>
+            <if test="removeOperatorNo !=null">
+                REMOVE_OPERATOR_NO = #{removeOperatorNo},
+            </if>
+            
+            
+            <if test="rmvDate !=null">
+                RMV_DATE = #{rmvDate},
+            </if>
+            <if test="installerNo !=null">
+                INSTALLER_NO = #{installerNo},
+            </if>
+            <if test="instLoc !=null">
+                INST_LOC = #{instLoc},
+            </if>
+            <if test="checkerNo !=null">
+                CHECKER_NO = #{checkerNo},
+            </if>
+            <if test="instDate !=null">
+                INST_DATE = #{instDate},
+            </if>
+            <if test="chkDate !=null">
+                CHK_DATE = #{chkDate},
+            </if>
+            <if test="descardOperatorNo !=null">
+                DESCARD_OPERATOR_NO = #{descardOperatorNo},
+            </if>
+            <if test="descardDate !=null">
+                DESCARD_DATE = #{descardDate},
+            </if>
+            <if test="curStatusCode !=null">
+                CUR_STATUS_CODE = #{curStatusCode},
+            </if>
+            <if test="personRespNo !=null">
+                PERSON_RESP_NO = #{personRespNo},
+            </if>
+            
+            
+             <if test="tel !=null">
+                TEL = #{tel},
+            </if>
+            <if test="lifeTime !=null">
+                LIFE_TIME = #{lifeTime},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="deliverDate !=null">
+                DELIVER_DATE = #{deliverDate},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifierTime !=null">
+                LAST_MODIFIER_TIME = #{lastModifierTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="ATmnlDomain"
+            flushCache="true">
+        delete from A_TMNL
+        <where>
+            and ID = #{id}
+
+        </where>
+    </delete>
+</mapper>

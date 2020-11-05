@@ -182,7 +182,7 @@
         #{mMpedId},#{pMpedId},#{eMpedId},#{voltCode},#{consId},#{tgId},#{lineId},
         #{subsId},#{tranId},#{capId},#{businessPlaceCode},#{mpedProp},#{mpType},
         #{sideCode},#{switchId},#{switchNo},#{meterBoxId},#{measMode},
-        #{wiringMode},#{statusCode},#{statusCode},#{voltType}, #{datainterval},
+        #{wiringMode},#{statusCode},#{voltType}, #{datainterval},
         #{incrementFlag},#{calcTplId},#{calcScheme},#{chkTplId},
         #{qCalcFlag},#{mpCalcMode},#{guid},#{dataSrc},#{dataId},#{areaCode},
         #{weight},#{mpCalcType},#{settleMpedId},#{meterClass},#{creatorId},
@@ -311,7 +311,7 @@
                 AREA_CODE = #{areaCode},
             </if>
             <if test="weight !=null">
-                and WEIGHT = #{weight},
+                WEIGHT = #{weight},
             </if>
             <if test="mpCalcType !=null">
                 MP_CALC_TYPE = #{mpCalcType},

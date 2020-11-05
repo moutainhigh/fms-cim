@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.PSimCardDAO">
+    <sql id="Base_Column_List">
+    	CARD_NO,GPRS_CODE,CARD_TYPE,TELECOMS_OPERATOR,IP,APN,ORG_NO,RUN_DATE,STOP_DATE,
+    	STATUS_CODE,LOT_ID,COLLAR_PERSON,COLLAR_ORG_NO,SEND_DATE,RETURN_DATE,REMARK,
+    	DISP_SN,SAVEDATETIME
+    </sql>
+
+    <select id="findByKey" parameterType="PSimCardDomain"
+            resultType="PSimCardDomain" useCache="true">
+        select
+        <include refid="Base_Column_List"/>
+        from P_SIM_CARD
+        <where>
+            and CARD_NO = #{cardNo}
+
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PSimCardDomain"
+            resultType="PSimCardDomain" useCache="true">
+        select
+       <include refid="Base_Column_List"/>
+        from P_SIM_CARD
+        <where>
+            <if test="gprsCode !=null">
+                and GPRS_CODE = #{gprsCode}
+            </if>
+            <if test="cardType !=null">
+                and CARD_TYPE = #{cardType}
+            </if>
+            <if test="telecomsOperator !=null">
+                and TELECOMS_OPERATOR = #{telecomsOperator}
+            </if>
+            <if test="ip !=null">
+                and IP = #{ip}
+            </if>
+            <if test="apn !=null">
+                and APN = #{apn}
+            </if>
+            <if test="orgNo !=null">
+                and ORG_NO = #{orgNo}
+            </if>
+            <if test="runDate !=null">
+                and RUN_DATE = #{runDate}
+            </if>
+            <if test="stopDate !=null">
+                and STOP_DATE = #{stopDate}
+            </if>
+            <if test="statusCode !=null">
+                and STATUS_CODE = #{statusCode}
+            </if>
+            <if test="lotId !=null">
+                and LOT_ID = #{lotId}
+            </if>
+            <if test="collarPerson !=null">
+                and COLLAR_PERSON = #{collarPerson}
+            </if>
+            <if test="collarOrgNo !=null">
+                and COLLAR_ORG_NO = #{collarOrgNo}
+            </if>
+            <if test="sendDate !=null">
+                and SEND_DATE = #{sendDate}
+            </if>
+            <if test="returnDate !=null">
+                and RETURN_DATE = #{returnDate}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="dispSn !=null">
+                and DISP_SN = #{dispSn}
+            </if>
+            <if test="savedatetime !=null">
+                and SAVEDATETIME = #{savedatetime}
+            </if>
+            
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="PSimCardDomain" useGeneratedKeys="true" keyProperty="id" flushCache="true">
+        insert into
+        P_SIM_CARD(
+        <include refid="Base_Column_List"/>
+        )
+        values
+        (#{cardNo},#{gprsCode},#{cardType},#{telecomsOperator},#{ip},#{apn},
+        #{orgNo},#{runDate},#{stopDate},#{statusCode},#{lotId},#{collarPerson},
+        #{collarOrgNo},#{sendDate},#{returnDate},#{remark},
+        #{dispSn},#{savedatetime})
+    </insert>
+    
+    <update id="update" parameterType="PSimCardDomain" flushCache="true">
+        update P_SIM_CARD
+        <set>
+        	<if test="gprsCode !=null">
+                GPRS_CODE = #{gprsCode},
+            </if>
+            <if test="cardType !=null">
+                CARD_TYPE = #{cardType},
+            </if>
+            <if test="telecomsOperator !=null">
+                TELECOMS_OPERATOR = #{telecomsOperator},
+            </if>
+            <if test="ip !=null">
+                IP = #{ip},
+            </if>
+            <if test="apn !=null">
+                APN = #{apn},
+            </if>
+            <if test="orgNo !=null">
+                ORG_NO = #{orgNo},
+            </if>
+            <if test="runDate !=null">
+                RUN_DATE = #{runDate},
+            </if>
+            <if test="stopDate !=null">
+                STOP_DATE = #{stopDate},
+            </if>
+            <if test="statusCode !=null">
+                STATUS_CODE = #{statusCode},
+            </if>
+            <if test="lotId !=null">
+                LOT_ID = #{lotId},
+            </if>
+            <if test="collarPerson !=null">
+                COLLAR_PERSON = #{collarPerson},
+            </if>
+            <if test="collarOrgNo !=null">
+                COLLAR_ORG_NO = #{collarOrgNo},
+            </if>
+            <if test="sendDate !=null">
+                SEND_DATE = #{sendDate},
+            </if>
+            <if test="returnDate !=null">
+                RETURN_DATE = #{returnDate},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="dispSn !=null">
+                DISP_SN = #{dispSn},
+            </if>
+            <if test="savedatetime !=null">
+                SAVEDATETIME = #{savedatetime},
+            </if>
+        </set>
+        <where>
+            and CARD_NO = #{cardNo}
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="PSimCardDomain"
+            flushCache="true">
+        delete from P_SIM_CARD
+        <where>
+            and CARD_NO = #{cardNo}
+
+        </where>
+    </delete>
+</mapper>

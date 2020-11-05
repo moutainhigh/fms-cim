@@ -26,7 +26,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import reactor.core.publisher.Mono;
 
 @ControllerAdvice
-@RequestMapping("pemped")
+@RequestMapping("pmped")
 public class PmpedAction {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class PmpedAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getPmped")
-	public HttpResultPagination<?> getAllLinePmped(@RequestBody String body)
+	public HttpResultPagination<?> getAllPmped(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		PMpedDomain t = GsonUtils.readValue(body, PMpedDomain.class);
 
@@ -52,29 +52,29 @@ public class PmpedAction {
 	}
 	
 	@ResponseBody
-	@PostMapping(params = "method=addABus")
+	@PostMapping(params = "method=addPmped")
 	public Mono<HttpResult> addPmped(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		PMpedDomain t = GsonUtils.readValue(body, PMpedDomain.class);
 	
 		int count = pmpedService.insert(t);
 		if(count>0) {
-			return Mono.just(new HttpResult(HttpResult.SUCCESS, "新增测量点信息成功"));
+			return Mono.just(new HttpResult(HttpResult.SUCCESS, "新增计量点信息成功"));
 		}
-		return Mono.just(new HttpResult(HttpResult.ERROR, "新增测量点信息失败"));
+		return Mono.just(new HttpResult(HttpResult.ERROR, "新增计量点信息失败"));
 
 	}
 	
 	@ResponseBody
-	@PostMapping(params = "method=updateABus")
+	@PostMapping(params = "method=updatePmped")
 	public Mono<HttpResult> updatePmped(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		PMpedDomain t = GsonUtils.readValue(body, PMpedDomain.class);
 		int count = pmpedService.update(t);
 		if(count>0) {
-			return Mono.just(new HttpResult(HttpResult.SUCCESS, "更新测量点信息成功"));
+			return Mono.just(new HttpResult(HttpResult.SUCCESS, "更新计量点信息成功"));
 		}
-		return Mono.just(new HttpResult(HttpResult.ERROR, "更新测量点信息失败"));
+		return Mono.just(new HttpResult(HttpResult.ERROR, "更新计量点信息失败"));
 	}
 
 
