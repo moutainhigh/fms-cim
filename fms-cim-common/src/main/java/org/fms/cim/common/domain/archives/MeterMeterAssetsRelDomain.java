@@ -25,13 +25,13 @@ public class MeterMeterAssetsRelDomain extends ManagerParamEntity implements Myb
     //相线
     private Byte phaseSeq;
     //功能代码
-    private Long functionCode;
+    private String functionCode;
     //功率方向
-    private Byte powerDirection;
+    private String powerDirection;
     //表序号
     private Byte meterOrder;
     //分时标识
-    private Byte tsFlag;
+    private String tsFlag;
     //创建时间
     private Date createDate;
     //倍率
@@ -81,11 +81,11 @@ public class MeterMeterAssetsRelDomain extends ManagerParamEntity implements Myb
 
 
 
-    public Long getFunctionCode() {
+    public String getFunctionCode() {
         return functionCode;
     }
 
-    public void setFunctionCode(Long functionCode) {
+    public void setFunctionCode(String functionCode) {
         this.functionCode = functionCode;
     }
 
@@ -107,19 +107,19 @@ public class MeterMeterAssetsRelDomain extends ManagerParamEntity implements Myb
         this.phaseSeq = phaseSeq;
     }
 
-    public Byte getPowerDirection() {
+    public String getPowerDirection() {
         return powerDirection;
     }
 
-    public void setPowerDirection(Byte powerDirection) {
+    public void setPowerDirection(String powerDirection) {
         this.powerDirection = powerDirection;
     }
 
-    public Byte getTsFlag() {
+    public String getTsFlag() {
         return tsFlag;
     }
 
-    public void setTsFlag(Byte tsFlag) {
+    public void setTsFlag(String tsFlag) {
         this.tsFlag = tsFlag;
     }
 

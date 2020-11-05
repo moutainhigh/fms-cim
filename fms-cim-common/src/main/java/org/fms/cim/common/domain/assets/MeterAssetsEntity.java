@@ -25,7 +25,7 @@ public class MeterAssetsEntity extends MeterAssetsDomain {
     //相线
     private Byte phaseSeq;
     //功率方向
-    private Byte powerDirection;
+    private String powerDirection;
 
     private Long meterId;
     
@@ -85,11 +85,11 @@ public class MeterAssetsEntity extends MeterAssetsDomain {
         this.phaseSeq = phaseSeq;
     }
 
-    public Byte getPowerDirection() {
+    public String getPowerDirection() {
         return powerDirection;
     }
 
-    public void setPowerDirection(Byte powerDirection) {
+    public void setPowerDirection(String powerDirection) {
         this.powerDirection = powerDirection;
     }
 

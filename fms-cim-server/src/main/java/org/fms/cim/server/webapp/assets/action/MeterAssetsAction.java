@@ -65,14 +65,16 @@ public class MeterAssetsAction {
     @ResponseBody
     @PostMapping(params = "method=addAssets")
     public Object addAssets(@RequestBody String body) {
+    	System.out.println("<><><>:"+body);
         MeterAssetsDomain meterAssetsDomain = GsonUtils.readValue(body, MeterAssetsDomain.class);
+        System.out.println("<><><>meterAssetsDomain:"+JSONUtil.toJsonString(meterAssetsDomain));
 
         //TODO 给高彩虹留得后门,正常运行后取消注释
 //        if(meterAssetsDomain.getMeterAssetsNo()==null) {
 //		  	meterAssetsDomain.setMeterAssetsNo(meterAssetsDomain.getMadeNo());
 
 //        }
-
+           System.out.println("..,.,.,.,.,.:"+meterAssetsDomain.getMadeNo());
         meterAssetsDomain.setMeterAssetsNo(meterAssetsDomain.getMadeNo());
         // 资产编号查重
         MeterAssetsDomain m = new MeterAssetsDomain();
@@ -144,7 +146,7 @@ public class MeterAssetsAction {
             meterAssetsEntities = null;
         } else {
             meterAssetsEntities.stream().forEach(t -> {
-                t.setFunctionCode(new Long("2"));
+                t.setFunctionCode("2");
             });
         }
 

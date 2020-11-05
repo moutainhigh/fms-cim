@@ -11,5 +11,5 @@ import com.riozenc.titanTool.spring.webapp.service.BaseService;
 
 public interface ISystemCommonConfigService extends BaseService<SystemCommonConfigDomain> {
 
-    public SystemCommonConfigDomain findByKeyValue(String type, Long key);
+    public SystemCommonConfigDomain findByKeyValue(String type, String key);
 }

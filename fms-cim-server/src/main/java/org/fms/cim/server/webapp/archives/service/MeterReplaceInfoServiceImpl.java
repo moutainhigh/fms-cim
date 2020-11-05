@@ -194,8 +194,8 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			if (equipmentType == 2) {// 装 互感器 需要强关联电能表
 				MeterMeterAssetsRelDomain meterAssetsRelDomain = new MeterMeterAssetsRelDomain();
 				meterAssetsRelDomain.setMeterId(e.getMeterId());
-				meterAssetsRelDomain.setFunctionCode(1L);
-				meterAssetsRelDomain.setPowerDirection((byte) 1);
+				meterAssetsRelDomain.setFunctionCode("1L");
+				meterAssetsRelDomain.setPowerDirection("1");
 				meterAssetsRelDomain.setPhaseSeq(e.getPhaseSeq());
 				List<MeterMeterAssetsRelDomain> meterAssetsRelDomains = meterMeterAssetsRelDAO
 						.findByWhere(meterAssetsRelDomain);
@@ -453,7 +453,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		MeterInductorAssetsRelDomain meterInductorAssetsRelDomain = new MeterInductorAssetsRelDomain();
 		meterInductorAssetsRelDomain.setMeterId(receiveDomain.getMeterId());
 		// 无功表
-		if (2 == receiveDomain.getFunctionCode()) {
+		if ("2" == receiveDomain.getFunctionCode()) {
 			// pt 无功表先取ptA相 若无再取ptd相
 			meterInductorAssetsRelDomain.setPhaseSeq(new Byte("1"));
 			meterInductorAssetsRelDomain.setInductorType(new Byte("2"));
@@ -645,8 +645,8 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		writeFiles.setMeterId(mr.getMeterId());
 		writeFiles.setMon(Integer.parseInt(mon));
 		writeFiles.setMeterAssetsId(returnMeterMeterAssets.get(0).getMeterAssetsId());
-		writeFiles.setFunctionCode(mr.getFunctionCode().byteValue()); // 有功
-		writeFiles.setPowerDirection(mr.getPowerDirection().byteValue()); // 正向
+		writeFiles.setFunctionCode(mr.getFunctionCode()); // 有功
+		writeFiles.setPowerDirection(mr.getPowerDirection()); // 正向
 		List<WriteFilesDomain> writeFileList = getCodeByMeter(writeFiles);
 
 		// 上次的装表记录
@@ -925,7 +925,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		
 		WriteFilesDomain writeFiles = new WriteFilesDomain();
 		writeFiles.setMon(Integer.parseInt(lastMon));
-		writeFiles.setFunctionCode(meterReplaceDomain.getFunctionCode().byteValue());
+		writeFiles.setFunctionCode(meterReplaceDomain.getFunctionCode());
 		writeFiles.setMeterId(meterReplaceDomain.getMeterId());
 		writeFiles.setPowerDirection(meterReplaceDomain.getPowerDirection());
 		writeFiles.setMeterAssetsId(meterReplaceDomain.getMeterAssetsId());

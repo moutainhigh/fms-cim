@@ -69,7 +69,8 @@ public class ArchivesRelCheckServiceImpl implements IArchivesRelCheckService {
 			List<MeterMeterAssetsRelDomain> tlist = new ArrayList<MeterMeterAssetsRelDomain>();
 
 			for(MeterMeterAssetsRelDomain t : mmarList) {
-				if(t.getMeterId()!=null && t.getMeterId()-id==0 && t.getFunctionCode()-1==0) {
+			//TODO  (qtt)原来此处代码为  if(t.getMeterId()!=null && t.getMeterId()-id==0 && t.getFunctionCode()-1==0) {     // getFunctionCode()原来是byte类型,现在下拉改为String类型,待处理此处逻辑???
+				if(t.getMeterId()!=null && t.getMeterId()-id==0 ) {
 					tlist.add(t);
 				}
 			}

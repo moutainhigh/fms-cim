@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.MeterMeterAssetsRelDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.MeterMeterAssetsRelDAO">
     
     <sql id="Base_Column_List">
        ID,METER_ID,METER_ASSETS_ID,PHASE_SEQ,FUNCTION_CODE,POWER_DIRECTION,METER_ORDER,TS_FLAG,CREATE_DATE,MULTIPLYING_POWER,STATUS,WRITE_SN,FACTOR_NUM,METER_SN

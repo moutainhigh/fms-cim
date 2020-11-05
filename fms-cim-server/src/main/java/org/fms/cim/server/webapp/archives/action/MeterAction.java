@@ -295,17 +295,17 @@ public class MeterAction {
                     meterAssetsEntity.setParent("0");
                     // 电能表信息
                     SystemCommonConfigDomain systemCommonConfigDomain = systemCommonConfigService
-                            .findByKeyValue("FUNC_KIND_CODE", new Long(meterAssetsEntity.getFuncKindCode()));
+                            .findByKeyValue("FUNC_KIND_CODE", String.valueOf(meterAssetsEntity.getFuncKindCode()));
                     // 构造前台消息
                     meterAssetsEntity.setMeterId(m.getMeterId());
                     meterAssetsEntity.setShowName4(systemCommonConfigDomain.getParamValue());
                     meterAssetsEntity.setMadeDate(m.getCreateDate());
                     meterAssetsEntity.setTsFlag(m.getTsFlag());
                     systemCommonConfigDomain = systemCommonConfigService.findByKeyValue("FUNCTION_CODE",
-                            m.getFunctionCode());
+                    		String.valueOf(m.getFunctionCode()));
                     meterAssetsEntity.setShowName5(systemCommonConfigDomain.getParamValue());
                     systemCommonConfigDomain = systemCommonConfigService.findByKeyValue("POWER_DIRECTION",
-                            new Long(m.getPowerDirection()));
+                    		String.valueOf(m.getPowerDirection()));
                     meterAssetsEntity.setShowName6(systemCommonConfigDomain.getParamValue());
                     meterAssetsEntity.setPowerDirection(m.getPowerDirection());
                     meterAssetsEntity.setPhaseSeq(m.getPhaseSeq());
@@ -351,15 +351,15 @@ public class MeterAction {
                     inductorAssetsEntity.setPhaseSeq(m.getPhaseSeq());
                     // 更改返回前台字段，配合已有的换表记录功能
                     switch (inductorAssetsEntity.getInductorType()) {
-                        case 1:
+                        case "1":
                             inductorAssetsEntity.setCtAssetsId(inductorAssetsEntity.getId());
                             inductorAssetsEntity.setCtAssetsNo(inductorAssetsEntity.getInductorAssetsNo());
                             break;
-                        case 2:
+                        case "2":
                             inductorAssetsEntity.setPtAssetsId(inductorAssetsEntity.getId());
                             inductorAssetsEntity.setPtAssetsNo(inductorAssetsEntity.getInductorAssetsNo());
 
-                        case 3:
+                        case "3":
                             inductorAssetsEntity.setCtAssetsId(inductorAssetsEntity.getId());
                             inductorAssetsEntity.setCtAssetsNo(inductorAssetsEntity.getInductorAssetsNo());
                             inductorAssetsEntity.setPtAssetsId(inductorAssetsEntity.getId());
@@ -370,7 +370,7 @@ public class MeterAction {
                     inductorAssetsEntity.setId(m.getMeterId());
                     // 更新互感器型号
                     SystemCommonConfigDomain systemCommonConfigDomain = systemCommonConfigService
-                            .findByKeyValue("INDUCTOR_TYPE", new Long(inductorAssetsEntity.getInductorType()));
+                            .findByKeyValue("INDUCTOR_TYPE", String.valueOf(inductorAssetsEntity.getInductorType()));
                     inductorAssetsEntity.setShowName4(systemCommonConfigDomain.getParamValue());
                     inductorAssetsEntity.setMadeDate(m.getCreateDate());
                     inductorAssetsEntity.setMeterId(m.getMeterId());

@@ -46,7 +46,7 @@ public class SystemCommonConfigDAO extends AbstractTransactionDAOSupport impleme
 		return getPersistanceManager().find(getNamespace() + ".findByWhere", t);
 	}
 
-	public SystemCommonConfigDomain findByKeyValue(String type,Long key){
+	public SystemCommonConfigDomain findByKeyValue(String type,String key){
 		SystemCommonConfigDomain  inductorConfig=new SystemCommonConfigDomain();
 		inductorConfig.setType(type);
 		inductorConfig.setParamKey(key);

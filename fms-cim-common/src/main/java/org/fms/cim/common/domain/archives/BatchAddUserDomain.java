@@ -52,22 +52,22 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
     private String madeNo;
     
  //   @ExcelProperty(value = "电表厂家", index = 18)
-    private Integer facCode;
+    private String facCode;
     
  //   @ExcelProperty(value = "型号", index = 19)
-    private Integer modelCode;
+    private String modelCode;
     
  //   @ExcelProperty(value = "标定电流", index = 20)
-    private Byte ratedCurntCode;
+    private String ratedCurntCode;
     
   //  @ExcelProperty(value = "表码位数", index = 21)
-    private Byte numDigit;
+    private String numDigit;
 
  //   @ExcelProperty(value = "相线", index = 22)
     private Byte phaseLine;
     
  //   @ExcelProperty(value = "额定电压", index = 23)
-    private Byte ratedVoltCode;
+    private String ratedVoltCode;
 
   //  @ExcelProperty(value = "分时表标志", index = 25)
     private Byte tsFlag;
@@ -194,35 +194,21 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
 		this.madeNo = madeNo;
 	}
 
-	public Integer getFacCode() {
+	public String getFacCode() {
 		return facCode;
 	}
 
-	public void setFacCode(Integer facCode) {
+	public void setFacCode(String facCode) {
 		this.facCode = facCode;
 	}
 
-	public Integer getModelCode() {
-		return modelCode;
-	}
+	
 
-	public void setModelCode(Integer modelCode) {
-		this.modelCode = modelCode;
-	}
-
-	public Byte getRatedCurntCode() {
-		return ratedCurntCode;
-	}
-
-	public void setRatedCurntCode(Byte ratedCurntCode) {
-		this.ratedCurntCode = ratedCurntCode;
-	}
-
-	public Byte getNumDigit() {
+	public String getNumDigit() {
 		return numDigit;
 	}
 
-	public void setNumDigit(Byte numDigit) {
+	public void setNumDigit(String numDigit) {
 		this.numDigit = numDigit;
 	}
 
@@ -234,11 +220,29 @@ public class BatchAddUserDomain extends ManagerParamEntity implements MybatisEnt
 		this.phaseLine = phaseLine;
 	}
 
-	public Byte getRatedVoltCode() {
+	
+
+	public String getModelCode() {
+		return modelCode;
+	}
+
+	public void setModelCode(String modelCode) {
+		this.modelCode = modelCode;
+	}
+
+	public String getRatedCurntCode() {
+		return ratedCurntCode;
+	}
+
+	public void setRatedCurntCode(String ratedCurntCode) {
+		this.ratedCurntCode = ratedCurntCode;
+	}
+
+	public String getRatedVoltCode() {
 		return ratedVoltCode;
 	}
 
-	public void setRatedVoltCode(Byte ratedVoltCode) {
+	public void setRatedVoltCode(String ratedVoltCode) {
 		this.ratedVoltCode = ratedVoltCode;
 	}
 

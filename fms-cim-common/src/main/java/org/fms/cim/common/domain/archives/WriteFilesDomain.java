@@ -33,8 +33,8 @@ public class WriteFilesDomain extends ManagerParamEntity implements MybatisEntit
 	private Byte writeFlag;// 抄表标志 WRITE_FLAG smallint FALSE FALSE FALSE
 	private Byte writeMethod;// 抄表方式 WRITE_METHOD smallint FALSE FALSE FALSE
 	private Byte timeSeg;// 时段 TIME_SEG smallint FALSE FALSE FALSE
-	private Byte functionCode;// 功能代码
-	private Byte powerDirection;// 功率方向
+	private String functionCode;// 功能代码
+	private String powerDirection;// 功率方向
 	private BigDecimal startNum;// 起码 START_NUM decimal(12,2) 12 2 FALSE FALSE FALSE
 	private BigDecimal endNum;// 止码 END_NUM decimal(12,2) 12 2 FALSE FALSE FALSE
 	private BigDecimal diffNum;// 度差 DIFF_NUM decimal(12,2) 12 2 FALSE FALSE FALSE
@@ -280,19 +280,19 @@ public class WriteFilesDomain extends ManagerParamEntity implements MybatisEntit
 		this.madeNo = madeNo;
 	}
 
-	public Byte getFunctionCode() {
+	public String getFunctionCode() {
 		return functionCode;
 	}
 
-	public void setFunctionCode(Byte functionCode) {
+	public void setFunctionCode(String functionCode) {
 		this.functionCode = functionCode;
 	}
 
-	public Byte getPowerDirection() {
+	public String getPowerDirection() {
 		return powerDirection;
 	}
 
-	public void setPowerDirection(Byte powerDirection) {
+	public void setPowerDirection(String powerDirection) {
 		this.powerDirection = powerDirection;
 	}
 

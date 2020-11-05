@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper	namespace="com.riozenc.cim.webapp.assets.dao.MeterAssetsDAO">
+<mapper	namespace="org.fms.cim.server.webapp.assets.dao.MeterAssetsDAO">
 
 	<sql id="Base_Column_List">
 		ID,METER_ASSETS_NO,MADE_NO,FUNC_KIND_CODE,POWER_KIND_CODE,FIXED_ASSETS_FLAG,FAC_CODE,MODEL_CODE,RATED_VOLT_CODE,
 		RATED_CURNT_CODE,ACCU_LEVEL_CODE,PHASE_LINE,TS_FLAG,STRUCT_CODE,METER_CONST,CONST_UNIT,FACTOR,MADE_STDARD,
 		AXE_STRUCT_CODE,METERYARD_TYPE,NO_RETURN_FLAG,IS_CARD,CONNECT_MODE,MADE_DATE,BAY_DATE,LIFE_SPAN,MAN_ID,
 		STATE_FLAG,STATUS_CHG_DATE,STATUS_CHG_REASON,LAST_DET_DATE,DET_PERIOD,RIGHT_ATTACH,SIM_NO,NUM_DIGIT,DEPT_ID,
-		BAR_CODE,CREATE_DATE,REMARK,STATUS,BATCH_NO,FUNCTION_CODE,SEAL_NO
+		BAR_CODE,CREATE_DATE,REMARK,STATUS,BATCH_NO,FUNCTION_CODE,SEAL_NO,TYPE,COMM_ADDR1,COMM_ADDR2,INST_LOC,SORT_CODE,
+		PREPAY_FLAG,DEMAND_METER_FLAG,LATEST_CHK_DATE,ROTATE_CYCLE,DISCARD_REASON,DESCARD_DATE,CUR_STATUS_CODE,BAUDRATE_CODE,
+		METER_CLOSE_MODE,COMM_PROT_CODE,COMM_MODE,SWITCH_STATUS,WEIGHT,CREATOR_ID,LAST_MODIFIER_ID,LAST_MODIFIER_TIME
 	</sql>
 
 	<select id="findByKey" parameterType="MeterAssetsDomain"
@@ -172,6 +174,72 @@
 				and MA.SEAL_NO = #{sealNo}
 			</if>
 			
+			
+			
+			<if test="type !=null">
+				and MA.TYPE = #{type}
+			</if>
+			<if test="commAddr1 !=null">
+				and MA.COMM_ADDR1 = #{commAddr1}
+			</if>
+			<if test="commAddr2 !=null">
+				and MA.COMM_ADDR2 = #{commAddr2}
+			</if>
+			<if test="instLoc !=null">
+				and MA.INST_LOC = #{instLoc}
+			</if>
+			<if test="sortCode !=null">
+				and MA.SORT_CODE = #{sortCode}
+			</if>
+			<if test="prepayFlag !=null">
+				and MA.PREPAY_FLAG = #{prepayFlag}
+			</if>
+			<if test="demandMeterFlag !=null">
+				and MA.DEMAND_METER_FLAG = #{demandMeterFlag}
+			</if>
+			<if test="latestChkDate !=null">
+				and MA.LATEST_CHK_DATE = #{latestChkDate}
+			</if>
+			<if test="rotateCycle !=null">
+				and MA.ROTATE_CYCLE = #{rotateCycle}
+			</if>
+			<if test="discardReason !=null">
+				and MA.DISCARD_REASON = #{discardReason}
+			</if>
+			<if test="descardDate !=null">
+				and MA.DESCARD_DATE = #{descardDate}
+			</if>
+			<if test="curStatusCode !=null">
+				and MA.CUR_STATUS_CODE = #{curStatusCode}
+			</if>
+			<if test="baudrateCode !=null">
+				and MA.BAUDRATE_CODE = #{baudrateCode}
+			</if>
+			<if test="meterCloseMode !=null">
+				and MA.METER_CLOSE_MODE = #{meterCloseMode}
+			</if>
+			<if test="commProtCode !=null">
+				and MA.COMM_PROT_CODE = #{commProtCode}
+			</if>
+			<if test="commMode !=null">
+				and MA.COMM_MODE = #{commMode}
+			</if>
+			<if test="switchStatus !=null">
+				and MA.SWITCH_STATUS = #{switchStatus}
+			</if>
+			<if test="weight !=null">
+				and MA.WEIGHT = #{weight}
+			</if>
+			<if test="creatorId !=null">
+				and MA.CREATOR_ID = #{creatorId}
+			</if>
+			<if test="lastModifierId !=null">
+				and MA.LAST_MODIFIER_ID = #{lastModifierId}
+			</if>
+			<if test="lastModifierTime !=null">
+				and MA.LAST_MODIFIER_TIME = #{lastModifierTime}
+			</if>
+			
 		</where>
 		order by MA.CREATE_DATE desc 
 		
@@ -205,7 +273,10 @@
 		#{madeStdard},#{axeStructCode},#{meteryardType},#{noReturnFlag},#{isCard},#{connectMode},#{madeDate},#{bayDate},
 		#{lifeSpan},#{manId},#{stateFlag},#{statusChgDate},#{statusChgReason},#{lastDetDate},#{detPeriod},#{rightAttach},
 		#{simNo},#{numDigit},#{deptId},#{barCode},#{createDate},#{remark},
-		#{status},#{batchNo},#{functionCode},#{sealNo})
+		#{status},#{batchNo},#{functionCode},#{sealNo},
+		#{type},#{commAddr1},#{commAddr2},#{instLoc},#{sortCode},#{prepayFlag},#{demandMeterFlag},#{latestChkDate},
+		#{rotateCycle},#{discardReason},#{descardDate},#{curStatusCode},#{baudrateCode},#{meterCloseMode},#{commProtCode},#{commMode},
+		#{switchStatus},#{weight},#{creatorId},#{lastModifierId},#{lastModifierTime})
 	</insert>
 	
 	<insert id="insertList" parameterType="MeterAssetsDomain" flushCache="true">
@@ -219,7 +290,10 @@
 		#{ratedCurntCode},#{accuLevelCode},#{phaseLine},#{tsFlag},#{structCode},#{meterConst},#{constUnit},#{factor},
 		#{madeStdard},#{axeStructCode},#{meteryardType},#{noReturnFlag},#{isCard},#{connectMode},#{madeDate},#{bayDate},
 		#{lifeSpan},#{manId},#{stateFlag},#{statusChgDate},#{statusChgReason},#{lastDetDate},#{detPeriod},#{rightAttach},
-		#{simNo},#{numDigit},#{deptId},#{barCode},#{createDate},#{remark},#{status},#{batchNo},#{functionCode},#{sealNo})
+		#{simNo},#{numDigit},#{deptId},#{barCode},#{createDate},#{remark},#{status},#{batchNo},#{functionCode},#{sealNo},
+		#{type},#{commAddr1},#{commAddr2},#{instLoc},#{sortCode},#{prepayFlag},#{demandMeterFlag},#{latestChkDate},
+		#{rotateCycle},#{discardReason},#{descardDate},#{curStatusCode},#{baudrateCode},#{meterCloseMode},#{commProtCode},#{commMode},
+		#{switchStatus},#{weight},#{creatorId},#{lastModifierId},#{lastModifierTime})
 	</insert>
 
 	<update id="update" parameterType="MeterAssetsDomain"
@@ -350,7 +424,71 @@
 			   FUNCTION_CODE = #{functionCode},
 			</if>
 			<if test="sealNo !=null">
-			   SEAL_NO = #{sealNo}
+			   SEAL_NO = #{sealNo},
+			</if>
+			
+			<if test="type !=null">
+				TYPE = #{type},
+			</if>
+			<if test="commAddr1 !=null">
+				COMM_ADDR1 = #{commAddr1},
+			</if>
+			<if test="commAddr2 !=null">
+				COMM_ADDR2 = #{commAddr2},
+			</if>
+			<if test="instLoc !=null">
+				INST_LOC = #{instLoc},
+			</if>
+			<if test="sortCode !=null">
+				SORT_CODE = #{sortCode},
+			</if>
+			<if test="prepayFlag !=null">
+				PREPAY_FLAG = #{prepayFlag},
+			</if>
+			<if test="demandMeterFlag !=null">
+				DEMAND_METER_FLAG = #{demandMeterFlag},
+			</if>
+			<if test="latestChkDate !=null">
+				LATEST_CHK_DATE = #{latestChkDate},
+			</if>
+			<if test="rotateCycle !=null">
+				ROTATE_CYCLE = #{rotateCycle},
+			</if>
+			<if test="discardReason !=null">
+				DISCARD_REASON = #{discardReason},
+			</if>
+			<if test="descardDate !=null">
+				DESCARD_DATE = #{descardDate},
+			</if>
+			<if test="curStatusCode !=null">
+				CUR_STATUS_CODE = #{curStatusCode},
+			</if>
+			<if test="baudrateCode !=null">
+				BAUDRATE_CODE = #{baudrateCode},
+			</if>
+			<if test="meterCloseMode !=null">
+				METER_CLOSE_MODE = #{meterCloseMode},
+			</if>
+			<if test="commProtCode !=null">
+				COMM_PROT_CODE = #{commProtCode},
+			</if>
+			<if test="commMode !=null">
+				COMM_MODE = #{commMode},
+			</if>
+			<if test="switchStatus !=null">
+				SWITCH_STATUS =  #{switchStatus},
+			</if>
+			<if test="weight !=null">
+				WEIGHT = #{weight},
+			</if>
+			<if test="creatorId !=null">
+				CREATOR_ID = #{creatorId},
+			</if>
+			<if test="lastModifierId !=null">
+				LAST_MODIFIER_ID = #{lastModifierId},
+			</if>
+			<if test="lastModifierTime !=null">
+				LAST_MODIFIER_TIME = #{lastModifierTime}
 			</if>
 		</set>
 		<where>
@@ -552,6 +690,71 @@
 			<if test="sealNo !=null">
 				and SEAL_NO = #{sealNo}
 			</if>
+			
+			
+			<if test="type !=null">
+				and TYPE = #{type}
+			</if>
+			<if test="commAddr1 !=null">
+				and COMM_ADDR1 = #{commAddr1}
+			</if>
+			<if test="commAddr2 !=null">
+				and COMM_ADDR2 = #{commAddr2}
+			</if>
+			<if test="instLoc !=null">
+				and INST_LOC = #{instLoc}
+			</if>
+			<if test="sortCode !=null">
+				and SORT_CODE = #{sortCode}
+			</if>
+			<if test="prepayFlag !=null">
+				and PREPAY_FLAG = #{prepayFlag}
+			</if>
+			<if test="demandMeterFlag !=null">
+				and DEMAND_METER_FLAG = #{demandMeterFlag}
+			</if>
+			<if test="latestChkDate !=null">
+				and LATEST_CHK_DATE = #{latestChkDate}
+			</if>
+			<if test="rotateCycle !=null">
+				and ROTATE_CYCLE = #{rotateCycle}
+			</if>
+			<if test="discardReason !=null">
+				and DISCARD_REASON = #{discardReason}
+			</if>
+			<if test="descardDate !=null">
+				and DESCARD_DATE = #{descardDate}
+			</if>
+			<if test="curStatusCode !=null">
+				and CUR_STATUS_CODE = #{curStatusCode}
+			</if>
+			<if test="baudrateCode !=null">
+				and BAUDRATE_CODE = #{baudrateCode}
+			</if>
+			<if test="meterCloseMode !=null">
+				and METER_CLOSE_MODE = #{meterCloseMode}
+			</if>
+			<if test="commProtCode !=null">
+				and COMM_PROT_CODE = #{commProtCode}
+			</if>
+			<if test="commMode !=null">
+				and COMM_MODE = #{commMode}
+			</if>
+			<if test="switchStatus !=null">
+				and SWITCH_STATUS = #{switchStatus}
+			</if>
+			<if test="weight !=null">
+				and WEIGHT = #{weight}
+			</if>
+			<if test="creatorId !=null">
+				and CREATOR_ID = #{creatorId}
+			</if>
+			<if test="lastModifierId !=null">
+				and LAST_MODIFIER_ID = #{lastModifierId}
+			</if>
+			<if test="lastModifierTime !=null">
+				andLAST_MODIFIER_TIME = #{lastModifierTime}
+			</if>
 		</where>
 	</select>
 
@@ -597,5 +800,4 @@
 		</where>
 
 	</select>
-	
 </mapper>

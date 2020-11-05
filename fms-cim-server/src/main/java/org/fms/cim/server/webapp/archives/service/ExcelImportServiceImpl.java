@@ -98,7 +98,7 @@ public class ExcelImportServiceImpl implements IExcelImportService {
 			meterMeterAssetsRelDomain.setPhaseSeq(e.getPhaseSeq());
 			meterMeterAssetsRelDomain.setFunctionCode(e.getFunctionCode());
 			meterMeterAssetsRelDomain.setPowerDirection(e.getPowerDirection());
-			meterMeterAssetsRelDomain.setTsFlag((byte) 0);
+			meterMeterAssetsRelDomain.setTsFlag("0");
 			meterMeterAssetsRelDomain.setCreateDate(e.getCreateDate());
 			meterMeterAssetsRelDomain.setFactorNum(e.getFactorNum());
 			meterMeterAssetsRelDomain.setStatus((byte)1);
@@ -207,8 +207,8 @@ public class ExcelImportServiceImpl implements IExcelImportService {
 		writeFiles.setMeterId(mr.getMeterId());
 		writeFiles.setMon(Integer.parseInt(mon));
 		writeFiles.setMeterAssetsId(returnMeterMeterAssets.get(0).getMeterAssetsId());
-		writeFiles.setFunctionCode(mr.getFunctionCode().byteValue()); // 有功
-		writeFiles.setPowerDirection(mr.getPowerDirection().byteValue()); // 正向
+		writeFiles.setFunctionCode(mr.getFunctionCode()); // 有功
+		writeFiles.setPowerDirection(mr.getPowerDirection()); // 正向
 		List<WriteFilesDomain> writeFileList = getCodeByMeter(writeFiles);
 
 		// 上次的装表记录
