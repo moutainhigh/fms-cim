@@ -44,17 +44,17 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	private Date madeDate; // 出厂日期
 	private Long businesPlaceCode; // 管理单位
 	private Long depeId; // 管理部门
-	private String removeOperatorNo; // 拆回人
+	private Long removeOperatorNo; // 拆回人
 	private Date rmvDate; // 停运日期
-	private String installerNo; // 安装人
+	private Long installerNo; // 安装人
 	private String instLoc; // 安装位置
-	private String checkerNo; // 校验人员
+	private Long checkerNo; // 校验人员
 	private Date instDate; // 发出日期
 	private Date chkDate; // 退回日期
-	private String descardOperatorNo; // 报废人
+	private Long descardOperatorNo; // 报废人
 	private Date descardDate; // 报废日期
 	private String curStatusCode; // 当前状态
-	private String personRespNo; // 责任人
+	private Long personRespNo; // 责任人
 	private String tel; // 电话号码
 	private Integer lifeTime; // 使用年限
 	private String remark; // 备注
@@ -150,10 +150,10 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setDepeId(Long depeId) {
 		this.depeId = depeId;
 	}
-	public String getRemoveOperatorNo() {
+	public Long getRemoveOperatorNo() {
 		return removeOperatorNo;
 	}
-	public void setRemoveOperatorNo(String removeOperatorNo) {
+	public void setRemoveOperatorNo(Long removeOperatorNo) {
 		this.removeOperatorNo = removeOperatorNo;
 	}
 	public Date getRmvDate() {
@@ -162,10 +162,10 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setRmvDate(Date rmvDate) {
 		this.rmvDate = rmvDate;
 	}
-	public String getInstallerNo() {
+	public Long getInstallerNo() {
 		return installerNo;
 	}
-	public void setInstallerNo(String installerNo) {
+	public void setInstallerNo(Long installerNo) {
 		this.installerNo = installerNo;
 	}
 	public String getInstLoc() {
@@ -174,10 +174,10 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setInstLoc(String instLoc) {
 		this.instLoc = instLoc;
 	}
-	public String getCheckerNo() {
+	public Long getCheckerNo() {
 		return checkerNo;
 	}
-	public void setCheckerNo(String checkerNo) {
+	public void setCheckerNo(Long checkerNo) {
 		this.checkerNo = checkerNo;
 	}
 	public Date getInstDate() {
@@ -192,10 +192,10 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setChkDate(Date chkDate) {
 		this.chkDate = chkDate;
 	}
-	public String getDescardOperatorNo() {
+	public Long getDescardOperatorNo() {
 		return descardOperatorNo;
 	}
-	public void setDescardOperatorNo(String descardOperatorNo) {
+	public void setDescardOperatorNo(Long descardOperatorNo) {
 		this.descardOperatorNo = descardOperatorNo;
 	}
 	public Date getDescardDate() {
@@ -210,10 +210,10 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setCurStatusCode(String curStatusCode) {
 		this.curStatusCode = curStatusCode;
 	}
-	public String getPersonRespNo() {
+	public Long getPersonRespNo() {
 		return personRespNo;
 	}
-	public void setPersonRespNo(String personRespNo) {
+	public void setPersonRespNo(Long personRespNo) {
 		this.personRespNo = personRespNo;
 	}
 	public String getTel() {

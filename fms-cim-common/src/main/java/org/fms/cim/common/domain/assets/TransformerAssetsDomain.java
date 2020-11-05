@@ -31,15 +31,15 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 	private Integer voltageRatio; // 电压比
 	private Integer currentRatio; // 电流比
 	private  String transformerModelType; // 型号
-	private Integer factoryType; // 制造厂家
+	private String factoryType; // 制造厂家
 	private String madeNo; // 出厂编号
 	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date madeDate; // 出厂日期
 	private String ratedVoltage; // 额定电压					----
 	private BigDecimal ratedCurrent; // 额定电流
 	private BigDecimal shortVoltage; // 短路电压
-	private Byte connectType; // 连接组别
-	private Byte numPhaseType; // 相数
+	private String connectType; // 连接组别
+	private String numPhaseType; // 相数
 	private BigDecimal emptyLose; // 空载损耗
 	private BigDecimal loadLose; // 负载损耗
 	private BigDecimal emptyCurrent; // 空载电流
@@ -49,8 +49,8 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 	private Byte voltAttach; // 调压接头数
 	private BigDecimal hvLimit; // 高压熔丝限额(A)
 	private BigDecimal theroem; // 额定温升
-	private BigDecimal firstVolt; // 一次侧电压
-	private BigDecimal secondVolt; // 二次侧电压
+	private String firstVolt; // 一次侧电压
+	private String secondVolt; // 二次侧电压
 	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	//@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	private Date lastDetDate; // 上次检定日期
@@ -58,11 +58,11 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 	private Integer lifeSpan; // 使用寿命(月)
 	private Long deptId; // 所属单位
 	private String manId; // 持有人
-	private Long rightAttach; //产权归属
+	private String rightAttach; //产权归属
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private Date createDate; // 创建日期
 	private String remark; // 备注
-	private Byte status; // 状态
+	private String status; // 状态
 	private String batchNo; // BATCH_NO 批次
 	private BigDecimal firstCurrent; // 1次电流
 	private BigDecimal secondCurrent; // 2次电流
@@ -138,11 +138,11 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.transformerModelType = transformerModelType;
 	}
 
-	public Integer getFactoryType() {
+	public String getFactoryType() {
 		return factoryType;
 	}
 
-	public void setFactoryType(Integer factoryType) {
+	public void setFactoryType(String factoryType) {
 		this.factoryType = factoryType;
 	}
 
@@ -188,19 +188,19 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.shortVoltage = shortVoltage;
 	}
 
-	public Byte getConnectType() {
+	public String getConnectType() {
 		return connectType;
 	}
 
-	public void setConnectType(Byte connectType) {
+	public void setConnectType(String connectType) {
 		this.connectType = connectType;
 	}
 
-	public Byte getNumPhaseType() {
+	public String getNumPhaseType() {
 		return numPhaseType;
 	}
 
-	public void setNumPhaseType(Byte numPhaseType) {
+	public void setNumPhaseType(String numPhaseType) {
 		this.numPhaseType = numPhaseType;
 	}
 
@@ -276,19 +276,19 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.theroem = theroem;
 	}
 
-	public BigDecimal getFirstVolt() {
+	public String getFirstVolt() {
 		return firstVolt;
 	}
 
-	public void setFirstVolt(BigDecimal firstVolt) {
+	public void setFirstVolt(String firstVolt) {
 		this.firstVolt = firstVolt;
 	}
 
-	public BigDecimal getSecondVolt() {
+	public String getSecondVolt() {
 		return secondVolt;
 	}
 
-	public void setSecondVolt(BigDecimal secondVolt) {
+	public void setSecondVolt(String secondVolt) {
 		this.secondVolt = secondVolt;
 	}
 
@@ -308,11 +308,11 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.manId = manId;
 	}
 
-	public Long getRightAttach() {
+	public String getRightAttach() {
 		return rightAttach;
 	}
 
-	public void setRightAttach(Long rightAttach) {
+	public void setRightAttach(String rightAttach) {
 		this.rightAttach = rightAttach;
 	}
 
@@ -332,11 +332,11 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.remark = remark;
 	}
 
-	public Byte getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
