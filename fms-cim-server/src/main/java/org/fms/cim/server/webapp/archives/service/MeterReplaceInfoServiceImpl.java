@@ -235,7 +235,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 						meterInductorAssetsRelDomain.setStatus((byte) 1);
 						meterInductorAssetsRelDAO.insert(meterInductorAssetsRelDomain);
 						ptAssets.setId(e.getPtAssetsId());
-						ptAssets.setStatus((byte) 8);
+						ptAssets.setStatus("8");
 						pta += inductorAssetsDAO.update(ptAssets);
 					}
 					if (pta <= 0) {
@@ -269,7 +269,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 						meterInductorAssetsRelDomain.setStatus(new Byte("1"));
 						cta += meterInductorAssetsRelDAO.insert(meterInductorAssetsRelDomain);
 						ctAssets.setId(e.getCtAssetsId());
-						ctAssets.setStatus((byte) 8);
+						ctAssets.setStatus("8");
 						cta = inductorAssetsDAO.update(ctAssets);
 					}
 					if (cta <= 0) {
@@ -331,7 +331,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 
 			if (e.getPtAssetsId() != null && equipmentType == 2) {
 				ptAssets.setId(e.getPtAssetsId());
-				ptAssets.setStatus((byte) 9);
+				ptAssets.setStatus("9");
 				int cta = inductorAssetsDAO.update(ptAssets);
 				// 删除关系
 				MeterInductorAssetsRelDomain delIndutorAssetsRel = new MeterInductorAssetsRelDomain();
@@ -345,7 +345,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			}
 			if (e.getCtAssetsId() != null && equipmentType == 2) {
 				ctAssets.setId(e.getCtAssetsId());
-				ctAssets.setStatus((byte) 9);
+				ctAssets.setStatus("9");
 				int pta = inductorAssetsDAO.update(ctAssets);
 				// 删除关系
 				MeterInductorAssetsRelDomain delIndutorAssetsRel = new MeterInductorAssetsRelDomain();

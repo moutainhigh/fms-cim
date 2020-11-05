@@ -63,7 +63,7 @@ public class InductorAssetsAction  {
 			return new HttpResult<>(HttpResult.ERROR, "新增失败,资产编号重复.");
 		}
 		if(t.getStatus()==null) {
-			t.setStatus((byte) 0);
+			t.setStatus("0");
 		}
 		int i = inductorAssetsService.insert(t);
 		if (i > 0)

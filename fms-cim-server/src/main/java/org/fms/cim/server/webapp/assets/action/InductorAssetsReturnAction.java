@@ -45,7 +45,7 @@ public class InductorAssetsReturnAction  {
 
 		for(InductorAssetsDomain t : l) {
 			t.setDeptId(null);
-			t.setStatus((byte) 5);
+			t.setStatus("5");
 		}
 		
 		int i = inductorAssetsService.updateList(l);

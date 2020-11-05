@@ -38,7 +38,7 @@ public class InductorAssetsTestRecordServiceImpl implements IInductorAssetsTestR
 		if (iaur == 1) {
 			InductorAssetsDomain iad = new InductorAssetsDomain();
 			// iad.setId(e.getInductorAssetsId());
-			iad.setStatus((byte) 5);// 库存待装
+			iad.setStatus("5");// 库存待装
 			iaur = inductorAssetsDAO.update(iad);
 		}
 
@@ -82,7 +82,7 @@ public class InductorAssetsTestRecordServiceImpl implements IInductorAssetsTestR
 		InductorAssetsDomain tempIa = new InductorAssetsDomain();
 		if (iatr.getInductorAssetsID1() != null) {
 			tempIa.setId(iatr.getInductorAssetsID1());
-			tempIa.setStatus((byte) 2);
+			tempIa.setStatus("2");
 			if (inductorAssetsDAO.update(tempIa) < 1) {
 				httpResult.setMessage("资产状态更新失败");
 				return httpResult;
@@ -90,7 +90,7 @@ public class InductorAssetsTestRecordServiceImpl implements IInductorAssetsTestR
 		}
 		if (iatr.getInductorAssetsID2() != null) {
 			tempIa.setId(iatr.getInductorAssetsID1());
-			tempIa.setStatus((byte) 2);
+			tempIa.setStatus("2");
 			if (inductorAssetsDAO.update(tempIa) < 1) {
 				httpResult.setMessage("资产状态更新失败");
 				return httpResult;
@@ -98,7 +98,7 @@ public class InductorAssetsTestRecordServiceImpl implements IInductorAssetsTestR
 		}
 		if (iatr.getInductorAssetsID3() != null) {
 			tempIa.setId(iatr.getInductorAssetsID1());
-			tempIa.setStatus((byte) 2);
+			tempIa.setStatus("2");
 			if (inductorAssetsDAO.update(tempIa) < 1) {
 				httpResult.setMessage("资产状态更新失败");
 				return httpResult;

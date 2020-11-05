@@ -32,7 +32,7 @@ public class InductorAssetsUseRecordServiceImpl implements IInductorAssetsUseRec
 		if(iaur == 1) {
 			InductorAssetsDomain iad = new InductorAssetsDomain();
 			iad.setId(e.getInductorAssetsId());
-			iad.setStatus((byte) 6);//领出待装
+			iad.setStatus("6");//领出待装
 			iaur = inductorAssetsDAO.update(iad);
 		}
 		

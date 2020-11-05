@@ -506,7 +506,7 @@ public class BemServiceImpl implements IBemService {
 		for (InductorAssetsDomain ta : inductorAssetsList) {
 			isMatch = false;
 			tempInductorAssets.setInductorAssetsNo(ta.getInductorAssetsNo());
-			tempInductorAssets.setStatus((byte)1);
+			tempInductorAssets.setStatus("1");
 			List<InductorAssetsDomain> tl = inductorAssetsDAO.findByWhere(tempInductorAssets);
 			if(tl.size()==0) {//资产为空
 
@@ -543,7 +543,7 @@ public class BemServiceImpl implements IBemService {
 					return rmap;
 				}
 				//修改资产信息
-				ta.setStatus((byte)2);
+				ta.setStatus("2");
 				ta.setId(tl.get(0).getId());
 				int count = inductorAssetsDAO.update(ta);
 				if(count!=1) {

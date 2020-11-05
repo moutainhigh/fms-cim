@@ -104,13 +104,13 @@ public class InductorAssetsTestRecordAction  {
 		
 		for(int i = 0;i<count;i++) {
 			InductorAssetsDomain ti = inductorAssetsList.get(i);
-			if(ti.getStatus()!=0&&ti.getStatus()!=9&&ti.getStatus()!=23) {
+			if(ti.getStatus()!="0"&&ti.getStatus()!="9"&&ti.getStatus()!="23") {
 				//TODO 如果是在检中，将之前的报告返回到前台。
 				//TODO 如果选择的3个资产不是之前在一组的资产          怎么办。
 				rmap.put("message", "请确认资产状态为入库、拆回或待检测"); 
 				return rmap;
 			}
-			if(ti.getStatus()==27) {
+			if(ti.getStatus()=="27") {
 				rmap.put("message", "资产处于在检状态，请确认！出厂编号为"+ti.getMadeNo()); 
 				return rmap;
 			}

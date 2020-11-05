@@ -44,7 +44,7 @@ public class InductorAssetsScrapAction  {
 	public Object addInductorAssetsScrap(@RequestBody List<InductorAssetsDomain> l) {
 
 		for(InductorAssetsDomain t : l) {
-			t.setStatus((byte) 17);
+			t.setStatus("17");
 		}
 		
 		int i = inductorAssetsService.updateList(l);
