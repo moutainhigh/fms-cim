@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PTaskDetailDAO">
+    <select id="findByKey" parameterType="PTaskDetailDomain"
+            resultType="PTaskDetailDomain" useCache="true">
+        select ID,TASK_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_TASK_DETAIL
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PTaskDetailDomain"
+            resultType="PTaskDetailDomain" useCache="true">
+        select ID,TASK_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_TASK_DETAIL
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="taskId !=null">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="infopointType !=null">
+                and INFOPOINT_TYPE = #{infopointType}
+            </if>
+            <if test="dataId !=null">
+                and DATA_ID = #{dataId}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PTaskDetailDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_TASK_DETAIL
+			(ID,TASK_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{taskId},#{infopointType},#{dataId},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PTaskDetailDomain" flushCache="true">
+        update P_TASK_DETAIL
+        <set>
+            <if test="taskId !=null">
+                TASK_ID = #{taskId},
+            </if>
+            <if test="infopointType !=null">
+                INFOPOINT_TYPE = #{infopointType},
+            </if>
+            <if test="dataId !=null">
+                DATA_ID = #{dataId},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PTaskDetailDomain" flushCache="true">
+        delete from P_TASK_DETAIL
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+    <select id="findByTaskNoRel" parameterType="PWsdTaskdataRelDomain"
+            resultType="PWsdTaskdataRelDomain" useCache="true">
+        select p.*,t.ID as REL_ID,t.TASK_ID,t.WEIGHT as REL_WEIGHT from P_WSD_TASKDATA p
+        left join
+        P_TASK_DETAIL t
+        on p.ID =t.DATA_ID
+        <where>
+            <if test="protocolId !=null">
+                and p.PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="infopointType !=null">
+                and p.INFOPOINT_TYPE = #{infopointType}
+            </if>
+            <if test="infopointDatatype !=null">
+                and p.INFOPOINT_DATATYPE = #{infopointDatatype}
+            </if>
+            <if test="status !=null">
+                and p.STATUS = #{status}
+            </if>
+            <if test="taskID !=null">
+                and t.TASK_ID = #{taskID}
+            </if>
+        </where>
+        order by REL_WEIGHT
+    </select>
+    <select id="findByTaskRel" parameterType="PWsdTaskdataRelDomain"
+            resultType="PWsdTaskdataRelDomain" useCache="true">
+        select p.*,t.ID as REL_ID,t.TASK_ID,t.WEIGHT as REL_WEIGHT from P_TASK_DETAIL t
+        left join
+        P_WSD_TASKDATA p
+        on t.DATA_ID=p.ID
+        <where>
+            <if test="protocolId !=null">
+                and p.PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="infopointType !=null">
+                and p.INFOPOINT_TYPE = #{infopointType}
+            </if>
+            <if test="infopointDatatype !=null">
+                and p.INFOPOINT_DATATYPE = #{infopointDatatype}
+            </if>
+            <if test="status !=null">
+                and p.STATUS = #{status}
+            </if>
+            <if test="taskID !=null">
+                and t.TASK_ID != #{taskID}
+            </if>
+        </where>
+        order by WEIGHT
+    </select>
+</mapper>

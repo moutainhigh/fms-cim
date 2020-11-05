@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PTaskDAO">
+    <select id="findByKey" parameterType="PTaskDomain"
+            resultType="PTaskDomain" useCache="true">
+        select
+        ID,CODE,NAME,PROTOCOL_ID,TASK_ID,TASK_NO,PN_TYPE,OBJ_PROP,TASK_BEGINTIME,TASK_CYCLE,CYCLE_UNIT,DATA_DENSITY,FREEZE_TYPE,MAX_DATACYCLE,MAX_FAILNUM,REPEAT_CYCLE,PRIORITY,TASK_SRC,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_TASK
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PTaskDomain"
+            resultType="PTaskDomain" useCache="true">
+        select
+        ID,CODE,NAME,PROTOCOL_ID,TASK_ID,TASK_NO,PN_TYPE,OBJ_PROP,TASK_BEGINTIME,TASK_CYCLE,CYCLE_UNIT,DATA_DENSITY,FREEZE_TYPE,MAX_DATACYCLE,MAX_FAILNUM,REPEAT_CYCLE,PRIORITY,TASK_SRC,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_TASK
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="protocolId !=null">
+                and PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="taskId !=null">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="taskNo !=null">
+                and TASK_NO = #{taskNo}
+            </if>
+            <if test="pnType !=null">
+                and PN_TYPE = #{pnType}
+            </if>
+            <if test="objProp !=null">
+                and OBJ_PROP = #{objProp}
+            </if>
+            <if test="taskBegintime !=null">
+                and TASK_BEGINTIME = #{taskBegintime}
+            </if>
+            <if test="taskCycle !=null">
+                and TASK_CYCLE = #{taskCycle}
+            </if>
+            <if test="cycleUnit !=null">
+                and CYCLE_UNIT = #{cycleUnit}
+            </if>
+            <if test="dataDensity !=null">
+                and DATA_DENSITY = #{dataDensity}
+            </if>
+            <if test="freezeType !=null">
+                and FREEZE_TYPE = #{freezeType}
+            </if>
+            <if test="maxDatacycle !=null">
+                and MAX_DATACYCLE = #{maxDatacycle}
+            </if>
+            <if test="maxFailnum !=null">
+                and MAX_FAILNUM = #{maxFailnum}
+            </if>
+            <if test="repeatCycle !=null">
+                and REPEAT_CYCLE = #{repeatCycle}
+            </if>
+            <if test="priority !=null">
+                and PRIORITY = #{priority}
+            </if>
+            <if test="taskSrc !=null">
+                and TASK_SRC = #{taskSrc}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PTaskDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_TASK
+			(ID,CODE,NAME,PROTOCOL_ID,TASK_ID,TASK_NO,PN_TYPE,OBJ_PROP,TASK_BEGINTIME,TASK_CYCLE,CYCLE_UNIT,DATA_DENSITY,FREEZE_TYPE,MAX_DATACYCLE,MAX_FAILNUM,REPEAT_CYCLE,PRIORITY,TASK_SRC,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{protocolId},#{taskId},#{taskNo},#{pnType},#{objProp},#{taskBegintime},#{taskCycle},#{cycleUnit},#{dataDensity},#{freezeType},#{maxDatacycle},#{maxFailnum},#{repeatCycle},#{priority},#{taskSrc},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PTaskDomain" flushCache="true">
+        update P_TASK
+        <set>
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+            <if test="taskId !=null">
+                TASK_ID = #{taskId},
+            </if>
+            <if test="taskNo !=null">
+                TASK_NO = #{taskNo},
+            </if>
+            <if test="pnType !=null">
+                PN_TYPE = #{pnType},
+            </if>
+            <if test="objProp !=null">
+                OBJ_PROP = #{objProp},
+            </if>
+            <if test="taskBegintime !=null">
+                TASK_BEGINTIME = #{taskBegintime},
+            </if>
+            <if test="taskCycle !=null">
+                TASK_CYCLE = #{taskCycle},
+            </if>
+            <if test="cycleUnit !=null">
+                CYCLE_UNIT = #{cycleUnit},
+            </if>
+            <if test="dataDensity !=null">
+                DATA_DENSITY = #{dataDensity},
+            </if>
+            <if test="freezeType !=null">
+                FREEZE_TYPE = #{freezeType},
+            </if>
+            <if test="maxDatacycle !=null">
+                MAX_DATACYCLE = #{maxDatacycle},
+            </if>
+            <if test="maxFailnum !=null">
+                MAX_FAILNUM = #{maxFailnum},
+            </if>
+            <if test="repeatCycle !=null">
+                REPEAT_CYCLE = #{repeatCycle},
+            </if>
+            <if test="priority !=null">
+                PRIORITY = #{priority},
+            </if>
+            <if test="taskSrc !=null">
+                TASK_SRC = #{taskSrc},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PTaskDomain" flushCache="true">
+        delete from P_TASK
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+    <select id="findByTaskTpl" parameterType="PTaskRelDomain"
+            resultType="PTaskRelDomain" useCache="true">
+        select p.*,t.ID as REL_ID,t.TPL_ID from P_TASK p
+        left join
+        P_TASK_TPL_DETAIL t
+        on p.ID=t.TASK_ID
+        <where>
+            <if test="id !=null">
+                and p.ID = #{id}
+            </if>
+            <if test="code !=null">
+                and p.CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and p.NAME = #{name}
+            </if>
+            <if test="protocolId !=null">
+                and p.PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="taskId !=null">
+                and p.TASK_ID = #{taskId}
+            </if>
+            <if test="taskNo !=null">
+                and p.TASK_NO = #{taskNo}
+            </if>
+            <if test="pnType !=null">
+                and p.PN_TYPE = #{pnType}
+            </if>
+            <if test="objProp !=null">
+                and p.OBJ_PROP = #{objProp}
+            </if>
+            <if test="taskBegintime !=null">
+                and p.TASK_BEGINTIME = #{taskBegintime}
+            </if>
+            <if test="taskCycle !=null">
+                and p.TASK_CYCLE = #{taskCycle}
+            </if>
+            <if test="cycleUnit !=null">
+                and p.CYCLE_UNIT = #{cycleUnit}
+            </if>
+            <if test="dataDensity !=null">
+                and p.DATA_DENSITY = #{dataDensity}
+            </if>
+            <if test="freezeType !=null">
+                and p.FREEZE_TYPE = #{freezeType}
+            </if>
+            <if test="maxDatacycle !=null">
+                and p.MAX_DATACYCLE = #{maxDatacycle}
+            </if>
+            <if test="maxFailnum !=null">
+                and p.MAX_FAILNUM = #{maxFailnum}
+            </if>
+            <if test="repeatCycle !=null">
+                and p.REPEAT_CYCLE = #{repeatCycle}
+            </if>
+            <if test="priority !=null">
+                and p.PRIORITY = #{priority}
+            </if>
+            <if test="taskSrc !=null">
+                and p.TASK_SRC = #{taskSrc}
+            </if>
+            <if test="status !=null">
+                and p.STATUS = #{status}
+            </if>
+            <if test="weight !=null">
+                and p.WEIGHT = #{weight}
+            </if>
+            <if test="relID !=null">
+                and t.REL_ID = #{relID}
+            </if>
+            <if test="tplID !=null">
+                and t.TPL_ID = #{tplID}
+            </if>
+        </where>
+    </select>
+</mapper>

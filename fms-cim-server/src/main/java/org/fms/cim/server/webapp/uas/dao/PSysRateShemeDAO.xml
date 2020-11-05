@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PSysRateShemeDAO">
+    <select id="findByKey" parameterType="PSysRateShemeDomain"
+            resultType="PSysRateShemeDomain" useCache="true">
+        select ID,NAME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_RATE_SHEME
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PSysRateShemeDomain"
+            resultType="PSysRateShemeDomain" useCache="true">
+        select ID,NAME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_RATE_SHEME
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PSysRateShemeDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_SYS_RATE_SHEME
+			(ID,NAME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{name},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PSysRateShemeDomain" flushCache="true">
+        update P_SYS_RATE_SHEME
+        <set>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PSysRateShemeDomain" flushCache="true">
+        delete from P_SYS_RATE_SHEME
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

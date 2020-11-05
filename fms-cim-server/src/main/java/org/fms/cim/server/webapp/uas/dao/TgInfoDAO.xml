@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.TgInfoDAO">
+    <select id="findByKey" parameterType="TgInfoDomain"
+            resultType="TgInfoDomain" useCache="true">
+        select
+        ID,TG_NO,TG_NAME,TG_TYPE,ADDRESS,CREATE_DATE,REMARK,STATUS,COMMON_TRANS_CLASS,BUSINESS_PLACE_CODE,TG_CAP,CONS_ID
+        from TG_INFO
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="TgInfoDomain"
+            resultType="TgInfoDomain" useCache="true">
+        select
+        ID,TG_NO,TG_NAME,TG_TYPE,ADDRESS,CREATE_DATE,REMARK,STATUS,COMMON_TRANS_CLASS,BUSINESS_PLACE_CODE,TG_CAP,CONS_ID
+        from TG_INFO
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="tgNo !=null">
+                and TG_NO = #{tgNo}
+            </if>
+            <if test="tgName !=null">
+                and TG_NAME = #{tgName}
+            </if>
+            <if test="tgType !=null">
+                and TG_TYPE = #{tgType}
+            </if>
+            <if test="address !=null">
+                and ADDRESS = #{address}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="commonTransClass !=null">
+                and COMMON_TRANS_CLASS = #{commonTransClass}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="tgCap !=null">
+                and TG_CAP = #{tgCap}
+            </if>
+            <if test="consId !=null">
+                and CONS_ID = #{consId}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="TgInfoDomain" flushCache="true" useGeneratedKeys="true">
+		insert into TG_INFO
+			(ID,TG_NO,TG_NAME,TG_TYPE,ADDRESS,CREATE_DATE,REMARK,STATUS,COMMON_TRANS_CLASS,BUSINESS_PLACE_CODE,TG_CAP,CONS_ID)
+			VALUES(#{id},#{tgNo},#{tgName},#{tgType},#{address},#{createDate},#{remark},#{status},#{commonTransClass},#{businessPlaceCode},#{tgCap},#{consId})
+
+	</insert>
+    <update id="update" parameterType="TgInfoDomain" flushCache="true">
+        update TG_INFO
+        <set>
+            <if test="tgNo !=null">
+                TG_NO = #{tgNo},
+            </if>
+            <if test="tgName !=null">
+                TG_NAME = #{tgName},
+            </if>
+            <if test="tgType !=null">
+                TG_TYPE = #{tgType},
+            </if>
+            <if test="address !=null">
+                ADDRESS = #{address},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="commonTransClass !=null">
+                COMMON_TRANS_CLASS = #{commonTransClass},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="tgCap !=null">
+                TG_CAP = #{tgCap},
+            </if>
+            <if test="consId !=null">
+                CONS_ID = #{consId},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="TgInfoDomain" flushCache="true">
+        delete from TG_INFO
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

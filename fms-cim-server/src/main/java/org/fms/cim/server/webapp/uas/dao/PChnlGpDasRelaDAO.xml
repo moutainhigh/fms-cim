@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PChnlGpDasRelaDAO">
+    <select id="findByKey" parameterType="PChnlGpDasRelaDomain"
+            resultType="PChnlGpDasRelaDomain" useCache="true">
+        select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHNL_GP_DAS_RELA
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PChnlGpDasRelaDomain"
+            resultType="PChnlGpDasRelaDomain" useCache="true">
+        select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHNL_GP_DAS_RELA
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="chnlGroupId !=null">
+                and CHNL_GROUP_ID = #{chnlGroupId}
+            </if>
+            <if test="dasId !=null">
+                and DAS_ID = #{dasId}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PChnlGpDasRelaDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_CHNL_GP_DAS_RELA
+			(ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{chnlGroupId},#{dasId},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PChnlGpDasRelaDomain" flushCache="true">
+        update P_CHNL_GP_DAS_RELA
+        <set>
+            <if test="chnlGroupId !=null">
+                CHNL_GROUP_ID = #{chnlGroupId},
+            </if>
+            <if test="dasId !=null">
+                DAS_ID = #{dasId},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PChnlGpDasRelaDomain" flushCache="true">
+        delete from P_CHNL_GP_DAS_RELA
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

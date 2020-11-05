@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.RCpDAO">
+    <select id="findByKey" parameterType="RCpDomain"
+            resultType="RCpDomain" useCache="true">
+        select
+        ID,CODE,NAME,CP_TYPE_CODE,STATUS_CODE,CP_ADDR,GPS_LONGITUDE,GPS_LATITUDE,BUSINESS_PLACE_CODE,TPL_ID,TERMINAL_ID,RELA_OBJ_TYPE,RELA_OBJ_ID,C_FLAG,TERMINAL_ADDR,PROTOCOL_ID,CTRL_HOSTID,MASTER_CHNL_GROUP,MASTER_IP_PORT,MASTER_TEL,SPARE_CHNL_GROUP,SPARE_IP_PORT,SPARE_TEL,GPRS_CODE,HEARTBEAT_CYCLE,ALG_NO,ALG_KEY,AREA_CODE,MASTERID,GUID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_CP
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="RCpDomain"
+            resultType="RCpDomain" useCache="true">
+        select
+        ID,CODE,NAME,CP_TYPE_CODE,STATUS_CODE,CP_ADDR,GPS_LONGITUDE,GPS_LATITUDE,BUSINESS_PLACE_CODE,TPL_ID,TERMINAL_ID,RELA_OBJ_TYPE,RELA_OBJ_ID,C_FLAG,TERMINAL_ADDR,PROTOCOL_ID,CTRL_HOSTID,MASTER_CHNL_GROUP,MASTER_IP_PORT,MASTER_TEL,SPARE_CHNL_GROUP,SPARE_IP_PORT,SPARE_TEL,GPRS_CODE,HEARTBEAT_CYCLE,ALG_NO,ALG_KEY,AREA_CODE,MASTERID,GUID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_CP
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="cpTypeCode !=null">
+                and CP_TYPE_CODE = #{cpTypeCode}
+            </if>
+            <if test="statusCode !=null">
+                and STATUS_CODE = #{statusCode}
+            </if>
+            <if test="cpAddr !=null">
+                and CP_ADDR = #{cpAddr}
+            </if>
+            <if test="gpsLongitude !=null">
+                and GPS_LONGITUDE = #{gpsLongitude}
+            </if>
+            <if test="gpsLatitude !=null">
+                and GPS_LATITUDE = #{gpsLatitude}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="tplId !=null">
+                and TPL_ID = #{tplId}
+            </if>
+            <if test="terminalId !=null">
+                and TERMINAL_ID = #{terminalId}
+            </if>
+            <if test="relaObjType !=null">
+                and RELA_OBJ_TYPE = #{relaObjType}
+            </if>
+            <if test="relaObjId !=null">
+                and RELA_OBJ_ID = #{relaObjId}
+            </if>
+            <if test="cFlag !=null">
+                and C_FLAG = #{cFlag}
+            </if>
+            <if test="terminalAddr !=null">
+                and TERMINAL_ADDR = #{terminalAddr}
+            </if>
+            <if test="protocolId !=null">
+                and PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="ctrlHostid !=null">
+                and CTRL_HOSTID = #{ctrlHostid}
+            </if>
+            <if test="masterChnlGroup !=null">
+                and MASTER_CHNL_GROUP = #{masterChnlGroup}
+            </if>
+            <if test="masterIpPort !=null">
+                and MASTER_IP_PORT = #{masterIpPort}
+            </if>
+            <if test="masterTel !=null">
+                and MASTER_TEL = #{masterTel}
+            </if>
+            <if test="spareChnlGroup !=null">
+                and SPARE_CHNL_GROUP = #{spareChnlGroup}
+            </if>
+            <if test="spareIpPort !=null">
+                and SPARE_IP_PORT = #{spareIpPort}
+            </if>
+            <if test="spareTel !=null">
+                and SPARE_TEL = #{spareTel}
+            </if>
+            <if test="gprsCode !=null">
+                and GPRS_CODE = #{gprsCode}
+            </if>
+            <if test="heartbeatCycle !=null">
+                and HEARTBEAT_CYCLE = #{heartbeatCycle}
+            </if>
+            <if test="algNo !=null">
+                and ALG_NO = #{algNo}
+            </if>
+            <if test="algKey !=null">
+                and ALG_KEY = #{algKey}
+            </if>
+            <if test="areaCode !=null">
+                and AREA_CODE = #{areaCode}
+            </if>
+            <if test="masterid !=null">
+                and MASTERID = #{masterid}
+            </if>
+            <if test="guid !=null">
+                and GUID = #{guid}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="RCpDomain" flushCache="true" useGeneratedKeys="true">
+		insert into R_CP
+			(ID,CODE,NAME,CP_TYPE_CODE,STATUS_CODE,CP_ADDR,GPS_LONGITUDE,GPS_LATITUDE,BUSINESS_PLACE_CODE,TPL_ID,TERMINAL_ID,RELA_OBJ_TYPE,RELA_OBJ_ID,C_FLAG,TERMINAL_ADDR,PROTOCOL_ID,CTRL_HOSTID,MASTER_CHNL_GROUP,MASTER_IP_PORT,MASTER_TEL,SPARE_CHNL_GROUP,SPARE_IP_PORT,SPARE_TEL,GPRS_CODE,HEARTBEAT_CYCLE,ALG_NO,ALG_KEY,AREA_CODE,MASTERID,GUID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{cpTypeCode},#{statusCode},#{cpAddr},#{gpsLongitude},#{gpsLatitude},#{businessPlaceCode},#{tplId},#{terminalId},#{relaObjType},#{relaObjId},#{cFlag},#{terminalAddr},#{protocolId},#{ctrlHostid},#{masterChnlGroup},#{masterIpPort},#{masterTel},#{spareChnlGroup},#{spareIpPort},#{spareTel},#{gprsCode},#{heartbeatCycle},#{algNo},#{algKey},#{areaCode},#{masterid},#{guid},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="RCpDomain" flushCache="true">
+        update R_CP
+        <set>
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="cpTypeCode !=null">
+                CP_TYPE_CODE = #{cpTypeCode},
+            </if>
+            <if test="statusCode !=null">
+                STATUS_CODE = #{statusCode},
+            </if>
+            <if test="cpAddr !=null">
+                CP_ADDR = #{cpAddr},
+            </if>
+            <if test="gpsLongitude !=null">
+                GPS_LONGITUDE = #{gpsLongitude},
+            </if>
+            <if test="gpsLatitude !=null">
+                GPS_LATITUDE = #{gpsLatitude},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="tplId !=null">
+                TPL_ID = #{tplId},
+            </if>
+            <if test="terminalId !=null">
+                TERMINAL_ID = #{terminalId},
+            </if>
+            <if test="relaObjType !=null">
+                RELA_OBJ_TYPE = #{relaObjType},
+            </if>
+            <if test="relaObjId !=null">
+                RELA_OBJ_ID = #{relaObjId},
+            </if>
+            <if test="cFlag !=null">
+                C_FLAG = #{cFlag},
+            </if>
+            <if test="terminalAddr !=null">
+                TERMINAL_ADDR = #{terminalAddr},
+            </if>
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+            <if test="ctrlHostid !=null">
+                CTRL_HOSTID = #{ctrlHostid},
+            </if>
+            <if test="masterChnlGroup !=null">
+                MASTER_CHNL_GROUP = #{masterChnlGroup},
+            </if>
+            <if test="masterIpPort !=null">
+                MASTER_IP_PORT = #{masterIpPort},
+            </if>
+            <if test="masterTel !=null">
+                MASTER_TEL = #{masterTel},
+            </if>
+            <if test="spareChnlGroup !=null">
+                SPARE_CHNL_GROUP = #{spareChnlGroup},
+            </if>
+            <if test="spareIpPort !=null">
+                SPARE_IP_PORT = #{spareIpPort},
+            </if>
+            <if test="spareTel !=null">
+                SPARE_TEL = #{spareTel},
+            </if>
+            <if test="gprsCode !=null">
+                GPRS_CODE = #{gprsCode},
+            </if>
+            <if test="heartbeatCycle !=null">
+                HEARTBEAT_CYCLE = #{heartbeatCycle},
+            </if>
+            <if test="algNo !=null">
+                ALG_NO = #{algNo},
+            </if>
+            <if test="algKey !=null">
+                ALG_KEY = #{algKey},
+            </if>
+            <if test="areaCode !=null">
+                AREA_CODE = #{areaCode},
+            </if>
+            <if test="masterid !=null">
+                MASTERID = #{masterid},
+            </if>
+            <if test="guid !=null">
+                GUID = #{guid},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="RCpDomain" flushCache="true">
+        delete from R_CP
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PChannelDAO">
+    <select id="findByKey" parameterType="PChannelDomain"
+            resultType="PChannelDomain" useCache="true">
+        select
+        ID,CODE,NAME,CHNL_GROUP_ID,DEVICE_ADDR1,DEVICE_ADDR2,CTRLHOST_ID,BAUD,DATABIT,STOPBIT,CHECKBIT,INITSTR,PROTOCOL_ID,NORMALOPEN,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHANNEL
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PChannelDomain"
+            resultType="PChannelDomain" useCache="true">
+        select
+        ID,CODE,NAME,CHNL_GROUP_ID,DEVICE_ADDR1,DEVICE_ADDR2,CTRLHOST_ID,BAUD,DATABIT,STOPBIT,CHECKBIT,INITSTR,PROTOCOL_ID,NORMALOPEN,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHANNEL
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="chnlGroupId !=null">
+                and CHNL_GROUP_ID = #{chnlGroupId}
+            </if>
+            <if test="deviceAddr1 !=null">
+                and DEVICE_ADDR1 = #{deviceAddr1}
+            </if>
+            <if test="deviceAddr2 !=null">
+                and DEVICE_ADDR2 = #{deviceAddr2}
+            </if>
+            <if test="ctrlhostId !=null">
+                and CTRLHOST_ID = #{ctrlhostId}
+            </if>
+            <if test="baud !=null">
+                and BAUD = #{baud}
+            </if>
+            <if test="databit !=null">
+                and DATABIT = #{databit}
+            </if>
+            <if test="stopbit !=null">
+                and STOPBIT = #{stopbit}
+            </if>
+            <if test="checkbit !=null">
+                and CHECKBIT = #{checkbit}
+            </if>
+            <if test="initstr !=null">
+                and INITSTR = #{initstr}
+            </if>
+            <if test="protocolId !=null">
+                and PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="normalopen !=null">
+                and NORMALOPEN = #{normalopen}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PChannelDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_CHANNEL
+			(ID,CODE,NAME,CHNL_GROUP_ID,DEVICE_ADDR1,DEVICE_ADDR2,CTRLHOST_ID,BAUD,DATABIT,STOPBIT,CHECKBIT,INITSTR,PROTOCOL_ID,NORMALOPEN,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{chnlGroupId},#{deviceAddr1},#{deviceAddr2},#{ctrlhostId},#{baud},#{databit},#{stopbit},#{checkbit},#{initstr},#{protocolId},#{normalopen},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PChannelDomain" flushCache="true">
+        update P_CHANNEL
+        <set>
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="chnlGroupId !=null">
+                CHNL_GROUP_ID = #{chnlGroupId},
+            </if>
+            <if test="deviceAddr1 !=null">
+                DEVICE_ADDR1 = #{deviceAddr1},
+            </if>
+            <if test="deviceAddr2 !=null">
+                DEVICE_ADDR2 = #{deviceAddr2},
+            </if>
+            <if test="ctrlhostId !=null">
+                CTRLHOST_ID = #{ctrlhostId},
+            </if>
+            <if test="baud !=null">
+                BAUD = #{baud},
+            </if>
+            <if test="databit !=null">
+                DATABIT = #{databit},
+            </if>
+            <if test="stopbit !=null">
+                STOPBIT = #{stopbit},
+            </if>
+            <if test="checkbit !=null">
+                CHECKBIT = #{checkbit},
+            </if>
+            <if test="initstr !=null">
+                INITSTR = #{initstr},
+            </if>
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+            <if test="normalopen !=null">
+                NORMALOPEN = #{normalopen},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PChannelDomain" flushCache="true">
+        delete from P_CHANNEL
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

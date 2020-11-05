@@ -2,11 +2,7 @@ package org.fms.cim.server.webapp.assets.action;
 
 import java.io.IOException;
 
-import org.fms.cim.common.domain.archives.ABusDomain;
-import org.fms.cim.common.domain.assets.ATmnlDomain;
 import org.fms.cim.common.domain.assets.PSimCardDomain;
-import org.fms.cim.common.service.IAbusService;
-import org.fms.cim.common.service.IAtmnlService;
 import org.fms.cim.common.service.IPsimCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

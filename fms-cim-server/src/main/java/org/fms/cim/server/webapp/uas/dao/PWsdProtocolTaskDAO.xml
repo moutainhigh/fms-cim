@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PWsdProtocolTaskDAO">
+    <select id="findByKey" parameterType="PWsdProtocolTaskDomain"
+            resultType="PWsdProtocolTaskDomain" useCache="true">
+        select
+        ID,CODE,NAME,PROTOCOL_ID,STATUS,HIS_FLAG,NOW_FLAG,INFOADDR_FLAG,GROUP_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_WSD_PROTOCOL_TASK
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PWsdProtocolTaskDomain"
+            resultType="PWsdProtocolTaskDomain" useCache="true">
+        select
+        ID,CODE,NAME,PROTOCOL_ID,STATUS,HIS_FLAG,NOW_FLAG,INFOADDR_FLAG,GROUP_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_WSD_PROTOCOL_TASK
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="protocolId !=null">
+                and PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="hisFlag !=null">
+                and HIS_FLAG = #{hisFlag}
+            </if>
+            <if test="nowFlag !=null">
+                and NOW_FLAG = #{nowFlag}
+            </if>
+            <if test="infoaddrFlag !=null">
+                and INFOADDR_FLAG = #{infoaddrFlag}
+            </if>
+            <if test="groupId !=null">
+                and GROUP_ID = #{groupId}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PWsdProtocolTaskDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_WSD_PROTOCOL_TASK
+			(ID,CODE,NAME,PROTOCOL_ID,STATUS,HIS_FLAG,NOW_FLAG,INFOADDR_FLAG,GROUP_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{protocolId},#{status},#{hisFlag},#{nowFlag},#{infoaddrFlag},#{groupId},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PWsdProtocolTaskDomain" flushCache="true">
+        update P_WSD_PROTOCOL_TASK
+        <set>
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="hisFlag !=null">
+                HIS_FLAG = #{hisFlag},
+            </if>
+            <if test="nowFlag !=null">
+                NOW_FLAG = #{nowFlag},
+            </if>
+            <if test="infoaddrFlag !=null">
+                INFOADDR_FLAG = #{infoaddrFlag},
+            </if>
+            <if test="groupId !=null">
+                GROUP_ID = #{groupId},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PWsdProtocolTaskDomain" flushCache="true">
+        delete from P_WSD_PROTOCOL_TASK
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

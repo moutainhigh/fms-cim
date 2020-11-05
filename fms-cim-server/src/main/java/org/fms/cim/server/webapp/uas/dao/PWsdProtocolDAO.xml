@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PWsdProtocolDAO">
+    <select id="findByKey" parameterType="PWsdProtocolDomain"
+            resultType="PWsdProtocolDomain" useCache="true">
+        select
+        ID,CODE,NAME,STATUS,SUBS_FLAG,DIST_FLAG,LOW_FLAG,BEGIN_SN,PROTOCOL_TYPE,BYTE_NUM_LINKADDR,BYTE_NUM_COMMADDR,BYTE_NUM_TRANS_REAS,BYTE_NUM_INFOADDR,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_WSD_PROTOCOL
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PWsdProtocolDomain"
+            resultType="PWsdProtocolDomain" useCache="true">
+        select
+        ID,CODE,NAME,STATUS,SUBS_FLAG,DIST_FLAG,LOW_FLAG,BEGIN_SN,PROTOCOL_TYPE,BYTE_NUM_LINKADDR,BYTE_NUM_COMMADDR,BYTE_NUM_TRANS_REAS,BYTE_NUM_INFOADDR,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_WSD_PROTOCOL
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="subsFlag !=null">
+                and SUBS_FLAG = #{subsFlag}
+            </if>
+            <if test="distFlag !=null">
+                and DIST_FLAG = #{distFlag}
+            </if>
+            <if test="lowFlag !=null">
+                and LOW_FLAG = #{lowFlag}
+            </if>
+            <if test="beginSn !=null">
+                and BEGIN_SN = #{beginSn}
+            </if>
+            <if test="protocolType !=null">
+                and PROTOCOL_TYPE = #{protocolType}
+            </if>
+            <if test="byteNumLinkaddr !=null">
+                and BYTE_NUM_LINKADDR = #{byteNumLinkaddr}
+            </if>
+            <if test="byteNumCommaddr !=null">
+                and BYTE_NUM_COMMADDR = #{byteNumCommaddr}
+            </if>
+            <if test="byteNumTransReas !=null">
+                and BYTE_NUM_TRANS_REAS = #{byteNumTransReas}
+            </if>
+            <if test="byteNumInfoaddr !=null">
+                and BYTE_NUM_INFOADDR = #{byteNumInfoaddr}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PWsdProtocolDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_WSD_PROTOCOL
+			(ID,CODE,NAME,STATUS,SUBS_FLAG,DIST_FLAG,LOW_FLAG,BEGIN_SN,PROTOCOL_TYPE,BYTE_NUM_LINKADDR,BYTE_NUM_COMMADDR,BYTE_NUM_TRANS_REAS,BYTE_NUM_INFOADDR,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{status},#{subsFlag},#{distFlag},#{lowFlag},#{beginSn},#{protocolType},#{byteNumLinkaddr},#{byteNumCommaddr},#{byteNumTransReas},#{byteNumInfoaddr},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PWsdProtocolDomain" flushCache="true">
+        update P_WSD_PROTOCOL
+        <set>
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="subsFlag !=null">
+                SUBS_FLAG = #{subsFlag},
+            </if>
+            <if test="distFlag !=null">
+                DIST_FLAG = #{distFlag},
+            </if>
+            <if test="lowFlag !=null">
+                LOW_FLAG = #{lowFlag},
+            </if>
+            <if test="beginSn !=null">
+                BEGIN_SN = #{beginSn},
+            </if>
+            <if test="protocolType !=null">
+                PROTOCOL_TYPE = #{protocolType},
+            </if>
+            <if test="byteNumLinkaddr !=null">
+                BYTE_NUM_LINKADDR = #{byteNumLinkaddr},
+            </if>
+            <if test="byteNumCommaddr !=null">
+                BYTE_NUM_COMMADDR = #{byteNumCommaddr},
+            </if>
+            <if test="byteNumTransReas !=null">
+                BYTE_NUM_TRANS_REAS = #{byteNumTransReas},
+            </if>
+            <if test="byteNumInfoaddr !=null">
+                BYTE_NUM_INFOADDR = #{byteNumInfoaddr},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PWsdProtocolDomain" flushCache="true">
+        delete from P_WSD_PROTOCOL
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

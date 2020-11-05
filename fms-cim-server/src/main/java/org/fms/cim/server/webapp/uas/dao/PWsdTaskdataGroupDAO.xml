@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PWsdTaskdataGroupDAO">
+    <select id="findByKey" parameterType="PWsdTaskdataGroupDomain"
+            resultType="PWsdTaskdataGroupDomain" useCache="true">
+        select
+        ID,PROTOCOL_ID,TASK_ID,GROUP_ID,NAME,STATUS,INFOADDR_BEGIN,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_WSD_TASKDATA_GROUP
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PWsdTaskdataGroupDomain"
+            resultType="PWsdTaskdataGroupDomain" useCache="true">
+        select
+        ID,PROTOCOL_ID,TASK_ID,GROUP_ID,NAME,STATUS,INFOADDR_BEGIN,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_WSD_TASKDATA_GROUP
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="protocolId !=null">
+                and PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="taskId !=null">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="groupId !=null">
+                and GROUP_ID = #{groupId}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="infoaddrBegin !=null">
+                and INFOADDR_BEGIN = #{infoaddrBegin}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PWsdTaskdataGroupDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_WSD_TASKDATA_GROUP
+			(ID,PROTOCOL_ID,TASK_ID,GROUP_ID,NAME,STATUS,INFOADDR_BEGIN,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{protocolId},#{taskId},#{groupId},#{name},#{status},#{infoaddrBegin},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PWsdTaskdataGroupDomain" flushCache="true">
+        update P_WSD_TASKDATA_GROUP
+        <set>
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+            <if test="taskId !=null">
+                TASK_ID = #{taskId},
+            </if>
+            <if test="groupId !=null">
+                GROUP_ID = #{groupId},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="infoaddrBegin !=null">
+                INFOADDR_BEGIN = #{infoaddrBegin},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PWsdTaskdataGroupDomain" flushCache="true">
+        delete from P_WSD_TASKDATA_GROUP
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

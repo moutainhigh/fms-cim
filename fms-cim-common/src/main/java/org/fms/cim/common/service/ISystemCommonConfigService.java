@@ -1,15 +1,31 @@
+
 /**
- *    Auth:riozenc
- *    Date:2019年3月8日 下午3:38:03
- *    Title:com.riozenc.cim.webapp.service.ICustomerService.java
+ * 下拉表 -迟子曰改
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.service.ISystemCommonConfigService.java
  **/
 package org.fms.cim.common.service;
 
-import org.fms.cim.common.domain.archives.SystemCommonConfigDomain;
+import java.util.List;
 
-import com.riozenc.titanTool.spring.webapp.service.BaseService;
+import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 
-public interface ISystemCommonConfigService extends BaseService<SystemCommonConfigDomain> {
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 
-    public SystemCommonConfigDomain findByKeyValue(String type, String key);
+public interface ISystemCommonConfigService {
+
+    public int insert(SystemCommonConfigVO systemCommonConfigVO);
+
+    public int update(SystemCommonConfigVO systemCommonConfigVO);
+
+    public int delete(SystemCommonConfigVO systemCommonConfigVO);
+
+    public HttpResult deleteList(List<SystemCommonConfigVO> deleteList) throws Exception;
+
+    public SystemCommonConfigVO findByKey(SystemCommonConfigVO systemCommonConfigVO);
+
+    public List<SystemCommonConfigVO> findByWhere(SystemCommonConfigVO systemCommonConfigVO);
+    
+    public SystemCommonConfigVO findByKeyValue(String type, String key);
 }

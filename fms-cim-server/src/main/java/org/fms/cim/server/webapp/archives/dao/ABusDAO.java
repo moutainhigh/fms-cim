@@ -5,6 +5,7 @@ import java.util.List;
 import org.fms.cim.common.domain.archives.ABusDomain;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
+import com.riozenc.titanTool.annotation.ReadWriteSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
@@ -38,6 +39,7 @@ public class ABusDAO extends AbstractTransactionDAOSupport implements BaseDAO<AB
 
 	@Override
 	@PaginationSupport
+	@ReadWriteSupport
 	public List<ABusDomain> findByWhere(ABusDomain t) {
 		// TODO Auto-generated method stub
 		return getPersistanceManager().find(getNamespace() + ".findByWhere", t);

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PSysNodeDAO">
+    <select id="findByKey" parameterType="PSysNodeDomain"
+            resultType="PSysNodeDomain" useCache="true">
+        select
+        ID,CODE,NAME,ALIAS,STATUS,TYPE,WHEREIN,NETA,NETB,NETD,NETE,DACTRL_FLAG,DA_FLAG,CALCCTRL_FLAG,CALC_FLAG,COMPORT1,COMPORT2,HB_PORT1,HB_PORT2,MQ_FLAG,WEB_FLAG,EVENT_FLAG,DB_FLAG,REMARK,DA_GROUP,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_NODE
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PSysNodeDomain"
+            resultType="PSysNodeDomain" useCache="true">
+        select
+        ID,CODE,NAME,ALIAS,STATUS,TYPE,WHEREIN,NETA,NETB,NETD,NETE,DACTRL_FLAG,DA_FLAG,CALCCTRL_FLAG,CALC_FLAG,COMPORT1,COMPORT2,HB_PORT1,HB_PORT2,MQ_FLAG,WEB_FLAG,EVENT_FLAG,DB_FLAG,REMARK,DA_GROUP,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_NODE
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="code !=null">
+                and CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="alias !=null">
+                and ALIAS = #{alias}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="type !=null">
+                and TYPE = #{type}
+            </if>
+            <if test="wherein !=null">
+                and WHEREIN = #{wherein}
+            </if>
+            <if test="neta !=null">
+                and NETA = #{neta}
+            </if>
+            <if test="netb !=null">
+                and NETB = #{netb}
+            </if>
+            <if test="netd !=null">
+                and NETD = #{netd}
+            </if>
+            <if test="nete !=null">
+                and NETE = #{nete}
+            </if>
+            <if test="dactrlFlag !=null">
+                and DACTRL_FLAG = #{dactrlFlag}
+            </if>
+            <if test="daFlag !=null">
+                and DA_FLAG = #{daFlag}
+            </if>
+            <if test="calcctrlFlag !=null">
+                and CALCCTRL_FLAG = #{calcctrlFlag}
+            </if>
+            <if test="calcFlag !=null">
+                and CALC_FLAG = #{calcFlag}
+            </if>
+            <if test="comport1 !=null">
+                and COMPORT1 = #{comport1}
+            </if>
+            <if test="comport2 !=null">
+                and COMPORT2 = #{comport2}
+            </if>
+            <if test="hbPort1 !=null">
+                and HB_PORT1 = #{hbPort1}
+            </if>
+            <if test="hbPort2 !=null">
+                and HB_PORT2 = #{hbPort2}
+            </if>
+            <if test="mqFlag !=null">
+                and MQ_FLAG = #{mqFlag}
+            </if>
+            <if test="webFlag !=null">
+                and WEB_FLAG = #{webFlag}
+            </if>
+            <if test="eventFlag !=null">
+                and EVENT_FLAG = #{eventFlag}
+            </if>
+            <if test="dbFlag !=null">
+                and DB_FLAG = #{dbFlag}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="daGroup !=null">
+                and DA_GROUP = #{daGroup}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PSysNodeDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_SYS_NODE
+			(ID,CODE,NAME,ALIAS,STATUS,TYPE,WHEREIN,NETA,NETB,NETD,NETE,DACTRL_FLAG,DA_FLAG,CALCCTRL_FLAG,CALC_FLAG,COMPORT1,COMPORT2,HB_PORT1,HB_PORT2,MQ_FLAG,WEB_FLAG,EVENT_FLAG,DB_FLAG,REMARK,DA_GROUP,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{alias},#{status},#{type},#{wherein},#{neta},#{netb},#{netd},#{nete},#{dactrlFlag},#{daFlag},#{calcctrlFlag},#{calcFlag},#{comport1},#{comport2},#{hbPort1},#{hbPort2},#{mqFlag},#{webFlag},#{eventFlag},#{dbFlag},#{remark},#{daGroup},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PSysNodeDomain" flushCache="true">
+        update P_SYS_NODE
+        <set>
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="alias !=null">
+                ALIAS = #{alias},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="type !=null">
+                TYPE = #{type},
+            </if>
+            <if test="wherein !=null">
+                WHEREIN = #{wherein},
+            </if>
+            <if test="neta !=null">
+                NETA = #{neta},
+            </if>
+            <if test="netb !=null">
+                NETB = #{netb},
+            </if>
+            <if test="netd !=null">
+                NETD = #{netd},
+            </if>
+            <if test="nete !=null">
+                NETE = #{nete},
+            </if>
+            <if test="dactrlFlag !=null">
+                DACTRL_FLAG = #{dactrlFlag},
+            </if>
+            <if test="daFlag !=null">
+                DA_FLAG = #{daFlag},
+            </if>
+            <if test="calcctrlFlag !=null">
+                CALCCTRL_FLAG = #{calcctrlFlag},
+            </if>
+            <if test="calcFlag !=null">
+                CALC_FLAG = #{calcFlag},
+            </if>
+            <if test="comport1 !=null">
+                COMPORT1 = #{comport1},
+            </if>
+            <if test="comport2 !=null">
+                COMPORT2 = #{comport2},
+            </if>
+            <if test="hbPort1 !=null">
+                HB_PORT1 = #{hbPort1},
+            </if>
+            <if test="hbPort2 !=null">
+                HB_PORT2 = #{hbPort2},
+            </if>
+            <if test="mqFlag !=null">
+                MQ_FLAG = #{mqFlag},
+            </if>
+            <if test="webFlag !=null">
+                WEB_FLAG = #{webFlag},
+            </if>
+            <if test="eventFlag !=null">
+                EVENT_FLAG = #{eventFlag},
+            </if>
+            <if test="dbFlag !=null">
+                DB_FLAG = #{dbFlag},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="daGroup !=null">
+                DA_GROUP = #{daGroup},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PSysNodeDomain" flushCache="true">
+        delete from P_SYS_NODE
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

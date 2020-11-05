@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PSysCalcSchemeDAO">
+    <select id="findByKey" parameterType="PSysCalcSchemeDomain"
+            resultType="PSysCalcSchemeDomain" useCache="true">
+        select
+        ID,NAME,TYPE,STATUS,BEGMON,BEGDAY,BEGHOUR,ENDMON,ENDDAY,ENDHOUR,DEFSET,CYCLE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_CALC_SCHEME
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PSysCalcSchemeDomain"
+            resultType="PSysCalcSchemeDomain" useCache="true">
+        select
+        ID,NAME,TYPE,STATUS,BEGMON,BEGDAY,BEGHOUR,ENDMON,ENDDAY,ENDHOUR,DEFSET,CYCLE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_CALC_SCHEME
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="type !=null">
+                and TYPE = #{type}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="begmon !=null">
+                and BEGMON = #{begmon}
+            </if>
+            <if test="begday !=null">
+                and BEGDAY = #{begday}
+            </if>
+            <if test="beghour !=null">
+                and BEGHOUR = #{beghour}
+            </if>
+            <if test="endmon !=null">
+                and ENDMON = #{endmon}
+            </if>
+            <if test="endday !=null">
+                and ENDDAY = #{endday}
+            </if>
+            <if test="endhour !=null">
+                and ENDHOUR = #{endhour}
+            </if>
+            <if test="defset !=null">
+                and DEFSET = #{defset}
+            </if>
+            <if test="cycle !=null">
+                and CYCLE = #{cycle}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PSysCalcSchemeDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_SYS_CALC_SCHEME
+			(ID,NAME,TYPE,STATUS,BEGMON,BEGDAY,BEGHOUR,ENDMON,ENDDAY,ENDHOUR,DEFSET,CYCLE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{name},#{type},#{status},#{begmon},#{begday},#{beghour},#{endmon},#{endday},#{endhour},#{defset},#{cycle},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PSysCalcSchemeDomain" flushCache="true">
+        update P_SYS_CALC_SCHEME
+        <set>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="type !=null">
+                TYPE = #{type},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="begmon !=null">
+                BEGMON = #{begmon},
+            </if>
+            <if test="begday !=null">
+                BEGDAY = #{begday},
+            </if>
+            <if test="beghour !=null">
+                BEGHOUR = #{beghour},
+            </if>
+            <if test="endmon !=null">
+                ENDMON = #{endmon},
+            </if>
+            <if test="endday !=null">
+                ENDDAY = #{endday},
+            </if>
+            <if test="endhour !=null">
+                ENDHOUR = #{endhour},
+            </if>
+            <if test="defset !=null">
+                DEFSET = #{defset},
+            </if>
+            <if test="cycle !=null">
+                CYCLE = #{cycle},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PSysCalcSchemeDomain" flushCache="true">
+        delete from P_SYS_CALC_SCHEME
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>
