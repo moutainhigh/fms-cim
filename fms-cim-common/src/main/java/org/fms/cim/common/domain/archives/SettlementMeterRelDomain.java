@@ -28,13 +28,13 @@ public class SettlementMeterRelDomain extends ManagerParamEntity implements Myba
 	private Long meterId; // 计量点ID METER_ID bigint
 	private String meterName; // 计量点名称
 	private String meterNo; // 计量点编号
-	private Byte deductionOrder; // 扣减顺序 DEDUCTION_ORDER int
+	private String deductionOrder; // 扣减顺序 DEDUCTION_ORDER int
 	private Date createDate;// 创建时间 CREATE_DATE datetime FALSE FALSE FALSE
 	private String remark;// 备注 REMARK varchar(256) 256 FALSE FALSE FALSE
-	private Byte status;// 状态 STATUS smallint FALSE FALSE FALSE
-	private Byte mpType; // 计量点类型 1电表 2水表 3燃气表 4住户
+	private String status;// 状态 STATUS smallint FALSE FALSE FALSE
+	private String mpType; // 计量点类型 1电表 2水表 3燃气表 4住户
 	/*--------------------------以下为非数据库字段-----------------------------------------*/
-	private Byte voltLevelType; // 计量点电压
+	private String voltLevelType; // 计量点电压
 	private String setAddress; // 安装地点
 	private Long customerId;
 	private BigDecimal balance;// 锁定余额
@@ -63,11 +63,11 @@ public class SettlementMeterRelDomain extends ManagerParamEntity implements Myba
 		this.meterName = meterName;
 	}
 
-	public Byte getDeductionOrder() {
+	public String getDeductionOrder() {
 		return deductionOrder;
 	}
 
-	public void setDeductionOrder(Byte deductionOrder) {
+	public void setDeductionOrder(String deductionOrder) {
 		this.deductionOrder = deductionOrder;
 	}
 
@@ -95,11 +95,11 @@ public class SettlementMeterRelDomain extends ManagerParamEntity implements Myba
 		this.remark = remark;
 	}
 
-	public Byte getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Byte status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -119,11 +119,11 @@ public class SettlementMeterRelDomain extends ManagerParamEntity implements Myba
 		this.setAddress = setAddress;
 	}
 
-	public Byte getVoltLevelType() {
+	public String getVoltLevelType() {
 		return voltLevelType;
 	}
 
-	public void setVoltLevelType(Byte voltLevelType) {
+	public void setVoltLevelType(String voltLevelType) {
 		this.voltLevelType = voltLevelType;
 	}
 
@@ -135,11 +135,11 @@ public class SettlementMeterRelDomain extends ManagerParamEntity implements Myba
 		this.customerId = customerId;
 	}
 
-	public Byte getMpType() {
+	public String getMpType() {
 		return mpType;
 	}
 
-	public void setMpType(Byte mpType) {
+	public void setMpType(String mpType) {
 		this.mpType = mpType;
 	}
 

@@ -55,10 +55,10 @@ public class MeterAssetsDomain extends ManagerParamEntity implements MybatisEnti
 	private Integer lifeSpan; // 使用寿命(月)
 	private String manId; // 持有人
 	private Byte stateFlag; // 状态标志
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date statusChgDate; // 状态改变时间
 	private String statusChgReason; // 状态改变原因
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date lastDetDate; // 上次检定日期
 	private Integer detPeriod; // 检定周期(月)
 	private String rightAttach; // 产权归属
@@ -91,9 +91,11 @@ public class MeterAssetsDomain extends ManagerParamEntity implements MybatisEnti
 	private String sortCode;// 类别
 	private String prepayFlag;// 是否预付费
 	private String demandMeterFlag;// 需量表标志
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date latestChkDate;// 最近检定日期
 	private Integer rotateCycle;// 轮换周期
 	private String discardReason;// 报废原因
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date descardDate;// 报废日期
 	private String curStatusCode;// 当前状态
 	private String baudrateCode;// 波特率

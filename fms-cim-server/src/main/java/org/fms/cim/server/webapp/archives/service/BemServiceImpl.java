@@ -575,7 +575,7 @@ public class BemServiceImpl implements IBemService {
 		for(TransformerAssetsDomain ta : transformerInfoAssetsList) {
 			isMatch = false;
 			tta.setTransformerAssetsNo(ta.getTransformerAssetsNo());
-			tta.setStatus((byte)1);
+			tta.setStatus("1");
 			List<TransformerAssetsDomain> ltat = transformerAssetsDAO.findByWhere(tta);
 			if(ltat.size()==0) {//资产为空
 				rmap.put("message", "变压器资产不存在！");
@@ -593,7 +593,7 @@ public class BemServiceImpl implements IBemService {
 					return rmap;
 				}
 				//修改资产信息
-				ta.setStatus((byte)2);
+				ta.setStatus("2");
 				ta.setId(ltat.get(0).getId());
 				int count = transformerAssetsDAO.update(ta);
 				if(count!=1) {
