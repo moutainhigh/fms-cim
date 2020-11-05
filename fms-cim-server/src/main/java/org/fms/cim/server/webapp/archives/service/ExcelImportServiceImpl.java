@@ -123,7 +123,7 @@ public class ExcelImportServiceImpl implements IExcelImportService {
 			// 如果是拆表，就把状态改为9、拆回
 			if (e.getMeterAssetsId() != null && equipmentType == 1) {
 				meterAssets.setId(e.getMeterAssetsId());
-				meterAssets.setStatus((byte) 9);
+				meterAssets.setStatus("9");
 				int ma = meterAssetsDAO.update(meterAssets);
 
 				// 拆表时生成换表电量

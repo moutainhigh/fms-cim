@@ -47,7 +47,7 @@ public class MeterAssetsReturnAction  {
 	public HttpResult meterAssetsReturn(@RequestBody List<MeterAssetsDomain> l) 
 			throws JsonParseException, JsonMappingException, IOException {
 		for(MeterAssetsDomain e : l) {
-			e.setStatus((byte) 5);
+			e.setStatus("5");
 	//		e.setDeptId(null);
 		}
 		int i = meterAssetsService.updateList(l);

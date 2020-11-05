@@ -84,7 +84,7 @@ public class MeterAssetsAction {
             return new HttpResult(HttpResult.ERROR, "新增失败，资产编号重复");
         }
         if (meterAssetsDomain.getStatus() == null) {
-            meterAssetsDomain.setStatus((byte) 0);
+            meterAssetsDomain.setStatus("0");
 
         }
         meterAssetsDomain.setCreateDate(new Date());
@@ -266,7 +266,7 @@ public class MeterAssetsAction {
         List<MeterAssetsDomain> meterAssetsList = JSONUtil.readValue(body, new TypeReference<List<MeterAssetsDomain>>(){});
         
         List<MeterAssetsDomain> deleteList = meterAssetsList.stream().
-        		filter(m ->	m.getStatus()-9 ==0 || m.getStatus()-17 ==0).collect(Collectors.toList());
+        		filter(m -> Integer.valueOf(m.getStatus())-9 ==0 || Integer.valueOf(m.getStatus())-17 ==0).collect(Collectors.toList());
         
         if(meterAssetsList.size()>0 && deleteList.size()==0) {
         	return new HttpResult(HttpResult.ERROR,"只允许删除拆回和报废的资产");

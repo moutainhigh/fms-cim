@@ -33,7 +33,7 @@ public class MeterAssetsUseRecordServiceImpl implements IMeterAssetsUseRecordSer
 		if(ur==1) {
 			MeterAssetsDomain mad = new MeterAssetsDomain();
 			mad.setId(t.getMeterAssetsId());
-			mad.setStatus((byte)6); //领出待装
+			mad.setStatus("6"); //领出待装
 			ur = meterAssetsDAO.update(mad);
 		}
 	
@@ -78,7 +78,7 @@ public class MeterAssetsUseRecordServiceImpl implements IMeterAssetsUseRecordSer
 			
 			//更新状态为领出待装
 			if(ur==1) {
-				meterAssets.setStatus((byte)6); //领出待装
+				meterAssets.setStatus("6"); //领出待装
 				meterAssets.setDeptId(meterAssetsUseRecord.getRequisitionDept());
 				ur = meterAssetsDAO.update(meterAssets);
 			}

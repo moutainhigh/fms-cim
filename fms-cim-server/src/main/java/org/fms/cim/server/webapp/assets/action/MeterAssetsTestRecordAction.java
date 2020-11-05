@@ -97,7 +97,7 @@ public class MeterAssetsTestRecordAction  {
 
 		if("0".equals(testResult)) {
 			for(MeterAssetsDomain ma : MeterAssetsList) {
-				ma.setStatus((byte) 5);//检定合格后更新为库存待装
+				ma.setStatus("5");//检定合格后更新为库存待装
 			}
 		}
 		//TODO 需要添加检定不合格的处理

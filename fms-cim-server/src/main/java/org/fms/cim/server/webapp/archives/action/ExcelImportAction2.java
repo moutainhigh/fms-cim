@@ -93,7 +93,7 @@ public class ExcelImportAction2 {
     		m.setMadeNo(m.getMeterAssetsNo());
         	m.setCreateDate(now);
         	m.setRemark("Excel导入"+now);
-        	m.setStatus((byte) 8);
+        	m.setStatus("8");
         	m.setRightAttach("0");
         	m.setPhaseLine("0");
         	m.setSetAddress("户号"+m.getUserNo());

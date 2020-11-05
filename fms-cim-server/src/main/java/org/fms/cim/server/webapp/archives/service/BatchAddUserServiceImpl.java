@@ -155,7 +155,7 @@ public class BatchAddUserServiceImpl implements IBatchAddUserService {
 		meterAssetsDomain.setDeptId(businessPlaceCode);
 		meterAssetsDomain.setCreateDate(now);
 		meterAssetsDomain.setRemark("excel导入");
-		meterAssetsDomain.setStatus((byte) 8);
+		meterAssetsDomain.setStatus("8");
 		meterAssetsDomain.setSetAddress("户号"+customerNo);
 		
 		MeterAssetsDomain tma = new MeterAssetsDomain();

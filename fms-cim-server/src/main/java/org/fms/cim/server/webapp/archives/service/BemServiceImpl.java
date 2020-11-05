@@ -455,7 +455,7 @@ public class BemServiceImpl implements IBemService {
 		for(MeterAssetsDomain meterAssetsInfo:meterAssetsList) {
 			isMatch = false;
 			tempMeterAssets.setMeterAssetsNo(meterAssetsInfo.getMeterAssetsNo());
-			tempMeterAssets.setStatus((byte)1);
+			tempMeterAssets.setStatus("1");
 			List<MeterAssetsDomain> rmeterAssetsList = meterAssetsDAO.findByWhere(tempMeterAssets);
 			if(rmeterAssetsList.size()==0) {//资产为空
 				rmap.put("message", "电表资产不存在！");
@@ -473,7 +473,7 @@ public class BemServiceImpl implements IBemService {
 					return rmap;
 				}
 				//资产档案更新
-				meterAssetsInfo.setStatus((byte)2);
+				meterAssetsInfo.setStatus("2");
 				meterAssetsInfo.setId(rmeterAssetsList.get(0).getId());
 				int meterUpateCount = meterAssetsDAO.update(meterAssetsInfo);
 				if(meterUpateCount!=1) {

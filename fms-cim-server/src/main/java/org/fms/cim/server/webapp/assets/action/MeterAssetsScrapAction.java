@@ -47,7 +47,7 @@ public class MeterAssetsScrapAction  {
 	public HttpResult meterAssetsScrap(@RequestBody List<MeterAssetsDomain> l) 
 			throws JsonParseException, JsonMappingException, IOException {
 		for(MeterAssetsDomain e : l) {
-			e.setStatus((byte) 17);
+			e.setStatus("17");
 		}
 		int i = meterAssetsService.updateList(l);
 		if (i > 0)
