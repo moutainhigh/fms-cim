@@ -58,8 +58,8 @@
             <if test="madeDate !=null">
                 and MADE_DATE = #{madeDate}
             </if>
-            <if test="businesPlaceCode !=null">
-                and BUSINESS_PLACE_CODE = #{businesPlaceCode}
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
             </if>
             <if test="depeId !=null">
                 and DEPT_ID = #{depeId}
@@ -139,7 +139,7 @@
         values
         (#{id},#{code},#{name},#{type},#{assetNo},
         #{terminalAddr},#{protocolCode},#{modelCode},#{lotId},#{manufacturer},#{collMode},
-        #{madeDate},#{businesPlaceCode},#{depeId},#{removeOperatorNo},
+        #{madeDate},#{businessPlaceCode},#{depeId},#{removeOperatorNo},
         #{rmvDate},#{installerNo},#{instLoc},#{checkerNo},#{instDate},
         #{chkDate},#{descardOperatorNo},#{descardDate},#{curStatusCode},#{personRespNo},#{tel},
         #{lifeTime},#{remark},#{deliverDate},#{weight},
@@ -182,8 +182,8 @@
             <if test="madeDate !=null">
                 MADE_DATE = #{madeDate},
             </if>
-            <if test="businesPlaceCode !=null">
-                BUSINESS_PLACE_CODE = #{businesPlaceCode},
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
             </if>
             <if test="depeId !=null">
                 DEPT_ID = #{depeId},

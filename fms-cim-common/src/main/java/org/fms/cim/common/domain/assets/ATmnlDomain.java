@@ -42,7 +42,7 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	private String collMode; // 采集方式
 	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date madeDate; // 出厂日期
-	private Long businesPlaceCode; // 管理单位
+	private Long businessPlaceCode; // 管理单位
 	private Long depeId; // 管理部门
 	private Long removeOperatorNo; // 拆回人
 	private Date rmvDate; // 停运日期
@@ -138,11 +138,12 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	public void setMadeDate(Date madeDate) {
 		this.madeDate = madeDate;
 	}
-	public Long getBusinesPlaceCode() {
-		return businesPlaceCode;
+	
+	public Long getBusinessPlaceCode() {
+		return businessPlaceCode;
 	}
-	public void setBusinesPlaceCode(Long businesPlaceCode) {
-		this.businesPlaceCode = businesPlaceCode;
+	public void setBusinessPlaceCode(Long businessPlaceCode) {
+		this.businessPlaceCode = businessPlaceCode;
 	}
 	public Long getDepeId() {
 		return depeId;
