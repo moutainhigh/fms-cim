@@ -14,6 +14,7 @@ import org.fms.cim.common.service.ISettlementService;
 import org.fms.cim.common.service.ISystemCommonConfigService;
 import org.fms.cim.common.strategy.no.SequenceEnvironment;
 import org.fms.cim.common.strategy.no.SequenceStrategy;
+import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -186,16 +187,16 @@ public class BillAction {
 
     @ResponseBody
     @RequestMapping(params = "method=findByKeyValue")
-    public SystemCommonConfigDomain findByKeyValue(String body) throws IOException {
-        SystemCommonConfigDomain systemCommonConfigDomain = JSONUtil.readValue(body, SystemCommonConfigDomain.class);
-        return iSystemCommonConfigService.findByKeyValue(systemCommonConfigDomain.getType(),
-                systemCommonConfigDomain.getParamKey());
+    public SystemCommonConfigVO findByKeyValue(String body) throws IOException {
+    	SystemCommonConfigVO systemCommonConfigvo = JSONUtil.readValue(body, SystemCommonConfigVO.class);
+        return iSystemCommonConfigService.findByKeyValue(systemCommonConfigvo.getType(),
+                systemCommonConfigvo.getParamKey());
     }
 
     @ResponseBody
     @RequestMapping(params = "method=findSystemCommonConfigByType")
-    public List<SystemCommonConfigDomain> findSystemCommonConfigByType(@RequestBody String body) throws IOException {
-        SystemCommonConfigDomain systemCommonConfigDomain = JSONUtil.readValue(body, SystemCommonConfigDomain.class);
+    public List<SystemCommonConfigVO> findSystemCommonConfigByType(@RequestBody String body) throws IOException {
+    	SystemCommonConfigVO systemCommonConfigDomain = JSONUtil.readValue(body, SystemCommonConfigVO.class);
         return iSystemCommonConfigService.findByWhere(systemCommonConfigDomain);
     }
 

@@ -370,7 +370,7 @@ public class MeterAction {
                     // 计量点号
                     inductorAssetsEntity.setId(m.getMeterId());
                     // 更新互感器型号
-                    SystemCommonConfigDomain systemCommonConfigDomain = systemCommonConfigService
+                    SystemCommonConfigVO systemCommonConfigDomain = systemCommonConfigService
                             .findByKeyValue("INDUCTOR_TYPE", String.valueOf(inductorAssetsEntity.getInductorType()));
                     inductorAssetsEntity.setShowName4(systemCommonConfigDomain.getParamValue());
                     inductorAssetsEntity.setMadeDate(m.getCreateDate());

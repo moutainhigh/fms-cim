@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.fms.cim.common.domain.archives.TgInfoDomain;
 import org.fms.cim.common.service.ITgInfoService;
+import org.fms.cim.common.vo.uas.TgInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,7 +24,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import reactor.core.publisher.Mono;
 
 /**
- * 住户
+ * 台区
  *
  * @author riozenc
  *
@@ -39,27 +40,27 @@ public class TgInfoAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=getTgDropdown")
-	public Mono<List<TgInfoDomain>> getTgDropdown() {
-		TgInfoDomain tgInfoDomain =  new TgInfoDomain();
-		tgInfoDomain.setStatus((byte)1);
-		List<TgInfoDomain> tgInfoDomains = tgInfoService.findByWhere(tgInfoDomain);
-		return Mono.just(tgInfoDomains);
+	public Mono<List<TgInfoVO>> getTgDropdown() {
+		TgInfoVO tgInfoVO =  new TgInfoVO();
+		tgInfoVO.setStatus("1");
+		List<TgInfoVO> tgInfoVOs = tgInfoService.findByWhere(tgInfoVO);
+		return Mono.just(tgInfoVOs);
 	}
 
 	@ResponseBody
 	@PostMapping(params = "method=getTgInfo")
 	public Mono<HttpResultPagination<?>> getTgInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
-		TgInfoDomain tgInfoDomain = GsonUtils.readValue(body, TgInfoDomain.class);
-		return Mono.just(new HttpResultPagination(tgInfoDomain, tgInfoService.findByWhere(tgInfoDomain)));
+		TgInfoVO tgInfoVO = GsonUtils.readValue(body, TgInfoVO.class);
+		return Mono.just(new HttpResultPagination(tgInfoVO, tgInfoService.findByWhere(tgInfoVO)));
 	}
 
 	@ResponseBody
 	@RequestMapping(params = "method=updateTgInfo")
 	public Mono<HttpResult> updateTgInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
-		TgInfoDomain tgInfoDomain = GsonUtils.readValue(body, TgInfoDomain.class);
-		int count = tgInfoService.update(tgInfoDomain);
+		TgInfoVO tgInfoVO = GsonUtils.readValue(body, TgInfoVO.class);
+		int count = tgInfoService.update(tgInfoVO);
 		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "更新用住宅用户信息成功"));
 		} else {
@@ -71,21 +72,74 @@ public class TgInfoAction {
 	@RequestMapping(params = "method=addTgInfo")
 	public Mono<HttpResult> addTgInfo(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
-		TgInfoDomain tgInfoDomain = GsonUtils.readValue(body, TgInfoDomain.class);
+		TgInfoVO tgInfoVO = GsonUtils.readValue(body, TgInfoVO.class);
 		// 台区编号查重
-		TgInfoDomain t = new TgInfoDomain();
-		t.setTgNo(tgInfoDomain.getTgNo());
-		List<TgInfoDomain> list = tgInfoService.findByNo(t);
+		TgInfoVO t = new TgInfoVO();
+		t.setTgNo(tgInfoVO.getTgNo());
+		List<TgInfoVO> list = tgInfoService.findByNo(t);
 		if (list.size() > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增台区信息失败，台区编号重复"));
 		}
 
-		tgInfoDomain.setCreateDate(new Date());
-		int count = tgInfoService.insert(tgInfoDomain);
+		tgInfoVO.setCreateDate(new Date());
+		int count = tgInfoService.insert(tgInfoVO);
 		if (count > 0) {
 			return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "新增台区信息成功"));
 		} else {
 			return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增台区信息失败"));
 		}
 	}
+	
+	@ResponseBody
+    @PostMapping(params = "method=insert")
+    public HttpResult<?> insert(@RequestBody TgInfoVO tgInfoVO) {
+        int i = tgInfoService.insert(tgInfoVO);
+
+        if (i > 0) {
+            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+        }
+
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=update")
+    public HttpResult<?> update(@RequestBody TgInfoVO tgInfoVO) {
+        int i = tgInfoService.update(tgInfoVO);
+
+        if (i > 0) {
+            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+        }
+
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=delete")
+    public HttpResult<?> delete(@RequestBody List<TgInfoVO> deleteList) throws Exception {
+        HttpResult httpResult = tgInfoService.deleteList(deleteList);
+        return httpResult;
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=findByKey")
+    public HttpResult<?> findByKey(@RequestBody TgInfoVO tgInfoVO) {
+        TgInfoVO modelVo = tgInfoService.findByKey(tgInfoVO);
+
+        if (modelVo != null) {
+            return new HttpResult<TgInfoVO>(HttpResult.SUCCESS, "获取成功", modelVo);
+        } else {
+            return new HttpResult<TgInfoVO>(HttpResult.ERROR, "未检索到相关数据!", null);
+        }
+
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=findByWhere")
+    public HttpResultPagination<?> findByWhere(@RequestBody TgInfoVO tgInfoVO) {
+
+        return new HttpResultPagination(tgInfoVO, tgInfoService.findByWhere(tgInfoVO));
+    }
 }

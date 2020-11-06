@@ -31,6 +31,7 @@ import org.fms.cim.common.domain.assets.InductorAssetsDomain;
 import org.fms.cim.common.domain.assets.MeterAssetsDomain;
 import org.fms.cim.common.service.IMeterReplaceInfoService;
 import org.fms.cim.common.util.CommonUtil;
+import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 import org.fms.cim.server.webapp.archives.dao.MeterDAO;
 import org.fms.cim.server.webapp.archives.dao.MeterInductorAssetsRelDAO;
 import org.fms.cim.server.webapp.archives.dao.MeterMeterAssetsRelDAO;
@@ -526,7 +527,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			ctIductorAssets.setId(ctAssetsId);
 			InductorAssetsDomain returnCtIductorAssets = inductorAssetsDAO.findByKey(ctIductorAssets);
 			// 获取下拉对应的ct 值
-			SystemCommonConfigDomain ctCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_CT_CODE",
+			SystemCommonConfigVO ctCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_CT_CODE",
 					returnCtIductorAssets.getRatedCtCode());
 			return new BigDecimal(null == ctCommonConfig.getRemark1() || "".equals(ctCommonConfig.getRemark1()) ? "1"
 					: ctCommonConfig.getRemark1()).doubleValue();
@@ -538,7 +539,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			ptIductorAssets.setId(ptAssetsId);
 			InductorAssetsDomain returnPtIductorAssets = inductorAssetsDAO.findByKey(ptIductorAssets);
 			// 获取pt 变比
-			SystemCommonConfigDomain ptCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_PT_CODE",
+			SystemCommonConfigVO ptCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_PT_CODE",
 					returnPtIductorAssets.getRatedPtCode());
 			return new BigDecimal(null == ptCommonConfig.getRemark1() || "".equals(ptCommonConfig.getRemark1()) ? "1"
 					: ptCommonConfig.getRemark1()).doubleValue();

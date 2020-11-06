@@ -15,6 +15,7 @@ import org.fms.cim.common.domain.assets.InductorAssetsTestRecordDetailDomain;
 import org.fms.cim.common.domain.assets.InductorAssetsTestRecordDomain;
 import org.fms.cim.common.service.IInductorAssetsTestRecordService;
 import org.fms.cim.common.service.ISystemCommonConfigService;
+import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -131,29 +132,29 @@ public class InductorAssetsTestRecordAction  {
 
 		//1、2次电流   由于下拉中维护不规范，无法获取
 		//1、2次电压
-		SystemCommonConfigDomain scc = new SystemCommonConfigDomain();
-		scc.setStatus((byte)1);
+		SystemCommonConfigVO scc = new SystemCommonConfigVO();
+		scc.setStatus("1");
 //		//互感器类型
 //		scc.setType("INDUCTOR_TYPE");
 //		List<SystemCommonConfigDomain> inductorTypeList = systemCommonConfigDAO.findByWhere(scc);
 		//pt变比
 		scc.setType("RATED_PT_CODE");
-		List<SystemCommonConfigDomain> ptList = systemCommonConfigService.findByWhere(scc);
+		List<SystemCommonConfigVO> ptList = systemCommonConfigService.findByWhere(scc);
 		//ct变比
 		scc.setType("RATED_CT_CODE");
-		List<SystemCommonConfigDomain> ctList = systemCommonConfigService.findByWhere(scc);
+		List<SystemCommonConfigVO> ctList = systemCommonConfigService.findByWhere(scc);
 		
 		//名称
 		if(ia.getInductorType()=="1") {
 			iat.setDeviceName("电流互感器");
-			for (SystemCommonConfigDomain ct : ctList) {
+			for (SystemCommonConfigVO ct : ctList) {
 				if(ia.getRatedCtCode()==ct.getParamKey()) {
 					iat.setSpecs(ct.getParamValue());
 				}
 			}
 		}else if(ia.getInductorType()=="2") {
 			iat.setDeviceName("电压互感器");
-			for (SystemCommonConfigDomain pt : ptList) {
+			for (SystemCommonConfigVO pt : ptList) {
 				if(ia.getRatedPtCode()==pt.getParamKey()) {
 					iat.setSpecs(pt.getParamValue());
 				}
