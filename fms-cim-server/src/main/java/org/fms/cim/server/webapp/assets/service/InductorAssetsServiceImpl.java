@@ -19,37 +19,40 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class InductorAssetsServiceImpl implements IInductorAssetsService {
 	
-	@TransactionDAO
-	private InductorAssetsDAO inductorAssetsDAO;
+	@TransactionDAO("read")
+	private InductorAssetsDAO inductorAssetsReadDAO;
+	
+	@TransactionDAO("write")
+	private InductorAssetsDAO inductorAssetsWriteDAO;
 
 	@Override
 	public int insert(InductorAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.insert(t);
+		return inductorAssetsWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(InductorAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.delete(t);
+		return inductorAssetsWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(InductorAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.update(t);
+		return inductorAssetsWriteDAO.update(t);
 	}
 
 	@Override
 	public InductorAssetsDomain findByKey(InductorAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.findByKey(t);
+		return inductorAssetsReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<InductorAssetsDomain> findByWhere(InductorAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.findByWhere(t);
+		return inductorAssetsReadDAO.findByWhere(t);
 	}
 
 	@Override
@@ -61,25 +64,25 @@ public class InductorAssetsServiceImpl implements IInductorAssetsService {
 	@Override
 	public List<InductorAssetsDomain> getInductorAssetsByUser(UserDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.getInductorAssetsByUser(t);
+		return inductorAssetsReadDAO.getInductorAssetsByUser(t);
 	}
 
 	@Override
 	public List<InductorAssetsDomain> assetsNoDC(InductorAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.assetsNoDC(t);
+		return inductorAssetsReadDAO.assetsNoDC(t);
 	}
 
 	@Override
 	public int updateList(List<InductorAssetsDomain> l) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.updateList(l);
+		return inductorAssetsWriteDAO.updateList(l);
 	}
 
 	@Override
 	public InductorAssetsEntity findInductEntityByWhere(String t) {
 		// TODO Auto-generated method stub
-		return inductorAssetsDAO.findInductEntityByWhere(t);
+		return inductorAssetsReadDAO.findInductEntityByWhere(t);
 	}
 
 }

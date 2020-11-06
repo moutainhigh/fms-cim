@@ -18,36 +18,39 @@ import com.riozenc.titanTool.annotation.TransactionService;
 public class PmpedServiceImpl implements IPmpedService {
 
 	@TransactionDAO("read")
-	private PMpedDAO pmpedDAO;
+	private PMpedDAO pmpedReadDAO;
+	
+	@TransactionDAO("write")
+	private PMpedDAO pmpedWriteDAO;
 
 	@Override
 	public int insert(PMpedDomain t) {
 		// TODO Auto-generated method stub
-		return pmpedDAO.insert(t);
+		return pmpedWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(PMpedDomain t) {
 		// TODO Auto-generated method stub
-		return pmpedDAO.delete(t);
+		return pmpedWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(PMpedDomain t) {
 		// TODO Auto-generated method stub
-		return pmpedDAO.update(t);
+		return pmpedWriteDAO.update(t);
 	}
 
 	@Override
 	public PMpedDomain findByKey(PMpedDomain t) {
 		// TODO Auto-generated method stub
-		return pmpedDAO.findByKey(t);
+		return pmpedReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<PMpedDomain> findByWhere(PMpedDomain t) {
 		// TODO Auto-generated method stub
-		return pmpedDAO.findByWhere(t);
+		return pmpedReadDAO.findByWhere(t);
 	}
 	
 }

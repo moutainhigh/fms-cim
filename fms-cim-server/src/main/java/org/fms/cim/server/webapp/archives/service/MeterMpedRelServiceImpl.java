@@ -17,32 +17,35 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class MeterMpedRelServiceImpl implements IMeterMpedRelService {
 
-	@TransactionDAO
-	private MeterMpedRelDAO MeterMpedRelDAO;
+	@TransactionDAO("read")
+	private MeterMpedRelDAO MeterMpedRelReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterMpedRelDAO MeterMpedRelWriteDAO;
 
 	@Override
 	public int insert(MeterMpedRelDomain t) {
-		return MeterMpedRelDAO.insert(t);
+		return MeterMpedRelWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(MeterMpedRelDomain t) {
-		return MeterMpedRelDAO.delete(t);
+		return MeterMpedRelWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(MeterMpedRelDomain t) {
-		return MeterMpedRelDAO.update(t);
+		return MeterMpedRelWriteDAO.update(t);
 	}
 
 	@Override
 	public MeterMpedRelDomain findByKey(MeterMpedRelDomain t) {
-		return MeterMpedRelDAO.findByKey(t);
+		return MeterMpedRelReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<MeterMpedRelDomain> findByWhere(MeterMpedRelDomain t) {
-		return MeterMpedRelDAO.findByWhere(t);
+		return MeterMpedRelReadDAO.findByWhere(t);
 	}
 
 }

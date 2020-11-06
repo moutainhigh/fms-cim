@@ -12,37 +12,40 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class SdevIrServiceImpl implements ISdevIrService {
 	
-	@TransactionDAO
-	private SDevIrDAO sdevIrDAO;
+	@TransactionDAO("read")
+	private SDevIrDAO sdevIrReadDAO;
+	
+	@TransactionDAO("write")
+	private SDevIrDAO sdevIrWriteDAO;
 
 	@Override
 	public int insert(SDevIrDomain t) {
 		// TODO Auto-generated method stub
-		return sdevIrDAO.insert(t);
+		return sdevIrWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(SDevIrDomain t) {
 		// TODO Auto-generated method stub
-		return sdevIrDAO.delete(t);
+		return sdevIrWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(SDevIrDomain t) {
 		// TODO Auto-generated method stub
-		return sdevIrDAO.update(t);
+		return sdevIrWriteDAO.update(t);
 	}
 
 	@Override
 	public SDevIrDomain findByKey(SDevIrDomain t) {
 		// TODO Auto-generated method stub
-		return sdevIrDAO.findByKey(t);
+		return sdevIrReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<SDevIrDomain> findByWhere(SDevIrDomain t) {
 		// TODO Auto-generated method stub
-		return sdevIrDAO.findByWhere(t);
+		return sdevIrReadDAO.findByWhere(t);
 	}
 
 	

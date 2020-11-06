@@ -25,43 +25,51 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 @TransactionService
 public class WriteSectServiceImpl implements IWriteSectService {
 
-	@TransactionDAO
-	private WriteSectDAO writeSectDAO;
-	@TransactionDAO
-	private MeterDAO meterDAO;
+	@TransactionDAO("read")
+	private WriteSectDAO writeSectReadDAO;
+	
+	@TransactionDAO("write")
+	private WriteSectDAO writeSectWriteDAO;
+	
+	
+	@TransactionDAO("read")
+	private MeterDAO meterReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterDAO meterWriteDAO;
 
 	@Autowired
 	private TitanTemplate titanTemplate;
 
 	@Override
 	public int insert(WriteSectDomain t) {
-		return writeSectDAO.insert(t);
+		return writeSectWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(WriteSectDomain t) {
-		return writeSectDAO.delete(t);
+		return writeSectWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(WriteSectDomain t) {
-		return writeSectDAO.update(t);
+		return writeSectWriteDAO.update(t);
 	}
 
 	@Override
 	public WriteSectDomain findByKey(WriteSectDomain t) {
-		return writeSectDAO.findByKey(t);
+		return writeSectReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<WriteSectDomain> findByWhere(WriteSectDomain t) {
-		return writeSectDAO.findByWhere(t);
+		return writeSectReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<Long> getDeptIdsByWriteSectIds(List<Long> ids) {
 
-		return writeSectDAO.getDeptIdsByWriteSectIds(ids);
+		return writeSectReadDAO.getDeptIdsByWriteSectIds(ids);
 	
 	}
 
@@ -97,7 +105,7 @@ public class WriteSectServiceImpl implements IWriteSectService {
 
 	@Override
 	public int insertList(List<WriteSectDomain> wsList) {
-		return writeSectDAO.insertList(wsList);
+		return writeSectWriteDAO.insertList(wsList);
 	}
 	
 	//获取monogo中抄表区段中的计量点个数---------已初始化数
@@ -133,7 +141,7 @@ public class WriteSectServiceImpl implements IWriteSectService {
 	//获取抄表区段中的计量点个数
 	public HashMap<Long,Integer> getWriteSectMeterNum(){
 		//获取数据
-		List<HashMap<String,Long>> c1 = meterDAO.getMeterCountByWriteSect();
+		List<HashMap<String,Long>> c1 = meterReadDAO.getMeterCountByWriteSect();
 		//格式转换
 		HashMap<Long,Integer> rmap = new HashMap<Long,Integer>();
 		for(HashMap<String,Long> tmap : c1) {
@@ -145,7 +153,7 @@ public class WriteSectServiceImpl implements IWriteSectService {
 
 	@Override
 	public List<WriteSectDomain> getWriteSectByNos(List<String> l) {
-		return writeSectDAO.getWriteSectByNos(l);
+		return writeSectReadDAO.getWriteSectByNos(l);
 	}
 	
 	

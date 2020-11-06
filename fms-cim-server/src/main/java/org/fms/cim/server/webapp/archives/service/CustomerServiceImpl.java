@@ -22,37 +22,40 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class CustomerServiceImpl implements ICustomerService {
 
-	@TransactionDAO
-	private CustomerDAO customerDAO;
+	@TransactionDAO("read")
+	private CustomerDAO customerReadDAO;
+	
+	@TransactionDAO("write")
+	private CustomerDAO customerWriteDAO;
 
 	@Override
 	public int insert(CustomerDomain t) {
-		return customerDAO.insert(t);
+		return customerWriteDAO.insert(t);
 	}
 	
 	@Override
 	public int insertList(List<CustomerDomain> tl) {
-		return customerDAO.insertList(tl);
+		return customerWriteDAO.insertList(tl);
 	}
 
 	@Override
 	public int delete(CustomerDomain t) {
-		return customerDAO.delete(t);
+		return customerWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(CustomerDomain t) {
-		return customerDAO.update(t);
+		return customerWriteDAO.update(t);
 	}
 
 	@Override
 	public CustomerDomain findByKey(CustomerDomain t) {
-		return customerDAO.findByKey(t);
+		return customerReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<CustomerDomain> findByWhere(CustomerDomain t) {
-		return customerDAO.findByWhere(t);
+		return customerReadDAO.findByWhere(t);
 	}
 
 	@Override
@@ -67,7 +70,7 @@ public class CustomerServiceImpl implements ICustomerService {
 			
 			List<String> tl = idsList.subList(m, m+999>len?len:m+999);
 			
-			List<CustomerDomain> tList = customerDAO.getCustomerByIds(tl);
+			List<CustomerDomain> tList = customerReadDAO.getCustomerByIds(tl);
 			rList.addAll(tList);
 		}
 
@@ -77,12 +80,12 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	@Override
 	public List<CustomerDomain> customerNoDC(CustomerDomain customerDomain) {
-		return customerDAO.customerNoDC(customerDomain);
+		return customerReadDAO.customerNoDC(customerDomain);
 	}
 
 	@Override
 	public List<CustomerDomain> getCustomerByNo(CustomerDomain customerDomain) {
-		return customerDAO.getCustomerByNo(customerDomain);
+		return customerReadDAO.getCustomerByNo(customerDomain);
 	}
 
 }

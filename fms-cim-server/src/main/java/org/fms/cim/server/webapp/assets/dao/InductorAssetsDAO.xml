@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fms.cim.server.webapp.assets.dao.InductorAssetsDAO">
 	<sql id="Base_Column_List">
-		ID,INDUCTOR_ASSETS_NO,INDUCTOR_TYPE,TURNS,CT_CURNT_CODE,CT_VOLT_CODE,PT_CURNT_CODE,PT_VOLT_CODE,RATED_CT_CODE,
-		RATED_PT_CODE,MADE_DATE,LIFE_SPAN,DET_PERIOD,LAST_DET_DATE,ACCU_LEVEL_CODE,PT_ACCU_LEVEL_CODE,DEPT_ID,CREATE_DATE,
+		ID,INDUCTOR_ASSETS_NO,INDUCTOR_TYPE,TURNS,TA_CURNT_CODE,TA_VOLT_CODE,TV_CURNT_CODE,TV_VOLT_CODE,RATED_TA_CODE,
+		RATED_TV_CODE,MADE_DATE,LIFE_SPAN,DET_PERIOD,LAST_DET_DATE,ACCU_LEVEL_CODE,PT_ACCU_LEVEL_CODE,DEPT_ID,CREATE_DATE,
 		REMARK,STATUS,BATCH_NO,RIGHT_ATTACH,MAN_ID,MADE_NO,MODEL_CODE
 	</sql>
 
@@ -36,23 +36,23 @@
 			<if test="turns !=null">
 				AND TURNS = #{turns}
 			</if>
-			<if test="ctCurntCode !=null">
-				AND CT_CURNT_CODE = #{ctCurntCode}
+			<if test="taCurntCode !=null">
+				AND TA_CURNT_CODE = #{taCurntCode}
 			</if>
-			<if test="ctVoltCode !=null">
-				AND CT_VOLT_CODE = #{ctVoltCode}
+			<if test="taVoltCode !=null">
+				AND TA_VOLT_CODE = #{taVoltCode}
 			</if>
-			<if test="ptCurntCode !=null">
-				AND PT_CURNT_CODE = #{ptCurntCode}
+			<if test="tvCurntCode !=null">
+				AND TV_CURNT_CODE = #{tvCurntCode}
 			</if>
-			<if test="ptVoltCode !=null">
-				AND PT_VOLT_CODE = #{ptVoltCode}
+			<if test="tvVoltCode !=null">
+				AND TV_VOLT_CODE = #{tvVoltCode}
 			</if>
-			<if test="ratedCtCode !=null">
-				AND RATED_CT_CODE = #{ratedCtCode}
+			<if test="ratedTaCode !=null">
+				AND RATED_TA_CODE = #{ratedTaCode}
 			</if>
-			<if test="ratedPtCode !=null">
-				AND RATED_PT_CODE = #{ratedPtCode}
+			<if test="ratedTvCode !=null">
+				AND RATED_TV_CODE = #{ratedTvCode}
 			</if>
 			<if test="madeDate !=null">
 				AND MADE_DATE = #{madeDate}
@@ -118,8 +118,8 @@
 				<include refid="Base_Column_List" />
 			)
 		values
-		(#{id},#{inductorAssetsNo},#{inductorType},#{turns},#{ctCurntCode},#{ctVoltCode},#{ptCurntCode},#{ptVoltCode},#{ratedCtCode},
-		#{ratedPtCode},#{madeDate},#{lifeSpan},#{detPeriod},#{lastDetDate},#{accuLevelCode},#{ptAccuLevelCode},#{deptId},
+		(#{id},#{inductorAssetsNo},#{inductorType},#{turns},#{taCurntCode},#{taVoltCode},#{tvCurntCode},#{tvVoltCode},#{ratedTaCode},
+		#{ratedTvCode},#{madeDate},#{lifeSpan},#{detPeriod},#{lastDetDate},#{accuLevelCode},#{ptAccuLevelCode},#{deptId},
 		#{createDate},#{remark},#{status},#{batchNo},#{rightAttach},#{manID},#{madeNo},#{modelCode})
 	</insert>
 
@@ -136,23 +136,23 @@
 			<if test="turns !=null">
 				TURNS = #{turns},
 			</if>
-			<if test="ctCurntCode !=null">
-				CT_CURNT_CODE = #{ctCurntCode},
+			<if test="taCurntCode !=null">
+				TA_CURNT_CODE = #{taCurntCode},
 			</if>
-			<if test="ctVoltCode !=null">
-				CT_VOLT_CODE = #{ctVoltCode},
+			<if test="taVoltCode !=null">
+				TA_VOLT_CODE = #{taVoltCode},
 			</if>
-			<if test="ptCurntCode !=null">
-				PT_CURNT_CODE = #{ptCurntCode},
+			<if test="tvCurntCode !=null">
+				TV_CURNT_CODE = #{tvCurntCode},
 			</if>
-			<if test="ptVoltCode !=null">
-				PT_VOLT_CODE = #{ptVoltCode},
+			<if test="tvVoltCode !=null">
+				TV_VOLT_CODE = #{tvVoltCode},
 			</if>
-			<if test="ratedCtCode !=null">
-				RATED_CT_CODE = #{ratedCtCode},
+			<if test="ratedTaCode !=null">
+				RATED_TA_CODE = #{ratedTaCode},
 			</if>
-			<if test="ratedPtCode !=null">
-				RATED_PT_CODE = #{ratedPtCode},
+			<if test="ratedTvCode !=null">
+				RATED_TV_CODE = #{ratedTvCode},
 			</if>
 			<if test="madeDate !=null">
 				MADE_DATE = #{madeDate},

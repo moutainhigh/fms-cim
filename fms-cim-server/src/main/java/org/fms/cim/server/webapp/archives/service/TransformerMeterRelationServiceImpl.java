@@ -21,37 +21,40 @@ import com.riozenc.titanTool.annotation.TransactionService;
 
 @TransactionService
 public class TransformerMeterRelationServiceImpl implements ITransformerMeterRelationService {
-	@TransactionDAO
-	private TransformerMeterRelationDAO transformerMeterRelationDAO;
+	@TransactionDAO("read")
+	private TransformerMeterRelationDAO transformerMeterRelationReadDAO;
+	
+	@TransactionDAO("write")
+	private TransformerMeterRelationDAO transformerMeterRelationWriteDAO;
 
 	@Override
 	public int insert(TransformerMeterRelationDomain t) {
-		return transformerMeterRelationDAO.insert(t);
+		return transformerMeterRelationWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(TransformerMeterRelationDomain t) {
-		return transformerMeterRelationDAO.delete(t);
+		return transformerMeterRelationWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(TransformerMeterRelationDomain t) {
-		return transformerMeterRelationDAO.update(t);
+		return transformerMeterRelationWriteDAO.update(t);
 	}
 
 	@Override
 	public TransformerMeterRelationDomain findByKey(TransformerMeterRelationDomain t) {
-		return transformerMeterRelationDAO.findByKey(t);
+		return transformerMeterRelationReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<TransformerMeterRelationDomain> findByWhere(TransformerMeterRelationDomain t) {
-		return transformerMeterRelationDAO.findByWhere(t);
+		return transformerMeterRelationReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<TransformerMeterRelationDomain> getTransformerMeterRelationByWriteSectId(List<Long> writeSectIds) {
-		return transformerMeterRelationDAO.getTransformerMeterRelationByWriteSectId(writeSectIds);
+		return transformerMeterRelationReadDAO.getTransformerMeterRelationByWriteSectId(writeSectIds);
 	}
 
 	@Override
@@ -64,7 +67,7 @@ public class TransformerMeterRelationServiceImpl implements ITransformerMeterRel
 
 			List<Long> tl = meterIds.subList(m*999, (m+1)*999 > len ? len : (m+1)*999);
 
-			List<TransformerMeterRelationDomain> tList = transformerMeterRelationDAO.getTransformerMeterRelationByMeterIds(tl);
+			List<TransformerMeterRelationDomain> tList = transformerMeterRelationReadDAO.getTransformerMeterRelationByMeterIds(tl);
 			rList.addAll(tList);
 		}
 		//去重
@@ -75,28 +78,28 @@ public class TransformerMeterRelationServiceImpl implements ITransformerMeterRel
 
 	@Override
 	public int insertList(List<TransformerMeterRelationDomain> tmrList) {
-		return transformerMeterRelationDAO.insertList(tmrList);
+		return transformerMeterRelationWriteDAO.insertList(tmrList);
 
 	}
 	@Override
 	public List<TransformerMeterRelationDomain> getDistinctTransGroupNo(TransformerMeterRelationDomain t) {
-		return transformerMeterRelationDAO.getDistinctTransGroupNo(t);
+		return transformerMeterRelationReadDAO.getDistinctTransGroupNo(t);
 
 	}
 	@Override
 	public List<MeterDomain> getMeterByTransformer(TransformerDomain t) {
-		return transformerMeterRelationDAO.getMeterByTransformer(t);
+		return transformerMeterRelationReadDAO.getMeterByTransformer(t);
 
 	}
 
 	@Override
 	public int updateList(List<TransformerMeterRelationDomain> tmruList) {
-		return transformerMeterRelationDAO.updateList(tmruList);
+		return transformerMeterRelationWriteDAO.updateList(tmruList);
 
 	}
 	@Override
 	public List<TransformerLineRelDomain> findTransformerLineByMeterIds(List<Long> meterIds) {
-		return transformerMeterRelationDAO.findTransformerLineByMeterIds(meterIds);
+		return transformerMeterRelationReadDAO.findTransformerLineByMeterIds(meterIds);
 
 	}
 	

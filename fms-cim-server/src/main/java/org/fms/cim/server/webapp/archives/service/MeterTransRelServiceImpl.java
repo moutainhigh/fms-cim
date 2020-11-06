@@ -12,26 +12,30 @@ import com.riozenc.titanTool.annotation.TransactionService;
 
 @TransactionService
 public class MeterTransRelServiceImpl implements IMeterTransRelService {
-    @TransactionDAO
-    private MeterTransRelDAO meterTransRelDAO;
+    @TransactionDAO("read")
+    private MeterTransRelDAO meterTransRelReadDAO;
+    
+    @TransactionDAO("write")
+    private MeterTransRelDAO meterTransRelWriteDAO;
+    
     @Override
     public List<MeterDomain> getTransformerByNoMeterRel(MeterDomain t) {
-        return meterTransRelDAO.getTransformerByNoMeterRel(t);
+        return meterTransRelReadDAO.getTransformerByNoMeterRel(t);
     }
 
     @Override
     public List<MeterDomain> getTransformerByMeterRel(MeterDomain t) {
-        return meterTransRelDAO.getTransformerByMeterRel(t);
+        return meterTransRelReadDAO.getTransformerByMeterRel(t);
     }
 
     @Override
     public List<TransformerMeterRelationDomain> findTransformerGroupNo(TransformerMeterRelationDomain rel) {
-        return meterTransRelDAO.findTransformerGroupNo(rel);
+        return meterTransRelReadDAO.findTransformerGroupNo(rel);
     }
 
     @Override
     public int addTransformerByMeterRel(List<TransformerMeterRelationDomain> list, MeterDomain deleteList) {
-        meterTransRelDAO.deleteTransformerByMeterRel(deleteList);
+    	meterTransRelWriteDAO.deleteTransformerByMeterRel(deleteList);
         if(list!=null&&list.size()>0) {
             for(TransformerMeterRelationDomain tm:list) {
             	if(tm.getMsType()!=null && tm.getMsType()-2==0) {
@@ -42,23 +46,23 @@ public class MeterTransRelServiceImpl implements IMeterTransRelService {
             	tm.setStatus((byte) 1);
             }
         }
-        return meterTransRelDAO.addTransformerByMeterRel(list);
+        return meterTransRelWriteDAO.addTransformerByMeterRel(list);
     }
 
     @Override
     public List<MeterDomain> getMeterByWriteSectionId(MeterDomain t) {
-        return meterTransRelDAO.getMeterByWriteSectionId(t);
+        return meterTransRelReadDAO.getMeterByWriteSectionId(t);
     }
 
 	@Override
 	public int updateTransLoss(TransformerMeterRelationDomain e) {
-        return meterTransRelDAO.updateTransLoss(e);
+        return meterTransRelWriteDAO.updateTransLoss(e);
 
 	}
 
 	@Override
 	public List<TransformerMeterRelationDomain> getMeterByTransRel(TransformerMeterRelationDomain e) {
-        return meterTransRelDAO.getMeterByTransRel(e);
+        return meterTransRelReadDAO.getMeterByTransRel(e);
 
 	}
 }

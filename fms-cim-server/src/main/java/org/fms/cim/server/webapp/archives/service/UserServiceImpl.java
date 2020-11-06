@@ -20,50 +20,57 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class UserServiceImpl implements IUserService {
 
-	@TransactionDAO
-	private UserDAO userDAO;
-	@TransactionDAO
-	private CustomerDAO customerDAO;
+	@TransactionDAO("read")
+	private UserDAO userReadDAO;
+	
+	@TransactionDAO("write")
+	private UserDAO userWriteDAO;
+	
+	@TransactionDAO("read")
+	private CustomerDAO customerReadDAO;
+	
+	@TransactionDAO("write")
+	private CustomerDAO customerWriteDAO;
 
 	@Override
 	public int insert(UserDomain t) {
-		return userDAO.insert(t);
+		return userWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(UserDomain t) {
-		return userDAO.delete(t);
+		return userWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(UserDomain t) {
-		return userDAO.update(t);
+		return userWriteDAO.update(t);
 	}
 
 	@Override
 	public UserDomain findByKey(UserDomain t) {
-		return userDAO.findByKey(t);
+		return userReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<UserDomain> findByWhere(UserDomain t) {
-		return userDAO.findByWhere(t);
+		return userReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<UserDomain> findByNo(UserDomain t) {
-		return userDAO.findByNo(t);
+		return userReadDAO.findByNo(t);
 	}
 
 	@Override
 	public List<UserDomain> getUserAllInfo(UserDomain userDomain) {
-		return userDAO.getUserAllInfo(userDomain);
+		return userReadDAO.getUserAllInfo(userDomain);
 	}
 
 	@Override
 	public boolean updateUserCustomer(UserDomain userDomain, CustomerDomain customerDomain) {
-		int userCount = userDAO.update(userDomain);
-		int customerCount = customerDAO.update(customerDomain);
+		int userCount = userWriteDAO.update(userDomain);
+		int customerCount = customerWriteDAO.update(customerDomain);
 		if (userCount == 1 || customerCount == 1) {
 			return true;
 		}
@@ -72,8 +79,8 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public boolean addUserCustomer(UserDomain userDomain, CustomerDomain customerDomain) {
-		int userCount = userDAO.insert(userDomain);
-		int customerCount = customerDAO.insert(customerDomain);
+		int userCount = userWriteDAO.insert(userDomain);
+		int customerCount = customerWriteDAO.insert(customerDomain);
 		if (userCount == 1 || customerCount == 1) {
 			return true;
 		}
@@ -92,7 +99,7 @@ public class UserServiceImpl implements IUserService {
 			// 根据用户ID获取用户档案 subList方法包含fromIndex, 不包含 toIndex
 			List<Long> tl = ids.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<UserDomain> tempList = userDAO.getUserByIds(tl);
+			List<UserDomain> tempList = userReadDAO.getUserByIds(tl);
 
 			if (tempList.size() == 0 || tempList == null || tempList.get(0) == null) {
 				continue;
@@ -111,41 +118,41 @@ public class UserServiceImpl implements IUserService {
 	}*/
 	
 	public List<UserDomain> getUserByCustomerIds(List<Long> customerIds){
-		return userDAO.getUserByCustomerIds(customerIds);
+		return userReadDAO.getUserByCustomerIds(customerIds);
 	}
 
 	@Override
 	public List<Long> getUserIdsByWriteSectIds(List<Long> ids) {
-		return userDAO.getUserIdsByWriteSectIds(ids);
+		return userReadDAO.getUserIdsByWriteSectIds(ids);
 
 	}
 
 	public List<UserDomain> getUserByWriteSectIds(List<Long> writeSectIds) {
-		return userDAO.getUserByWriteSectIds(writeSectIds);
+		return userReadDAO.getUserByWriteSectIds(writeSectIds);
 	}
 
 	@Override
 	public List<Long> getDeptIdsByUserIds(List<Long> idsList) {
-		return userDAO.getDeptIdsByUserIds(idsList);
+		return userReadDAO.getDeptIdsByUserIds(idsList);
 	}
 
 	@Override
 	public List<UserDomain> getUsersByCustomerNo(UserDomain userDomain) {
-		return userDAO.getUsersByCustomerNo(userDomain);
+		return userReadDAO.getUsersByCustomerNo(userDomain);
 	}
 
 	@Override
 	public List<UserDomain> userNoDC(UserDomain userDomain) {
-		return userDAO.userNoDC(userDomain);
+		return userReadDAO.userNoDC(userDomain);
 	}
 
 	@Override
 	public int insertList(List<UserDomain> userList) {
-		return userDAO.insertList(userList);
+		return userWriteDAO.insertList(userList);
 	}
 	@Override
 	public int updateList(List<UserDomain> t) {
-		return userDAO.updateList(t);
+		return userWriteDAO.updateList(t);
 	}
 
 }

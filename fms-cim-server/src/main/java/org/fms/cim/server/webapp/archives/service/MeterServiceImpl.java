@@ -24,59 +24,64 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class MeterServiceImpl implements IMeterService {
 
-	@TransactionDAO
-	private MeterDAO meterDAO;
-	@TransactionDAO
-	private TransformerDAO transformerDAO;
+	@TransactionDAO("read")
+	private MeterDAO meterReadDAO;
+	@TransactionDAO("write")
+	private MeterDAO meterWriteDAO;
+	
+	@TransactionDAO("read")
+	private TransformerDAO transformerReadDAO;
+	@TransactionDAO("write")
+	private TransformerDAO transformerWriteDAO;
 
 	@Override
 	public int insert(MeterDomain meterDomain) {
-		return meterDAO.insert(meterDomain);
+		return meterWriteDAO.insert(meterDomain);
 	}
 
 	@Override
 	public int delete(MeterDomain t) {
-		return meterDAO.delete(t);
+		return meterWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(MeterDomain meterDomain) {
-		return meterDAO.update(meterDomain);
+		return meterWriteDAO.update(meterDomain);
 	}
 
 	@Override
 	public MeterDomain findByKey(MeterDomain t) {
-		return meterDAO.findByKey(t);
+		return meterReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<MeterDomain> findByNo(MeterDomain t) {
-		return meterDAO.findByNo(t);
+		return meterReadDAO.findByNo(t);
 	}
 
 	@Override
 	public List<MeterDomain> findByWhere(MeterDomain t) {
-		return meterDAO.findByWhere(t);
+		return meterReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByUser(UserDomain userDomain) {
-		return meterDAO.getMeterByUser(userDomain);
+		return meterReadDAO.getMeterByUser(userDomain);
 	}
 
 	@Override
 	public int deleteMeterRelList(List<MeterRelationDomain> list) {
-		return meterDAO.deleteMeterRelList(list);
+		return meterWriteDAO.deleteMeterRelList(list);
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByMeterAssestsNo(MeterAssetsDomain t) {
-		return meterDAO.getMeterByMeterAssestsNo(t);
+		return meterReadDAO.getMeterByMeterAssestsNo(t);
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByInductorAssestsNo(InductorAssetsDomain t) {
-		return meterDAO.getMeterByInductorAssestsNo(t);
+		return meterReadDAO.getMeterByInductorAssestsNo(t);
 	}
 
 	@Override
@@ -90,7 +95,7 @@ public class MeterServiceImpl implements IMeterService {
 
 			List<Long> tl = ids.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<MeterDomain> tList = meterDAO.getMeterByIds(tl);
+			List<MeterDomain> tList = meterReadDAO.getMeterByIds(tl);
 
 			rList.addAll(tList);
 
@@ -109,7 +114,7 @@ public class MeterServiceImpl implements IMeterService {
 
 			List<Long> tl = ids.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<MeterRelationDomain> tList = meterDAO.getMeterRelByMeterIds(tl);
+			List<MeterRelationDomain> tList = meterReadDAO.getMeterRelByMeterIds(tl);
 			rList.addAll(tList);
 		}
 
@@ -118,7 +123,7 @@ public class MeterServiceImpl implements IMeterService {
 
 	@Override
 	public List<Long> getMeterIdsByWriteSectIds(List<Long> ids) {
-		return meterDAO.getMeterIdsByWriteSectIds(ids);
+		return meterReadDAO.getMeterIdsByWriteSectIds(ids);
 	}
 
 	@Override
@@ -132,7 +137,7 @@ public class MeterServiceImpl implements IMeterService {
 			// 根据用户ID获取计量点ID subList方法包含fromIndex, 不包含 toIndex
 			List<Long> tl = userIds.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<Long> tempList = meterDAO.getMeterIdsByUserIds(tl);
+			List<Long> tempList = meterReadDAO.getMeterIdsByUserIds(tl);
 
 			if (tempList.size() == 0 || tempList == null || tempList.get(0) == null) {
 				continue;
@@ -141,7 +146,7 @@ public class MeterServiceImpl implements IMeterService {
 			rl.addAll(tempList);
 
 			// 根据计量点ID和计量点关系关系获取meterIds
-			List<Long> relList = meterDAO.getMeterIdsByMeterRel(tl);
+			List<Long> relList = meterReadDAO.getMeterIdsByMeterRel(tl);
 			if (relList.size() == 0 || relList == null || relList.get(0) == null) {
 				continue;
 			}
@@ -162,7 +167,7 @@ public class MeterServiceImpl implements IMeterService {
 
 			List<Long> tl = userIds.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<MeterDomain> tList = meterDAO.getMeterByUserIds(tl);
+			List<MeterDomain> tList = meterReadDAO.getMeterByUserIds(tl);
 			rList.addAll(tList);
 			
 //			//根据套口关系获取套扣计量点
@@ -187,88 +192,88 @@ public class MeterServiceImpl implements IMeterService {
 
 	@Override
 	public List<MeterDomain> meterNoDC(MeterDomain t) {
-		return meterDAO.meterNoDC(t);
+		return meterReadDAO.meterNoDC(t);
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByWriteSectIds(List<Long> writeSectIds) {
 		
-		return meterDAO.getMeterByWriteSectIds(writeSectIds);
+		return meterReadDAO.getMeterByWriteSectIds(writeSectIds);
 		
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByCustomer(MeterDomain e) {
-		return meterDAO.getMeterByCustomer(e);
+		return meterReadDAO.getMeterByCustomer(e);
 
 	}
 
 	public List<MeterInformationEntity> getMeterInformation(MeterInformationEntity e) {
-		return meterDAO.getMeterInformation(e);
+		return meterReadDAO.getMeterInformation(e);
 
 	}
 
 	@Override
 	public List<MeterDomain> findMetersByMeterIds(List<Long> meterIds) {
-		return meterDAO.selectMetersByMeterIds(meterIds);
+		return meterReadDAO.selectMetersByMeterIds(meterIds);
 	}
 
 	@Override
 	public int updateList(List<MeterDomain> e) {
-		return meterDAO.updateList(e);
+		return meterWriteDAO.updateList(e);
 	}
 
 	@Override
 	public int insertList(List<MeterDomain> meterList) {
-		return meterDAO.insertList(meterList);
+		return meterWriteDAO.insertList(meterList);
 
 	}
 	@Override
 	public List<MeterDomain> getMeterByMeterIds(List<Long> tList){
-		return meterDAO.getMeterByMeterIds(tList);
+		return meterReadDAO.getMeterByMeterIds(tList);
 	}
 
 	@Override
 	public int updateWriteSectIdByUserId(MeterDomain meterDomain) {
-		return meterDAO.updateWriteSectIdByUserId(meterDomain);
+		return meterWriteDAO.updateWriteSectIdByUserId(meterDomain);
 
 	}
 	@Override
 	public List<MeterDomain> getMeterAndUserByIds(List<Long> meterIds) {
-		return meterDAO.getMeterAndUserByIds(meterIds);
+		return meterReadDAO.getMeterAndUserByIds(meterIds);
 
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByUserNos(List<UserDomain> userList) {
-		return meterDAO.getMeterByUserNos(userList);
+		return meterReadDAO.getMeterByUserNos(userList);
 
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByUserNo(UserDomain userDomain) {
-		return meterDAO.getMeterByUserNo(userDomain);
+		return meterReadDAO.getMeterByUserNo(userDomain);
 
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByMeterIdsWithoutStatus(List<Long> meterIds) {
-		return meterDAO.getMeterByMeterIdsWithoutStatus(meterIds);
+		return meterReadDAO.getMeterByMeterIdsWithoutStatus(meterIds);
 
 	}
 
 	@Override
 	public List<MeterDomain> getMeterByMeterNos(List<String> pMeterNoList) {
-		return meterDAO.getMeterByMeterNos(pMeterNoList);
+		return meterReadDAO.getMeterByMeterNos(pMeterNoList);
 	}
 	@Override
 	public List<MeterDomain> findClearMeterDoaminByWhere(MeterDomain t) {
-		return meterDAO.findClearMeterDoaminByWhere(t);
+		return meterReadDAO.findClearMeterDoaminByWhere(t);
 	}
 
 	@Override
 	public List<MeterDomain> getNolineMeter(MeterDomain t) {
-		return meterDAO.getNolineMeter(t);
+		return meterReadDAO.getNolineMeter(t);
 	}
 
 }

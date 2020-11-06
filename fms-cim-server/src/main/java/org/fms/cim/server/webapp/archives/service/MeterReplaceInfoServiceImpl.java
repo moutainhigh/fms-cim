@@ -528,7 +528,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			InductorAssetsDomain returnCtIductorAssets = inductorAssetsDAO.findByKey(ctIductorAssets);
 			// 获取下拉对应的ct 值
 			SystemCommonConfigVO ctCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_CT_CODE",
-					returnCtIductorAssets.getRatedCtCode());
+					returnCtIductorAssets.getRatedTaCode());
 			return new BigDecimal(null == ctCommonConfig.getRemark1() || "".equals(ctCommonConfig.getRemark1()) ? "1"
 					: ctCommonConfig.getRemark1()).doubleValue();
 		}).sum();
@@ -540,7 +540,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			InductorAssetsDomain returnPtIductorAssets = inductorAssetsDAO.findByKey(ptIductorAssets);
 			// 获取pt 变比
 			SystemCommonConfigVO ptCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_PT_CODE",
-					returnPtIductorAssets.getRatedPtCode());
+					returnPtIductorAssets.getRatedTvCode());
 			return new BigDecimal(null == ptCommonConfig.getRemark1() || "".equals(ptCommonConfig.getRemark1()) ? "1"
 					: ptCommonConfig.getRemark1()).doubleValue();
 		}).sum();

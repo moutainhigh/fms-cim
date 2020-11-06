@@ -19,43 +19,46 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class SysSequenceNoServiceImpl implements ISysSequenceNoService {
 
-	@TransactionDAO("master")
-	private SysSequenceNoDAO sysSequenceNoDAO;
+	@TransactionDAO("read")
+	private SysSequenceNoDAO sysSequenceNoReadDAO;
+	
+	@TransactionDAO("write")
+	private SysSequenceNoDAO sysSequenceNoWriteDAO;
 
 	@Override
 	public int insert(SysSequenceNoDomain t) {
 		// TODO Auto-generated method stub
-		return sysSequenceNoDAO.insert(t);
+		return sysSequenceNoWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(SysSequenceNoDomain t) {
 		// TODO Auto-generated method stub
-		return sysSequenceNoDAO.delete(t);
+		return sysSequenceNoWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(SysSequenceNoDomain t) {
 		// TODO Auto-generated method stub
-		return sysSequenceNoDAO.update(t);
+		return sysSequenceNoWriteDAO.update(t);
 	}
 
 	@Override
 	public SysSequenceNoDomain findByKey(SysSequenceNoDomain t) {
 		// TODO Auto-generated method stub
-		return sysSequenceNoDAO.findByKey(t);
+		return sysSequenceNoReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<SysSequenceNoDomain> findByWhere(SysSequenceNoDomain t) {
 		// TODO Auto-generated method stub
-		return sysSequenceNoDAO.findByWhere(t);
+		return sysSequenceNoReadDAO.findByWhere(t);
 	}
 
 	//获得序列号
     @Override
 	public String genSequenceNo(SysSequenceNoDomain inputSys) {
-		List<SysSequenceNoDomain> sysSequenceNo =sysSequenceNoDAO.findByWhere(inputSys);
+		List<SysSequenceNoDomain> sysSequenceNo =sysSequenceNoReadDAO.findByWhere(inputSys);
 		Integer maxNo = new Integer(0);
 		String outputValue = "";
 		String format = "";
@@ -67,7 +70,7 @@ public class SysSequenceNoServiceImpl implements ISysSequenceNoService {
 			if(null==inputSys.getMon()||"".equals(inputSys.getMon())){
                 inputSys.setMon(CommonUtil.getYMD().get(0)+CommonUtil.getYMD().get(1));
             }
-			sysSequenceNoDAO.insert(inputSys);
+			sysSequenceNoWriteDAO.insert(inputSys);
 		} else {
 			SysSequenceNoDomain updateSys = new SysSequenceNoDomain();
 			updateSys.setId(sysSequenceNo.get(0).getId());
@@ -75,7 +78,7 @@ public class SysSequenceNoServiceImpl implements ISysSequenceNoService {
 			updateSys.setMaxNo(sysSequenceNo.get(0).getMaxNo() + 1);
 			maxNo = sysSequenceNo.get(0).getMaxNo() + 1;
 			format = sysSequenceNo.get(0).getFormat();
-			sysSequenceNoDAO.update(updateSys);
+			sysSequenceNoWriteDAO.update(updateSys);
 		}
 		if (null != format) {
 			DecimalFormat df = new DecimalFormat(format);
@@ -90,7 +93,7 @@ public class SysSequenceNoServiceImpl implements ISysSequenceNoService {
     //获得批量序列号
     @Override
     public String genSequenceNo(SysSequenceNoDomain inputSys,int size) {
-        List<SysSequenceNoDomain> sysSequenceNo =sysSequenceNoDAO.findByWhere(inputSys);
+        List<SysSequenceNoDomain> sysSequenceNo =sysSequenceNoWriteDAO.findByWhere(inputSys);
         Integer maxNo = new Integer(0);
         String outputValue = "";
         String format = "";
@@ -102,7 +105,7 @@ public class SysSequenceNoServiceImpl implements ISysSequenceNoService {
             if(null==inputSys.getMon()||"".equals(inputSys.getMon())){
                 inputSys.setMon(CommonUtil.getYMD().get(0)+CommonUtil.getYMD().get(1));
             }
-            sysSequenceNoDAO.insert(inputSys);
+            sysSequenceNoWriteDAO.insert(inputSys);
         } else {
             SysSequenceNoDomain updateSys = new SysSequenceNoDomain();
             updateSys.setId(sysSequenceNo.get(0).getId());
@@ -110,7 +113,7 @@ public class SysSequenceNoServiceImpl implements ISysSequenceNoService {
             updateSys.setMaxNo(sysSequenceNo.get(0).getMaxNo() + size);
             maxNo = sysSequenceNo.get(0).getMaxNo() + 1;
             format = sysSequenceNo.get(0).getFormat();
-            sysSequenceNoDAO.update(updateSys);
+            sysSequenceNoWriteDAO.update(updateSys);
         }
         if (null != format) {
             DecimalFormat df = new DecimalFormat(format);
