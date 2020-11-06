@@ -2,18 +2,17 @@
  * 系统节点
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PSysNodeDomain.java
+ * Title : org.fms.cim.common.domain.uas.PSysNodeDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PSysNodeVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PSysNodeVO;
+
+import java.util.Date;
 
 public class PSysNodeDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

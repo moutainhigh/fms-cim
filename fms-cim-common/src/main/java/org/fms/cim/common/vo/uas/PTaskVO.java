@@ -2,16 +2,15 @@
  * 采集任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PTaskVO.java
+ * Title : org.fms.cim.common.vo.uas.PTaskVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PTaskDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PTaskDomain;
+
+import java.util.Date;
 
 public class PTaskVO extends ManagerParamVO {
 

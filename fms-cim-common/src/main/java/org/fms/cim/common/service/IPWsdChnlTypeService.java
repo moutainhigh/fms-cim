@@ -3,15 +3,14 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPWsdChnlTypeService.java
+ * Title : org.fms.cim.common.service.IPWsdChnlTypeService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PWsdChnlTypeVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPWsdChnlTypeService {
 

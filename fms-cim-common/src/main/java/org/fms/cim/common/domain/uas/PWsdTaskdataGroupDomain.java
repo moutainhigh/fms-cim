@@ -2,18 +2,17 @@
  * 规约数据单元组（※相当于原来变电站采集的规约信息体类型）
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PWsdTaskdataGroupDomain.java
+ * Title : org.fms.cim.common.domain.uas.PWsdTaskdataGroupDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PWsdTaskdataGroupVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PWsdTaskdataGroupVO;
+
+import java.util.Date;
 
 public class PWsdTaskdataGroupDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

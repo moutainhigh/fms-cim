@@ -2,18 +2,17 @@
  * 计算任务类型定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PWsdCalcTaskDomain.java
+ * Title : org.fms.cim.common.domain.uas.PWsdCalcTaskDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PWsdCalcTaskVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PWsdCalcTaskVO;
+
+import java.util.Date;
 
 public class PWsdCalcTaskDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

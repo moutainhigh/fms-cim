@@ -2,18 +2,17 @@
  * 计算方案
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PSysCalcSchemeDomain.java
+ * Title : org.fms.cim.common.domain.uas.PSysCalcSchemeDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PSysCalcSchemeVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PSysCalcSchemeVO;
+
+import java.util.Date;
 
 public class PSysCalcSchemeDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

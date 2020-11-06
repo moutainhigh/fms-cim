@@ -2,16 +2,15 @@
  * 通道参数表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PChannelVO.java
+ * Title : org.fms.cim.common.vo.uas.PChannelVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PChannelDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PChannelDomain;
+
+import java.util.Date;
 
 public class PChannelVO extends ManagerParamVO {
 

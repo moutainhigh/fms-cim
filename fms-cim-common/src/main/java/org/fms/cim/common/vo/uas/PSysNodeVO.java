@@ -2,16 +2,15 @@
  * 系统节点
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PSysNodeVO.java
+ * Title : org.fms.cim.common.vo.uas.PSysNodeVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PSysNodeDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PSysNodeDomain;
+
+import java.util.Date;
 
 public class PSysNodeVO extends ManagerParamVO {
 

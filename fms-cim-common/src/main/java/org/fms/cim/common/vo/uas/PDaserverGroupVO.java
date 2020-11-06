@@ -2,17 +2,16 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PDaserverGroupVO.java
+ * Title : org.fms.cim.common.vo.uas.PDaserverGroupVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PDaserverGroupDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PDaserverGroupDomain;
+
+import java.util.Date;
+import java.util.List;
 
 public class PDaserverGroupVO extends ManagerParamVO {
 

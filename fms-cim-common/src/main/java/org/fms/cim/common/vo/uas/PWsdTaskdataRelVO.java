@@ -1,8 +1,8 @@
 package org.fms.cim.common.vo.uas;
 
-import org.fms.cim.common.domain.uas.PWsdTaskdataRelDomain;
-
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PWsdTaskdataDomain;
+import org.fms.cim.common.domain.uas.PWsdTaskdataRelDomain;
 
 public class PWsdTaskdataRelVO extends PWsdTaskdataVO {
     private Long relID;//与任务的关联ID

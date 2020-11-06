@@ -3,16 +3,16 @@
  * 采集任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPTaskService.java
+ * Title : org.fms.cim.common.service.IPTaskService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.common.vo.uas.PCalcTaskRelVO;
 import org.fms.cim.common.vo.uas.PTaskRelVO;
 import org.fms.cim.common.vo.uas.PTaskVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPTaskService {
 

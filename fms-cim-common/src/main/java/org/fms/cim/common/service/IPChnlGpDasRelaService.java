@@ -3,15 +3,14 @@
  * 通道组主机关系
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPChnlGpDasRelaService.java
+ * Title : org.fms.cim.common.service.IPChnlGpDasRelaService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PChnlGpDasRelaVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPChnlGpDasRelaService {
 
@@ -26,4 +25,8 @@ public interface IPChnlGpDasRelaService {
     public PChnlGpDasRelaVO findByKey(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 
     public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO pChnlGpDasRelaVO);
+
+    public List<PChnlGpDasRelaVO> findByRelGroup(String value);
+
+    public List<PChnlGpDasRelaVO> findByRelSysNode(String value);
 }

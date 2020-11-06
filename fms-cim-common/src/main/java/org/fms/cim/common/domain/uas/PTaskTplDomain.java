@@ -3,18 +3,17 @@
  * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PTaskTplDomain.java
+ * Title : org.fms.cim.common.domain.uas.PTaskTplDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PTaskTplVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PTaskTplVO;
+
+import java.util.Date;
 
 public class PTaskTplDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

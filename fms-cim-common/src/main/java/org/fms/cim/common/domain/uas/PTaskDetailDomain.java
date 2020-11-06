@@ -2,18 +2,17 @@
  * 采集任务明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PTaskDetailDomain.java
+ * Title : org.fms.cim.common.domain.uas.PTaskDetailDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PTaskDetailVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PTaskDetailVO;
+
+import java.util.Date;
 
 public class PTaskDetailDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

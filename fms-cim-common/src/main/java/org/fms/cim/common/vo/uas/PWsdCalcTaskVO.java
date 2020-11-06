@@ -2,16 +2,15 @@
  * 计算任务类型定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PWsdCalcTaskVO.java
+ * Title : org.fms.cim.common.vo.uas.PWsdCalcTaskVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PWsdCalcTaskDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PWsdCalcTaskDomain;
+
+import java.util.Date;
 
 public class PWsdCalcTaskVO extends ManagerParamVO {
 

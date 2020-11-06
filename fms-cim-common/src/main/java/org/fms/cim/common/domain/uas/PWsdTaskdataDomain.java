@@ -2,18 +2,17 @@
  * 规约数据单元
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PWsdTaskdataDomain.java
+ * Title : org.fms.cim.common.domain.uas.PWsdTaskdataDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PWsdTaskdataVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PWsdTaskdataVO;
+
+import java.util.Date;
 
 public class PWsdTaskdataDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

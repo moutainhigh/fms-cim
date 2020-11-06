@@ -2,23 +2,22 @@
  * 计算方案模板明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PCalcTplDetailDomain.java
+ * Title : org.fms.cim.common.domain.uas.PCalcTplDetailDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PCalcTplDetailVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PCalcTplDetailVO;
+
+import java.util.Date;
 
 public class PCalcTplDetailDomain extends Page implements MybatisEntity {
     @TablePrimaryKey
     private Long id;    //标识
-    private Integer tplId;    //模板标识(P_CALC_TPL)
+    private Long tplId;    //模板标识(P_CALC_TPL)
     private Long taskId;    //任务标识(P_CALC_TASK)
     private Long creatorId;    //创建者
     private Date createDate;    //创建时间
@@ -33,11 +32,11 @@ public class PCalcTplDetailDomain extends Page implements MybatisEntity {
         this.id = id;
     }
 
-    public Integer getTplId() {
+    public Long getTplId() {
         return tplId;
     }
 
-    public void setTplId(Integer tplId) {
+    public void setTplId(Long tplId) {
         this.tplId = tplId;
     }
 

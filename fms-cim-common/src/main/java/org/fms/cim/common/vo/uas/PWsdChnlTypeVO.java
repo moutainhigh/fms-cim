@@ -2,16 +2,15 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PWsdChnlTypeVO.java
+ * Title : org.fms.cim.common.vo.uas.PWsdChnlTypeVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PWsdChnlTypeDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PWsdChnlTypeDomain;
+
+import java.util.Date;
 
 public class PWsdChnlTypeVO extends ManagerParamVO {
 

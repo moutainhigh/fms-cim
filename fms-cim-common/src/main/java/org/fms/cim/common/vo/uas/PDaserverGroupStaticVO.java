@@ -1,8 +1,8 @@
 package org.fms.cim.common.vo.uas;
 
-import org.fms.cim.common.domain.uas.PDaserverGroupStaticDomain;
-
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PChnlGroupStaticDomain;
+import org.fms.cim.common.domain.uas.PDaserverGroupStaticDomain;
 
 public class PDaserverGroupStaticVO extends PDaserverGroupVO {
 

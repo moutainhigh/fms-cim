@@ -2,18 +2,17 @@
  * 通道参数表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PChannelDomain.java
+ * Title : org.fms.cim.common.domain.uas.PChannelDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PChannelVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PChannelVO;
+
+import java.util.Date;
 
 public class PChannelDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

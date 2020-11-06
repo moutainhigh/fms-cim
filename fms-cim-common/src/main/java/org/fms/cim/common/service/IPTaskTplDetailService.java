@@ -3,13 +3,15 @@
  * 采集任务模板明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPTaskTplDetailService.java
+ * Title : org.fms.cim.common.service.IPTaskTplDetailService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.common.vo.uas.PTaskDetailVO;
 import org.fms.cim.common.vo.uas.PTaskTplDetailVO;
+
+import java.util.List;
 
 public interface IPTaskTplDetailService {
 

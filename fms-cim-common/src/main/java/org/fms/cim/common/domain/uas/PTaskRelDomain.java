@@ -1,9 +1,9 @@
 package org.fms.cim.common.domain.uas;
 
-import org.fms.cim.common.vo.uas.PTaskRelVO;
-
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
+import org.fms.cim.common.vo.uas.PDaserverGroupStaticVO;
+import org.fms.cim.common.vo.uas.PTaskRelVO;
 
 public class PTaskRelDomain extends PTaskDomain implements MybatisEntity {
     private Integer isSelect;//是否选中 0-否 1-是

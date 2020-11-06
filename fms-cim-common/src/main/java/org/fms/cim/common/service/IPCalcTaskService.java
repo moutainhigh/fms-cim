@@ -3,16 +3,15 @@
  * 计算任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPCalcTaskService.java
+ * Title : org.fms.cim.common.service.IPCalcTaskService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PCalcTaskRelVO;
 import org.fms.cim.common.vo.uas.PCalcTaskVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPCalcTaskService {
 

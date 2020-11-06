@@ -2,18 +2,17 @@
  * 多费率方案定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PSysRateShemeDomain.java
+ * Title : org.fms.cim.common.domain.uas.PSysRateShemeDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PSysRateShemeVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PSysRateShemeVO;
+
+import java.util.Date;
 
 public class PSysRateShemeDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

@@ -3,16 +3,15 @@
  * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PTaskTplVO.java
+ * Title : org.fms.cim.common.vo.uas.PTaskTplVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PTaskTplDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PTaskTplDomain;
+
+import java.util.Date;
 
 public class PTaskTplVO extends ManagerParamVO {
 

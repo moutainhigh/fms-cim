@@ -3,15 +3,14 @@
  * 通道参数表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPChannelService.java
+ * Title : org.fms.cim.common.service.IPChannelService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PChannelVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPChannelService {
 
@@ -26,4 +25,6 @@ public interface IPChannelService {
     public PChannelVO findByKey(PChannelVO pChannelVO);
 
     public List<PChannelVO> findByWhere(PChannelVO pChannelVO);
+
+    public List<PChannelVO> findByRelGroup(String value);
 }

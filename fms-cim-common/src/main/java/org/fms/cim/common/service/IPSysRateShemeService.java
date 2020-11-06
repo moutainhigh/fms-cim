@@ -3,15 +3,14 @@
  * 多费率方案定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPSysRateShemeService.java
+ * Title : org.fms.cim.common.service.IPSysRateShemeService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PSysRateShemeVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPSysRateShemeService {
 

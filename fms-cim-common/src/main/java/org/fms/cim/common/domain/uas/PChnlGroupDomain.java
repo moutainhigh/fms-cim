@@ -2,18 +2,17 @@
  * 通道组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PChnlGroupDomain.java
+ * Title : org.fms.cim.common.domain.uas.PChnlGroupDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PChnlGroupVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PChnlGroupVO;
+
+import java.util.Date;
 
 public class PChnlGroupDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

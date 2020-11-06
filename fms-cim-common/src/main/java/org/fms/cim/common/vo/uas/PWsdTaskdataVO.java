@@ -2,16 +2,15 @@
  * 规约数据单元
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PWsdTaskdataVO.java
+ * Title : org.fms.cim.common.vo.uas.PWsdTaskdataVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PWsdTaskdataDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PWsdTaskdataDomain;
+
+import java.util.Date;
 
 public class PWsdTaskdataVO extends ManagerParamVO {
 

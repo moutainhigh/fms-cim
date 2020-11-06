@@ -2,16 +2,15 @@
  * 规约数据单元组（※相当于原来变电站采集的规约信息体类型）
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PWsdTaskdataGroupVO.java
+ * Title : org.fms.cim.common.vo.uas.PWsdTaskdataGroupVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PWsdTaskdataGroupDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PWsdTaskdataGroupDomain;
+
+import java.util.Date;
 
 public class PWsdTaskdataGroupVO extends ManagerParamVO {
 

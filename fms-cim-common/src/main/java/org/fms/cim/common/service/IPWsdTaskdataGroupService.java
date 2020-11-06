@@ -3,15 +3,14 @@
  * 规约数据单元组（※相当于原来变电站采集的规约信息体类型）
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPWsdTaskdataGroupService.java
+ * Title : org.fms.cim.common.service.IPWsdTaskdataGroupService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PWsdTaskdataGroupVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPWsdTaskdataGroupService {
 

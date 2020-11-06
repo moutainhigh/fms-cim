@@ -2,18 +2,17 @@
  * 通道组主机关系
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PChnlGpDasRelaDomain.java
+ * Title : org.fms.cim.common.domain.uas.PChnlGpDasRelaDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PChnlGpDasRelaVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PChnlGpDasRelaVO;
+
+import java.util.Date;
 
 public class PChnlGpDasRelaDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

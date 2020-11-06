@@ -3,14 +3,17 @@
  * 采集任务明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPTaskDetailService.java
+ * Title : org.fms.cim.common.service.IPTaskDetailService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.common.vo.uas.PTaskDetailRelVO;
 import org.fms.cim.common.vo.uas.PTaskDetailVO;
+import org.fms.cim.common.vo.uas.PTaskTplDetailVO;
 import org.fms.cim.common.vo.uas.PWsdTaskdataRelVO;
+
+import java.util.List;
 
 public interface IPTaskDetailService {
 
@@ -29,4 +32,6 @@ public interface IPTaskDetailService {
     public List<PWsdTaskdataRelVO> findByTaskRel(PWsdTaskdataRelVO modelVO);
 
     public List<PWsdTaskdataRelVO> findByTaskNoRel(PWsdTaskdataRelVO modelVO);
+
+    public int insertList(List<PTaskDetailVO> insertList);
 }

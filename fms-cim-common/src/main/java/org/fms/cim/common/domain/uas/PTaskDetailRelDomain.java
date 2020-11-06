@@ -1,9 +1,8 @@
 package org.fms.cim.common.domain.uas;
 
-import org.fms.cim.common.vo.uas.PTaskDetailRelVO;
-
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
+import org.fms.cim.common.vo.uas.PTaskDetailRelVO;
 
 public class PTaskDetailRelDomain extends PTaskDetailDomain implements MybatisEntity {
 

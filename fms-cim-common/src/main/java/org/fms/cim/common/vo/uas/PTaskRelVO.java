@@ -1,8 +1,8 @@
 package org.fms.cim.common.vo.uas;
 
-import org.fms.cim.common.domain.uas.PTaskRelDomain;
-
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PTaskDomain;
+import org.fms.cim.common.domain.uas.PTaskRelDomain;
 
 public class PTaskRelVO extends PTaskVO{
 

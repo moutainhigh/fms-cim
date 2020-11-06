@@ -3,16 +3,16 @@
  * 通道组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPChnlGroupService.java
+ * Title : org.fms.cim.common.service.IPChnlGroupService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PChnlGroupStaticVO;
 import org.fms.cim.common.vo.uas.PChnlGroupVO;
+import org.fms.cim.common.vo.uas.PDaserverGroupStaticVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPChnlGroupService {
 

@@ -4,15 +4,14 @@
  * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPTaskTplService.java
+ * Title : org.fms.cim.common.service.IPTaskTplService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PTaskTplVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPTaskTplService {
 

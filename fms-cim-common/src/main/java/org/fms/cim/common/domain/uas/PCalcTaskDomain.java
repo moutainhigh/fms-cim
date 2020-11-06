@@ -2,39 +2,45 @@
  * 计算任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PCalcTaskDomain.java
+ * Title : org.fms.cim.common.domain.uas.PCalcTaskDomain.java
  **/
 package org.fms.cim.common.domain.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PCalcTaskVO;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PCalcTaskVO;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class PCalcTaskDomain extends Page implements MybatisEntity {
     @TablePrimaryKey
     private Long id;    //任务标识
     private String name;    //名称
-    private Integer tasktypeid;    //任务类型
+    private BigDecimal tasktypeid;    //任务类型
     private String objtype;    //对象类型(计算方案模板类型【TPL_TYPE】)
-    private Integer schemeId;    //计算方案
+    private BigDecimal schemeId;    //计算方案
     private String primaryFlag;    //主方案标志
     private String dataSrc;    //数据源(日冻结、月冻结、终端冻结、曲线等)
     private String gltsFlag;    //功率、费率标识(每8位为一组，表示8个功率，每一组中的每一位代表8个费率)
-    private Long tsSchemeid;    //后台分时方案(P_SYS_RATE_SHEME)
+    private BigDecimal tsSchemeid;    //后台分时方案(P_SYS_RATE_SHEME)
     private String triggerFlag;    //是否触发对象(01-是 02-否)
     private String qCalcFlag;    //无功计算方式(废弃：直接设置到点上)
     private String priority;    //优先级
     private String genedatetime;    //任务产生基准时间(05 00:00 日 小时:分钟)
-    private Integer genespanvalue;    //任务间隔值(>=1)
+    private BigDecimal genespanvalue;    //任务间隔值(>=1)
     private String genespantype;    //任务间隔类型
     private String status;    //任务状态(0---停止 1---使用)
+    private BigDecimal weight;//排序
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date taskst;    //任务产生开始时间
     private Long creatorId;    //创建者
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
@@ -55,11 +61,11 @@ public class PCalcTaskDomain extends Page implements MybatisEntity {
         this.name = name;
     }
 
-    public Integer getTasktypeid() {
+    public BigDecimal getTasktypeid() {
         return tasktypeid;
     }
 
-    public void setTasktypeid(Integer tasktypeid) {
+    public void setTasktypeid(BigDecimal tasktypeid) {
         this.tasktypeid = tasktypeid;
     }
 
@@ -71,11 +77,11 @@ public class PCalcTaskDomain extends Page implements MybatisEntity {
         this.objtype = objtype;
     }
 
-    public Integer getSchemeId() {
+    public BigDecimal getSchemeId() {
         return schemeId;
     }
 
-    public void setSchemeId(Integer schemeId) {
+    public void setSchemeId(BigDecimal schemeId) {
         this.schemeId = schemeId;
     }
 
@@ -103,11 +109,11 @@ public class PCalcTaskDomain extends Page implements MybatisEntity {
         this.gltsFlag = gltsFlag;
     }
 
-    public Long getTsSchemeid() {
+    public BigDecimal getTsSchemeid() {
         return tsSchemeid;
     }
 
-    public void setTsSchemeid(Long tsSchemeid) {
+    public void setTsSchemeid(BigDecimal tsSchemeid) {
         this.tsSchemeid = tsSchemeid;
     }
 
@@ -143,11 +149,11 @@ public class PCalcTaskDomain extends Page implements MybatisEntity {
         this.genedatetime = genedatetime;
     }
 
-    public Integer getGenespanvalue() {
+    public BigDecimal getGenespanvalue() {
         return genespanvalue;
     }
 
-    public void setGenespanvalue(Integer genespanvalue) {
+    public void setGenespanvalue(BigDecimal genespanvalue) {
         this.genespanvalue = genespanvalue;
     }
 
@@ -205,6 +211,14 @@ public class PCalcTaskDomain extends Page implements MybatisEntity {
 
     public void setLastModifyTime(String lastModifyTime) {
         this.lastModifyTime = lastModifyTime;
+    }
+
+    public BigDecimal getWeight() {
+        return weight;
+    }
+
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
     }
 
     public PCalcTaskVO domain2VO() {

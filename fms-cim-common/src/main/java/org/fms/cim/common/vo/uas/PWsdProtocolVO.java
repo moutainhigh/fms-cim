@@ -2,17 +2,16 @@
  * 规约定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PWsdProtocolVO.java
+ * Title : org.fms.cim.common.vo.uas.PWsdProtocolVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PWsdProtocolDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PWsdProtocolDomain;
+
+import java.util.Date;
+import java.util.List;
 
 public class PWsdProtocolVO extends ManagerParamVO {
 

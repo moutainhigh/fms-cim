@@ -2,18 +2,17 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PWsdChnlTypeDomain.java
+ * Title : org.fms.cim.common.domain.uas.PWsdChnlTypeDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PWsdChnlTypeVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PWsdChnlTypeVO;
+
+import java.util.Date;
 
 public class PWsdChnlTypeDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

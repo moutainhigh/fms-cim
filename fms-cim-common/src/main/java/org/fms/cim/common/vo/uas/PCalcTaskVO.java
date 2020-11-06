@@ -2,16 +2,16 @@
  * 计算任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PCalcTaskVO.java
+ * Title : org.fms.cim.common.vo.uas.PCalcTaskVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PCalcTaskDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PCalcTaskDomain;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class PCalcTaskVO extends ManagerParamVO {
 
@@ -31,6 +31,7 @@ public class PCalcTaskVO extends ManagerParamVO {
     private Integer genespanvalue;    //任务间隔值(>=1)
     private String genespantype;    //任务间隔类型
     private String status;    //任务状态(0---停止 1---使用)
+    private Integer weight;//排序
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date taskst;    //任务产生开始时间
@@ -209,9 +210,18 @@ public class PCalcTaskVO extends ManagerParamVO {
         this.lastModifyTime = lastModifyTime;
     }
 
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
 
     public PCalcTaskDomain vo2Domain() {
         PCalcTaskDomain pCalcTaskDomain = ReflectUtil.cast(this, PCalcTaskDomain.class);
         return pCalcTaskDomain;
     }
+
+
 }

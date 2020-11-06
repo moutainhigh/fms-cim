@@ -3,16 +3,15 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPDaserverGroupService.java
+ * Title : org.fms.cim.common.service.IPDaserverGroupService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PDaserverGroupStaticVO;
 import org.fms.cim.common.vo.uas.PDaserverGroupVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPDaserverGroupService {
 

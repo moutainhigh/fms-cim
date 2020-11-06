@@ -3,15 +3,14 @@
  * 计算任务类型定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPWsdCalcTaskService.java
+ * Title : org.fms.cim.common.service.IPWsdCalcTaskService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PWsdCalcTaskVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPWsdCalcTaskService {
 

@@ -3,15 +3,14 @@
  * 采集点
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IRCpService.java
+ * Title : org.fms.cim.common.service.IRCpService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.RCpVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IRCpService {
 

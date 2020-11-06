@@ -3,15 +3,14 @@
  * 规约定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.IPWsdProtocolService.java
+ * Title : org.fms.cim.common.service.IPWsdProtocolService.java
  **/
 package org.fms.cim.common.service;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.cim.common.vo.uas.PWsdProtocolVO;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.List;
 
 public interface IPWsdProtocolService {
 

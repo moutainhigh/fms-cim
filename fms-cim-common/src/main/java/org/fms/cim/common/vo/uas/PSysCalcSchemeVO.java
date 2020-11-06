@@ -2,16 +2,15 @@
  * 计算方案
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.vo.PSysCalcSchemeVO.java
+ * Title : org.fms.cim.common.vo.uas.PSysCalcSchemeVO.java
  **/
 package org.fms.cim.common.vo.uas;
 
-import java.util.Date;
-
-import org.fms.cim.common.domain.uas.PSysCalcSchemeDomain;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.common.domain.uas.PSysCalcSchemeDomain;
+
+import java.util.Date;
 
 public class PSysCalcSchemeVO extends ManagerParamVO {
 

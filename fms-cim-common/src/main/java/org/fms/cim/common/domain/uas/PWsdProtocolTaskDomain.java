@@ -2,18 +2,17 @@
  * 规约任务类型（※相当于原来变电站采集的规约数据类型表与负控采集的任务类型合并的表。对于厂站系列为电量、15分钟电量、瞬时量等；对于负荷、低压系列为一类、二类数据等）
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PWsdProtocolTaskDomain.java
+ * Title : org.fms.cim.common.domain.uas.PWsdProtocolTaskDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PWsdProtocolTaskVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PWsdProtocolTaskVO;
+
+import java.util.Date;
 
 public class PWsdProtocolTaskDomain extends Page implements MybatisEntity {
     @TablePrimaryKey

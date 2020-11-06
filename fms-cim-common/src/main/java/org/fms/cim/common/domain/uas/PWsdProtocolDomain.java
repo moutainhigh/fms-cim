@@ -2,18 +2,17 @@
  * 规约定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.domain.PWsdProtocolDomain.java
+ * Title : org.fms.cim.common.domain.uas.PWsdProtocolDomain.java
  **/
 package org.fms.cim.common.domain.uas;
-
-import java.util.Date;
-
-import org.fms.cim.common.vo.uas.PWsdProtocolVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
+import org.fms.cim.common.vo.uas.PWsdProtocolVO;
+
+import java.util.Date;
 
 public class PWsdProtocolDomain extends Page implements MybatisEntity {
     @TablePrimaryKey
