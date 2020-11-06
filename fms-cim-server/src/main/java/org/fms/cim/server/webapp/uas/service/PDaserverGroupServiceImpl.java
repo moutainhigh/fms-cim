@@ -2,23 +2,22 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PDaserverGroupServiceImpl.java
+ * Title : org.fms.cim.common.service;.PDaserverGroupServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.annotation.TransactionDAO;
+import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.server.webapp.uas.dao.PDaserverGroupDAO;
 import org.fms.cim.common.domain.uas.PDaserverGroupDomain;
 import org.fms.cim.common.domain.uas.PDaserverGroupStaticDomain;
 import org.fms.cim.common.service.IPDaserverGroupService;
 import org.fms.cim.common.vo.uas.PDaserverGroupStaticVO;
 import org.fms.cim.common.vo.uas.PDaserverGroupVO;
-import org.fms.cim.server.webapp.uas.dao.PDaserverGroupDAO;
 
-import com.riozenc.titanTool.annotation.TransactionDAO;
-import com.riozenc.titanTool.annotation.TransactionService;
-import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import java.util.*;
 
 @TransactionService
 public class PDaserverGroupServiceImpl implements IPDaserverGroupService {

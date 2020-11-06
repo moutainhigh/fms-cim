@@ -3,18 +3,17 @@
  * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
  * Author :
  * Date : 2020年10月22日 上午9:59:25
- * Title : org.fms.eis.webapp.dao.PTaskTplDAO.java
+ * Title : org.fms.cim.server.webapp.uas.dao.PTaskTplDAO.java
  **/
 package org.fms.cim.server.webapp.uas.dao;
-
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PTaskTplDomain;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.cim.common.domain.uas.PTaskTplDomain;
+
+import java.util.List;
 
 @TransactionDAO
 public class PTaskTplDAO extends AbstractTransactionDAOSupport implements BaseDAO<PTaskTplDomain> {

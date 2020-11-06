@@ -2,21 +2,21 @@
  * 系统节点
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PSysNodeServiceImpl.java
+ * Title : org.fms.cim.common.service;.PSysNodeServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PSysNodeDomain;
-import org.fms.cim.common.service.IPSysNodeService;
-import org.fms.cim.common.vo.uas.PSysNodeVO;
-import org.fms.cim.server.webapp.uas.dao.PSysNodeDAO;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.server.webapp.uas.dao.PSysNodeDAO;
+import org.fms.cim.common.domain.uas.PSysNodeDomain;
+import org.fms.cim.common.service.IPSysNodeService;
+import org.fms.cim.common.vo.uas.PDaserverGroupVO;
+import org.fms.cim.common.vo.uas.PSysNodeVO;
+
+import java.util.*;
 
 @TransactionService
 public class PSysNodeServiceImpl implements IPSysNodeService {
@@ -80,5 +80,10 @@ public class PSysNodeServiceImpl implements IPSysNodeService {
     public int updateListDaserverGroup(List<PSysNodeVO> sysNodeVOList){
         int num = pSysNodeWriteDAO.updateListDaserverGroup(ReflectUtil.cast(sysNodeVOList, PSysNodeDomain.class));
         return num;
+    }
+    @Override
+    public List<PSysNodeVO> findByRelDasGroup(String value){
+        List<PSysNodeDomain> lstDomain = pSysNodeReadDAO.findByRelDasGroup(value);
+        return ReflectUtil.cast(lstDomain, PSysNodeVO.class);
     }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PMeterModelDAO">
+    <select id="findByKey" parameterType="PMeterModelDomain"
+            resultType="PMeterModelDomain" useCache="true">
+        select
+        ID,NAME,VALID_FLAG,MAX_VALUE,AP_COEF,RP_COEF,P_COEF,Q_COEF,V_COEF,C_COEF,DEMAND_COEF,FACTOR_COEF,SAVEDATETIME
+        from P_METER_MODEL
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PMeterModelDomain"
+            resultType="PMeterModelDomain" useCache="true">
+        select
+        ID,NAME,VALID_FLAG,MAX_VALUE,AP_COEF,RP_COEF,P_COEF,Q_COEF,V_COEF,C_COEF,DEMAND_COEF,FACTOR_COEF,SAVEDATETIME
+        from P_METER_MODEL
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="validFlag !=null">
+                and VALID_FLAG = #{validFlag}
+            </if>
+            <if test="maxValue !=null">
+                and MAX_VALUE = #{maxValue}
+            </if>
+            <if test="apCoef !=null">
+                and AP_COEF = #{apCoef}
+            </if>
+            <if test="rpCoef !=null">
+                and RP_COEF = #{rpCoef}
+            </if>
+            <if test="pCoef !=null">
+                and P_COEF = #{pCoef}
+            </if>
+            <if test="qCoef !=null">
+                and Q_COEF = #{qCoef}
+            </if>
+            <if test="vCoef !=null">
+                and V_COEF = #{vCoef}
+            </if>
+            <if test="cCoef !=null">
+                and C_COEF = #{cCoef}
+            </if>
+            <if test="demandCoef !=null">
+                and DEMAND_COEF = #{demandCoef}
+            </if>
+            <if test="factorCoef !=null">
+                and FACTOR_COEF = #{factorCoef}
+            </if>
+            <if test="savedatetime !=null">
+                and SAVEDATETIME = #{savedatetime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PMeterModelDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_METER_MODEL
+			(ID,NAME,VALID_FLAG,MAX_VALUE,AP_COEF,RP_COEF,P_COEF,Q_COEF,V_COEF,C_COEF,DEMAND_COEF,FACTOR_COEF,SAVEDATETIME)
+			VALUES(#{id},#{name},#{validFlag},#{maxValue},#{apCoef},#{rpCoef},#{pCoef},#{qCoef},#{vCoef},#{cCoef},#{demandCoef},#{factorCoef},#{savedatetime})
+
+	</insert>
+    <update id="update" parameterType="PMeterModelDomain" flushCache="true">
+        update P_METER_MODEL
+        <set>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="validFlag !=null">
+                VALID_FLAG = #{validFlag},
+            </if>
+            <if test="maxValue !=null">
+                MAX_VALUE = #{maxValue},
+            </if>
+            <if test="apCoef !=null">
+                AP_COEF = #{apCoef},
+            </if>
+            <if test="rpCoef !=null">
+                RP_COEF = #{rpCoef},
+            </if>
+            <if test="pCoef !=null">
+                P_COEF = #{pCoef},
+            </if>
+            <if test="qCoef !=null">
+                Q_COEF = #{qCoef},
+            </if>
+            <if test="vCoef !=null">
+                V_COEF = #{vCoef},
+            </if>
+            <if test="cCoef !=null">
+                C_COEF = #{cCoef},
+            </if>
+            <if test="demandCoef !=null">
+                DEMAND_COEF = #{demandCoef},
+            </if>
+            <if test="factorCoef !=null">
+                FACTOR_COEF = #{factorCoef},
+            </if>
+            <if test="savedatetime !=null">
+                SAVEDATETIME = #{savedatetime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PMeterModelDomain" flushCache="true">
+        delete from P_METER_MODEL
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

@@ -2,14 +2,15 @@
  * 通道组主机关系
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PChnlGpDasRelaAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PChnlGpDasRelaAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPChnlGpDasRelaService;
 import org.fms.cim.common.vo.uas.PChnlGpDasRelaVO;
+import org.fms.cim.common.vo.uas.PMpedVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.List;
 
 @ControllerAdvice
 @RequestMapping("PChnlGpDasRela")
@@ -29,30 +29,60 @@ public class PChnlGpDasRelaAction {
     @Qualifier("PChnlGpDasRelaServiceImpl")
     private IPChnlGpDasRelaService pChnlGpDasRelaService;
 
+    /**
+     * 主机对通道组是一对多的关系，保存时校验已存在对应关系的要提醒。
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PChnlGpDasRelaVO pChnlGpDasRelaVO) {
-        int i = pChnlGpDasRelaService.insert(pChnlGpDasRelaVO);
+        if (pChnlGpDasRelaVO != null) {
+            PChnlGpDasRelaVO relVO = new PChnlGpDasRelaVO();
+            relVO.setChnlGroupId(pChnlGpDasRelaVO.getChnlGroupId());
+            int num = pChnlGpDasRelaService.findByWhere(relVO).size();
+            if (num > 0) {
+                return new HttpResult<String>(HttpResult.ERROR, "该通道组已关联主机，新增失败", null);
+            } else {
+                int i = pChnlGpDasRelaService.insert(pChnlGpDasRelaVO);
 
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+                if (i > 0) {
+                    return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+                } else {
+                    return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+                }
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
+    /**
+     * 主机对通道组是一对多的关系，保存时校验已存在对应关系的要提醒。
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PChnlGpDasRelaVO pChnlGpDasRelaVO) {
-        int i = pChnlGpDasRelaService.update(pChnlGpDasRelaVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+        if (pChnlGpDasRelaVO != null) {
+            PChnlGpDasRelaVO relVO = new PChnlGpDasRelaVO();
+            relVO.setChnlGroupId(pChnlGpDasRelaVO.getChnlGroupId());
+            Long num = pChnlGpDasRelaService.findByWhere(relVO).stream()
+                    .filter(s -> s.getId() != pChnlGpDasRelaVO.getId()).count();
+            if (num > 0) {
+                return new HttpResult<String>(HttpResult.ERROR, "该通道组已关联主机，编辑失败", null);
+            } else {
+                int i = pChnlGpDasRelaService.update(pChnlGpDasRelaVO);
+                if (i > 0) {
+                    return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+                } else {
+                    return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+                }
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
     @ResponseBody

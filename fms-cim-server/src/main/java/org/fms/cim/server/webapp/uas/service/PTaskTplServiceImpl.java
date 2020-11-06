@@ -3,21 +3,20 @@
  * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PTaskTplServiceImpl.java
+ * Title : org.fms.cim.common.service;.PTaskTplServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PTaskTplDomain;
-import org.fms.cim.common.service.IPTaskTplService;
-import org.fms.cim.common.vo.uas.PTaskTplVO;
-import org.fms.cim.server.webapp.uas.dao.PTaskTplDAO;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.server.webapp.uas.dao.PTaskTplDAO;
+import org.fms.cim.common.domain.uas.PTaskTplDomain;
+import org.fms.cim.common.service.IPTaskTplService;
+import org.fms.cim.common.vo.uas.PTaskTplVO;
+
+import java.util.*;
 
 @TransactionService
 public class PTaskTplServiceImpl implements IPTaskTplService {

@@ -2,18 +2,18 @@
  * 通道参数表
  * Author :
  * Date : 2020年10月22日 上午9:59:25
- * Title : org.fms.eis.webapp.dao.PChannelDAO.java
+ * Title : org.fms.cim.server.webapp.uas.dao.PChannelDAO.java
  **/
 package org.fms.cim.server.webapp.uas.dao;
-
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PChannelDomain;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.cim.common.domain.uas.PChannelDomain;
+import org.fms.cim.common.domain.uas.PChnlGpDasRelaDomain;
+
+import java.util.List;
 
 @TransactionDAO
 public class PChannelDAO extends AbstractTransactionDAOSupport implements BaseDAO<PChannelDomain> {
@@ -52,4 +52,7 @@ public class PChannelDAO extends AbstractTransactionDAOSupport implements BaseDA
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
+    public List<PChannelDomain> findByRelGroup(String value) {
+        return getPersistanceManager().find(getNamespace() + ".findByRelGroup", value);
+    }
 }

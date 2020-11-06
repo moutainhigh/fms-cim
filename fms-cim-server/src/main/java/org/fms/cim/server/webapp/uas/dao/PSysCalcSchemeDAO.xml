@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PSysCalcSchemeDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PSysCalcSchemeDAO">
     <select id="findByKey" parameterType="PSysCalcSchemeDomain"
             resultType="PSysCalcSchemeDomain" useCache="true">
         select

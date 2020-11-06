@@ -2,19 +2,20 @@
  * 采集任务明细
  * Author :
  * Date : 2020年10月22日 上午9:59:25
- * Title : org.fms.eis.webapp.dao.PTaskDetailDAO.java
+ * Title : org.fms.cim.server.webapp.uas.dao.PTaskDetailDAO.java
  **/
 package org.fms.cim.server.webapp.uas.dao;
-
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PTaskDetailDomain;
-import org.fms.cim.common.domain.uas.PWsdTaskdataRelDomain;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.cim.common.domain.uas.PTaskDetailDomain;
+import org.fms.cim.common.domain.uas.PTaskDetailRelDomain;
+import org.fms.cim.common.domain.uas.PWsdTaskdataRelDomain;
+import org.fms.cim.common.vo.uas.PTaskDetailRelVO;
+
+import java.util.List;
 
 @TransactionDAO
 public class PTaskDetailDAO extends AbstractTransactionDAOSupport implements BaseDAO<PTaskDetailDomain> {
@@ -59,5 +60,9 @@ public class PTaskDetailDAO extends AbstractTransactionDAOSupport implements Bas
 
     public List<PWsdTaskdataRelDomain> findByTaskNoRel(PWsdTaskdataRelDomain modelDomain) {
         return getPersistanceManager().find(getNamespace() + ".findByTaskNoRel", modelDomain);
+    }
+
+    public int insertList(List<PTaskDetailDomain> insertList) {
+        return getPersistanceManager().insertList(getNamespace() + ".insert", insertList);
     }
 }

@@ -2,16 +2,14 @@
  * 计算任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PCalcTaskAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PCalcTaskAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPCalcTaskService;
-import org.fms.cim.common.vo.uas.PCalcTaskRelVO;
-import org.fms.cim.common.vo.uas.PCalcTaskVO;
-import org.fms.cim.common.vo.uas.PCalcTplVO;
+import org.fms.cim.common.vo.uas.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PCalcTask")

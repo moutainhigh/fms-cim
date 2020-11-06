@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PChnlGroupDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PChnlGroupDAO">
     <select id="findByKey" parameterType="PChnlGroupDomain"
             resultType="PChnlGroupDomain" useCache="true">
         select ID,CODE,NAME,CHNL_TYPE_ID,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME

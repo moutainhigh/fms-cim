@@ -2,21 +2,20 @@
  * 通道参数表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PChannelServiceImpl.java
+ * Title : org.fms.cim.common.service;.PChannelServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PChannelDomain;
-import org.fms.cim.common.service.IPChannelService;
-import org.fms.cim.common.vo.uas.PChannelVO;
-import org.fms.cim.server.webapp.uas.dao.PChannelDAO;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.server.webapp.uas.dao.PChannelDAO;
+import org.fms.cim.common.domain.uas.PChannelDomain;
+import org.fms.cim.common.service.IPChannelService;
+import org.fms.cim.common.vo.uas.PChannelVO;
+
+import java.util.*;
 
 @TransactionService
 public class PChannelServiceImpl implements IPChannelService {
@@ -76,4 +75,8 @@ public class PChannelServiceImpl implements IPChannelService {
         return ReflectUtil.cast(lstDomain, PChannelVO.class);
     }
 
+    public List<PChannelVO> findByRelGroup(String value){
+        List<PChannelDomain> lstDomain = pChannelReadDAO.findByRelGroup(value);
+        return ReflectUtil.cast(lstDomain, PChannelVO.class);
+    }
 }

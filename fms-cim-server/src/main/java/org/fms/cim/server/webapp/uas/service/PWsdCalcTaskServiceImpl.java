@@ -2,21 +2,20 @@
  * 计算任务类型定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PWsdCalcTaskServiceImpl.java
+ * Title : org.fms.cim.common.service;.PWsdCalcTaskServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PWsdCalcTaskDomain;
-import org.fms.cim.common.service.IPWsdCalcTaskService;
-import org.fms.cim.common.vo.uas.PWsdCalcTaskVO;
-import org.fms.cim.server.webapp.uas.dao.PWsdCalcTaskDAO;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.server.webapp.uas.dao.PWsdCalcTaskDAO;
+import org.fms.cim.common.domain.uas.PWsdCalcTaskDomain;
+import org.fms.cim.common.service.IPWsdCalcTaskService;
+import org.fms.cim.common.vo.uas.PWsdCalcTaskVO;
+
+import java.util.*;
 
 @TransactionService
 public class PWsdCalcTaskServiceImpl implements IPWsdCalcTaskService {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PCalcTplDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PCalcTplDAO">
     <select id="findByKey" parameterType="PCalcTplDomain"
             resultType="PCalcTplDomain" useCache="true">
-        select ID,NAME,TYPE,DEFAULT_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        select ID,NAME,TYPE,DEFAULT_FLAG,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
         from P_CALC_TPL
         <where>
             and ID = #{id}
@@ -11,7 +11,7 @@
     </select>
     <select id="findByWhere" parameterType="PCalcTplDomain"
             resultType="PCalcTplDomain" useCache="true">
-        select ID,NAME,TYPE,DEFAULT_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        select ID,NAME,TYPE,DEFAULT_FLAG,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
         from P_CALC_TPL
         <where>
             <if test="id !=null">
@@ -25,6 +25,9 @@
             </if>
             <if test="defaultFlag !=null">
                 and DEFAULT_FLAG = #{defaultFlag}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
             </if>
             <if test="creatorId !=null">
                 and CREATOR_ID = #{creatorId}
@@ -42,8 +45,8 @@
     </select>
     <insert id="insert" parameterType="PCalcTplDomain" flushCache="true" useGeneratedKeys="true">
 		insert into P_CALC_TPL
-			(ID,NAME,TYPE,DEFAULT_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{name},#{type},#{defaultFlag},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+			(ID,NAME,TYPE,DEFAULT_FLAG,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{name},#{type},#{defaultFlag},#{weigth},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
     <update id="update" parameterType="PCalcTplDomain" flushCache="true">
@@ -57,6 +60,9 @@
             </if>
             <if test="defaultFlag !=null">
                 DEFAULT_FLAG = #{defaultFlag},
+            </if>
+            <if test="weight !=null">
+                WEIGHT = #{weigth},
             </if>
             <if test="creatorId !=null">
                 CREATOR_ID = #{creatorId},

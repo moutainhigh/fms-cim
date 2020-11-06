@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PSysNodeDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PSysNodeDAO">
     <select id="findByKey" parameterType="PSysNodeDomain"
             resultType="PSysNodeDomain" useCache="true">
         select
@@ -215,4 +215,10 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelDasGroup" parameterType="String"
+            resultType="PSysNodeDomain" useCache="true">
+        select
+        ID,CODE,NAME,ALIAS,STATUS,TYPE,WHEREIN,NETA,NETB,NETD,NETE,DACTRL_FLAG,DA_FLAG,CALCCTRL_FLAG,CALC_FLAG,COMPORT1,COMPORT2,HB_PORT1,HB_PORT2,MQ_FLAG,WEB_FLAG,EVENT_FLAG,DB_FLAG,REMARK,DA_GROUP,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_NODE where DA_GROUP in (#{value})
+    </select>
 </mapper>

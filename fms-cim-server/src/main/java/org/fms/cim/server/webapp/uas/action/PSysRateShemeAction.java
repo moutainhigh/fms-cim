@@ -2,12 +2,12 @@
  * 多费率方案定义表
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PSysRateShemeAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PSysRateShemeAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPSysRateShemeService;
 import org.fms.cim.common.vo.uas.PSysRateShemeVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.List;
 
 @ControllerAdvice
 @RequestMapping("PSysRateSheme")

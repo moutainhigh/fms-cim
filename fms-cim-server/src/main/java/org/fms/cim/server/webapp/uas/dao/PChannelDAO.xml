@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PChannelDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PChannelDAO">
     <select id="findByKey" parameterType="PChannelDomain"
             resultType="PChannelDomain" useCache="true">
         select
@@ -155,4 +155,10 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelGroup" parameterType="String"
+            resultType="PChannelDomain" useCache="true">
+        select
+        ID,CODE,NAME,CHNL_GROUP_ID,DEVICE_ADDR1,DEVICE_ADDR2,CTRLHOST_ID,BAUD,DATABIT,STOPBIT,CHECKBIT,INITSTR,PROTOCOL_ID,NORMALOPEN,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHANNEL where CHNL_GROUP_ID in (#{value})
+    </select>
 </mapper>

@@ -2,20 +2,22 @@
  * 采集任务模板明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PTaskTplDetailServiceImpl.java
+ * Title : org.fms.cim.common.service;.PTaskTplDetailServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PTaskTplDetailDomain;
-import org.fms.cim.common.service.IPTaskTplDetailService;
-import org.fms.cim.common.vo.uas.PTaskTplDetailVO;
-import org.fms.cim.server.webapp.uas.dao.PTaskTplDetailDAO;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import org.fms.cim.server.webapp.uas.dao.PTaskTplDetailDAO;
+import org.fms.cim.common.domain.uas.PTaskDetailDomain;
+import org.fms.cim.common.domain.uas.PTaskTplDetailDomain;
+import org.fms.cim.common.service.IPTaskTplDetailService;
+import org.fms.cim.common.vo.uas.PTaskDetailVO;
+import org.fms.cim.common.vo.uas.PTaskTplDetailVO;
+
+import java.util.*;
 
 @TransactionService
 public class PTaskTplDetailServiceImpl implements IPTaskTplDetailService {

@@ -2,18 +2,17 @@
  * 规约数据单元组（※相当于原来变电站采集的规约信息体类型）
  * Author :
  * Date : 2020年10月22日 上午9:59:25
- * Title : org.fms.eis.webapp.dao.PWsdTaskdataGroupDAO.java
+ * Title : org.fms.cim.server.webapp.uas.dao.PWsdTaskdataGroupDAO.java
  **/
 package org.fms.cim.server.webapp.uas.dao;
-
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PWsdTaskdataGroupDomain;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.cim.common.domain.uas.PWsdTaskdataGroupDomain;
+
+import java.util.List;
 
 @TransactionDAO
 public class PWsdTaskdataGroupDAO extends AbstractTransactionDAOSupport implements BaseDAO<PWsdTaskdataGroupDomain> {

@@ -2,14 +2,14 @@
  * 采集任务模板明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PTaskTplDetailAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PTaskTplDetailAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPTaskTplDetailService;
+import org.fms.cim.common.vo.uas.PCalcTplDetailVO;
 import org.fms.cim.common.vo.uas.PTaskRelVO;
 import org.fms.cim.common.vo.uas.PTaskTplDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.ArrayList;
+import java.util.List;
 
 @ControllerAdvice
 @RequestMapping("PTaskTplDetail")

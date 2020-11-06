@@ -2,13 +2,15 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PDaserverGroupAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PDaserverGroupAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPDaserverGroupService;
+import org.fms.cim.common.service.IPSysNodeService;
+import org.fms.cim.common.vo.uas.PChnlGroupVO;
 import org.fms.cim.common.vo.uas.PDaserverGroupStaticVO;
 import org.fms.cim.common.vo.uas.PDaserverGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.List;
 
 @ControllerAdvice
 @RequestMapping("PDaserverGroup")
@@ -29,6 +30,10 @@ public class PDaserverGroupAction {
     @Autowired
     @Qualifier("PDaserverGroupServiceImpl")
     private IPDaserverGroupService pDaserverGroupService;
+
+    @Autowired
+    @Qualifier("PSysNodeServiceImpl")
+    private IPSysNodeService pSysNodeService;
 
     @ResponseBody
     @PostMapping(params = "method=insert")
@@ -56,11 +61,32 @@ public class PDaserverGroupAction {
 
     }
 
+    /**
+     * 已关联采集主机的不能删除
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=delete")
     public HttpResult<?> delete(@RequestBody List<PDaserverGroupVO> deleteList) throws Exception {
-        HttpResult httpResult = pDaserverGroupService.deleteList(deleteList);
-        return httpResult;
+        if (deleteList != null) {
+            if (deleteList.size() > 0) {
+                String value = "";
+                for (PDaserverGroupVO item : deleteList) {
+                    value += item.getId() + ",";
+                }
+                value = value.substring(0, value.length() - 1);
+                if (pSysNodeService.findByRelDasGroup(value).size() > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "已关联采集主机的不能删除", null);
+                } else {
+                    return pDaserverGroupService.deleteList(deleteList);
+                }
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "暂无要删除的内容", null);
+            }
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
+        }
     }
 
     @ResponseBody

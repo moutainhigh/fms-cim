@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PChnlGpDasRelaDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PChnlGpDasRelaDAO">
     <select id="findByKey" parameterType="PChnlGpDasRelaDomain"
             resultType="PChnlGpDasRelaDomain" useCache="true">
         select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
@@ -69,10 +69,20 @@
             and ID = #{id}
         </where>
     </update>
-    <delete id="delete" parameterType="PChnlGpDasRelaDomain" flushCache="true">
+    <delete id="delete" parameterType="Map" flushCache="true">
         delete from P_CHNL_GP_DAS_RELA
         <where>
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelGroup" parameterType="String"
+            resultType="PChnlGpDasRelaDomain" useCache="true">
+        select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHNL_GP_DAS_RELA where CHNL_GROUP_ID in (#{value})
+    </select>
+    <select id="findByRelSysNode" parameterType="String"
+            resultType="PChnlGpDasRelaDomain" useCache="true">
+        select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHNL_GP_DAS_RELA where DAS_ID in (#{value})
+    </select>
 </mapper>

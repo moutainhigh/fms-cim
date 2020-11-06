@@ -2,19 +2,18 @@
  * 采集主机组
  * Author :
  * Date : 2020年10月22日 上午9:59:25
- * Title : org.fms.eis.webapp.dao.PDaserverGroupDAO.java
+ * Title : org.fms.cim.server.webapp.uas.dao.PDaserverGroupDAO.java
  **/
 package org.fms.cim.server.webapp.uas.dao;
-
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PDaserverGroupDomain;
-import org.fms.cim.common.domain.uas.PDaserverGroupStaticDomain;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.cim.common.domain.uas.PDaserverGroupDomain;
+import org.fms.cim.common.domain.uas.PDaserverGroupStaticDomain;
+
+import java.util.List;
 
 @TransactionDAO
 public class PDaserverGroupDAO extends AbstractTransactionDAOSupport implements BaseDAO<PDaserverGroupDomain> {

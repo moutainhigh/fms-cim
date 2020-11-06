@@ -3,17 +3,16 @@
  * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PTaskTplAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PTaskTplAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPTaskTplService;
 import org.fms.cim.common.service.IPWsdProtocolService;
-import org.fms.cim.common.vo.uas.PTaskTplVO;
-import org.fms.cim.common.vo.uas.PWsdProtocolVO;
+import org.fms.cim.common.service.ISystemCommonConfigService;
+import org.fms.cim.common.vo.uas.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PTaskTpl")
@@ -37,30 +36,66 @@ public class PTaskTplAction {
     @Qualifier("PWsdProtocolServiceImpl")
     private IPWsdProtocolService pWsdProtocolService;
 
+    @Autowired
+    @Qualifier("systemCommonConfigServiceImpl")
+    private ISystemCommonConfigService systemCommonConfigService;
+
+    /**
+     * 同一个规约下只允许有一个默认的任务模板
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PTaskTplVO pTaskTplVO) {
-        int i = pTaskTplService.insert(pTaskTplVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+        if (pTaskTplVO != null) {
+            if (pTaskTplVO.getDefaultFlag() == "1") {//是否通用下拉  1-是 0-否
+                PTaskTplVO selectModel = new PTaskTplVO();
+                selectModel.setProtocolId(pTaskTplVO.getProtocolId());
+                int num = pTaskTplService.findByWhere(selectModel).size();//该规约下任务模板
+                if (num > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "同一个规约下只允许有一个默认的任务模板", null);
+                }
+            }
+            int i = pTaskTplService.insert(pTaskTplVO);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
+    /**
+     * 同一个规约下只允许有一个默认的任务模板
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PTaskTplVO pTaskTplVO) {
-        int i = pTaskTplService.update(pTaskTplVO);
+        if (pTaskTplVO != null) {
+            if (pTaskTplVO.getDefaultFlag() == "1") {//是否通用下拉  1-是 0-否
+                PTaskTplVO selectModel = new PTaskTplVO();
+                selectModel.setProtocolId(pTaskTplVO.getProtocolId());
+                Long num = pTaskTplService.findByWhere(selectModel).stream()
+                        .filter(s -> s.getId() != pTaskTplVO.getId()).count();//该规约下任务模板
+                if (num > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "同一个规约下只允许有一个默认的任务模板", null);
+                }
+            }
+            int i = pTaskTplService.update(pTaskTplVO);
 
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
     @ResponseBody

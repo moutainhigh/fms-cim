@@ -2,14 +2,15 @@
  * 采集点
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.RCpAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.RCpAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IRCpService;
 import org.fms.cim.common.vo.uas.RCpVO;
+import org.fms.cim.common.vo.uas.TgInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.List;
 
 @ControllerAdvice
 @RequestMapping("RCp")
@@ -80,5 +80,26 @@ public class RCpAction {
     public HttpResultPagination<?> findByWhere(@RequestBody RCpVO rCpVO) {
 
         return new HttpResultPagination(rCpVO, rCpService.findByWhere(rCpVO));
+    }
+
+    /**
+     * 通过台区获取采集点
+     *
+     * @param tgInfoVO 台区对象
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByRelTg")
+    public HttpResultPagination<?> findByRelTg(@RequestBody TgInfoVO tgInfoVO) {
+        if(tgInfoVO!=null){
+            RCpVO modelVO=new RCpVO();
+            modelVO.setRelaObjId(tgInfoVO.getId());
+            modelVO.setPageCurrent(tgInfoVO.getPageCurrent());
+            modelVO.setPageSize(tgInfoVO.getPageSize());
+            //通过台区ID获取采集点，此处分页参数未用
+            return new HttpResultPagination(modelVO, rCpService.findByWhere(modelVO));
+        }else{
+            return new HttpResultPagination(null, null);
+        }
     }
 }

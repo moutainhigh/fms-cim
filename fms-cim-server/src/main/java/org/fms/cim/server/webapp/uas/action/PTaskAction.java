@@ -2,26 +2,26 @@
  * 采集任务
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PTaskAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PTaskAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPTaskService;
-import org.fms.cim.common.vo.uas.PTaskRelVO;
-import org.fms.cim.common.vo.uas.PTaskTplVO;
-import org.fms.cim.common.vo.uas.PTaskVO;
+import org.fms.cim.common.vo.uas.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PTask")

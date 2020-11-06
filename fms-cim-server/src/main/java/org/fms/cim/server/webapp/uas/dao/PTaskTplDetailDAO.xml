@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PTaskTplDetailDAO">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PTaskTplDetailDAO">
     <select id="findByKey" parameterType="PTaskTplDetailDomain"
             resultType="PTaskTplDetailDomain" useCache="true">
         select ID,TPL_ID,TASK_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME

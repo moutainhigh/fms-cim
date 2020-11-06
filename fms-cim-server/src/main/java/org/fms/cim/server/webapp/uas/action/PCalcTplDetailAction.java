@@ -2,16 +2,17 @@
  * 计算方案模板明细
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.action.PCalcTplDetailAction.java
+ * Title : org.fms.cim.server.webapp.uas.action.PCalcTplDetailAction.java
  **/
 package org.fms.cim.server.webapp.uas.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPCalcTplDetailService;
+import org.fms.cim.common.service.IPChnlGpDasRelaService;
 import org.fms.cim.common.vo.uas.PCalcTaskRelVO;
 import org.fms.cim.common.vo.uas.PCalcTplDetailVO;
+import org.fms.cim.common.vo.uas.PTaskTplVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,8 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.riozenc.titanTool.spring.web.http.HttpResult;
-import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PCalcTplDetail")
@@ -103,12 +105,12 @@ public class PCalcTplDetailAction {
             for (PCalcTaskRelVO item : pCalcTaskRelVOList) {
                 if (item.getIsSelect() == 1 && item.getRelID() == null) {
                     //isSelect=1 tplID不为null relID为null 新增
-                    if(item.getTplID()!=null){
+                    if (item.getTplID() != null) {
                         PCalcTplDetailVO addModel = new PCalcTplDetailVO();
                         addModel.setTplId(item.getTplID());
                         addModel.setTaskId(item.getId());
                         addList.add(addModel);
-                    }else{
+                    } else {
                         return new HttpResult<String>(HttpResult.ERROR, "参数传递错误!", null);
                     }
                 } else if (item.getIsSelect() == 0 && item.getRelID() != null) {

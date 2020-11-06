@@ -2,21 +2,20 @@
  * 采集主机组
  * Author :
  * Date :
- * Title : org.fms.eis.webapp.service.impl.PWsdChnlTypeServiceImpl.java
+ * Title : org.fms.cim.common.service;.PWsdChnlTypeServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;
+package org.fms.cim.server.webapp.uas.service;;
 
-import java.util.List;
-
-import org.fms.cim.common.domain.uas.PWsdChnlTypeDomain;
-import org.fms.cim.common.service.IPWsdChnlTypeService;
-import org.fms.cim.common.vo.uas.PWsdChnlTypeVO;
-import org.fms.cim.server.webapp.uas.dao.PWsdChnlTypeDAO;
-
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.server.webapp.uas.dao.PWsdChnlTypeDAO;
+import org.fms.cim.common.domain.uas.PWsdChnlTypeDomain;
+import org.fms.cim.common.service.IPWsdChnlTypeService;
+import org.fms.cim.common.vo.uas.PWsdChnlTypeVO;
+
+import java.util.*;
 
 @TransactionService
 public class PWsdChnlTypeServiceImpl implements IPWsdChnlTypeService {
