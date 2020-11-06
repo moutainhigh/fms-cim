@@ -12,8 +12,9 @@ import org.fms.cim.common.domain.archives.TgInfoDomain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import com.riozenc.titanTool.mybatis.MybatisEntity;
 
-public class TgInfoVO extends ManagerParamVO {
+public class TgInfoVO extends ManagerParamVO implements MybatisEntity{
 
     private Long id;    //台区标识
     private String tgName;    //名称
@@ -39,6 +40,8 @@ public class TgInfoVO extends ManagerParamVO {
     private Long lineId;    //所属线路
     private String monitorFlag;    //是否监测
     private String areaType;    //地区属性
+    
+    private String status;
 
     public Long getId() {
         return id;
@@ -216,8 +219,17 @@ public class TgInfoVO extends ManagerParamVO {
         this.areaType = areaType;
     }
 
+    
 
-    public TgInfoDomain vo2Domain() {
+    public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public TgInfoDomain vo2Domain() {
         TgInfoDomain tgInfoDomain = ReflectUtil.cast(this, TgInfoDomain.class);
         return tgInfoDomain;
     }

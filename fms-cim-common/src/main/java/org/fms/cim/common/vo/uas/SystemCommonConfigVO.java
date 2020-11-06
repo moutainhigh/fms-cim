@@ -9,8 +9,9 @@ package org.fms.cim.common.vo.uas;
 import org.fms.cim.common.domain.archives.SystemCommonConfigDomain;
 
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import com.riozenc.titanTool.mybatis.MybatisEntity;
 
-public class SystemCommonConfigVO extends ManagerParamVO {
+public class SystemCommonConfigVO extends ManagerParamVO implements MybatisEntity {
 
     private Long id;    //
     private String type;    //

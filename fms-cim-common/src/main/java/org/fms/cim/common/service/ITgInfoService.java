@@ -9,6 +9,7 @@ package org.fms.cim.common.service;
 
 import java.util.List;
 
+import org.fms.cim.common.domain.archives.TgInfoDomain;
 import org.fms.cim.common.vo.uas.TgInfoVO;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
@@ -26,4 +27,6 @@ public interface ITgInfoService {
     public TgInfoVO findByKey(TgInfoVO tgInfoVO);
 
     public List<TgInfoVO> findByWhere(TgInfoVO tgInfoVO);
+    
+    public List<TgInfoVO> findByNo(TgInfoVO tgInfoVO);
 }
