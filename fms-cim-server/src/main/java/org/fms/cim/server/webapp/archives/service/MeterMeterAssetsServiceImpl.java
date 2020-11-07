@@ -21,32 +21,35 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class MeterMeterAssetsServiceImpl implements IMeterMeterAssetsService {
 
-	@TransactionDAO
-	private MeterMeterAssetsRelDAO meterMeterAssetsDAO;
+	@TransactionDAO("read")
+	private MeterMeterAssetsRelDAO meterMeterAssetsReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterMeterAssetsRelDAO meterMeterAssetsWriteDAO;
 
 	@Override
 	public int insert(MeterMeterAssetsRelDomain t) {
-		return meterMeterAssetsDAO.insert(t);
+		return meterMeterAssetsWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(MeterMeterAssetsRelDomain t) {
-		return meterMeterAssetsDAO.delete(t);
+		return meterMeterAssetsWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(MeterMeterAssetsRelDomain t) {
-		return meterMeterAssetsDAO.update(t);
+		return meterMeterAssetsWriteDAO.update(t);
 	}
 
 	@Override
 	public MeterMeterAssetsRelDomain findByKey(MeterMeterAssetsRelDomain t) {
-		return meterMeterAssetsDAO.findByKey(t);
+		return meterMeterAssetsReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<MeterMeterAssetsRelDomain> findByWhere(MeterMeterAssetsRelDomain t) {
-		return meterMeterAssetsDAO.findByWhere(t);
+		return meterMeterAssetsReadDAO.findByWhere(t);
 	}
 
 	@Override
@@ -59,7 +62,7 @@ public class MeterMeterAssetsServiceImpl implements IMeterMeterAssetsService {
 
 			List<Long> tl = ids.subList(m*999, (m+1)*999 > len ? len : (m+1)*999);
 
-			List<MeterMeterAssetsRelDomain> tList = meterMeterAssetsDAO.getMeterAssetsByMeterIds(tl);
+			List<MeterMeterAssetsRelDomain> tList = meterMeterAssetsReadDAO.getMeterAssetsByMeterIds(tl);
 			rList.addAll(tList);
 		}
 
@@ -67,46 +70,46 @@ public class MeterMeterAssetsServiceImpl implements IMeterMeterAssetsService {
 	}
 	@Override
 	public List<MeterMeterAssetsRelDomain> getMeterEntityByMeterIds(String s){
-		return meterMeterAssetsDAO.getMeterEntityByMeterIds(s);
+		return meterMeterAssetsReadDAO.getMeterEntityByMeterIds(s);
 	}
 
 	@Override
 	public Byte getNextMeterOrder(Long s){
-		return meterMeterAssetsDAO.getNextMeterOrder(s);
+		return meterMeterAssetsReadDAO.getNextMeterOrder(s);
 	}
 
 	public List<MeterWriteSnEntity> getMeterOrderByWriteSect(WriteSectDomain tl){
-		return meterMeterAssetsDAO.getMeterOrderByWriteSect(tl);
+		return meterMeterAssetsReadDAO.getMeterOrderByWriteSect(tl);
 	}
 
 	public List<MeterWriteSnEntity> generateWriteOrderAuto(WriteSectDomain tl){
-		return meterMeterAssetsDAO.generateWriteOrderAuto(tl);
+		return meterMeterAssetsReadDAO.generateWriteOrderAuto(tl);
 	}
 
 	public int updateList(List<MeterMeterAssetsRelDomain> t){
-		return meterMeterAssetsDAO.updateList(t);
+		return meterMeterAssetsWriteDAO.updateList(t);
 	}
 
 	@Override
 	public int insertList(List<MeterMeterAssetsRelDomain> mmarList) {
-		return meterMeterAssetsDAO.insertList(mmarList);
+		return meterMeterAssetsWriteDAO.insertList(mmarList);
 	}
 
 	@Override
 	public List<MeterMeterAssetsRelDomain> getMeterAssetsByWriteSectIds(List<Long> writeSectIds) {
-		return meterMeterAssetsDAO.getMeterAssetsByWriteSectIds(writeSectIds);
+		return meterMeterAssetsReadDAO.getMeterAssetsByWriteSectIds(writeSectIds);
 
 	}
 
 	@Override
 	public int updateByMeterAssetsId(MeterMeterAssetsRelDomain mmar) {
-		return meterMeterAssetsDAO.updateByMeterAssetsId(mmar);
+		return meterMeterAssetsWriteDAO.updateByMeterAssetsId(mmar);
 
 	}
 
 	@Override
 	public int deleteByMeterIds(MeterDomain meter) throws Exception {
-		int i = meterMeterAssetsDAO.deleteByMeterIds(meter);
+		int i = meterMeterAssetsWriteDAO.deleteByMeterIds(meter);
 		if(i>1000) {
 			throw new Exception("删除数量超过1000！！！！");
 		}
@@ -119,7 +122,7 @@ public class MeterMeterAssetsServiceImpl implements IMeterMeterAssetsService {
 		if(userNos==null || userNos.size()==0) {
 			return new ArrayList<MeterMeterAssetsRelDomain>();
 		}
-		return meterMeterAssetsDAO.getmmarlByuserNos(userNos);
+		return meterMeterAssetsReadDAO.getmmarlByuserNos(userNos);
 
 	}
 

@@ -18,42 +18,44 @@ import com.riozenc.titanTool.annotation.TransactionService;
 public class SubsServiceImpl implements ISubsService {
 
 	@TransactionDAO("read")
-	private SubsDAO subsDAO;
+	private SubsDAO subsReadDAO;
+	@TransactionDAO("write")
+	private SubsDAO subsWriteDAO;
 
 	@Override
 	public int insert(SubsDomain t) {
 		// TODO Auto-generated method stub
-		return subsDAO.insert(t);
+		return subsWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(SubsDomain t) {
 		// TODO Auto-generated method stub
-		return subsDAO.delete(t);
+		return subsWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(SubsDomain t) {
 		// TODO Auto-generated method stub
-		return subsDAO.update(t);
+		return subsWriteDAO.update(t);
 	}
 
 	@Override
 	public SubsDomain findByKey(SubsDomain t) {
 		// TODO Auto-generated method stub
-		return subsDAO.findByKey(t);
+		return subsReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<SubsDomain> findByWhere(SubsDomain t) {
 		// TODO Auto-generated method stub
-		return subsDAO.findByWhere(t);
+		return subsReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<SubsDomain> findByNo(SubsDomain t) {
 		// TODO Auto-generated method stub
-		return subsDAO.findByNo(t);
+		return subsReadDAO.findByNo(t);
 	}
 
 }

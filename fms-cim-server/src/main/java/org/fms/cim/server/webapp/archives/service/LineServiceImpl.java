@@ -20,57 +20,64 @@ import com.riozenc.titanTool.annotation.TransactionService;
 public class LineServiceImpl implements ILineService {
 
 	@TransactionDAO("read")
-	private LineDAO lineDAO;
+	private LineDAO lineReadDAO;
+	
+	@TransactionDAO("write")
+	private LineDAO lineWriteDAO;
+	
 	@TransactionDAO("read")
-	private SubsLineRelaDAO subsLineRelaDAO;
+	private SubsLineRelaDAO subsLineRelaReadDAO;
+	
+	@TransactionDAO("write")
+	private SubsLineRelaDAO subsLineRelaWriteDAO;
 
 
 	@Override
 	public int insert(LineDomain t) {
 		// TODO Auto-generated method stub
-		return lineDAO.insert(t);
+		return lineWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(LineDomain t) {
 		// TODO Auto-generated method stub
-		return lineDAO.delete(t);
+		return lineWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(LineDomain t) {
 		// TODO Auto-generated method stub
-		return lineDAO.update(t);
+		return lineWriteDAO.update(t);
 	}
 
 	@Override
 	public LineDomain findByKey(LineDomain t) {
 		// TODO Auto-generated method stub
-		return lineDAO.findByKey(t);
+		return lineReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<LineDomain> findByWhere(LineDomain t) {
 		// TODO Auto-generated method stub
-		return lineDAO.findByWhere(t);
+		return lineReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<LineDomain> findByLineCode(LineDomain t) {
 		// TODO Auto-generated method stub
-		return lineDAO.findByLineCode(t);
+		return lineReadDAO.findByLineCode(t);
 	}
 
 	public boolean addLineAndSubsLineRela(LineDomain line,SubsLineRelaDomain t) {
 		// TODO Auto-generated method stub
-		int lcount =  lineDAO.insert(line);
+		int lcount =  lineWriteDAO.insert(line);
 
 		if(lcount<=0) {
 			return false;
 		}
 
 		t.setLineId(line.getId());
-		int r = subsLineRelaDAO.insert(t);
+		int r = subsLineRelaWriteDAO.insert(t);
 		if(r>0) {
 			return true;
 
@@ -82,8 +89,8 @@ public class LineServiceImpl implements ILineService {
 	public boolean updateLineAndSubsLineRela(LineDomain line,SubsLineRelaDomain t) {
 
 
-		int rcount = subsLineRelaDAO.update(t);
-		int lcount = lineDAO.update(line);
+		int rcount = subsLineRelaWriteDAO.update(t);
+		int lcount = lineWriteDAO.update(line);
 
 		if(lcount>0) {
 			return true;
@@ -94,6 +101,6 @@ public class LineServiceImpl implements ILineService {
 
 	@Override
 	public List<LineDomain> findByLineIds(LineDomain e){
-		return lineDAO.findByLineIds(e);
+		return lineReadDAO.findByLineIds(e);
 	}
 }

@@ -19,21 +19,29 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class TransformerAssetsServiceImpl implements ITransformerAssetsService {
 	
-	@TransactionDAO
-	private TransformerAssetsDAO transformerAssetsDAO;
-	@TransactionDAO
-	private TransformerDAO transformerDAO;
+	@TransactionDAO("read")
+	private TransformerAssetsDAO transformerAssetsReadDAO;
+	
+	@TransactionDAO("write")
+	private TransformerAssetsDAO transformerAssetsWriteDAO;
+	
+	
+	@TransactionDAO("read")
+	private TransformerDAO transformerReadDAO;
+	
+	@TransactionDAO("write")
+	private TransformerDAO transformerWriteDAO;
 
 	@Override
 	public int insert(TransformerAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return transformerAssetsDAO.insert(t);
+		return transformerAssetsWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(TransformerAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return transformerAssetsDAO.delete(t);
+		return transformerAssetsWriteDAO.delete(t);
 	}
 
 	@Override
@@ -44,21 +52,21 @@ public class TransformerAssetsServiceImpl implements ITransformerAssetsService {
 		transformer.setTransformerModelType(t.getTransformerModelType());
 		transformer.setVoltType(t.getRatedVoltage());
 		
-		transformerDAO.updateByTransformerAssetsId(transformer);
+		transformerWriteDAO.updateByTransformerAssetsId(transformer);
 		
-		return transformerAssetsDAO.update(t);
+		return transformerAssetsWriteDAO.update(t);
 	}
 
 	@Override
 	public TransformerAssetsDomain findByKey(TransformerAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return transformerAssetsDAO.findByKey(t);
+		return transformerAssetsReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<TransformerAssetsDomain> findByWhere(TransformerAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return transformerAssetsDAO.findByWhere(t);
+		return transformerAssetsReadDAO.findByWhere(t);
 	}
 
 	@Override
@@ -71,12 +79,12 @@ public class TransformerAssetsServiceImpl implements ITransformerAssetsService {
 	@Override
 	public List<TransformerAssetsDomain> getTransformerAssetsByWhere(TransformerAssetsDomain t) {
 		// TODO Auto-generated method stub
-		return transformerAssetsDAO.getTransformerAssetsByWhere(t);
+		return transformerAssetsReadDAO.getTransformerAssetsByWhere(t);
 	}
 
 	@Override
 	public List<TransformerAssetsDomain> findByNoId(TransformerAssetsDomain e) {
-		return transformerAssetsDAO.findByNoId(e);
+		return transformerAssetsReadDAO.findByNoId(e);
 
 	}
 

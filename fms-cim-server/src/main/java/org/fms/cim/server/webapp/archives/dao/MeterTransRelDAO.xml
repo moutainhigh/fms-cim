@@ -41,7 +41,178 @@
         where TM.METER_ID in ( ${idList} )
 
     </select>
+      <!-- qtt -->
+       <select id="getMeterByWriteSectionId" parameterType="MeterDomain"
+            resultType="MeterDomain" useCache="true">
 
+        select M.*,
+        U.USER_NAME,U.USER_NO,
+        MA.METER_ASSETS_NO,
+        IA.INDUCTOR_ASSETS_NO AS CT_ASSETS_NO,
+        IA.RATED_TA_CODE,
+        IAA.INDUCTOR_ASSETS_NO AS
+        PT_ASSETS_NO,IAA.RATED_TV_CODE,
+        WS.WRITE_SECT_NAME,
+        WS.WRITE_SECT_NO
+        FROM
+        (select
+        <include refid="Base_Column_List"/>
+        from METER_INFO
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="meterNo !=null">
+                and METER_NO = #{meterNo}
+            </if>
+            <if test="meterOrder !=null">
+                and METER_ORDER = #{meterOrder}
+            </if>
+            <if test="meterName !=null">
+                and METER_NAME like CONCAT('%',#{meterName},'%')
+            </if>
+            <if test="meterAssetsId !=null">
+                and METER_ASSETS_ID = #{meterAssetsId}
+            </if>
+            <if test="setAddress !=null">
+                and SET_ADDRESS = #{setAddress}
+            </if>
+            <if test="priceType !=null">
+                and PRICE_TYPE = #{priceType}
+            </if>
+            <if test="basicPrice!=null">
+                and BASIC_PRICE = #{basicPrice}
+            </if>
+            <if test="needIndex !=null">
+                and NEED_INDEX = #{needIndex}
+            </if>
+            <if test="voltLevelType !=null">
+                and VOLT_LEVEL_TYPE = #{voltLevelType}
+            </if>
+            <if test="meterType !=null">
+                and METER_TYPE = #{meterType}
+            </if>
+            <if test="meterClassType !=null">
+                and METER_CLASS_TYPE = #{meterClassType}
+            </if>
+            <if test="msType !=null">
+                and MS_TYPE = #{msType}
+            </if>
+            <if test="elecTypeCode !=null">
+                and ELEC_TYPE_CODE = #{elecTypeCode}
+            </if>
+            <if test="baseMoneyFlag !=null">
+                and BASE_MONEY_FLAG = #{baseMoneyFlag}
+            </if>
+            <if test="cosType !=null">
+                and COS_TYPE = #{cosType}
+            </if>
+            <if test="tradeType !=null">
+                and TRADE_TYPE = #{tradeType}
+            </if>
+            <if test="tsType !=null">
+                and TS_TYPE = #{tsType}
+            </if>
+            <if test="transLostType !=null">
+                and TRANS_LOST_TYPE = #{transLostType}
+            </if>
+            <if test="transLostNum !=null">
+                and TRANS_LOST_NUM = #{transLostNum}
+            </if>
+            <if test="qTransLostNum !=null">
+                and Q_TRANS_LOST_NUM = #{qTransLostNum}
+            </if>
+            <if test="lineLostType !=null">
+                and LINE_LOST_TYPE = #{lineLostType}
+            </if>
+            <if test="lineLostNum !=null">
+                and LINE_LOST_NUM = #{lineLostNum}
+            </if>
+            <if test="qLineLostNum !=null">
+                and Q_LINE_LOST_NUM = #{qLineLostNum}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="tgId !=null">
+                and TG_ID = #{tgId}
+            </if>
+            <if test="lineId !=null">
+                and LINE_ID = #{lineId}
+            </if>
+            <if test="subsId !=null">
+                and SUBS_ID = #{subsId}
+            </if>
+            <if test="userId !=null">
+                and USER_ID = #{userId}
+            </if>
+            <if test="writeSectionId !=null">
+                and WRITE_SECTION_ID = #{writeSectionId}
+            </if>
+            <if test="keepPowerFlag !=null">
+                and KEEP_POWER_FLAG = #{keepPowerFlag}
+            </if>
+            <if test="billFlag !=null">
+                and BILL_FLAG = #{billFlag}
+            </if>
+            <if test="overdueFineFlag !=null">
+                and OVERDUE_FINE_FLAG = #{overdueFineFlag}
+            </if>
+            <if test="tieredPriceFlag !=null">
+                and TIERED_PRICE_FLAG = #{tieredPriceFlag}
+            </if>
+            <if test="writeMethod !=null">
+                and WRITE_METHOD = #{writeMethod}
+            </if>
+            <if test="rateFlag !=null">
+                and RATE_FLAG = #{rateFlag}
+            </if>
+            <if test="powerCutFlag !=null">
+                and POWER_CUT_FLAG = #{powerCutFlag}
+            </if>
+            <if test="phaseSeq !=null">
+                and PHASE_SEQ = #{phaseSeq}
+            </if>
+            <if test="countTimes !=null">
+                and COUNT_TIMES = #{countTimes}
+            </if>
+            <if test="ladderNum !=null">
+                and LADDER_NUM = #{ladderNum}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="fkFlag !=null">
+                and FK_FLAG = #{fkFlag}
+            </if>
+            <if test="bdFlag !=null">
+                and BD_FLAG = #{bdFlag}
+            </if>
+        </where>
+        )M INNER JOIN (select ID,USER_NO,USER_NAME from USER_INFO
+        <where>
+            <if test="userNo !=null">
+                and USER_NO like CONCAT('%',#{userNo},'%')
+            </if>
+            <if test="userName !=null">
+                and USER_NAME like CONCAT('%',#{userName},'%')
+            </if>
+        </where>
+        ) U ON M.USER_ID = U.ID
+        LEFT JOIN METER_ASSETS_INFO MA ON
+        M.METER_ASSETS_ID = MA.ID
+        LEFT JOIN INDUCTOR_ASSETS_INFO IA ON
+        M.CT_ASSETS_ID = IA.ID
+        LEFT JOIN INDUCTOR_ASSETS_INFO IAA ON
+        M.PT_ASSETS_ID = IAA.ID
+        LEFT JOIN WRITE_SECTION_INFO WS ON
+        M.WRITE_SECTION_ID = WS.ID
+        ORDER BY M.ID DESC
+    </select>
+      
 
     <select id="getMeterByTransRel" parameterType="MeterDomain"
             resultType="TransformerMeterRelationDomain" useCache="false">

@@ -22,55 +22,60 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class SettlementServiceImpl implements ISettlementService {
 
-	@TransactionDAO
-	private SettlementDAO settlementDAO;
-	@TransactionDAO
-	private MeterDAO meterDAO;
+	@TransactionDAO("read")
+	private SettlementDAO settlementReadDAO;
+	@TransactionDAO("write")
+	private SettlementDAO settlementWriteDAO;
+	
+	@TransactionDAO("read")
+	private MeterDAO meterReadDAO;
+	@TransactionDAO("write")
+	private MeterDAO meterWriteDAO;
 	
 
 	@Override
 	public int insert(SettlementDomain t) {
-		return settlementDAO.insert(t);
+		return settlementWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(SettlementDomain t) {
-		return settlementDAO.delete(t);
+		return settlementWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(SettlementDomain t) {
-		return settlementDAO.update(t);
+		return settlementWriteDAO.update(t);
 	}
 
 	@Override
 	public SettlementDomain findByKey(SettlementDomain t) {
-		return settlementDAO.findByKey(t);
+		return settlementReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<SettlementDomain> findByWhere(SettlementDomain t) {
-		return settlementDAO.findByWhere(t);
+		return settlementReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<SettlementDomain> findByNo(SettlementDomain t) {
-		return settlementDAO.findByNo(t);
+		return settlementReadDAO.findByNo(t);
 	}
 
 	@Override
 	public int addSettlementMeterRelBySettlement(List<SettlementMeterRelDomain> list) {
-		return settlementDAO.addSettlementMeterRelBySettlement(list);
+		return settlementWriteDAO.addSettlementMeterRelBySettlement(list);
 	}
 
 	@Override
 	public int deleteSettlementMeterRelBySettlement(List<SettlementMeterRelDomain> list) {
-		return settlementDAO.deleteSettlementMeterRelBySettlement(list);
+		return settlementWriteDAO.deleteSettlementMeterRelBySettlement(list);
 	}
 
 	@Override
 	public List<SettlementMeterRelDomain> getSettlementMeterRel(SettlementDomain settlementDomain) {
-		return settlementDAO.getSettlementMeterRel(settlementDomain);
+		return settlementReadDAO.getSettlementMeterRel(settlementDomain);
 	}
 
 	@Override
@@ -82,11 +87,11 @@ public class SettlementServiceImpl implements ISettlementService {
 		CustomerDomain customer = new CustomerDomain();
 		customer.setPageSize(-1);
 		customer.setId(t.getCustomerId());
-		List<MeterDomain> meterList = meterDAO.getMetersByCustomer(customer);
+		List<MeterDomain> meterList = meterReadDAO.getMetersByCustomer(customer);
 		//根据结算户ID和获取该结算户已关联的计量点ID
 		SettlementDomain settlement = new SettlementDomain();
 		settlement.setId(t.getSettlementId());
-		List<SettlementMeterRelDomain> smrList = settlementDAO.getSettlementMeterRel(settlement);
+		List<SettlementMeterRelDomain> smrList = settlementReadDAO.getSettlementMeterRel(settlement);
 		//将已关联的计量点剔除
 		if(meterList.size()==0) {
 			return null;
@@ -107,13 +112,13 @@ public class SettlementServiceImpl implements ISettlementService {
 
 	@Override
 	public int addSettlementMeterRel(SettlementMeterRelDomain smr) {
-		return settlementDAO.addSettlementMeterRel(smr);
+		return settlementWriteDAO.addSettlementMeterRel(smr);
 
 	}
 
 	@Override
 	public int insertList(List<SettlementDomain> settlementList) {
-		return settlementDAO.insertList(settlementList);
+		return settlementWriteDAO.insertList(settlementList);
 
 	}
 
@@ -128,7 +133,7 @@ public class SettlementServiceImpl implements ISettlementService {
 
 			List<Long> tl = lc.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<SettlementMeterRelDomain> tList = settlementDAO.getSettlementMeterRelByMeterIds(lc);
+			List<SettlementMeterRelDomain> tList = settlementReadDAO.getSettlementMeterRelByMeterIds(lc);
 
 			rList.addAll(tList);
 
@@ -140,34 +145,34 @@ public class SettlementServiceImpl implements ISettlementService {
 
 	@Override
 	public List<SettlementDomain> findBankSettlement(SettlementDomain smr) {
-		return settlementDAO.findBankSettlement(smr);
+		return settlementReadDAO.findBankSettlement(smr);
 	}
 	@Override
 	public List<SettlementDomain> findSettlementByIds(List<Long> ids){
-		return settlementDAO.findSettlementByIds(ids);
+		return settlementReadDAO.findSettlementByIds(ids);
 	}
 	@Override
 	public List<SettlementDomain> findBySettlementNos(SettlementDomain t){
-		return settlementDAO.findBySettlementNos(t);
+		return settlementReadDAO.findBySettlementNos(t);
 	}
 
 	@Override
 	public List<SettlementDomain> findSettlementByBusinessPlaceCodeAndInvoiceType(SettlementDomain settlementDomain) {
-		return settlementDAO.findByBusinessPlaceCodeAndInvoiceType(settlementDomain);
+		return settlementReadDAO.findByBusinessPlaceCodeAndInvoiceType(settlementDomain);
 	}
 	@Override
 	public List<Long> findSettlementIdByWhere(SettlementDomain t) {
-		return settlementDAO.findSettlementIdByWhere(t);
+		return settlementReadDAO.findSettlementIdByWhere(t);
 	}
 
 	@Override
 	public List<SettlementDomain> getSettlementbyMeterIds(List<Long> settlementIdList) {
-		return settlementDAO.getSettlementbyMeterIds(settlementIdList);
+		return settlementReadDAO.getSettlementbyMeterIds(settlementIdList);
 
 	}
 	@Override
 	public List<SettlementDomain> findClearSettlementByWhere(SettlementDomain t) {
-		return settlementDAO.findClearSettlementByWhere(t);
+		return settlementReadDAO.findClearSettlementByWhere(t);
 	}
 
 }

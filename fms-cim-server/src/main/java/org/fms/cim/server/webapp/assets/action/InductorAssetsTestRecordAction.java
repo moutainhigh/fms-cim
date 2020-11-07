@@ -115,7 +115,7 @@ public class InductorAssetsTestRecordAction  {
 				rmap.put("message", "资产处于在检状态，请确认！出厂编号为"+ti.getMadeNo()); 
 				return rmap;
 			}
-			if(ti.getRatedPtCode()!=ia.getRatedPtCode()||ti.getRatedCtCode()!=ia.getRatedCtCode()) {
+			if(ti.getRatedTvCode()!=ia.getRatedTvCode()||ti.getRatedTaCode()!=ia.getRatedTaCode()) {
 				rmap.put("message", "选择的资产的变比必须一致");
 				return rmap;
 			}
@@ -148,14 +148,14 @@ public class InductorAssetsTestRecordAction  {
 		if(ia.getInductorType()=="1") {
 			iat.setDeviceName("电流互感器");
 			for (SystemCommonConfigVO ct : ctList) {
-				if(ia.getRatedCtCode()==ct.getParamKey()) {
+				if(ia.getRatedTaCode()==ct.getParamKey()) {
 					iat.setSpecs(ct.getParamValue());
 				}
 			}
 		}else if(ia.getInductorType()=="2") {
 			iat.setDeviceName("电压互感器");
 			for (SystemCommonConfigVO pt : ptList) {
-				if(ia.getRatedPtCode()==pt.getParamKey()) {
+				if(ia.getRatedTvCode()==pt.getParamKey()) {
 					iat.setSpecs(pt.getParamValue());
 				}
 			}

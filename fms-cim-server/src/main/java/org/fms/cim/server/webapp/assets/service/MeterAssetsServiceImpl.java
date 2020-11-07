@@ -25,44 +25,51 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 @TransactionService
 public class MeterAssetsServiceImpl implements IMeterAssetsService {
 
-	@TransactionDAO
-	private MeterAssetsDAO meterAssetsDAO;
-	@TransactionDAO
-	private MeterAssetsLogDAO meterAssetsLogDAO;
+	@TransactionDAO("read")
+	private MeterAssetsDAO meterAssetsReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterAssetsDAO meterAssetsWriteDAO;
+	
+	@TransactionDAO("read")
+	private MeterAssetsLogDAO meterAssetsLogReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterAssetsLogDAO meterAssetsLogWriteDAO;
 
 	@Override
 	public int insert(MeterAssetsDomain t) {
-		return meterAssetsDAO.insert(t);
+		return meterAssetsWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(MeterAssetsDomain t) {
-		return meterAssetsDAO.delete(t);
+		return meterAssetsWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(MeterAssetsDomain t) {
-		return meterAssetsDAO.update(t);
+		return meterAssetsWriteDAO.update(t);
 	}
 
 	@Override
 	public MeterAssetsDomain findByKey(MeterAssetsDomain t) {
-		return meterAssetsDAO.findByKey(t);
+		return meterAssetsReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<MeterAssetsDomain> findByWhere(MeterAssetsDomain t) {
-		return meterAssetsDAO.findByWhere(t);
+		return meterAssetsReadDAO.findByWhere(t);
 	}
 
 	@Override
 	public List<MeterAssetsDomain> getMeterAssetsByManager(MeterAssetsDomain meterAssetsDomain) {
-		return meterAssetsDAO.getMeterAssetsByDept(meterAssetsDomain);
+		return meterAssetsReadDAO.getMeterAssetsByDept(meterAssetsDomain);
 	}
 
 	@Override
 	public List<Map<String, Object>> getAssetsByUser(UserDomain t) {
-		return meterAssetsDAO.getAssetsByUser(t);
+		return meterAssetsReadDAO.getAssetsByUser(t);
 	}
 
 	/**
@@ -101,7 +108,7 @@ public class MeterAssetsServiceImpl implements IMeterAssetsService {
 			String assetsNo=CommonUtil.generateFormatNo(madeNo,18,"0",true);
 			t.setMadeNo(madeNo);
 			t.setMeterAssetsNo(assetsNo);
-			List<MeterAssetsDomain> meterAssetsList = meterAssetsDAO.findByWhereDC(t);
+			List<MeterAssetsDomain> meterAssetsList = meterAssetsReadDAO.findByWhereDC(t);
 			if(meterAssetsList.size()>0) {
 				return new HttpResult<>(HttpResult.ERROR, "更新失败，资产编号重复");
 
@@ -109,7 +116,7 @@ public class MeterAssetsServiceImpl implements IMeterAssetsService {
 		//	t.setStatus((byte) 0);//购入
 			t.setId(null);
 			//入库
-			int m = meterAssetsDAO.insert(t);
+			int m = meterAssetsWriteDAO.insert(t);
 
 			if(m!=1) {
 				return new HttpResult<>(HttpResult.ERROR, "更新失败，存库失败资产号为："+assetsNo);
@@ -124,18 +131,18 @@ public class MeterAssetsServiceImpl implements IMeterAssetsService {
 
 	@Override
 	public List<MeterAssetsDomain> findByWhereDC(MeterAssetsDomain tt) {
-		return meterAssetsDAO.findByWhereDC(tt);
+		return meterAssetsReadDAO.findByWhereDC(tt);
 	}
 
 	@Override
 	public int updateList(List<MeterAssetsDomain> l) {
-		return meterAssetsDAO.updateList(l);
+		return meterAssetsWriteDAO.updateList(l);
 
 	}
 
 	@Override
 	public MeterAssetsEntity findMeterEntityByWhere(Long id) {
-		return meterAssetsDAO.findMeterEntityByWhere(id);
+		return meterAssetsReadDAO.findMeterEntityByWhere(id);
 	}
 
 	@Override
@@ -148,7 +155,7 @@ public class MeterAssetsServiceImpl implements IMeterAssetsService {
 
 			List<Long> tl = idsList.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<MeterAssetsDomain> tList = meterAssetsDAO.getMeterAssetsByAssetsIds(tl);
+			List<MeterAssetsDomain> tList = meterAssetsReadDAO.getMeterAssetsByAssetsIds(tl);
 
 			rl.addAll(tList);
 
@@ -161,22 +168,22 @@ public class MeterAssetsServiceImpl implements IMeterAssetsService {
 	
 	@Override
 	public List<MeterAssetsEntity> getMeterAssetsByFunctionCode(Map ids){
-		return meterAssetsDAO.getMeterAssetsByFunctionCode(ids);
+		return meterAssetsReadDAO.getMeterAssetsByFunctionCode(ids);
 	}
 	
 	@Override
 	public int insertList(List<MeterAssetsDomain> rl) {
-		return meterAssetsDAO.insertList(rl);
+		return meterAssetsWriteDAO.insertList(rl);
 	}
 
 	@Override
 	public List<MeterAssetsDomain> getMeterAssetsByNos( List<MeterAssetsDomain> meterAssetsNos) {
-		return meterAssetsDAO.getMeterAssetsByNos(meterAssetsNos);
+		return meterAssetsReadDAO.getMeterAssetsByNos(meterAssetsNos);
 	}
 
 	@Override
 	public HttpResult deleteList(List<MeterAssetsDomain> deleteList) throws Exception {
-		int num = meterAssetsDAO.deleteList(deleteList);
+		int num = meterAssetsWriteDAO.deleteList(deleteList);
 		if(num==deleteList.size()) {
 			return new HttpResult(HttpResult.SUCCESS,"删除成功，删除条数："+num);
 		}else {

@@ -17,38 +17,41 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class AtmnlServiceImpl implements IAtmnlService {
 	
-	@TransactionDAO
-	private ATmnlDAO atmnlDAO;
+	@TransactionDAO("read")
+	private ATmnlDAO atmnlReadDAO;
+	
+	@TransactionDAO("write")
+	private ATmnlDAO atmnlWriteDAO;
 	
 
 	@Override
 	public int insert(ATmnlDomain t) {
 		// TODO Auto-generated method stub
-		return atmnlDAO.insert(t);
+		return atmnlWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(ATmnlDomain t) {
 		// TODO Auto-generated method stub
-		return atmnlDAO.delete(t);
+		return atmnlWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(ATmnlDomain t) {
 		// TODO Auto-generated method stub
-		return atmnlDAO.update(t);
+		return atmnlWriteDAO.update(t);
 	}
 
 	@Override
 	public ATmnlDomain findByKey(ATmnlDomain t) {
 		// TODO Auto-generated method stub
-		return atmnlDAO.findByKey(t);
+		return atmnlReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<ATmnlDomain> findByWhere(ATmnlDomain t) {
 		// TODO Auto-generated method stub
-		return atmnlDAO.findByWhere(t);
+		return atmnlReadDAO.findByWhere(t);
 	}
 
 }

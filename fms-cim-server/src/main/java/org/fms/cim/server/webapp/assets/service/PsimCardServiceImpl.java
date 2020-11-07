@@ -20,38 +20,41 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class PsimCardServiceImpl implements IPsimCardService {
 	
-	@TransactionDAO
-	private PSimCardDAO psimcardlDAO;
+	@TransactionDAO("read")
+	private PSimCardDAO psimcardlReadDAO;
+	
+	@TransactionDAO("write")
+	private PSimCardDAO psimcardlWriteDAO;
 	
 
 	@Override
 	public int insert(PSimCardDomain t) {
 		// TODO Auto-generated method stub
-		return psimcardlDAO.insert(t);
+		return psimcardlWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(PSimCardDomain t) {
 		// TODO Auto-generated method stub
-		return psimcardlDAO.delete(t);
+		return psimcardlWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(PSimCardDomain t) {
 		// TODO Auto-generated method stub
-		return psimcardlDAO.update(t);
+		return psimcardlWriteDAO.update(t);
 	}
 
 	@Override
 	public PSimCardDomain findByKey(PSimCardDomain t) {
 		// TODO Auto-generated method stub
-		return psimcardlDAO.findByKey(t);
+		return psimcardlReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<PSimCardDomain> findByWhere(PSimCardDomain t) {
 		// TODO Auto-generated method stub
-		return psimcardlDAO.findByWhere(t);
+		return psimcardlReadDAO.findByWhere(t);
 	}
 
 }

@@ -28,12 +28,12 @@ public class InductorAssetsDomain extends ManagerParamEntity implements MybatisE
 	private String inductorAssetsNo; // 资产编号
 	private String inductorType; // 互感器类型
 	private Long turns;	// 穿心匝数
-	private Byte ctCurntCode; // CT电流
-	private String ctVoltCode; // CT电压
-	private Byte ptCurntCode; // PT电流
-	private String ptVoltCode; // PT电压
-	private String ratedCtCode; // CT变比
-	private String ratedPtCode; // PT变比
+	private Byte taCurntCode; // CT电流
+	private String taVoltCode; // CT电压
+	private Byte tvCurntCode; // PT电流
+	private String tvVoltCode; // PT电压
+	private String ratedTaCode; // CT变比
+	private String ratedTvCode; // PT变比
 	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	private Date madeDate; // 出厂日期
 	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
@@ -76,41 +76,42 @@ public class InductorAssetsDomain extends ManagerParamEntity implements MybatisE
 	public void setTurns(Long turns) {
 		this.turns = turns;
 	}
-	public Byte getCtCurntCode() {
-		return ctCurntCode;
+	
+	public Byte getTaCurntCode() {
+		return taCurntCode;
 	}
-	public void setCtCurntCode(Byte ctCurntCode) {
-		this.ctCurntCode = ctCurntCode;
+	public void setTaCurntCode(Byte taCurntCode) {
+		this.taCurntCode = taCurntCode;
 	}
-	public String getCtVoltCode() {
-		return ctVoltCode;
+	public String getTaVoltCode() {
+		return taVoltCode;
 	}
-	public void setCtVoltCode(String ctVoltCode) {
-		this.ctVoltCode = ctVoltCode;
+	public void setTaVoltCode(String taVoltCode) {
+		this.taVoltCode = taVoltCode;
 	}
-	public Byte getPtCurntCode() {
-		return ptCurntCode;
+	public Byte getTvCurntCode() {
+		return tvCurntCode;
 	}
-	public void setPtCurntCode(Byte ptCurntCode) {
-		this.ptCurntCode = ptCurntCode;
+	public void setTvCurntCode(Byte tvCurntCode) {
+		this.tvCurntCode = tvCurntCode;
 	}
-	public String getPtVoltCode() {
-		return ptVoltCode;
+	public String getTvVoltCode() {
+		return tvVoltCode;
 	}
-	public void setPtVoltCode(String ptVoltCode) {
-		this.ptVoltCode = ptVoltCode;
+	public void setTvVoltCode(String tvVoltCode) {
+		this.tvVoltCode = tvVoltCode;
 	}
-	public String getRatedCtCode() {
-		return ratedCtCode;
+	public String getRatedTaCode() {
+		return ratedTaCode;
 	}
-	public void setRatedCtCode(String ratedCtCode) {
-		this.ratedCtCode = ratedCtCode;
+	public void setRatedTaCode(String ratedTaCode) {
+		this.ratedTaCode = ratedTaCode;
 	}
-	public String getRatedPtCode() {
-		return ratedPtCode;
+	public String getRatedTvCode() {
+		return ratedTvCode;
 	}
-	public void setRatedPtCode(String ratedPtCode) {
-		this.ratedPtCode = ratedPtCode;
+	public void setRatedTvCode(String ratedTvCode) {
+		this.ratedTvCode = ratedTvCode;
 	}
 	public Date getMadeDate() {
 		return madeDate;

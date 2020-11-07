@@ -12,37 +12,40 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class AbusServiceImpl implements IAbusService {
 	
-	@TransactionDAO
-	private ABusDAO abusDAO;
+	@TransactionDAO("read")
+	private ABusDAO abusReadDAO;
+	
+	@TransactionDAO("write")
+	private ABusDAO abusWriteDAO;
 
 	@Override
 	public int insert(ABusDomain t) {
 		// TODO Auto-generated method stub
-		return abusDAO.insert(t);
+		return abusWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(ABusDomain t) {
 		// TODO Auto-generated method stub
-		return abusDAO.delete(t);
+		return abusWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(ABusDomain t) {
 		// TODO Auto-generated method stub
-		return abusDAO.update(t);
+		return abusWriteDAO.update(t);
 	}
 
 	@Override
 	public ABusDomain findByKey(ABusDomain t) {
 		// TODO Auto-generated method stub
-		return abusDAO.findByKey(t);
+		return abusReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<ABusDomain> findByWhere(ABusDomain t) {
 		// TODO Auto-generated method stub
-		return abusDAO.findByWhere(t);
+		return abusReadDAO.findByWhere(t);
 	}
 
 }
