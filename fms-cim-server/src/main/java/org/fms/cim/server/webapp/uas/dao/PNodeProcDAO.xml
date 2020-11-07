@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PNodeProcDAO">
+    <select id="findByKey" parameterType="PNodeProcDomain"
+            resultType="PNodeProcDomain" useCache="true">
+        select NODE_ID,PROC_NAME,ALIAS,STATUS,REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_NODE_PROC
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PNodeProcDomain"
+            resultType="PNodeProcDomain" useCache="true">
+        select NODE_ID,PROC_NAME,ALIAS,STATUS,REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_NODE_PROC
+        <where>
+            <if test="nodeId !=null">
+                and NODE_ID = #{nodeId}
+            </if>
+            <if test="procName !=null">
+                and PROC_NAME = #{procName}
+            </if>
+            <if test="alias !=null">
+                and ALIAS = #{alias}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PNodeProcDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_NODE_PROC
+			(NODE_ID,PROC_NAME,ALIAS,STATUS,REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{nodeId},#{procName},#{alias},#{status},#{remark},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PNodeProcDomain" flushCache="true">
+        update P_NODE_PROC
+        <set>
+            <if test="nodeId !=null">
+                NODE_ID = #{nodeId},
+            </if>
+            <if test="procName !=null">
+                PROC_NAME = #{procName},
+            </if>
+            <if test="alias !=null">
+                ALIAS = #{alias},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PNodeProcDomain" flushCache="true">
+        delete from P_NODE_PROC
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

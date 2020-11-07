@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.SEnergyRpDAO">
+    <select id="findByKey" parameterType="SEnergyRpDomain"
+            resultType="SEnergyRpDomain" useCache="true">
+        select
+        ID,MASTER_MPED_ID,SPARE_MPED_ID,BEGIN_TIME,END_TIME,RP_TYPE,RP_DIRECTION,PRORATE,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_TIME,VERIFY_MACHINE,VALID_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_ENERGY_RP
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="SEnergyRpDomain"
+            resultType="SEnergyRpDomain" useCache="true">
+        select
+        ID,MASTER_MPED_ID,SPARE_MPED_ID,BEGIN_TIME,END_TIME,RP_TYPE,RP_DIRECTION,PRORATE,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_TIME,VERIFY_MACHINE,VALID_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_ENERGY_RP
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="masterMpedId !=null">
+                and MASTER_MPED_ID = #{masterMpedId}
+            </if>
+            <if test="spareMpedId !=null">
+                and SPARE_MPED_ID = #{spareMpedId}
+            </if>
+            <if test="beginTime !=null">
+                and BEGIN_TIME = #{beginTime}
+            </if>
+            <if test="endTime !=null">
+                and END_TIME = #{endTime}
+            </if>
+            <if test="rpType !=null">
+                and RP_TYPE = #{rpType}
+            </if>
+            <if test="rpDirection !=null">
+                and RP_DIRECTION = #{rpDirection}
+            </if>
+            <if test="prorate !=null">
+                and PRORATE = #{prorate}
+            </if>
+            <if test="operator !=null">
+                and OPERATOR = #{operator}
+            </if>
+            <if test="createTime !=null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="createMachine !=null">
+                and CREATE_MACHINE = #{createMachine}
+            </if>
+            <if test="verifyFlag !=null">
+                and VERIFY_FLAG = #{verifyFlag}
+            </if>
+            <if test="auditor !=null">
+                and AUDITOR = #{auditor}
+            </if>
+            <if test="verifyTime !=null">
+                and VERIFY_TIME = #{verifyTime}
+            </if>
+            <if test="verifyMachine !=null">
+                and VERIFY_MACHINE = #{verifyMachine}
+            </if>
+            <if test="validFlag !=null">
+                and VALID_FLAG = #{validFlag}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="SEnergyRpDomain" flushCache="true" useGeneratedKeys="true">
+		insert into S_ENERGY_RP
+			(ID,MASTER_MPED_ID,SPARE_MPED_ID,BEGIN_TIME,END_TIME,RP_TYPE,RP_DIRECTION,PRORATE,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_TIME,VERIFY_MACHINE,VALID_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{masterMpedId},#{spareMpedId},#{beginTime},#{endTime},#{rpType},#{rpDirection},#{prorate},#{operator},#{createTime},#{createMachine},#{verifyFlag},#{auditor},#{verifyTime},#{verifyMachine},#{validFlag},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="SEnergyRpDomain" flushCache="true">
+        update S_ENERGY_RP
+        <set>
+            <if test="masterMpedId !=null">
+                MASTER_MPED_ID = #{masterMpedId},
+            </if>
+            <if test="spareMpedId !=null">
+                SPARE_MPED_ID = #{spareMpedId},
+            </if>
+            <if test="beginTime !=null">
+                BEGIN_TIME = #{beginTime},
+            </if>
+            <if test="endTime !=null">
+                END_TIME = #{endTime},
+            </if>
+            <if test="rpType !=null">
+                RP_TYPE = #{rpType},
+            </if>
+            <if test="rpDirection !=null">
+                RP_DIRECTION = #{rpDirection},
+            </if>
+            <if test="prorate !=null">
+                PRORATE = #{prorate},
+            </if>
+            <if test="operator !=null">
+                OPERATOR = #{operator},
+            </if>
+            <if test="createTime !=null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="createMachine !=null">
+                CREATE_MACHINE = #{createMachine},
+            </if>
+            <if test="verifyFlag !=null">
+                VERIFY_FLAG = #{verifyFlag},
+            </if>
+            <if test="auditor !=null">
+                AUDITOR = #{auditor},
+            </if>
+            <if test="verifyTime !=null">
+                VERIFY_TIME = #{verifyTime},
+            </if>
+            <if test="verifyMachine !=null">
+                VERIFY_MACHINE = #{verifyMachine},
+            </if>
+            <if test="validFlag !=null">
+                VALID_FLAG = #{validFlag},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="SEnergyRpDomain" flushCache="true">
+        delete from S_ENERGY_RP
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

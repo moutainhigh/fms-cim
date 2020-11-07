@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.RDaTaskLogDAO">
+    <select id="findByKey" parameterType="RDaTaskLogDomain"
+            resultType="RDaTaskLogDomain" useCache="true">
+        select
+        CP_ID,MPED_ID,TMNL_FLAG,CP_TASK_ID,CP_TASK_DESCRIBE,CREATETM,TASKST,TASKET,DATATM,SUCC_FLAG,EXEC_STATUS,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_DA_TASK_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="RDaTaskLogDomain"
+            resultType="RDaTaskLogDomain" useCache="true">
+        select
+        CP_ID,MPED_ID,TMNL_FLAG,CP_TASK_ID,CP_TASK_DESCRIBE,CREATETM,TASKST,TASKET,DATATM,SUCC_FLAG,EXEC_STATUS,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_DA_TASK_LOG
+        <where>
+            <if test="cpId !=null">
+                and CP_ID = #{cpId}
+            </if>
+            <if test="mpedId !=null">
+                and MPED_ID = #{mpedId}
+            </if>
+            <if test="tmnlFlag !=null">
+                and TMNL_FLAG = #{tmnlFlag}
+            </if>
+            <if test="cpTaskId !=null">
+                and CP_TASK_ID = #{cpTaskId}
+            </if>
+            <if test="cpTaskDescribe !=null">
+                and CP_TASK_DESCRIBE = #{cpTaskDescribe}
+            </if>
+            <if test="createtm !=null">
+                and CREATETM = #{createtm}
+            </if>
+            <if test="taskst !=null">
+                and TASKST = #{taskst}
+            </if>
+            <if test="tasket !=null">
+                and TASKET = #{tasket}
+            </if>
+            <if test="datatm !=null">
+                and DATATM = #{datatm}
+            </if>
+            <if test="succFlag !=null">
+                and SUCC_FLAG = #{succFlag}
+            </if>
+            <if test="execStatus !=null">
+                and EXEC_STATUS = #{execStatus}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="RDaTaskLogDomain" flushCache="true" useGeneratedKeys="true">
+		insert into R_DA_TASK_LOG
+			(CP_ID,MPED_ID,TMNL_FLAG,CP_TASK_ID,CP_TASK_DESCRIBE,CREATETM,TASKST,TASKET,DATATM,SUCC_FLAG,EXEC_STATUS,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{cpId},#{mpedId},#{tmnlFlag},#{cpTaskId},#{cpTaskDescribe},#{createtm},#{taskst},#{tasket},#{datatm},#{succFlag},#{execStatus},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="RDaTaskLogDomain" flushCache="true">
+        update R_DA_TASK_LOG
+        <set>
+            <if test="cpId !=null">
+                CP_ID = #{cpId},
+            </if>
+            <if test="mpedId !=null">
+                MPED_ID = #{mpedId},
+            </if>
+            <if test="tmnlFlag !=null">
+                TMNL_FLAG = #{tmnlFlag},
+            </if>
+            <if test="cpTaskId !=null">
+                CP_TASK_ID = #{cpTaskId},
+            </if>
+            <if test="cpTaskDescribe !=null">
+                CP_TASK_DESCRIBE = #{cpTaskDescribe},
+            </if>
+            <if test="createtm !=null">
+                CREATETM = #{createtm},
+            </if>
+            <if test="taskst !=null">
+                TASKST = #{taskst},
+            </if>
+            <if test="tasket !=null">
+                TASKET = #{tasket},
+            </if>
+            <if test="datatm !=null">
+                DATATM = #{datatm},
+            </if>
+            <if test="succFlag !=null">
+                SUCC_FLAG = #{succFlag},
+            </if>
+            <if test="execStatus !=null">
+                EXEC_STATUS = #{execStatus},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="RDaTaskLogDomain" flushCache="true">
+        delete from R_DA_TASK_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

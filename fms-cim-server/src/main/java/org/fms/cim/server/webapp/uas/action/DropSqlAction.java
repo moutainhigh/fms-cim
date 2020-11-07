@@ -89,12 +89,21 @@ public class DropSqlAction {
     public HttpResult<?> getBaseDropDict(@RequestBody String dropCode) {
         List<SystemCommonConfigVO> dictList = new ArrayList<>();
         if (dropCode != null) {
-            DropSqlVO modelVO = new DropSqlVO();
-            modelVO.setDropCode(dropCode.trim());
-            List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
-            if (listVO != null && listVO.size() > 0) {
-                dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
-            }
+            SystemCommonConfigVO model1=new SystemCommonConfigVO();
+            model1.setParamKey("0");
+            model1.setParamValue("字典");
+            dictList.add(model1);
+
+            SystemCommonConfigVO model2=new SystemCommonConfigVO();
+            model2.setParamKey("1");
+            model2.setParamValue("下拉字典");
+            dictList.add(model2);
+            //DropSqlVO modelVO = new DropSqlVO();
+            //modelVO.setDropCode(dropCode.trim());
+            //List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
+            //if (listVO != null && listVO.size() > 0) {
+            //  dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
+            //}
         }
         return new HttpResult<>(HttpResult.SUCCESS, "获取成功!", dictList);
     }

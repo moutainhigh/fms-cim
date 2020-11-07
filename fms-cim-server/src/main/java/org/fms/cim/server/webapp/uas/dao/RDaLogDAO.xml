@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.RDaLogDAO">
+    <select id="findByKey" parameterType="RDaLogDomain"
+            resultType="RDaLogDomain" useCache="true">
+        select CP_ID,OBJID,DATATYPE,DATAID,DATATM,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_DA_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="RDaLogDomain"
+            resultType="RDaLogDomain" useCache="true">
+        select CP_ID,OBJID,DATATYPE,DATAID,DATATM,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_DA_LOG
+        <where>
+            <if test="cpId !=null">
+                and CP_ID = #{cpId}
+            </if>
+            <if test="objid !=null">
+                and OBJID = #{objid}
+            </if>
+            <if test="datatype !=null">
+                and DATATYPE = #{datatype}
+            </if>
+            <if test="dataid !=null">
+                and DATAID = #{dataid}
+            </if>
+            <if test="datatm !=null">
+                and DATATM = #{datatm}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="RDaLogDomain" flushCache="true" useGeneratedKeys="true">
+		insert into R_DA_LOG
+			(CP_ID,OBJID,DATATYPE,DATAID,DATATM,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{cpId},#{objid},#{datatype},#{dataid},#{datatm},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="RDaLogDomain" flushCache="true">
+        update R_DA_LOG
+        <set>
+            <if test="cpId !=null">
+                CP_ID = #{cpId},
+            </if>
+            <if test="objid !=null">
+                OBJID = #{objid},
+            </if>
+            <if test="datatype !=null">
+                DATATYPE = #{datatype},
+            </if>
+            <if test="dataid !=null">
+                DATAID = #{dataid},
+            </if>
+            <if test="datatm !=null">
+                DATATM = #{datatm},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="RDaLogDomain" flushCache="true">
+        delete from R_DA_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

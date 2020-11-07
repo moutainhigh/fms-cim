@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.SLineRpPreDAO">
+    <select id="findByKey" parameterType="SLineRpPreDomain"
+            resultType="SLineRpPreDomain" useCache="true">
+        select
+        MPED_ID,RP_MPED_ID,EVENT_TIME,END_FLAG,RP_DIRECTION,PRORATE,SRC_FLAG,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_MACHINE,REMARK,VERIFY_TIME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_LINE_RP_PRE
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="SLineRpPreDomain"
+            resultType="SLineRpPreDomain" useCache="true">
+        select
+        MPED_ID,RP_MPED_ID,EVENT_TIME,END_FLAG,RP_DIRECTION,PRORATE,SRC_FLAG,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_MACHINE,REMARK,VERIFY_TIME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_LINE_RP_PRE
+        <where>
+            <if test="mpedId !=null">
+                and MPED_ID = #{mpedId}
+            </if>
+            <if test="rpMpedId !=null">
+                and RP_MPED_ID = #{rpMpedId}
+            </if>
+            <if test="eventTime !=null">
+                and EVENT_TIME = #{eventTime}
+            </if>
+            <if test="endFlag !=null">
+                and END_FLAG = #{endFlag}
+            </if>
+            <if test="rpDirection !=null">
+                and RP_DIRECTION = #{rpDirection}
+            </if>
+            <if test="prorate !=null">
+                and PRORATE = #{prorate}
+            </if>
+            <if test="srcFlag !=null">
+                and SRC_FLAG = #{srcFlag}
+            </if>
+            <if test="operator !=null">
+                and OPERATOR = #{operator}
+            </if>
+            <if test="createTime !=null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="createMachine !=null">
+                and CREATE_MACHINE = #{createMachine}
+            </if>
+            <if test="verifyFlag !=null">
+                and VERIFY_FLAG = #{verifyFlag}
+            </if>
+            <if test="auditor !=null">
+                and AUDITOR = #{auditor}
+            </if>
+            <if test="verifyMachine !=null">
+                and VERIFY_MACHINE = #{verifyMachine}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="verifyTime !=null">
+                and VERIFY_TIME = #{verifyTime}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="SLineRpPreDomain" flushCache="true" useGeneratedKeys="true">
+		insert into S_LINE_RP_PRE
+			(MPED_ID,RP_MPED_ID,EVENT_TIME,END_FLAG,RP_DIRECTION,PRORATE,SRC_FLAG,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_MACHINE,REMARK,VERIFY_TIME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{mpedId},#{rpMpedId},#{eventTime},#{endFlag},#{rpDirection},#{prorate},#{srcFlag},#{operator},#{createTime},#{createMachine},#{verifyFlag},#{auditor},#{verifyMachine},#{remark},#{verifyTime},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="SLineRpPreDomain" flushCache="true">
+        update S_LINE_RP_PRE
+        <set>
+            <if test="mpedId !=null">
+                MPED_ID = #{mpedId},
+            </if>
+            <if test="rpMpedId !=null">
+                RP_MPED_ID = #{rpMpedId},
+            </if>
+            <if test="eventTime !=null">
+                EVENT_TIME = #{eventTime},
+            </if>
+            <if test="endFlag !=null">
+                END_FLAG = #{endFlag},
+            </if>
+            <if test="rpDirection !=null">
+                RP_DIRECTION = #{rpDirection},
+            </if>
+            <if test="prorate !=null">
+                PRORATE = #{prorate},
+            </if>
+            <if test="srcFlag !=null">
+                SRC_FLAG = #{srcFlag},
+            </if>
+            <if test="operator !=null">
+                OPERATOR = #{operator},
+            </if>
+            <if test="createTime !=null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="createMachine !=null">
+                CREATE_MACHINE = #{createMachine},
+            </if>
+            <if test="verifyFlag !=null">
+                VERIFY_FLAG = #{verifyFlag},
+            </if>
+            <if test="auditor !=null">
+                AUDITOR = #{auditor},
+            </if>
+            <if test="verifyMachine !=null">
+                VERIFY_MACHINE = #{verifyMachine},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="verifyTime !=null">
+                VERIFY_TIME = #{verifyTime},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="SLineRpPreDomain" flushCache="true">
+        delete from S_LINE_RP_PRE
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

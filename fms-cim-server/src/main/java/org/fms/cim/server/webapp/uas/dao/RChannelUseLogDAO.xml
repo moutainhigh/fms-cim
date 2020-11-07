@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.RChannelUseLogDAO">
+    <select id="findByKey" parameterType="RChannelUseLogDomain"
+            resultType="RChannelUseLogDomain" useCache="true">
+        select
+        CHAN_ID,COMM_TIME,CHAN_NAME,CHAN_TYPE,CP_ID,RTUCHAN_PROERTY,RESULT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_CHANNEL_USE_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="RChannelUseLogDomain"
+            resultType="RChannelUseLogDomain" useCache="true">
+        select
+        CHAN_ID,COMM_TIME,CHAN_NAME,CHAN_TYPE,CP_ID,RTUCHAN_PROERTY,RESULT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_CHANNEL_USE_LOG
+        <where>
+            <if test="chanId !=null">
+                and CHAN_ID = #{chanId}
+            </if>
+            <if test="commTime !=null">
+                and COMM_TIME = #{commTime}
+            </if>
+            <if test="chanName !=null">
+                and CHAN_NAME = #{chanName}
+            </if>
+            <if test="chanType !=null">
+                and CHAN_TYPE = #{chanType}
+            </if>
+            <if test="cpId !=null">
+                and CP_ID = #{cpId}
+            </if>
+            <if test="rtuchanProerty !=null">
+                and RTUCHAN_PROERTY = #{rtuchanProerty}
+            </if>
+            <if test="result !=null">
+                and RESULT = #{result}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="RChannelUseLogDomain" flushCache="true" useGeneratedKeys="true">
+		insert into R_CHANNEL_USE_LOG
+			(CHAN_ID,COMM_TIME,CHAN_NAME,CHAN_TYPE,CP_ID,RTUCHAN_PROERTY,RESULT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{chanId},#{commTime},#{chanName},#{chanType},#{cpId},#{rtuchanProerty},#{result},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="RChannelUseLogDomain" flushCache="true">
+        update R_CHANNEL_USE_LOG
+        <set>
+            <if test="chanId !=null">
+                CHAN_ID = #{chanId},
+            </if>
+            <if test="commTime !=null">
+                COMM_TIME = #{commTime},
+            </if>
+            <if test="chanName !=null">
+                CHAN_NAME = #{chanName},
+            </if>
+            <if test="chanType !=null">
+                CHAN_TYPE = #{chanType},
+            </if>
+            <if test="cpId !=null">
+                CP_ID = #{cpId},
+            </if>
+            <if test="rtuchanProerty !=null">
+                RTUCHAN_PROERTY = #{rtuchanProerty},
+            </if>
+            <if test="result !=null">
+                RESULT = #{result},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="RChannelUseLogDomain" flushCache="true">
+        delete from R_CHANNEL_USE_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

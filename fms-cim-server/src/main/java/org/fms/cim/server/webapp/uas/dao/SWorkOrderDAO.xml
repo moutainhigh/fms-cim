@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.SWorkOrderDAO">
+    <select id="findByKey" parameterType="SWorkOrderDomain"
+            resultType="SWorkOrderDomain" useCache="true">
+        select
+        ORDER_ID,ORDER_NO,ORDER_TYPE,EXEC_TYPE,BUSINESS_PLACE_CODE,ORDER_OBJ_ID,ORDER_OBJ_TYPE,ORDER_OBJ_NAME,ORDER_SET_ID,ORDER_SRC,ORDER_CONTENT,PRIORITY,CREATE_USER,CREATE_TIME,CREATE_MACHINE,COMPLETE_TIME,ALARMREA,DEALTYPE,DEALMAN,VERIFY_FLAG,AUDITOR,VERIFY_MACHINE,REMARK,VERIFY_TIME,CREATOR_ID,LAST_MODIFIER_ID,LAST_MODIFY_TIME,CREATE_DATE
+        from S_WORK_ORDER
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="SWorkOrderDomain"
+            resultType="SWorkOrderDomain" useCache="true">
+        select
+        ORDER_ID,ORDER_NO,ORDER_TYPE,EXEC_TYPE,BUSINESS_PLACE_CODE,ORDER_OBJ_ID,ORDER_OBJ_TYPE,ORDER_OBJ_NAME,ORDER_SET_ID,ORDER_SRC,ORDER_CONTENT,PRIORITY,CREATE_USER,CREATE_TIME,CREATE_MACHINE,COMPLETE_TIME,ALARMREA,DEALTYPE,DEALMAN,VERIFY_FLAG,AUDITOR,VERIFY_MACHINE,REMARK,VERIFY_TIME,CREATOR_ID,LAST_MODIFIER_ID,LAST_MODIFY_TIME,CREATE_DATE
+        from S_WORK_ORDER
+        <where>
+            <if test="orderId !=null">
+                and ORDER_ID = #{orderId}
+            </if>
+            <if test="orderNo !=null">
+                and ORDER_NO = #{orderNo}
+            </if>
+            <if test="orderType !=null">
+                and ORDER_TYPE = #{orderType}
+            </if>
+            <if test="execType !=null">
+                and EXEC_TYPE = #{execType}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="orderObjId !=null">
+                and ORDER_OBJ_ID = #{orderObjId}
+            </if>
+            <if test="orderObjType !=null">
+                and ORDER_OBJ_TYPE = #{orderObjType}
+            </if>
+            <if test="orderObjName !=null">
+                and ORDER_OBJ_NAME = #{orderObjName}
+            </if>
+            <if test="orderSetId !=null">
+                and ORDER_SET_ID = #{orderSetId}
+            </if>
+            <if test="orderSrc !=null">
+                and ORDER_SRC = #{orderSrc}
+            </if>
+            <if test="orderContent !=null">
+                and ORDER_CONTENT = #{orderContent}
+            </if>
+            <if test="priority !=null">
+                and PRIORITY = #{priority}
+            </if>
+            <if test="createUser !=null">
+                and CREATE_USER = #{createUser}
+            </if>
+            <if test="createTime !=null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="createMachine !=null">
+                and CREATE_MACHINE = #{createMachine}
+            </if>
+            <if test="completeTime !=null">
+                and COMPLETE_TIME = #{completeTime}
+            </if>
+            <if test="alarmrea !=null">
+                and ALARMREA = #{alarmrea}
+            </if>
+            <if test="dealtype !=null">
+                and DEALTYPE = #{dealtype}
+            </if>
+            <if test="dealman !=null">
+                and DEALMAN = #{dealman}
+            </if>
+            <if test="verifyFlag !=null">
+                and VERIFY_FLAG = #{verifyFlag}
+            </if>
+            <if test="auditor !=null">
+                and AUDITOR = #{auditor}
+            </if>
+            <if test="verifyMachine !=null">
+                and VERIFY_MACHINE = #{verifyMachine}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="verifyTime !=null">
+                and VERIFY_TIME = #{verifyTime}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="SWorkOrderDomain" flushCache="true" useGeneratedKeys="true">
+		insert into S_WORK_ORDER
+			(ORDER_ID,ORDER_NO,ORDER_TYPE,EXEC_TYPE,BUSINESS_PLACE_CODE,ORDER_OBJ_ID,ORDER_OBJ_TYPE,ORDER_OBJ_NAME,ORDER_SET_ID,ORDER_SRC,ORDER_CONTENT,PRIORITY,CREATE_USER,CREATE_TIME,CREATE_MACHINE,COMPLETE_TIME,ALARMREA,DEALTYPE,DEALMAN,VERIFY_FLAG,AUDITOR,VERIFY_MACHINE,REMARK,VERIFY_TIME,CREATOR_ID,LAST_MODIFIER_ID,LAST_MODIFY_TIME,CREATE_DATE)
+			VALUES(#{orderId},#{orderNo},#{orderType},#{execType},#{businessPlaceCode},#{orderObjId},#{orderObjType},#{orderObjName},#{orderSetId},#{orderSrc},#{orderContent},#{priority},#{createUser},#{createTime},#{createMachine},#{completeTime},#{alarmrea},#{dealtype},#{dealman},#{verifyFlag},#{auditor},#{verifyMachine},#{remark},#{verifyTime},#{creatorId},#{lastModifierId},#{lastModifyTime},#{createDate})
+
+	</insert>
+    <update id="update" parameterType="SWorkOrderDomain" flushCache="true">
+        update S_WORK_ORDER
+        <set>
+            <if test="orderId !=null">
+                ORDER_ID = #{orderId},
+            </if>
+            <if test="orderNo !=null">
+                ORDER_NO = #{orderNo},
+            </if>
+            <if test="orderType !=null">
+                ORDER_TYPE = #{orderType},
+            </if>
+            <if test="execType !=null">
+                EXEC_TYPE = #{execType},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="orderObjId !=null">
+                ORDER_OBJ_ID = #{orderObjId},
+            </if>
+            <if test="orderObjType !=null">
+                ORDER_OBJ_TYPE = #{orderObjType},
+            </if>
+            <if test="orderObjName !=null">
+                ORDER_OBJ_NAME = #{orderObjName},
+            </if>
+            <if test="orderSetId !=null">
+                ORDER_SET_ID = #{orderSetId},
+            </if>
+            <if test="orderSrc !=null">
+                ORDER_SRC = #{orderSrc},
+            </if>
+            <if test="orderContent !=null">
+                ORDER_CONTENT = #{orderContent},
+            </if>
+            <if test="priority !=null">
+                PRIORITY = #{priority},
+            </if>
+            <if test="createUser !=null">
+                CREATE_USER = #{createUser},
+            </if>
+            <if test="createTime !=null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="createMachine !=null">
+                CREATE_MACHINE = #{createMachine},
+            </if>
+            <if test="completeTime !=null">
+                COMPLETE_TIME = #{completeTime},
+            </if>
+            <if test="alarmrea !=null">
+                ALARMREA = #{alarmrea},
+            </if>
+            <if test="dealtype !=null">
+                DEALTYPE = #{dealtype},
+            </if>
+            <if test="dealman !=null">
+                DEALMAN = #{dealman},
+            </if>
+            <if test="verifyFlag !=null">
+                VERIFY_FLAG = #{verifyFlag},
+            </if>
+            <if test="auditor !=null">
+                AUDITOR = #{auditor},
+            </if>
+            <if test="verifyMachine !=null">
+                VERIFY_MACHINE = #{verifyMachine},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="verifyTime !=null">
+                VERIFY_TIME = #{verifyTime},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="SWorkOrderDomain" flushCache="true">
+        delete from S_WORK_ORDER
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

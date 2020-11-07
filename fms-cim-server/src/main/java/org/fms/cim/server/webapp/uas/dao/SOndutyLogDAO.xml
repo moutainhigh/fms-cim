@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.SOndutyLogDAO">
+    <select id="findByKey" parameterType="SOndutyLogDomain"
+            resultType="SOndutyLogDomain" useCache="true">
+        select
+        ID,ONDUTY_DATE,BUSINESS_PLACE_CODE,DEPT_ID,ONDUTY_TYPE,WATCHER,SHIFT_OPR,WHEATHER,THIS_SHIFT_WORK,THIS_LEFT_WORK,REMAIN_TASK_STATUS,NOTICE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_ONDUTY_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="SOndutyLogDomain"
+            resultType="SOndutyLogDomain" useCache="true">
+        select
+        ID,ONDUTY_DATE,BUSINESS_PLACE_CODE,DEPT_ID,ONDUTY_TYPE,WATCHER,SHIFT_OPR,WHEATHER,THIS_SHIFT_WORK,THIS_LEFT_WORK,REMAIN_TASK_STATUS,NOTICE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_ONDUTY_LOG
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="ondutyDate !=null">
+                and ONDUTY_DATE = #{ondutyDate}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="deptId !=null">
+                and DEPT_ID = #{deptId}
+            </if>
+            <if test="ondutyType !=null">
+                and ONDUTY_TYPE = #{ondutyType}
+            </if>
+            <if test="watcher !=null">
+                and WATCHER = #{watcher}
+            </if>
+            <if test="shiftOpr !=null">
+                and SHIFT_OPR = #{shiftOpr}
+            </if>
+            <if test="wheather !=null">
+                and WHEATHER = #{wheather}
+            </if>
+            <if test="thisShiftWork !=null">
+                and THIS_SHIFT_WORK = #{thisShiftWork}
+            </if>
+            <if test="thisLeftWork !=null">
+                and THIS_LEFT_WORK = #{thisLeftWork}
+            </if>
+            <if test="remainTaskStatus !=null">
+                and REMAIN_TASK_STATUS = #{remainTaskStatus}
+            </if>
+            <if test="notice !=null">
+                and NOTICE = #{notice}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="SOndutyLogDomain" flushCache="true" useGeneratedKeys="true">
+		insert into S_ONDUTY_LOG
+			(ID,ONDUTY_DATE,BUSINESS_PLACE_CODE,DEPT_ID,ONDUTY_TYPE,WATCHER,SHIFT_OPR,WHEATHER,THIS_SHIFT_WORK,THIS_LEFT_WORK,REMAIN_TASK_STATUS,NOTICE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{ondutyDate},#{businessPlaceCode},#{deptId},#{ondutyType},#{watcher},#{shiftOpr},#{wheather},#{thisShiftWork},#{thisLeftWork},#{remainTaskStatus},#{notice},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="SOndutyLogDomain" flushCache="true">
+        update S_ONDUTY_LOG
+        <set>
+            <if test="ondutyDate !=null">
+                ONDUTY_DATE = #{ondutyDate},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="deptId !=null">
+                DEPT_ID = #{deptId},
+            </if>
+            <if test="ondutyType !=null">
+                ONDUTY_TYPE = #{ondutyType},
+            </if>
+            <if test="watcher !=null">
+                WATCHER = #{watcher},
+            </if>
+            <if test="shiftOpr !=null">
+                SHIFT_OPR = #{shiftOpr},
+            </if>
+            <if test="wheather !=null">
+                WHEATHER = #{wheather},
+            </if>
+            <if test="thisShiftWork !=null">
+                THIS_SHIFT_WORK = #{thisShiftWork},
+            </if>
+            <if test="thisLeftWork !=null">
+                THIS_LEFT_WORK = #{thisLeftWork},
+            </if>
+            <if test="remainTaskStatus !=null">
+                REMAIN_TASK_STATUS = #{remainTaskStatus},
+            </if>
+            <if test="notice !=null">
+                NOTICE = #{notice},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="SOndutyLogDomain" flushCache="true">
+        delete from S_ONDUTY_LOG
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

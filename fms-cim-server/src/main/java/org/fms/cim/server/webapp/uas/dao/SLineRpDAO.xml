@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.SLineRpDAO">
+    <select id="findByKey" parameterType="SLineRpDomain"
+            resultType="SLineRpDomain" useCache="true">
+        select
+        RP_ID,MPED_ID,RP_MPED_ID,RP_RUN_TIME,RP_OFF_TIME,RP_DIRECTION,PRORATE,END_FLAG,SRC_FLAG,OPERATOR,CREATE_TIME,CREATE_MACHINE,CREATOR_ID,CREATE_TIME1,LAST_MODIFIER_ID,LAST_MODIFY_TIME,CREATE_DATE
+        from S_LINE_RP
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="SLineRpDomain"
+            resultType="SLineRpDomain" useCache="true">
+        select
+        RP_ID,MPED_ID,RP_MPED_ID,RP_RUN_TIME,RP_OFF_TIME,RP_DIRECTION,PRORATE,END_FLAG,SRC_FLAG,OPERATOR,CREATE_TIME,CREATE_MACHINE,CREATOR_ID,CREATE_TIME1,LAST_MODIFIER_ID,LAST_MODIFY_TIME,CREATE_DATE
+        from S_LINE_RP
+        <where>
+            <if test="rpId !=null">
+                and RP_ID = #{rpId}
+            </if>
+            <if test="mpedId !=null">
+                and MPED_ID = #{mpedId}
+            </if>
+            <if test="rpMpedId !=null">
+                and RP_MPED_ID = #{rpMpedId}
+            </if>
+            <if test="rpRunTime !=null">
+                and RP_RUN_TIME = #{rpRunTime}
+            </if>
+            <if test="rpOffTime !=null">
+                and RP_OFF_TIME = #{rpOffTime}
+            </if>
+            <if test="rpDirection !=null">
+                and RP_DIRECTION = #{rpDirection}
+            </if>
+            <if test="prorate !=null">
+                and PRORATE = #{prorate}
+            </if>
+            <if test="endFlag !=null">
+                and END_FLAG = #{endFlag}
+            </if>
+            <if test="srcFlag !=null">
+                and SRC_FLAG = #{srcFlag}
+            </if>
+            <if test="operator !=null">
+                and OPERATOR = #{operator}
+            </if>
+            <if test="createTime !=null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="createMachine !=null">
+                and CREATE_MACHINE = #{createMachine}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createTime1 !=null">
+                and CREATE_TIME1 = #{createTime1}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="SLineRpDomain" flushCache="true" useGeneratedKeys="true">
+		insert into S_LINE_RP
+			(RP_ID,MPED_ID,RP_MPED_ID,RP_RUN_TIME,RP_OFF_TIME,RP_DIRECTION,PRORATE,END_FLAG,SRC_FLAG,OPERATOR,CREATE_TIME,CREATE_MACHINE,CREATOR_ID,CREATE_TIME1,LAST_MODIFIER_ID,LAST_MODIFY_TIME,CREATE_DATE)
+			VALUES(#{rpId},#{mpedId},#{rpMpedId},#{rpRunTime},#{rpOffTime},#{rpDirection},#{prorate},#{endFlag},#{srcFlag},#{operator},#{createTime},#{createMachine},#{creatorId},#{createTime1},#{lastModifierId},#{lastModifyTime},#{createDate})
+
+	</insert>
+    <update id="update" parameterType="SLineRpDomain" flushCache="true">
+        update S_LINE_RP
+        <set>
+            <if test="rpId !=null">
+                RP_ID = #{rpId},
+            </if>
+            <if test="mpedId !=null">
+                MPED_ID = #{mpedId},
+            </if>
+            <if test="rpMpedId !=null">
+                RP_MPED_ID = #{rpMpedId},
+            </if>
+            <if test="rpRunTime !=null">
+                RP_RUN_TIME = #{rpRunTime},
+            </if>
+            <if test="rpOffTime !=null">
+                RP_OFF_TIME = #{rpOffTime},
+            </if>
+            <if test="rpDirection !=null">
+                RP_DIRECTION = #{rpDirection},
+            </if>
+            <if test="prorate !=null">
+                PRORATE = #{prorate},
+            </if>
+            <if test="endFlag !=null">
+                END_FLAG = #{endFlag},
+            </if>
+            <if test="srcFlag !=null">
+                SRC_FLAG = #{srcFlag},
+            </if>
+            <if test="operator !=null">
+                OPERATOR = #{operator},
+            </if>
+            <if test="createTime !=null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="createMachine !=null">
+                CREATE_MACHINE = #{createMachine},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createTime1 !=null">
+                CREATE_TIME1 = #{createTime1},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="SLineRpDomain" flushCache="true">
+        delete from S_LINE_RP
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

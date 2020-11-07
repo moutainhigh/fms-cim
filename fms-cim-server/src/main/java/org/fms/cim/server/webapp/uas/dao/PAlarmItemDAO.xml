@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PAlarmItemDAO">
+    <select id="findByKey" parameterType="PAlarmItemDomain"
+            resultType="PAlarmItemDomain" useCache="true">
+        select
+        ID,SYS_USER_NAME,EVENT_NO,SOUND_FLAG,POP_FLAG,SMS_FLAG,OPENGRAPHIC_FLAG,MAIL_FLAG,MAILBOX,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_ALARM_ITEM
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PAlarmItemDomain"
+            resultType="PAlarmItemDomain" useCache="true">
+        select
+        ID,SYS_USER_NAME,EVENT_NO,SOUND_FLAG,POP_FLAG,SMS_FLAG,OPENGRAPHIC_FLAG,MAIL_FLAG,MAILBOX,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_ALARM_ITEM
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="sysUserName !=null">
+                and SYS_USER_NAME = #{sysUserName}
+            </if>
+            <if test="eventNo !=null">
+                and EVENT_NO = #{eventNo}
+            </if>
+            <if test="soundFlag !=null">
+                and SOUND_FLAG = #{soundFlag}
+            </if>
+            <if test="popFlag !=null">
+                and POP_FLAG = #{popFlag}
+            </if>
+            <if test="smsFlag !=null">
+                and SMS_FLAG = #{smsFlag}
+            </if>
+            <if test="opengraphicFlag !=null">
+                and OPENGRAPHIC_FLAG = #{opengraphicFlag}
+            </if>
+            <if test="mailFlag !=null">
+                and MAIL_FLAG = #{mailFlag}
+            </if>
+            <if test="mailbox !=null">
+                and MAILBOX = #{mailbox}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PAlarmItemDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_ALARM_ITEM
+			(ID,SYS_USER_NAME,EVENT_NO,SOUND_FLAG,POP_FLAG,SMS_FLAG,OPENGRAPHIC_FLAG,MAIL_FLAG,MAILBOX,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{sysUserName},#{eventNo},#{soundFlag},#{popFlag},#{smsFlag},#{opengraphicFlag},#{mailFlag},#{mailbox},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PAlarmItemDomain" flushCache="true">
+        update P_ALARM_ITEM
+        <set>
+            <if test="sysUserName !=null">
+                SYS_USER_NAME = #{sysUserName},
+            </if>
+            <if test="eventNo !=null">
+                EVENT_NO = #{eventNo},
+            </if>
+            <if test="soundFlag !=null">
+                SOUND_FLAG = #{soundFlag},
+            </if>
+            <if test="popFlag !=null">
+                POP_FLAG = #{popFlag},
+            </if>
+            <if test="smsFlag !=null">
+                SMS_FLAG = #{smsFlag},
+            </if>
+            <if test="opengraphicFlag !=null">
+                OPENGRAPHIC_FLAG = #{opengraphicFlag},
+            </if>
+            <if test="mailFlag !=null">
+                MAIL_FLAG = #{mailFlag},
+            </if>
+            <if test="mailbox !=null">
+                MAILBOX = #{mailbox},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PAlarmItemDomain" flushCache="true">
+        delete from P_ALARM_ITEM
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

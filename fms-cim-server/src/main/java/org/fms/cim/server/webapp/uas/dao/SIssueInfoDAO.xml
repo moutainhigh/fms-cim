@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.SIssueInfoDAO">
+    <select id="findByKey" parameterType="SIssueInfoDomain"
+            resultType="SIssueInfoDomain" useCache="true">
+        select
+        ID,NOTICE_DATE,BUSINESS_PLACE_CODE,DEPT_ID,EMP_NO,INFO_TITLE,CONTENT,VALID_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_ISSUE_INFO
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="SIssueInfoDomain"
+            resultType="SIssueInfoDomain" useCache="true">
+        select
+        ID,NOTICE_DATE,BUSINESS_PLACE_CODE,DEPT_ID,EMP_NO,INFO_TITLE,CONTENT,VALID_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from S_ISSUE_INFO
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="noticeDate !=null">
+                and NOTICE_DATE = #{noticeDate}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="deptId !=null">
+                and DEPT_ID = #{deptId}
+            </if>
+            <if test="empNo !=null">
+                and EMP_NO = #{empNo}
+            </if>
+            <if test="infoTitle !=null">
+                and INFO_TITLE = #{infoTitle}
+            </if>
+            <if test="content !=null">
+                and CONTENT = #{content}
+            </if>
+            <if test="validFlag !=null">
+                and VALID_FLAG = #{validFlag}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="SIssueInfoDomain" flushCache="true" useGeneratedKeys="true">
+		insert into S_ISSUE_INFO
+			(ID,NOTICE_DATE,BUSINESS_PLACE_CODE,DEPT_ID,EMP_NO,INFO_TITLE,CONTENT,VALID_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{noticeDate},#{businessPlaceCode},#{deptId},#{empNo},#{infoTitle},#{content},#{validFlag},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="SIssueInfoDomain" flushCache="true">
+        update S_ISSUE_INFO
+        <set>
+            <if test="noticeDate !=null">
+                NOTICE_DATE = #{noticeDate},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="deptId !=null">
+                DEPT_ID = #{deptId},
+            </if>
+            <if test="empNo !=null">
+                EMP_NO = #{empNo},
+            </if>
+            <if test="infoTitle !=null">
+                INFO_TITLE = #{infoTitle},
+            </if>
+            <if test="content !=null">
+                CONTENT = #{content},
+            </if>
+            <if test="validFlag !=null">
+                VALID_FLAG = #{validFlag},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="SIssueInfoDomain" flushCache="true">
+        delete from S_ISSUE_INFO
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

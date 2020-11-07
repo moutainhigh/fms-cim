@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.RWorkTriggerDAO">
+    <select id="findByKey" parameterType="RWorkTriggerDomain"
+            resultType="RWorkTriggerDomain" useCache="true">
+        select
+        TRG_ID,OBJ_ID,OBJ_TYPE,TRIGGER_TYPE,BEGIN_TIME,END_TIME,DEALFLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_WORK_TRIGGER
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="RWorkTriggerDomain"
+            resultType="RWorkTriggerDomain" useCache="true">
+        select
+        TRG_ID,OBJ_ID,OBJ_TYPE,TRIGGER_TYPE,BEGIN_TIME,END_TIME,DEALFLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from R_WORK_TRIGGER
+        <where>
+            <if test="trgId !=null">
+                and TRG_ID = #{trgId}
+            </if>
+            <if test="objId !=null">
+                and OBJ_ID = #{objId}
+            </if>
+            <if test="objType !=null">
+                and OBJ_TYPE = #{objType}
+            </if>
+            <if test="triggerType !=null">
+                and TRIGGER_TYPE = #{triggerType}
+            </if>
+            <if test="beginTime !=null">
+                and BEGIN_TIME = #{beginTime}
+            </if>
+            <if test="endTime !=null">
+                and END_TIME = #{endTime}
+            </if>
+            <if test="dealflag !=null">
+                and DEALFLAG = #{dealflag}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="RWorkTriggerDomain" flushCache="true" useGeneratedKeys="true">
+		insert into R_WORK_TRIGGER
+			(TRG_ID,OBJ_ID,OBJ_TYPE,TRIGGER_TYPE,BEGIN_TIME,END_TIME,DEALFLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{trgId},#{objId},#{objType},#{triggerType},#{beginTime},#{endTime},#{dealflag},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="RWorkTriggerDomain" flushCache="true">
+        update R_WORK_TRIGGER
+        <set>
+            <if test="trgId !=null">
+                TRG_ID = #{trgId},
+            </if>
+            <if test="objId !=null">
+                OBJ_ID = #{objId},
+            </if>
+            <if test="objType !=null">
+                OBJ_TYPE = #{objType},
+            </if>
+            <if test="triggerType !=null">
+                TRIGGER_TYPE = #{triggerType},
+            </if>
+            <if test="beginTime !=null">
+                BEGIN_TIME = #{beginTime},
+            </if>
+            <if test="endTime !=null">
+                END_TIME = #{endTime},
+            </if>
+            <if test="dealflag !=null">
+                DEALFLAG = #{dealflag},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="RWorkTriggerDomain" flushCache="true">
+        delete from R_WORK_TRIGGER
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.PAlarmDataDAO">
+    <select id="findByKey" parameterType="PAlarmDataDomain"
+            resultType="PAlarmDataDomain" useCache="true">
+        select
+        ID,SYS_USER_NAME,OBJ_TYPE,OBJ_ID,BUSINESS_PLACE_CODE,CP_ID,CP_TYPE_CODE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_ALARM_DATA
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="PAlarmDataDomain"
+            resultType="PAlarmDataDomain" useCache="true">
+        select
+        ID,SYS_USER_NAME,OBJ_TYPE,OBJ_ID,BUSINESS_PLACE_CODE,CP_ID,CP_TYPE_CODE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_ALARM_DATA
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="sysUserName !=null">
+                and SYS_USER_NAME = #{sysUserName}
+            </if>
+            <if test="objType !=null">
+                and OBJ_TYPE = #{objType}
+            </if>
+            <if test="objId !=null">
+                and OBJ_ID = #{objId}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="cpId !=null">
+                and CP_ID = #{cpId}
+            </if>
+            <if test="cpTypeCode !=null">
+                and CP_TYPE_CODE = #{cpTypeCode}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="PAlarmDataDomain" flushCache="true" useGeneratedKeys="true">
+		insert into P_ALARM_DATA
+			(ID,SYS_USER_NAME,OBJ_TYPE,OBJ_ID,BUSINESS_PLACE_CODE,CP_ID,CP_TYPE_CODE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{sysUserName},#{objType},#{objId},#{businessPlaceCode},#{cpId},#{cpTypeCode},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="PAlarmDataDomain" flushCache="true">
+        update P_ALARM_DATA
+        <set>
+            <if test="sysUserName !=null">
+                SYS_USER_NAME = #{sysUserName},
+            </if>
+            <if test="objType !=null">
+                OBJ_TYPE = #{objType},
+            </if>
+            <if test="objId !=null">
+                OBJ_ID = #{objId},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="cpId !=null">
+                CP_ID = #{cpId},
+            </if>
+            <if test="cpTypeCode !=null">
+                CP_TYPE_CODE = #{cpTypeCode},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="PAlarmDataDomain" flushCache="true">
+        delete from P_ALARM_DATA
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>
