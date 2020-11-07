@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.uas.dao.DropSqlDAO">
+    <select id="findByKey" parameterType="DropSqlDomain"
+            resultType="DropSqlDomain" useCache="true">
+        select ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
+        from DROP_SQL
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="DropSqlDomain"
+            resultType="DropSqlDomain" useCache="true">
+        select ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
+        from DROP_SQL
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="dropCode !=null">
+                and DROP_CODE = #{dropCode}
+            </if>
+            <if test="dropName !=null">
+                and DROP_NAME = #{dropName}
+            </if>
+            <if test="dropSql !=null">
+                and DROP_SQL = #{dropSql}
+            </if>
+            <if test="dropType !=null">
+                and DROP_TYPE = #{dropType}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="DropSqlDomain" flushCache="true" useGeneratedKeys="true">
+		insert into DROP_SQL
+			(ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS)
+			VALUES(#{id},#{dropCode},#{dropName},#{dropSql},#{dropType},#{remark},#{status})
+
+	</insert>
+    <update id="update" parameterType="DropSqlDomain" flushCache="true">
+        update DROP_SQL
+        <set>
+            <if test="id !=null">
+                ID = #{id},
+            </if>
+            <if test="dropCode !=null">
+                DROP_CODE = #{dropCode},
+            </if>
+            <if test="dropName !=null">
+                DROP_NAME = #{dropName},
+            </if>
+            <if test="dropSql !=null">
+                DROP_SQL = #{dropSql},
+            </if>
+            <if test="dropType !=null">
+                DROP_TYPE = #{dropType},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="DropSqlDomain" flushCache="true">
+        delete from DROP_SQL
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+    <select id="getBaseDropDict" parameterType="String"
+            resultType="SystemCommonConfigDomain" useCache="true">
+        ${value}
+    </select>
+</mapper>

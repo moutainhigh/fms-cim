@@ -1,5 +1,5 @@
 server:
- port: 10077
+ port: 10024
  servlet:
   context-path: /cimServer
 spring:
