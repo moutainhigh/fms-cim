@@ -90,7 +90,7 @@ public class DropSqlAction {
         List<SystemCommonConfigVO> dictList = new ArrayList<>();
         if (dropCode != null) {
             DropSqlVO modelVO = new DropSqlVO();
-            modelVO.setDropCode(dropCode);
+            modelVO.setDropCode(dropCode.trim());
             List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
             if (listVO != null && listVO.size() > 0) {
                 dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
