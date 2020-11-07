@@ -27,23 +27,28 @@ public class PSimCardDomain extends ManagerParamEntity implements MybatisEntity 
 	
 	private String cardNo;// SIM卡号
 	
-	private String gprsCode;
-	private String cardType;
-	private String telecomsOperator;
-	private String ip;
-	private String apn;
-	private Long orgNo;
-	private Date runDate;
-	private Date stopDate;
-	private String statusCode;
-	private String lotId;
-	private Long collarPerson;
-	private Long collarOrgNo;
-	private Date sendDate;
-	private Date returnDate;
-	private String remark;
-	private Integer dispSn;
-	private Date savedatetime;
+	private String gprsCode; // GPRS号码
+	private String cardType; // SIM卡类型
+	private String telecomsOperator; // 运营商
+	private String ip; // 绑定IP
+	private String apn; // APN地址
+	private Long orgNo; // 管理单位
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	private Date runDate; // 投运日期
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	private Date stopDate; // 停运日期
+	private String statusCode; // 当前状态
+	private String lotId; // 批次
+	private Long collarPerson; // 领用人
+	private Long collarOrgNo; // 领用单位
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	private Date sendDate; // 发出时间	
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	private Date returnDate; // 退回时间
+	private String remark; // 备注
+	private Integer dispSn; // 显示顺序
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	private Date savedatetime; // 存盘时间
 	
 	
 	public String getCardNo() {
