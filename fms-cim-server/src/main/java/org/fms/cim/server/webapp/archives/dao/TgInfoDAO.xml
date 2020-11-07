@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fms.cim.server.webapp.archives.dao.TgInfoDAO">
    		<sql id = "Base_Column_List">
-           ID,TG_NAME,SHORT_NAME,TG_NO,INST_ADDR,ORG_NO,TG_CAP,IS_PUB_TRANS,USER_ID,POWEROFF_CHECKID,VIP_CODE,SETTLEMENT_DATE,MR_SECT_NO,MR_MAN,RUN_STATUS_CODE,GUID,BUSINESS_PLACE_CODE,DISP_SN,CREATE_DATE,LINE_ID,MONITOR_FLAG,AREA_TYPE,DATA_ID
+           ID,TG_NAME,STATUS,SHORT_NAME,TG_NO,INST_ADDR,ORG_NO,TG_CAP,IS_PUB_TRANS,USER_ID,POWEROFF_CHECKID,VIP_CODE,SETTLEMENT_DATE,MR_SECT_NO,MR_MAN,RUN_STATUS_CODE,GUID,BUSINESS_PLACE_CODE,DISP_SN,CREATE_DATE,LINE_ID,MONITOR_FLAG,AREA_TYPE,DATA_ID
 		</sql>
 
     <select id="findByKey" parameterType="TgInfoDomain" resultType="TgInfoDomain" useCache="true">
@@ -36,6 +36,9 @@
             </if>
             <if test="tgName !=null">
                 and TG_NAME like CONCAT('%',#{tgName},'%')
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
             </if>
             <if test="tgNo !=null">
                 and TG_NO = #{tgNo}
@@ -104,7 +107,7 @@
 		insert into TG_INFO(
 		<include refid="Base_Column_List" />
 		) values
-        (#{id},#{tgName},#{shortName},#{tgNo},#{instAddr},#{orgNo},#{tgCap},#{isPubTrans},#{userId},#{poweroffCheckid},#{vipCode},#{settlementDate},#{mrSectNo},#{mrMan},#{runStatusCode},#{guid},#{businessPlaceCode},#{dispSn},#{createDate},#{lineId},#{monitorFlag},#{areaType},#{dataId})
+        (#{id},#{tgName},#{status},#{shortName},#{tgNo},#{instAddr},#{orgNo},#{tgCap},#{isPubTrans},#{userId},#{poweroffCheckid},#{vipCode},#{settlementDate},#{mrSectNo},#{mrMan},#{runStatusCode},#{guid},#{businessPlaceCode},#{dispSn},#{createDate},#{lineId},#{monitorFlag},#{areaType},#{dataId})
 	</insert>
     <update id="update" parameterType="TgInfoDomain" flushCache="true">
         update TG_INFO
@@ -114,6 +117,9 @@
             </if>
             <if test="shortName !=null">
                 SHORT_NAME = #{shortName},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
             </if>
             <if test="tgNo !=null">
                 TG_NO = #{tgNo},

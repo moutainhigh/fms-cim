@@ -18,6 +18,7 @@ public class TgInfoVO extends ManagerParamVO implements MybatisEntity{
 
     private Long id;    //台区标识
     private String tgName;    //名称
+    private String status;//是否可用
     private String shortName;    //拼音简写
     private String tgNo;    //编码
     private String instAddr;    //台区位置
@@ -231,4 +232,11 @@ public class TgInfoVO extends ManagerParamVO implements MybatisEntity{
         return tgInfoDomain;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
