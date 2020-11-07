@@ -40,8 +40,7 @@ public class TgInfoVO extends ManagerParamVO implements MybatisEntity{
     private Long lineId;    //所属线路
     private String monitorFlag;    //是否监测
     private String areaType;    //地区属性
-    
-    private String status;
+    private  String dataId;//接口ID
 
     public Long getId() {
         return id;
@@ -219,18 +218,17 @@ public class TgInfoVO extends ManagerParamVO implements MybatisEntity{
         this.areaType = areaType;
     }
 
-    
+    public String getDataId() {
+        return dataId;
+    }
 
-    public String getStatus() {
-		return status;
-	}
+    public void setDataId(String dataID) {
+        this.dataId = dataID;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public TgInfoDomain vo2Domain() {
+    public TgInfoDomain vo2Domain() {
         TgInfoDomain tgInfoDomain = ReflectUtil.cast(this, TgInfoDomain.class);
         return tgInfoDomain;
     }
+
 }
