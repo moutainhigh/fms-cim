@@ -3,7 +3,7 @@
 <mapper namespace="org.fms.cim.server.webapp.uas.dao.DropSqlDAO">
     <select id="findByKey" parameterType="DropSqlDomain"
             resultType="DropSqlDomain" useCache="true">
-        select id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
+        select ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
         from DROP_SQL
         <where>
             and ID = #{id}
@@ -11,11 +11,11 @@
     </select>
     <select id="findByWhere" parameterType="DropSqlDomain"
             resultType="DropSqlDomain" useCache="true">
-        select id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
+        select ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
         from DROP_SQL
         <where>
             <if test="id !=null">
-                and id = #{id}
+                and ID = #{id}
             </if>
             <if test="dropCode !=null">
                 and DROP_CODE = #{dropCode}
@@ -39,7 +39,7 @@
     </select>
     <insert id="insert" parameterType="DropSqlDomain" flushCache="true" useGeneratedKeys="true">
 		insert into DROP_SQL
-			(id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS)
+			(ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS)
 			VALUES(#{id},#{dropCode},#{dropName},#{dropSql},#{dropType},#{remark},#{status})
 
 	</insert>
@@ -47,7 +47,7 @@
         update DROP_SQL
         <set>
             <if test="id !=null">
-                id = #{id},
+                ID = #{id},
             </if>
             <if test="dropCode !=null">
                 DROP_CODE = #{dropCode},
