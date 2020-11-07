@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fms.cim.server.webapp.archives.dao.TgInfoDAO">
    		<sql id = "Base_Column_List">
-			 ID,TG_NO,TG_NAME,TG_TYPE,ADDRESS,CREATE_DATE,REMARK,STATUS,COMMON_TRANS_CLASS
+			 ID,TG_NAME,SHORT_NAME,TG_NO,INST_ADDR,ORG_NO,TG_CAP,IS_PUB_TRANS,USER_ID,POWEROFF_CHECKID,VIP_CODE,SETTLEMENT_DATE,MR_SECT_NO,MR_MAN,RUN_STATUS_CODE,GUID,BUSINESS_PLACE_CODE,DISP_SN,CREATE_DATE,LINE_ID,MONITOR_FLAG,AREA_TYPE,DATA_ID
 		</sql>
 
     <select id="findByKey" parameterType="TgInfoDomain" resultType="TgInfoDomain" useCache="true">
@@ -37,23 +37,65 @@
             <if test="tgName !=null">
                 and TG_NAME like CONCAT('%',#{tgName},'%')
             </if>
-            <if test="tgType !=null">
-                and TG_TYPE = #{tgType}
+            <if test="tgNo !=null">
+                and TG_NO = #{tgNo}
             </if>
-            <if test="address !=null">
-                and ADDRESS = #{address}
+            <if test="instAddr !=null">
+                and INST_ADDR = #{instAddr}
+            </if>
+            <if test="orgNo !=null">
+                and ORG_NO = #{orgNo}
+            </if>
+            <if test="tgCap !=null">
+                and TG_CAP = #{tgCap}
+            </if>
+            <if test="isPubTrans !=null">
+                and IS_PUB_TRANS = #{isPubTrans}
+            </if>
+            <if test="userId !=null">
+                and USER_ID = #{userId}
+            </if>
+            <if test="poweroffCheckid !=null">
+                and POWEROFF_CHECKID = #{poweroffCheckid}
+            </if>
+            <if test="vipCode !=null">
+                and VIP_CODE = #{vipCode}
+            </if>
+            <if test="settlementDate !=null">
+                and SETTLEMENT_DATE = #{settlementDate}
+            </if>
+            <if test="mrSectNo !=null">
+                and MR_SECT_NO = #{mrSectNo}
+            </if>
+            <if test="mrMan !=null">
+                and MR_MAN = #{mrMan}
+            </if>
+            <if test="runStatusCode !=null">
+                and RUN_STATUS_CODE = #{runStatusCode}
+            </if>
+            <if test="guid !=null">
+                and GUID = #{guid}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="dispSn !=null">
+                and DISP_SN = #{dispSn}
             </if>
             <if test="createDate !=null">
                 and CREATE_DATE = #{createDate}
             </if>
-            <if test="remark !=null">
-                and REMARK = #{remark}
+            <if test="lineId !=null">
+                and LINE_ID = #{lineId}
             </if>
-            <if test="status !=null">
-                and STATUS = #{status}
+            <if test="monitorFlag !=null">
+                and MONITOR_FLAG = #{monitorFlag}
             </if>
-             <if test="commonTransClass !=null">
-                and COMMON_TRANS_CLASS = #{commonTransClass}
+            <if test="areaType !=null">
+                and AREA_TYPE = #{areaType}
+            </if>
+            <if test="dataId !=null">
+                and DATA_ID = #{dataId}
             </if>
         </where>
         ORDER BY ID DESC 
@@ -62,39 +104,80 @@
 		insert into TG_INFO(
 		<include refid="Base_Column_List" />
 		) values
-		(#{id},#{tgNo},#{tgName},#{tgType},#{address},#{createDate},#{remark},#{status},#{commonTransClass})
+        (#{id},#{tgName},#{shortName},#{tgNo},#{instAddr},#{orgNo},#{tgCap},#{isPubTrans},#{userId},#{poweroffCheckid},#{vipCode},#{settlementDate},#{mrSectNo},#{mrMan},#{runStatusCode},#{guid},#{businessPlaceCode},#{dispSn},#{createDate},#{lineId},#{monitorFlag},#{areaType},#{dataId})
 	</insert>
     <update id="update" parameterType="TgInfoDomain" flushCache="true">
         update TG_INFO
         <set>
-            <if test="tgNo !=null">
-                TG_NO = #{tgNo},
-            </if>
             <if test="tgName !=null">
                 TG_NAME = #{tgName},
             </if>
-            <if test="tgType !=null">
-                TG_TYPE = #{tgType},
+            <if test="shortName !=null">
+                SHORT_NAME = #{shortName},
             </if>
-            <if test="address !=null">
-                ADDRESS = #{address},
+            <if test="tgNo !=null">
+                TG_NO = #{tgNo},
+            </if>
+            <if test="instAddr !=null">
+                INST_ADDR = #{instAddr},
+            </if>
+            <if test="orgNo !=null">
+                ORG_NO = #{orgNo},
+            </if>
+            <if test="tgCap !=null">
+                TG_CAP = #{tgCap},
+            </if>
+            <if test="isPubTrans !=null">
+                IS_PUB_TRANS = #{isPubTrans},
+            </if>
+            <if test="userId !=null">
+                USER_ID = #{userId},
+            </if>
+            <if test="poweroffCheckid !=null">
+                POWEROFF_CHECKID = #{poweroffCheckid},
+            </if>
+            <if test="vipCode !=null">
+                VIP_CODE = #{vipCode},
+            </if>
+            <if test="settlementDate !=null">
+                SETTLEMENT_DATE = #{settlementDate},
+            </if>
+            <if test="mrSectNo !=null">
+                MR_SECT_NO = #{mrSectNo},
+            </if>
+            <if test="mrMan !=null">
+                MR_MAN = #{mrMan},
+            </if>
+            <if test="runStatusCode !=null">
+                RUN_STATUS_CODE = #{runStatusCode},
+            </if>
+            <if test="guid !=null">
+                GUID = #{guid},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="dispSn !=null">
+                DISP_SN = #{dispSn},
             </if>
             <if test="createDate !=null">
                 CREATE_DATE = #{createDate},
             </if>
-            <if test="remark !=null">
-                REMARK = #{remark},
+            <if test="lineId !=null">
+                LINE_ID = #{lineId},
             </if>
-            <if test="status !=null">
-                STATUS = #{status},
+            <if test="monitorFlag !=null">
+                MONITOR_FLAG = #{monitorFlag},
             </if>
-             <if test="commonTransClass !=null">
-                COMMON_TRANS_CLASS = #{commonTransClass}
+            <if test="areaType !=null">
+                AREA_TYPE = #{areaType},
+            </if>
+            <if test="dataId !=null">
+                DATA_ID = #{dataId},
             </if>
         </set>
         <where>
             and ID = #{id}
-
         </where>
     </update>
     <delete id="delete" parameterType="TgInfoDomain" flushCache="true">
