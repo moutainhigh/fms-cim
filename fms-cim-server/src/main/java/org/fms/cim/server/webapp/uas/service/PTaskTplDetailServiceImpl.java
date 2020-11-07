@@ -4,7 +4,7 @@
  * Date :
  * Title : org.fms.cim.common.service;.PTaskTplDetailServiceImpl.java
  **/
-package org.fms.cim.server.webapp.uas.service;;
+package org.fms.cim.server.webapp.uas.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
