@@ -5,6 +5,7 @@
  **/
 package org.fms.cim.server.webapp.uas.action;
 
+import com.alibaba.fastjson.JSONObject;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IDropSqlService;
@@ -81,29 +82,24 @@ public class DropSqlAction {
     /**
      * 获取sql查询的字典
      *
-     * @param dropCode [DROP_SQL]表的DROP_CODE
+     * @param body [DROP_SQL]表的DROP_CODE {"dropCode":"CALC_TASK"}
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=getBaseDropDict")
-    public HttpResult<?> getBaseDropDict(@RequestBody String dropCode) {
+    public HttpResult<?> getBaseDropDict(@RequestBody String body) {
         List<SystemCommonConfigVO> dictList = new ArrayList<>();
-        if (dropCode != null) {
-            SystemCommonConfigVO model1=new SystemCommonConfigVO();
-            model1.setParamKey("0");
-            model1.setParamValue("字典");
-            dictList.add(model1);
+        if (body != null) {
+            JSONObject obj = JSONObject.parseObject(body);
+            String dropCode = obj.getString("dropCode");
 
-            SystemCommonConfigVO model2=new SystemCommonConfigVO();
-            model2.setParamKey("1");
-            model2.setParamValue("下拉字典");
-            dictList.add(model2);
-            //DropSqlVO modelVO = new DropSqlVO();
-            //modelVO.setDropCode(dropCode.trim());
-            //List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
-            //if (listVO != null && listVO.size() > 0) {
-            //  dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
-            //}
+            DropSqlVO modelVO = new DropSqlVO();
+            modelVO.setDropCode(dropCode);
+            List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
+
+            if (listVO != null && listVO.size() > 0) {
+              dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
+            }
         }
         return new HttpResult<>(HttpResult.SUCCESS, "获取成功!", dictList);
     }
