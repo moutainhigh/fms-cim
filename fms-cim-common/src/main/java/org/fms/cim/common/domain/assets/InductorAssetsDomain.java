@@ -34,9 +34,9 @@ public class InductorAssetsDomain extends ManagerParamEntity implements MybatisE
 	private String tvVoltCode; // PT电压
 	private String ratedTaCode; // CT变比
 	private String ratedTvCode; // PT变比
-	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date madeDate; // 出厂日期
-	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date lastDetDate; // 上次检定日期
 	private Integer detPeriod; // 检定周期(月)
 	private Integer lifeSpan; // 使用寿命(月)

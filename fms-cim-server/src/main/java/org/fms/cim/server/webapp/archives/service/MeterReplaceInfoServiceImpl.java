@@ -56,46 +56,64 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 
 	@Autowired
 	private TitanTemplate titanTemplate;
-	@TransactionDAO
-	private MeterReplaceInfoDAO meterReplaceInfoDAO;
-	@TransactionDAO
-	private MeterDAO meterDAO;
-	@TransactionDAO
-	private MeterAssetsDAO meterAssetsDAO;
-	@TransactionDAO
-	private InductorAssetsDAO inductorAssetsDAO;
-	@TransactionDAO
-	private SystemCommonConfigDAO systemCommonConfigDAO;
-	@TransactionDAO
-	private MeterInductorAssetsRelDAO meterInductorAssetsRelDAO;
-	@TransactionDAO
-	private MeterMeterAssetsRelDAO meterMeterAssetsRelDAO;
-	@TransactionDAO
-	private SettlementDAO settlementDAO;
+	@TransactionDAO("read")
+	private MeterReplaceInfoDAO meterReplaceInfoReadDAO;
+	@TransactionDAO("read")
+	private MeterDAO meterReadDAO;
+	@TransactionDAO("read")
+	private MeterAssetsDAO meterAssetsReadDAO;
+	@TransactionDAO("read")
+	private InductorAssetsDAO inductorAssetsReadDAO;
+	@TransactionDAO("read")
+	private SystemCommonConfigDAO systemCommonConfigReadDAO;
+	@TransactionDAO("read")
+	private MeterInductorAssetsRelDAO meterInductorAssetsRelReadDAO;
+	@TransactionDAO("read")
+	private MeterMeterAssetsRelDAO meterMeterAssetsRelReadDAO;
+	@TransactionDAO("read")
+	private SettlementDAO settlementReadDAO;
+	
+	
+	@TransactionDAO("write")
+	private MeterReplaceInfoDAO meterReplaceInfoWriteDAO;
+	@TransactionDAO("write")
+	private MeterDAO meterWriteDAO;
+	@TransactionDAO("write")
+	private MeterAssetsDAO meterAssetsWriteDAO;
+	@TransactionDAO("write")
+	private InductorAssetsDAO inductorAssetsWriteDAO;
+	@TransactionDAO("write")
+	private SystemCommonConfigDAO systemCommonConfigWriteDAO;
+	@TransactionDAO("write")
+	private MeterInductorAssetsRelDAO meterInductorAssetsRelWriteDAO;
+	@TransactionDAO("write")
+	private MeterMeterAssetsRelDAO meterMeterAssetsRelWriteDAO;
+	@TransactionDAO("write")
+	private SettlementDAO settlementWriteDAO;
 
 	@Override
 	public int insert(MeterReplaceDomain t) {
-		return meterReplaceInfoDAO.insert(t);
+		return meterReplaceInfoWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(MeterReplaceDomain t) {
-		return meterReplaceInfoDAO.delete(t);
+		return meterReplaceInfoWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(MeterReplaceDomain t) {
-		return meterReplaceInfoDAO.update(t);
+		return meterReplaceInfoWriteDAO.update(t);
 	}
 
 	@Override
 	public MeterReplaceDomain findByKey(MeterReplaceDomain t) {
-		return meterReplaceInfoDAO.findByKey(t);
+		return meterReplaceInfoReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<MeterReplaceDomain> findByWhere(MeterReplaceDomain t) {
-		return meterReplaceInfoDAO.findByWhere(t);
+		return meterReplaceInfoReadDAO.findByWhere(t);
 	}
 
 	@Override
@@ -164,7 +182,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 				testMeterAssetsRel.setFunctionCode(meterMeterAssetsRelDomain.getFunctionCode());
 				testMeterAssetsRel.setPowerDirection(meterMeterAssetsRelDomain.getPowerDirection());
 				testMeterAssetsRel.setPhaseSeq(meterMeterAssetsRelDomain.getPhaseSeq());
-				List<MeterMeterAssetsRelDomain> testList = meterMeterAssetsRelDAO.findByWhere(testMeterAssetsRel);
+				List<MeterMeterAssetsRelDomain> testList = meterMeterAssetsRelReadDAO.findByWhere(testMeterAssetsRel);
 				if (null != testList && testList.size() > 0) {
 					httpResult.setMessage("该计量点下已经存在该相的电能表");
 					return httpResult;
@@ -181,9 +199,9 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 				meterAssets.setId(e.getMeterAssetsId());
 				meterAssets.setStatus("8");
 				meterAssets.setSetAddress("计量点号"+e.getMeterNo());
-				int ma = meterMeterAssetsRelDAO.insert(meterMeterAssetsRelDomain);
+				int ma = meterMeterAssetsRelWriteDAO.insert(meterMeterAssetsRelDomain);
 
-				ma += meterAssetsDAO.update(meterAssets);
+				ma += meterAssetsWriteDAO.update(meterAssets);
 				// 获取和电能表同向的pt ct
 				if (ma <= 0) {
 					httpResult.setMessage("电能表资产档案更新失败");
@@ -198,7 +216,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 				meterAssetsRelDomain.setFunctionCode("1L");
 				meterAssetsRelDomain.setPowerDirection("1");
 				meterAssetsRelDomain.setPhaseSeq(e.getPhaseSeq());
-				List<MeterMeterAssetsRelDomain> meterAssetsRelDomains = meterMeterAssetsRelDAO
+				List<MeterMeterAssetsRelDomain> meterAssetsRelDomains = meterMeterAssetsRelReadDAO
 						.findByWhere(meterAssetsRelDomain);
 				if (meterAssetsRelDomains.isEmpty()) {
 					httpResult.setMessage(e.getPhaseSeq() + "相序下没有对应的电能表，请先安装电能表,再来安装互感器");
@@ -220,7 +238,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 					testInductorAssetsRel.setMeterId(meterInductorAssetsRelDomain.getMeterId());
 					testInductorAssetsRel.setPhaseSeq(meterInductorAssetsRelDomain.getPhaseSeq());
 					testInductorAssetsRel.setInductorType(new Byte("2"));
-					List<MeterInductorAssetsRelDomain> testList = meterInductorAssetsRelDAO
+					List<MeterInductorAssetsRelDomain> testList = meterInductorAssetsRelReadDAO
 							.findByWhere(testInductorAssetsRel);
 					if (null != testList && testList.size() > 0) {
 						httpResult.setMessage("该计量点下已经存在该相的电压互感器");
@@ -231,13 +249,13 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 						meterInductorAssetsRelDomain.setCreateDate(new Date());
 						meterInductorAssetsRelDomain.setInductorAssetsId(e.getPtAssetsId());
 						meterInductorAssetsRelDomain.setInductorType((byte) 2);
-						meterInductorAssetsRelDomain.setInductorOrder(meterInductorAssetsRelDAO
+						meterInductorAssetsRelDomain.setInductorOrder(meterInductorAssetsRelReadDAO
 								.getNextInductorOrder(meterInductorAssetsRelDomain.getMeterId()));
 						meterInductorAssetsRelDomain.setStatus((byte) 1);
-						meterInductorAssetsRelDAO.insert(meterInductorAssetsRelDomain);
+						meterInductorAssetsRelWriteDAO.insert(meterInductorAssetsRelDomain);
 						ptAssets.setId(e.getPtAssetsId());
 						ptAssets.setStatus("8");
-						pta += inductorAssetsDAO.update(ptAssets);
+						pta += inductorAssetsWriteDAO.update(ptAssets);
 					}
 					if (pta <= 0) {
 						httpResult.setMessage("pt互感器资产档案更新失败");
@@ -254,7 +272,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 					testInductorAssetsRel.setMeterId(meterInductorAssetsRelDomain.getMeterId());
 					testInductorAssetsRel.setPhaseSeq(meterInductorAssetsRelDomain.getPhaseSeq());
 					testInductorAssetsRel.setInductorType(new Byte("1"));
-					List<MeterInductorAssetsRelDomain> testList = meterInductorAssetsRelDAO
+					List<MeterInductorAssetsRelDomain> testList = meterInductorAssetsRelReadDAO
 							.findByWhere(testInductorAssetsRel);
 					if (null != testList && testList.size() > 0) {
 						httpResult.setMessage("该计量点下已经存在该相的电流互感器");
@@ -265,13 +283,13 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 						meterInductorAssetsRelDomain.setCreateDate(new Date());
 						meterInductorAssetsRelDomain.setInductorAssetsId(e.getCtAssetsId());
 						meterInductorAssetsRelDomain.setInductorType(new Byte("1"));
-						meterInductorAssetsRelDomain.setInductorOrder(meterInductorAssetsRelDAO
+						meterInductorAssetsRelDomain.setInductorOrder(meterInductorAssetsRelReadDAO
 								.getNextInductorOrder(meterInductorAssetsRelDomain.getMeterId()));
 						meterInductorAssetsRelDomain.setStatus(new Byte("1"));
-						cta += meterInductorAssetsRelDAO.insert(meterInductorAssetsRelDomain);
+						cta += meterInductorAssetsRelWriteDAO.insert(meterInductorAssetsRelDomain);
 						ctAssets.setId(e.getCtAssetsId());
 						ctAssets.setStatus("8");
-						cta = inductorAssetsDAO.update(ctAssets);
+						cta = inductorAssetsWriteDAO.update(ctAssets);
 					}
 					if (cta <= 0) {
 						httpResult.setMessage("ct互感器资产档案更新失败");
@@ -289,7 +307,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 					testInductorAssetsRel.setMeterId(meterInductorAssetsRelDomain.getMeterId());
 					testInductorAssetsRel.setPhaseSeq(meterInductorAssetsRelDomain.getPhaseSeq());
 					testInductorAssetsRel.setInductorType(new Byte("3"));
-					List<MeterInductorAssetsRelDomain> testList = meterInductorAssetsRelDAO
+					List<MeterInductorAssetsRelDomain> testList = meterInductorAssetsRelReadDAO
 							.findByWhere(testInductorAssetsRel);
 					if (null != testList && testList.size() > 0) {
 						httpResult.setMessage("该计量点下已经存在该相的组合互感器");
@@ -299,9 +317,9 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 					meterInductorAssetsRelDomain.setInductorAssetsId(e.getCtAssetsId());
 					meterInductorAssetsRelDomain.setInductorType(new Byte("3"));
 					meterInductorAssetsRelDomain.setInductorOrder(
-							meterInductorAssetsRelDAO.getNextInductorOrder(meterInductorAssetsRelDomain.getMeterId()));
+							meterInductorAssetsRelReadDAO.getNextInductorOrder(meterInductorAssetsRelDomain.getMeterId()));
 					meterInductorAssetsRelDomain.setStatus(new Byte("1"));
-					meterInductorAssetsRelDAO.insert(meterInductorAssetsRelDomain);
+					meterInductorAssetsRelWriteDAO.insert(meterInductorAssetsRelDomain);
 				}
 
 			}
@@ -312,7 +330,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			if (e.getMeterAssetsId() != null && equipmentType == 1) {
 				meterAssets.setId(e.getMeterAssetsId());
 				meterAssets.setStatus("9");
-				int ma = meterAssetsDAO.update(meterAssets);
+				int ma = meterAssetsWriteDAO.update(meterAssets);
 
 				// 拆表时生成换表电量
 				// changeMeterPower(e);
@@ -323,7 +341,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 				delMeterAssetsRel.setMeterId(e.getMeterId());
 				delMeterAssetsRel.setMeterAssetsId(e.getMeterAssetsId());
 				delMeterAssetsRel.setFunctionCode(e.getFunctionCode());
-				ma += meterMeterAssetsRelDAO.delete(delMeterAssetsRel);
+				ma += meterMeterAssetsRelWriteDAO.delete(delMeterAssetsRel);
 				if (ma <= 0) {
 					httpResult.setMessage("电能表资产档案更新失败");
 					return httpResult;
@@ -333,12 +351,12 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			if (e.getPtAssetsId() != null && equipmentType == 2) {
 				ptAssets.setId(e.getPtAssetsId());
 				ptAssets.setStatus("9");
-				int cta = inductorAssetsDAO.update(ptAssets);
+				int cta = inductorAssetsWriteDAO.update(ptAssets);
 				// 删除关系
 				MeterInductorAssetsRelDomain delIndutorAssetsRel = new MeterInductorAssetsRelDomain();
 				delIndutorAssetsRel.setMeterId(e.getMeterId());
 				delIndutorAssetsRel.setInductorAssetsId(e.getPtAssetsId());
-				cta += meterInductorAssetsRelDAO.delete(delIndutorAssetsRel);
+				cta += meterInductorAssetsRelWriteDAO.delete(delIndutorAssetsRel);
 				if (cta <= 0) {
 					httpResult.setMessage("pt互感器资产档案更新失败");
 					return httpResult;
@@ -347,12 +365,12 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			if (e.getCtAssetsId() != null && equipmentType == 2) {
 				ctAssets.setId(e.getCtAssetsId());
 				ctAssets.setStatus("9");
-				int pta = inductorAssetsDAO.update(ctAssets);
+				int pta = inductorAssetsWriteDAO.update(ctAssets);
 				// 删除关系
 				MeterInductorAssetsRelDomain delIndutorAssetsRel = new MeterInductorAssetsRelDomain();
 				delIndutorAssetsRel.setMeterId(e.getMeterId());
 				delIndutorAssetsRel.setInductorAssetsId(e.getCtAssetsId());
-				pta += meterInductorAssetsRelDAO.delete(delIndutorAssetsRel);
+				pta += meterInductorAssetsRelWriteDAO.delete(delIndutorAssetsRel);
 				if (pta <= 0) {
 					httpResult.setMessage("ct互感器资产档案更新失败");
 					return httpResult;
@@ -365,7 +383,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		meterMeterAssetsRelDomain.setFunctionCode(e.getFunctionCode());
 		meterMeterAssetsRelDomain.setMeterId(e.getMeterId());
 		meterMeterAssetsRelDomain.setPhaseSeq(e.getPhaseSeq());
-		List<MeterMeterAssetsRelDomain> returnMeterMeterAssets = meterMeterAssetsRelDAO
+		List<MeterMeterAssetsRelDomain> returnMeterMeterAssets = meterMeterAssetsRelReadDAO
 				.findByWhere(meterMeterAssetsRelDomain);
 		// 如果有电能表则更新倍率
 		if (returnMeterMeterAssets != null && returnMeterMeterAssets.size() >= 1) {
@@ -377,11 +395,11 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 					t.setFactorNum(getFactorNumByMeterAssets(t));
 				}
 
-				meterMeterAssetsRelDAO.update(t);
+				meterMeterAssetsRelWriteDAO.update(t);
 			});
 		}
 
-		int count = meterReplaceInfoDAO.insert(e);
+		int count = meterReplaceInfoWriteDAO.insert(e);
 		if (count < 1) {
 			httpResult.setMessage("操作记录插入失败");
 			return httpResult;
@@ -404,7 +422,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		MeterMeterAssetsRelDomain testMeterAssetsRel = new MeterMeterAssetsRelDomain();
 		testMeterAssetsRel.setMeterId(meterMeterAssetsRelDomain.getMeterId());
 	
-		List<MeterMeterAssetsRelDomain> testList = meterMeterAssetsRelDAO.findByWhere(testMeterAssetsRel);
+		List<MeterMeterAssetsRelDomain> testList = meterMeterAssetsRelReadDAO.findByWhere(testMeterAssetsRel);
 		int a = 0; //A相
 		int b = 0; //B相
 		int c = 0; //C相
@@ -458,31 +476,31 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			// pt 无功表先取ptA相 若无再取ptd相
 			meterInductorAssetsRelDomain.setPhaseSeq(new Byte("1"));
 			meterInductorAssetsRelDomain.setInductorType(new Byte("2"));
-			ptMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+			ptMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			if (ptMeterInductorRels == null || ptMeterInductorRels.size() < 1) {
 				meterInductorAssetsRelDomain.setPhaseSeq(new Byte("4"));
-				ptMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+				ptMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			}
 			// ct 无功表先取ptA相 若无再取ptd相
 			meterInductorAssetsRelDomain.setPhaseSeq(new Byte("1"));
 			meterInductorAssetsRelDomain.setInductorType(new Byte("1"));
-			ctMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+			ctMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			if (ctMeterInductorRels == null || ctMeterInductorRels.size() < 1) {
 				meterInductorAssetsRelDomain.setPhaseSeq(new Byte("4"));
-				ctMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+				ctMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			}
 			// 若没有值 则取组合互感器
 			if ((ptMeterInductorRels == null && ctMeterInductorRels == null)
 					|| (ptMeterInductorRels.size() == 0 && ctMeterInductorRels.size() == 0)) {
 				meterInductorAssetsRelDomain.setPhaseSeq(new Byte("1"));
 				meterInductorAssetsRelDomain.setInductorType(new Byte("3"));
-				ctMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
-				ptMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+				ctMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
+				ptMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 
 				if (ctMeterInductorRels == null || ctMeterInductorRels.size() < 1) {
 					meterInductorAssetsRelDomain.setPhaseSeq(new Byte("4"));
-					ctMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
-					ptMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+					ctMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
+					ptMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 				}
 			}
 			List<Long> ctAssetsIds = ctMeterInductorRels.stream().map(t -> t.getInductorAssetsId())
@@ -496,15 +514,15 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			// pt 无功表先取ptA相 若无再取ptd相
 			meterInductorAssetsRelDomain.setPhaseSeq(receiveDomain.getPhaseSeq());
 			meterInductorAssetsRelDomain.setInductorType(new Byte("2"));
-			ptMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+			ptMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			// ct 无功表先取ptA相 若无再取ptd相
 			meterInductorAssetsRelDomain.setInductorType(new Byte("1"));
-			ctMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+			ctMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			if ((ptMeterInductorRels == null && ctMeterInductorRels == null)
 					|| (ptMeterInductorRels.size() == 0 && ctMeterInductorRels.size() == 0)) {
 				meterInductorAssetsRelDomain.setInductorType(new Byte("3"));
-				ctMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
-				ptMeterInductorRels = meterInductorAssetsRelDAO.findByWhere(meterInductorAssetsRelDomain);
+				ctMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
+				ptMeterInductorRels = meterInductorAssetsRelReadDAO.findByWhere(meterInductorAssetsRelDomain);
 			}
 			List<Long> ctAssetsIds = ctMeterInductorRels.stream().map(t -> t.getInductorAssetsId())
 					.collect(Collectors.toList());
@@ -525,9 +543,9 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			// 获取ct 变比
 			InductorAssetsDomain ctIductorAssets = new InductorAssetsDomain();
 			ctIductorAssets.setId(ctAssetsId);
-			InductorAssetsDomain returnCtIductorAssets = inductorAssetsDAO.findByKey(ctIductorAssets);
+			InductorAssetsDomain returnCtIductorAssets = inductorAssetsReadDAO.findByKey(ctIductorAssets);
 			// 获取下拉对应的ct 值
-			SystemCommonConfigVO ctCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_CT_CODE",
+			SystemCommonConfigVO ctCommonConfig = systemCommonConfigReadDAO.findByKeyValue("RATED_CT_CODE",
 					returnCtIductorAssets.getRatedTaCode());
 			return new BigDecimal(null == ctCommonConfig.getRemark1() || "".equals(ctCommonConfig.getRemark1()) ? "1"
 					: ctCommonConfig.getRemark1()).doubleValue();
@@ -537,9 +555,9 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 			// 获取pt 变比
 			InductorAssetsDomain ptIductorAssets = new InductorAssetsDomain();
 			ptIductorAssets.setId(ptAssetsId);
-			InductorAssetsDomain returnPtIductorAssets = inductorAssetsDAO.findByKey(ptIductorAssets);
+			InductorAssetsDomain returnPtIductorAssets = inductorAssetsReadDAO.findByKey(ptIductorAssets);
 			// 获取pt 变比
-			SystemCommonConfigVO ptCommonConfig = systemCommonConfigDAO.findByKeyValue("RATED_PT_CODE",
+			SystemCommonConfigVO ptCommonConfig = systemCommonConfigReadDAO.findByKeyValue("RATED_PT_CODE",
 					returnPtIductorAssets.getRatedTvCode());
 			return new BigDecimal(null == ptCommonConfig.getRemark1() || "".equals(ptCommonConfig.getRemark1()) ? "1"
 					: ptCommonConfig.getRemark1()).doubleValue();
@@ -566,7 +584,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		tmmar.setMeterId(mr.getMeterId());
 		tmmar.setPhaseSeq(mr.getPhaseSeq());
 
-		List<MeterMeterAssetsRelDomain> returnMeterMeterAssets = meterMeterAssetsRelDAO.findByWhere(tmmar);
+		List<MeterMeterAssetsRelDomain> returnMeterMeterAssets = meterMeterAssetsRelReadDAO.findByWhere(tmmar);
 		if (returnMeterMeterAssets.size() == 0 || returnMeterMeterAssets.get(0).getFactorNum() == null) {
 			return; // 未装电能表，或电能表综合倍率为空的。直接取消计算
 		}
@@ -628,7 +646,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		tmmar.setMeterId(mr.getMeterId());
 		tmmar.setPhaseSeq(mr.getPhaseSeq());
 
-		List<MeterMeterAssetsRelDomain> returnMeterMeterAssets = meterMeterAssetsRelDAO.findByWhere(tmmar);
+		List<MeterMeterAssetsRelDomain> returnMeterMeterAssets = meterMeterAssetsRelReadDAO.findByWhere(tmmar);
 		if (returnMeterMeterAssets.size() == 0 || returnMeterMeterAssets.get(0).getFactorNum() == null) {
 			return; // 未装电能表，或电能表综合倍率为空的。直接取消计算
 		}
@@ -673,7 +691,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 
 		SettlementMeterRelDomain smr = new SettlementMeterRelDomain();
 		smr.setMeterId(mr.getMeterId());
-		List<SettlementDomain> sl = settlementDAO.getSettlementbyMeter(smr);
+		List<SettlementDomain> sl = settlementReadDAO.getSettlementbyMeter(smr);
 		if (sl.size() == 0) {
 			rMap.put("massage", "计量点未关联结算户");
 			return rMap;
@@ -741,7 +759,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		tmr.setCtAssetsId(mr.getCtAssetsId());
 		tmr.setPtAssetsId(mr.getPtAssetsId());
 		tmr.setOperateType((byte) 1);
-		List<MeterReplaceDomain> tl = meterReplaceInfoDAO.findByWhere(tmr);
+		List<MeterReplaceDomain> tl = meterReplaceInfoReadDAO.findByWhere(tmr);
 
 		if (tl == null || tl.size() == 0) {
 
@@ -879,12 +897,12 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 
 	@Override
 	public List<MeterReplaceDomain> findByMeter(MeterReplaceDomain mr) {
-		return meterReplaceInfoDAO.findByMeter(mr);
+		return meterReplaceInfoReadDAO.findByMeter(mr);
 	}
 
 	@Override
 	public List<MeterReplaceDomain> getMeterReplaceByWriteSectIds(List<Long> writeSectIds) {
-		return meterReplaceInfoDAO.getMeterReplaceByWriteSectIds(writeSectIds);
+		return meterReplaceInfoReadDAO.getMeterReplaceByWriteSectIds(writeSectIds);
 	}
 
 	@Override
@@ -897,7 +915,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 
 			List<Long> tl = meterIds.subList(m * 999, (m + 1) * 999 > len ? len : (m + 1) * 999);
 
-			List<MeterReplaceDomain> tList = meterReplaceInfoDAO.getMeterReplaceByMeterIds(tl);
+			List<MeterReplaceDomain> tList = meterReplaceInfoReadDAO.getMeterReplaceByMeterIds(tl);
 			rList.addAll(tList);
 		}
 		// 去重
@@ -943,7 +961,7 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 		// 上次装表记录
 		Date replaceDate = new Date(0);
 		MeterReplaceDomain meterReplaceLastCode = new MeterReplaceDomain();
-		List<MeterReplaceDomain> meterReplaceDomains = meterReplaceInfoDAO.findByWhere(meterReplaceDomain);
+		List<MeterReplaceDomain> meterReplaceDomains = meterReplaceInfoReadDAO.findByWhere(meterReplaceDomain);
 		List<WriteFilesDomain> replaceWriteFiles = new ArrayList<>();
 		if (meterReplaceDomains != null && meterReplaceDomains.size() > 0) {
 			Optional<MeterReplaceDomain> userOp = meterReplaceDomains.stream().filter(Objects::nonNull)
@@ -1031,20 +1049,20 @@ public class MeterReplaceInfoServiceImpl implements IMeterReplaceInfoService {
 
 	@Override
 	public int insertList(List<MeterReplaceDomain> mrList) {
-		return meterReplaceInfoDAO.insertList(mrList);
+		return meterReplaceInfoWriteDAO.insertList(mrList);
 
 	}
 
 	@Override
 	public int updateList(List<MeterReplaceDomain> mruList) {
-		return meterReplaceInfoDAO.updateList(mruList);
+		return meterReplaceInfoWriteDAO.updateList(mruList);
 
 	}
 
 	// 根据计量点获取该用户下最大的表序号
 	public int getMaxMeterSn(MeterReplaceDomain m) {
 
-		int maxMeterSn = meterReplaceInfoDAO.getMaxMeterSn(m);
+		int maxMeterSn = meterReplaceInfoReadDAO.getMaxMeterSn(m);
 
 		return maxMeterSn;
 
