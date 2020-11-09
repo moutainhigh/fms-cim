@@ -90,11 +90,11 @@ public class PCalcTplDomain extends Page implements MybatisEntity {
         this.lastModifyTime = lastModifyTime;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
