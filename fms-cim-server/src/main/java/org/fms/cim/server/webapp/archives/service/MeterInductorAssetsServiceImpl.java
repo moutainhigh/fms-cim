@@ -19,37 +19,40 @@ import com.riozenc.titanTool.annotation.TransactionService;
 @TransactionService
 public class MeterInductorAssetsServiceImpl implements IMeterInductorAssetsService {
 
-	@TransactionDAO
-	private MeterInductorAssetsRelDAO meterInductorAssetsDAO;
+	@TransactionDAO("read")
+	private MeterInductorAssetsRelDAO meterInductorAssetsReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterInductorAssetsRelDAO meterInductorAssetsWriteDAO;
 
 	@Override
 	public int insert(MeterInductorAssetsRelDomain t) {
 		// TODO Auto-generated method stub
-		return meterInductorAssetsDAO.insert(t);
+		return meterInductorAssetsWriteDAO.insert(t);
 	}
 
 	@Override
 	public int delete(MeterInductorAssetsRelDomain t) {
 		// TODO Auto-generated method stub
-		return meterInductorAssetsDAO.delete(t);
+		return meterInductorAssetsWriteDAO.delete(t);
 	}
 
 	@Override
 	public int update(MeterInductorAssetsRelDomain t) {
 		// TODO Auto-generated method stub
-		return meterInductorAssetsDAO.update(t);
+		return meterInductorAssetsWriteDAO.update(t);
 	}
 
 	@Override
 	public MeterInductorAssetsRelDomain findByKey(MeterInductorAssetsRelDomain t) {
 		// TODO Auto-generated method stub
-		return meterInductorAssetsDAO.findByKey(t);
+		return meterInductorAssetsReadDAO.findByKey(t);
 	}
 
 	@Override
 	public List<MeterInductorAssetsRelDomain> findByWhere(MeterInductorAssetsRelDomain t) {
 		// TODO Auto-generated method stub
-		return meterInductorAssetsDAO.findByWhere(t);
+		return meterInductorAssetsReadDAO.findByWhere(t);
 	}
 	@Override
 	public List<MeterInductorAssetsRelDomain> getMeterInductorByMeterIds(List<Long> idsList) {
@@ -61,7 +64,7 @@ public class MeterInductorAssetsServiceImpl implements IMeterInductorAssetsServi
 
 			List<Long> tl = idsList.subList(m*999, (m+1)*999 > len ? len : (m+1)*999);
 
-			List<MeterInductorAssetsRelDomain> tList = meterInductorAssetsDAO.getMeterInductorByMeterIds(tl);
+			List<MeterInductorAssetsRelDomain> tList = meterInductorAssetsReadDAO.getMeterInductorByMeterIds(tl);
 			rList.addAll(tList);
 		}
 		//去重
@@ -72,16 +75,16 @@ public class MeterInductorAssetsServiceImpl implements IMeterInductorAssetsServi
 
 	@Override
 	public List<MeterInductorAssetsRelDomain> getInductorEntityByMeterIds(String s){
-		return meterInductorAssetsDAO.getInductorEntityByMeterIds(s);
+		return meterInductorAssetsReadDAO.getInductorEntityByMeterIds(s);
 	}
 	@Override
 	public Byte getNextInductorOrder(Long s){
-		return meterInductorAssetsDAO.getNextInductorOrder(s);
+		return meterInductorAssetsReadDAO.getNextInductorOrder(s);
 	}
 
 	@Override
 	public List<MeterInductorAssetsRelDomain> getMeterInductorByWriteSectIds(List<Long> writeSectIds) {
-		return meterInductorAssetsDAO.getMeterInductorByWriteSectIds(writeSectIds);
+		return meterInductorAssetsReadDAO.getMeterInductorByWriteSectIds(writeSectIds);
 
 	}
 

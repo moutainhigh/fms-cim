@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.assets.dao.MeterAssetsUseRecordDAO">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.MeterAssetsUseRecordDAO">
 <select id="findByKey" parameterType="MeterAssetsUseRecordDomain" resultType="MeterAssetsUseRecordDomain" useCache="true">
 select ID,METER_ASSETS_ID,METER_ASSETS_NO,REQUISITION_MAN,REQUISITION_DEPT,REQUISITION_DATE,INSTALL_SITE,ISSUER,CREATE_DATE,REMARK,STATUS from METER_ASSETS_USE_RECORD<where>
  and ID = #{id}

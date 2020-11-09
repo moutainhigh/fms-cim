@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.assets.dao.MeterAssetsTestRecordDAO">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.MeterAssetsTestRecordDAO">
 <select id="findByKey" parameterType="MeterAssetsTestRecordDomain" resultType="MeterAssetsTestRecordDomain" useCache="true">
 select ID,METER_ASSETS_ID,REPORT_NO,INSPECTION_DEPT,DEVICE_NAME,SPECS,MADE_NO,MADE_NAME,TEST_BASIS,RATIFIER,VERIFIER,CHECKER,TEST_DATE,VALIDITY,TEMPERATURE,HUMIDITY,DETECTION_DEVICE_NAME,DETECTION_DEVICE_MODEL,DETECTION_DEVICE_ACC_LEVEL,DETECTION_DEVICE_VALIDITY,CALIBRATION_CONSTANT,STARTING_TEST,CREEPING_TEST,PFVWT,P1R0S,P1R0E,P1R1S,P1R1E,P1R2S,P1R2E,P1R3S,P1R3E,P1R4S,P1R4E,P3R0S,P3R0E,CHECK_CONSTANT,MAX_STANDARD_DEV,VERIFICATION_CONCLUSION,CREATE_DATE,REMARK,STATUS from METER_ASSETS_TEST_RECORD<where>
  and ID = #{id}

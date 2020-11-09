@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.assets.dao.InductorAssetsTestRecordDetailDAO">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.InductorAssetsTestRecordDetailDAO">
 <select id="findByKey" parameterType="InductorAssetsTestRecordDetailDomain" resultType="InductorAssetsTestRecordDetailDomain" useCache="true">
 select ID,RECORD_ID,INDUCTOR_ASSETS_I_D,VOL_RATIO80,VOL_RATIO100,VOL_RATIO120,VOL_PHASE80,VOL_PHASE100,VOL_PHASE120,CURRENT_RATIO5,CURRENT_RATIO20,CURRENT_RATIO100,CURRENT_RATIO120,CURRENT_PHASE5,CURRENT_PHASE20,CURRENT_PHASE100,CURRENT_PHASE120,CREATE_DATE,REMARK,MANAGER_ID,ROLE_IDS,DEPT_IDS,TOTAL_ROW,PAGE_CURRENT,PAGE_SIZE,DB_NAME from INDUCTOR_ASSETS_TEST_RECORD_DETAIL<where>
  and ID = #{id}

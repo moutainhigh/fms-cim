@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.assets.dao.MeterAssetsTestRecordDetailUpDAO">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.MeterAssetsTestRecordDetailUpDAO">
 <select id="findByKey" parameterType="MeterAssetsTestRecordDetailUpDomain" resultType="MeterAssetsTestRecordDetailUpDomain" useCache="true">
 select ID,RECORD_ID,METER_ASSETS_ID,UP_AA,UP_AB,UP_AC,UP_AD,UP_AE,UP_AF,UP_AG,UP_BA,UP_BB,UP_BC,UP_BD,UP_BE,UP_BF,UP_BG,UP_CA,UP_CB,UP_CC,UP_CD,UP_CE,UP_CF,UP_CG,REMARK from METER_ASSETS_TEST_RECORD_DETAIL_UP<where>
  and ID = #{id}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.assets.dao.InductorAssetsTestRecordDAO">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.InductorAssetsTestRecordDAO">
 <select id="findByKey" parameterType="InductorAssetsTestRecordDomain" resultType="InductorAssetsTestRecordDomain" useCache="true">
 select ID,REPORT_NO,INDUCTOR_ASSETS_I_D1,INDUCTOR_ASSETS_I_D2,INDUCTOR_ASSETS_I_D3,INSPECTION_DEPT,DEVICE_NAME,SPECS,MADE_NAME,RATIFIER,VERIFIER,CHECKER,TEST_DATE,VALIDITY,TEMPERATURE,HUMIDITY,PRIMARY_CURRENT,SECONDARY_CURRENT,PRIMARY_VOLT,SECONDARY_VOLT,COS,POLARITY,INSULATION,PFVWT,VERIFICATION_CONCLUSION,CREATE_DATE,REMARK from INDUCTOR_ASSETS_TEST_RECORD<where>
  and ID = #{id}

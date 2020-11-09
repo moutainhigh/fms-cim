@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.assets.dao.TransformerAssetsLogDAO">
+<mapper namespace="org.fms.cim.server.webapp.assets.dao.TransformerAssetsLogDAO">
 <select id="findByKey" parameterType="TransformerAssetsLogDomain" resultType="TransformerAssetsLogDomain" useCache="true">
 select ID,TRANSFORMER_ASSETS_NO,VOLTAGE_RATIO,CURRENT_RATIO,TRANSFORMER_MODEL_TYPE,FACTORY_TYPE,MADE_NO,MADE_DATE,RATED_VOLTAGE,RATED_CURRENT,SHORT_VOLTAGE,CONNECT_TYPE,NUM_PHASE_TYPE,EMPTY_LOOSE,EMPTY_CURRENT,SHORT_LOOSE,RT,OIL_NO,VOLT_ATTACH,HV_LIMIT,THEROEM,FIRST_VOLT,SECOND_VOLT,DEPT_ID,CREATE_DATE,REMARK,STATUS,OPERATION,OPERATOR,OPERATION_DATE from TRANSFORMER_ASSETS_LOG<where>
  and ID = #{id}
