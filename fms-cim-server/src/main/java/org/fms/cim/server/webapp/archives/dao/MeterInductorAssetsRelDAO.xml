@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.riozenc.cim.webapp.archives.dao.MeterInductorAssetsRelDAO">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.MeterInductorAssetsRelDAO">
 <select id="findByKey" parameterType="MeterInductorAssetsRelDomain" resultType="MeterInductorAssetsRelDomain" useCache="true">
 select ID,METER_ID,INDUCTOR_ASSETS_ID,PHASE_SEQ,INDUCTOR_ORDER,INDUCTOR_TYPE,CREATE_DATE,STATUS from METER_INDUCTOR_ASSETS_REL<where>
  and ID = #{id}
