@@ -8,6 +8,7 @@ package org.fms.cim.common.domain.archives;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
@@ -24,6 +25,7 @@ public class SDevIrDomain extends ManagerParamEntity implements MybatisEntity {
 	public String equipTypeCode;		//	设备类别
 	public Long	equipId;		//	设备标识
 	private String typeCode;	//	装拆类别
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date irDate;	//	装拆日期	
 	private String empNo;	//	装拆人员
 	private Long deptId; // 装拆部门

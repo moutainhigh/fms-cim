@@ -4,6 +4,7 @@ package org.fms.cim.common.domain.archives;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
@@ -25,6 +26,7 @@ public class ABusDomain extends ManagerParamEntity implements MybatisEntity {
 	private Long stationId; //所属厂站
 	private Long businessPlaceCode;  //所属单位
 	private String address; //地理位置
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date runDate; //投运时间
 	private String remark; //备注
 	private String weight; //显示顺序

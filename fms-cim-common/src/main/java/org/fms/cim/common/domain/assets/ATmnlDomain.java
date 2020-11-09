@@ -45,19 +45,24 @@ public class ATmnlDomain extends ManagerParamEntity implements MybatisEntity {
 	private Long businessPlaceCode; // 管理单位
 	private Long depeId; // 管理部门
 	private Long removeOperatorNo; // 拆回人
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date rmvDate; // 停运日期
 	private Long installerNo; // 安装人
 	private String instLoc; // 安装位置
 	private Long checkerNo; // 校验人员
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date instDate; // 发出日期
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date chkDate; // 退回日期
 	private Long descardOperatorNo; // 报废人
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date descardDate; // 报废日期
 	private String curStatusCode; // 当前状态
 	private Long personRespNo; // 责任人
 	private String tel; // 电话号码
 	private Integer lifeTime; // 使用年限
 	private String remark; // 备注
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date deliverDate; // 投运时间
 	
 	private Integer weight; // 排序序号
