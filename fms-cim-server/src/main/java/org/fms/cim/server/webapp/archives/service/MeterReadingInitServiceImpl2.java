@@ -80,8 +80,11 @@ public class MeterReadingInitServiceImpl2 implements IMeterReadingInitService {
 	@Qualifier("meterInductorAssetsServiceImpl")
 	private IMeterInductorAssetsService meterInductorAssetsService;
 	
-	@TransactionDAO
-	private MeterReadingInitDAO meterReadingInitDAO;
+	@TransactionDAO("read")
+	private MeterReadingInitDAO meterReadingInitReadDAO;
+	
+	@TransactionDAO("write")
+	private MeterReadingInitDAO meterReadingInitWriteDAO;
 
 	private final ExecutorService executorService = Executors.newFixedThreadPool(10);
 
@@ -434,7 +437,7 @@ public class MeterReadingInitServiceImpl2 implements IMeterReadingInitService {
 		// 查询费控用户。如果ids为空查全部
 		HashMap<String, Object> cimMap = new HashMap<String, Object>();
 
-		List<MeterDomain> meterList = meterReadingInitDAO.getFKMeterListByIds(ids);
+		List<MeterDomain> meterList = meterReadingInitReadDAO.getFKMeterListByIds(ids);
 		
 		List<Long> meterIdsList = meterList.stream().map(MeterDomain::getId).collect(Collectors.toList());
 		// 计量点
