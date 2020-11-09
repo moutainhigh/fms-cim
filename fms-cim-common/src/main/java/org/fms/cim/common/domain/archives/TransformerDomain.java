@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
@@ -32,6 +33,7 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 	private String isPubType; // 公用变标志
 	private String transformerLossType; // 变损计算方法
 	private Long businessPlaceCode; // 供电所
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date runDate; // 投运日期
 	private Integer standTime; // 标准时间
 

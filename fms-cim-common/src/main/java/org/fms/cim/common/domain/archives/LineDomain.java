@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
@@ -28,6 +29,7 @@ public class LineDomain extends ManagerParamEntity implements MybatisEntity {
 	private String lineName; //线路名称
 	private String voltType; //电压等级
 	private String lineType; //线路类型
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	private Date runDate; //投运日期
 	private String switchNo; //开关号
 	private String lineModel; //线路型号
