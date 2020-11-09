@@ -1,7 +1,9 @@
 package org.fms.cim.server.webapp.assets.action;
 
 import java.io.IOException;
+import java.util.List;
 
+import org.fms.cim.common.domain.assets.InductorAssetsDomain;
 import org.fms.cim.common.domain.assets.PSimCardDomain;
 import org.fms.cim.common.service.IPsimCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +58,14 @@ public class PsimCardAction {
 	public Mono<HttpResult> addPsimCard(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		PSimCardDomain t = GsonUtils.readValue(body, PSimCardDomain.class);
-	
+		
+		PSimCardDomain tt = new PSimCardDomain();
+		tt.setCardNo(t.getCardNo());
+		
+		List<PSimCardDomain> list = psimcardService.findByWhere(tt);
+		if(list.size()>0) {
+			return Mono.just(new HttpResult(HttpResult.ERROR, "SIM卡号重复"));
+		}
 		int count = psimcardService.insert(t);
 		if(count>0) {
 			return Mono.just(new HttpResult(HttpResult.SUCCESS, "新增SIM信息成功"));
