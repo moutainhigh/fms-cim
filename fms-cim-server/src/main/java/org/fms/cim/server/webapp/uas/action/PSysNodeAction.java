@@ -49,7 +49,7 @@ public class PSysNodeAction {
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PSysNodeVO pSysNodeVO) {
         if (pSysNodeVO != null) {
-            if (pSysNodeVO.getName() == pSysNodeVO.getNeta()) {
+            if (pSysNodeVO.getName().equals(pSysNodeVO.getNeta())) {
                 return new HttpResult<String>(HttpResult.ERROR, "新增失败,名称和A网地址不能重复", null);
             } else {
                 int i = pSysNodeService.insert(pSysNodeVO);
@@ -73,7 +73,7 @@ public class PSysNodeAction {
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PSysNodeVO pSysNodeVO) {
         if (pSysNodeVO != null) {
-            if (pSysNodeVO.getName() == pSysNodeVO.getNeta()) {
+            if (pSysNodeVO.getName().equals(pSysNodeVO.getNeta())) {
                 return new HttpResult<String>(HttpResult.ERROR, "编辑失败,名称和A网地址不能重复", null);
             } else {
                 int i = pSysNodeService.update(pSysNodeVO);

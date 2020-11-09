@@ -49,7 +49,7 @@ public class PTaskTplAction {
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PTaskTplVO pTaskTplVO) {
         if (pTaskTplVO != null) {
-            if (pTaskTplVO.getDefaultFlag() == "1") {//是否通用下拉  1-是 0-否
+            if (pTaskTplVO.getDefaultFlag().equals("1")) {//是否通用下拉  1-是 0-否
                 PTaskTplVO selectModel = new PTaskTplVO();
                 selectModel.setProtocolId(pTaskTplVO.getProtocolId());
                 int num = pTaskTplService.findByWhere(selectModel).size();//该规约下任务模板
@@ -77,7 +77,7 @@ public class PTaskTplAction {
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PTaskTplVO pTaskTplVO) {
         if (pTaskTplVO != null) {
-            if (pTaskTplVO.getDefaultFlag() == "1") {//是否通用下拉  1-是 0-否
+            if (pTaskTplVO.getDefaultFlag().equals("1")) {//是否通用下拉  1-是 0-否
                 PTaskTplVO selectModel = new PTaskTplVO();
                 selectModel.setProtocolId(pTaskTplVO.getProtocolId());
                 Long num = pTaskTplService.findByWhere(selectModel).stream()
