@@ -11,34 +11,34 @@ import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 
 @TransactionDAO
-public class TgInfoDAO extends AbstractTransactionDAOSupport implements BaseDAO<TgInfoVO> {
+public class TgInfoDAO extends AbstractTransactionDAOSupport implements BaseDAO<TgInfoDomain> {
     @Override
-    public int insert(TgInfoVO t) {
+    public int insert(TgInfoDomain t) {
         return getPersistanceManager().insert(getNamespace() + ".insert", t);
     }
 
     @Override
-    public int delete(TgInfoVO t) {
+    public int delete(TgInfoDomain t) {
         return getPersistanceManager().delete(getNamespace() + ".delete", t);
     }
 
     @Override
-    public int update(TgInfoVO t) {
+    public int update(TgInfoDomain t) {
         return getPersistanceManager().update(getNamespace() + ".update", t);
     }
 
     @Override
-    public TgInfoVO findByKey(TgInfoVO t) {
+    public TgInfoDomain findByKey(TgInfoDomain t) {
         return getPersistanceManager().load(getNamespace() + ".findByKey", t);
     }
 
     @Override
 	@PaginationSupport
-    public List<TgInfoVO> findByWhere(TgInfoVO t) {
+    public List<TgInfoDomain> findByWhere(TgInfoDomain t) {
         return getPersistanceManager().find(getNamespace() + ".findByWhere", t);
     }
 
-    public List<TgInfoVO> findByNo(TgInfoVO t) {
+    public List<TgInfoDomain> findByNo(TgInfoDomain t) {
         return getPersistanceManager().find(getNamespace() + ".findByNo", t);
     }
 }
