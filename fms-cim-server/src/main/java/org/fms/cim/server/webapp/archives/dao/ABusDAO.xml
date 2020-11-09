@@ -20,8 +20,8 @@
     <select id="findByWhere" parameterType="ABusDomain"
             resultType="ABusDomain" useCache="true">
         select
-       <include refid="Base_Column_List"/>
-        from A_BUS
+      a.*,SU.SUBS_NAME
+        from A_BUS a JOIN SUBS_INFO SU ON a.STATION_ID = SU.ID
         <where>
             <if test="name !=null">
                 and NAME = #{name}
