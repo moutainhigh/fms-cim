@@ -83,27 +83,33 @@ public class PSysNodeAction {
                 if (StringUtils.isNotBlank(pSysNodeVO.getNeta()) && pSysNodeVO.getName().equals(pSysNodeVO.getNeta())) {
                     msg.setCode(0);
                     msg.setMsg("名称和A网地址不能重复");
+                    return msg;
                 }
                 if (StringUtils.isNotBlank(pSysNodeVO.getNeta()) && !UtilityHelper.isIPAddressByRegex(pSysNodeVO.getNeta())) {
                     msg.setCode(0);
                     msg.setMsg("A网地址不合法");
+                    return msg;
                 }
                 if (StringUtils.isNotBlank(pSysNodeVO.getNetb()) && !UtilityHelper.isIPAddressByRegex(pSysNodeVO.getNetb())) {
                     msg.setCode(0);
                     msg.setMsg("B网地址不合法");
+                    return msg;
                 }
                 if (StringUtils.isNotBlank(pSysNodeVO.getNetd()) && !UtilityHelper.isIPAddressByRegex(pSysNodeVO.getNetd())) {
                     msg.setCode(0);
                     msg.setMsg("C网地址不合法");
+                    return msg;
                 }
                 if (StringUtils.isNotBlank(pSysNodeVO.getNete()) && !UtilityHelper.isIPAddressByRegex(pSysNodeVO.getNete())) {
                     msg.setCode(0);
                     msg.setMsg("D网地址不合法");
+                    return msg;
                 }
                 msg.setCode(1);
             } else {
                 msg.setCode(0);
                 msg.setMsg("名称不能为空");
+                return msg;
             }
         } else {
             msg.setCode(0);
