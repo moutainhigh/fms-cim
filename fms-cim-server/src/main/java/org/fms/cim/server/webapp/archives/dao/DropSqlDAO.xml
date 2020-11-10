@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.cim.server.webapp.archives.dao.DropSqlDAO">
+    <sql id="Base_Column_List">
+		ID,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
+    </sql>
+    <select id="findByWhere" parameterType="DropSqlDomain"
+            resultType="DropSqlDomain" useCache="true">
+        select
+     	<include refid="Base_Column_List" />
+     	from DROP_SQL
+        <where>
+            <if test="dropCode !=null">
+                and DROP_CODE = #{dropCode}
+            </if>
+            <if test="dropName !=null">
+                and DROP_NAME = #{dropName}
+            </if>
+            <if test="dropSql !=null">
+                and DROP_SQL = #{dropSql}
+            </if>
+            <if test="dropType !=null">
+                and DROP_TYPE = #{dropType}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+        </where>
+    </select>
+</mapper>

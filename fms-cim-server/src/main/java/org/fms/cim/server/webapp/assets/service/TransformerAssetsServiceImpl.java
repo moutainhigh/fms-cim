@@ -48,7 +48,7 @@ public class TransformerAssetsServiceImpl implements ITransformerAssetsService {
 	public int update(TransformerAssetsDomain t) {
 		TransformerDomain transformer = new TransformerDomain();
 		transformer.setTransformerAssetsId(t.getId());
-		transformer.setCapacity(t.getRatedCapacity());
+		transformer.setRatedCapacity(t.getRatedCapacity());
 		transformer.setTransformerModelType(t.getTransformerModelType());
 		transformer.setVoltType(t.getRatedVoltage());
 		

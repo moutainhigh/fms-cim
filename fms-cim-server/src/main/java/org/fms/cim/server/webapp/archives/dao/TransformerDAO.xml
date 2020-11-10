@@ -7,7 +7,7 @@
 		PRODUCE_TEAM,SET_FORMAT,AREA_NO,SUPPLY_ROOM,VILLAGE_NO,TRANS_CHANGE,INPUT_NODE_CODE,CAPCITOR_CAPACITY,
 		COS_STD_CODE,CREATE_DATE,REMARK,STATUS,LINE_ID -->
 		ID,DESK_NAME,TRANSFORMER_NO,TRANSFORMER_MODEL_TYPE,ADDRESS,VOLT_TYPE,CONS_ID,TG_ID,
-		STATION_ID,LINE_ID,BUSINESS_PLACE_CODE,RUN_DATE,CAPACITY,RUN_STATUS_CODE,WEIGHT,
+		STATION_ID,LINE_ID,BUSINESS_PLACE_CODE,RUN_DATE,RATED_CAPACITY,RUN_STATUS_CODE,WEIGHT,
 		REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFIER_TIME,TRANSFORMER_ASSETS_ID,
 		IS_PUB_TYPE,TRANSFORMER_LOSS_TYPE,STAND_TIME,CHARGE_MAN,PRODUCE_TEAM,SET_FORMAT,
 		AREA_NO,SUPPLY_ROOM,VILLAGE_NO,TRANS_CHANGE,INPUT_NODE_CODE,CAPCITOR_CAPACITY,
@@ -30,7 +30,7 @@
         ID,DESK_NAME,TRANSFORMER_NO,
         (select TRANSFORMER_MODEL_TYPE from TRANSFORMER_ASSETS_INFO where ID = T.TRANSFORMER_ASSETS_ID) as TRANSFORMER_MODEL_TYPE,
         ADDRESS,VOLT_TYPE,CONS_ID,TG_ID,
-		STATION_ID,LINE_ID,BUSINESS_PLACE_CODE,RUN_DATE,CAPACITY,RUN_STATUS_CODE,WEIGHT,
+		STATION_ID,LINE_ID,BUSINESS_PLACE_CODE,RUN_DATE,RATED_CAPACITY,RUN_STATUS_CODE,WEIGHT,
 		REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFIER_TIME,TRANSFORMER_ASSETS_ID,
 		IS_PUB_TYPE,TRANSFORMER_LOSS_TYPE,STAND_TIME,CHARGE_MAN,PRODUCE_TEAM,SET_FORMAT,
 		AREA_NO,SUPPLY_ROOM,VILLAGE_NO,TRANS_CHANGE,INPUT_NODE_CODE,CAPCITOR_CAPACITY,
@@ -58,8 +58,8 @@
             <if test="deskName !=null">
                 and DESK_NAME like CONCAT('%',#{deskName},'%')
             </if>
-            <if test="capacity !=null">
-                and CAPACITY = #{capacity}
+            <if test="ratedCapacity !=null">
+                and RATED_CAPACITY = #{ratedCapacity}
             </if>
             <if test="transformerGroupNo !=null">
                 and TRANSFORMER_GROUP_NO = #{transformerGroupNo}
@@ -217,8 +217,8 @@
             <if test="deskName !=null">
                 and DESK_NAME = #{deskName}
             </if>
-            <if test="capacity !=null">
-                and CAPACITY = #{capacity}
+            <if test="ratedCapacity !=null">
+                and RATED_CAPACITY = #{ratedCapacity}
             </if>
             <if test="transformerGroupNo !=null">
                 and TRANSFORMER_GROUP_NO = #{transformerGroupNo}
@@ -338,7 +338,7 @@
         #{cosStdCode},#{createDate},#{remark},#{status},#{lineId} -->
         #{id},#{deskName},#{transformerNo},#{transformerModelType},#{address},
         #{voltType},#{consId},#{tgId},#{stationId},#{lineId},#{businessPlaceCode},
-        #{runDate},#{capacity},#{runStatusCode},#{weight},#{remark},#{creatorId},
+        #{runDate},#{ratedCapacity},#{runStatusCode},#{weight},#{remark},#{creatorId},
         #{createDate},#{lastModifierId},#{lastModifierTime},#{transformerAssetsId},
         #{isPubType},#{transformerLossType},#{standTime},#{chargeMan},#{produceTeam},
         #{setFormat},#{areaNo},#{supplyRoom},#{villageNo},#{transChange},#{inputNodeCode},
@@ -353,7 +353,7 @@
         values
         (#{id},#{deskName},#{transformerNo},#{transformerModelType},#{address},
         #{voltType},#{consId},#{tgId},#{stationId},#{lineId},#{businessPlaceCode},
-        #{runDate},#{capacity},#{runStatusCode},#{weight},#{remark},#{creatorId},
+        #{runDate},#{ratedCapacity},#{runStatusCode},#{weight},#{remark},#{creatorId},
         #{createDate},#{lastModifierId},#{lastModifierTime},#{transformerAssetsId},
         #{isPubType},#{transformerLossType},#{standTime},#{chargeMan},#{produceTeam},
         #{setFormat},#{areaNo},#{supplyRoom},#{villageNo},#{transChange},#{inputNodeCode},
@@ -386,8 +386,8 @@
             <if test="deskName !=null">
                 DESK_NAME = #{deskName},
             </if>
-            <if test="capacity !=null">
-                CAPACITY = #{capacity},
+            <if test="ratedCapacity !=null">
+                RATED_CAPACITY = #{ratedCapacity},
             </if>
             <if test="isPubType !=null">
                 IS_PUB_TYPE = #{isPubType},
@@ -496,8 +496,8 @@
             <if test="deskName !=null">
                 DESK_NAME = #{deskName},
             </if>
-            <if test="capacity !=null">
-                CAPACITY = #{capacity},
+            <if test="ratedCapacity !=null">
+                RATED_CAPACITY = #{ratedCapacity},
             </if>
             <if test="transformerGroupNo !=null">
                 TRANSFORMER_GROUP_NO = #{transformerGroupNo},
@@ -629,7 +629,7 @@
         select T.TRANSFORMER_ASSETS_ID,
         T.TRANSFORMER_NO,
         T.DESK_NAME,
-        T.CAPACITY,
+        T.RATED_CAPACITY,
         T.COS_STD_CODE,
         T.TRANSFORMER_GROUP_NO,
         T.IS_PUB_TYPE,
@@ -796,8 +796,8 @@
             <if test="deskName !=null">
                 and DESK_NAME like CONCAT('%',#{deskName},'%')
             </if>
-            <if test="capacity !=null">
-                and CAPACITY = #{capacity}
+            <if test="ratedCapacity !=null">
+                and RATED_CAPACITY = #{ratedCapacity}
             </if>
             <if test="transformerGroupNo !=null">
                 and TRANSFORMER_GROUP_NO = #{transformerGroupNo}

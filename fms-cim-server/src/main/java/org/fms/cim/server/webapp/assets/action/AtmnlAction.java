@@ -57,7 +57,7 @@ public class AtmnlAction {
 	public Mono<HttpResult> addATmnl(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		ATmnlDomain t = GsonUtils.readValue(body, ATmnlDomain.class);
-	
+		
 		int count = atmnlService.insert(t);
 		if(count>0) {
 			return Mono.just(new HttpResult(HttpResult.SUCCESS, "新增终端设备信息成功"));
