@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IDropSqlService;
+import org.fms.cim.common.vo.uas.DropSqlDetVO;
 import org.fms.cim.common.vo.uas.DropSqlVO;
 import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +89,7 @@ public class DropSqlAction {
     @ResponseBody
     @PostMapping(params = "method=getBaseDropDict")
     public HttpResult<?> getBaseDropDict(@RequestBody String body) {
-        List<SystemCommonConfigVO> dictList = new ArrayList<>();
+        List<DropSqlDetVO> dictList = new ArrayList<>();
         if (body != null) {
             JSONObject obj = JSONObject.parseObject(body);
             String dropCode = obj.getString("dropCode");

@@ -79,7 +79,7 @@
         </where>
     </delete>
     <select id="getBaseDropDict" parameterType="String"
-            resultType="SystemCommonConfigDomain" useCache="true">
+            resultType="DropSqlDetDomain" useCache="true">
         ${value}
     </select>
 </mapper>

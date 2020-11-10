@@ -10,6 +10,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.cim.common.domain.archives.SystemCommonConfigDomain;
+import org.fms.cim.common.domain.uas.DropSqlDetDomain;
 import org.fms.cim.common.domain.uas.DropSqlDomain;
 
 
@@ -52,7 +53,7 @@ public class DropSqlDAO extends AbstractTransactionDAOSupport implements BaseDAO
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
-    public List<SystemCommonConfigDomain> getBaseDropDict(String selectSql){
+    public List<DropSqlDetDomain> getBaseDropDict(String selectSql){
         return getPersistanceManager().find(getNamespace() + ".getBaseDropDict", selectSql);
     }
 }
