@@ -28,7 +28,7 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 	private Long transformerAssetsId; // 变压器资产ID
 	private String transformerNo; // 变压器编号
 	private String deskName; // 变压器名称
-	private BigDecimal capacity; // 变压器容量					----
+	private String ratedCapacity; // 变压器容量					----
 	private String transformerGroupNo; // 变压器组号
 	private String isPubType; // 公用变标志
 	private String transformerLossType; // 变损计算方法
@@ -159,12 +159,12 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.deskName = deskName;
 	}
 
-	public BigDecimal getCapacity() {
-		return capacity;
+	public String getRatedCapacity() {
+		return ratedCapacity;
 	}
 
-	public void setCapacity(BigDecimal capacity) {
-		this.capacity = capacity;
+	public void setRatedCapacity(String ratedCapacity) {
+		this.ratedCapacity = ratedCapacity;
 	}
 
 	public String getTransformerGroupNo() {
