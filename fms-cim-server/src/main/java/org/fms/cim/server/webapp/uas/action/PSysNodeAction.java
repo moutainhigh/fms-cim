@@ -220,7 +220,7 @@ public class PSysNodeAction {
                 }
                 int num = pSysNodeService.updateListDaserverGroup(sysNodeVOList);
                 if (num == sysNodeVOList.size()) {
-                    return new HttpResult<String>(HttpResult.SUCCESS, "保存成功，保存条数：", null);
+                    return new HttpResult<String>(HttpResult.SUCCESS, "保存成功", null);
                 } else {
                     return new HttpResult<String>(HttpResult.ERROR, "保存失败", null);
                 }
