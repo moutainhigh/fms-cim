@@ -135,7 +135,7 @@ public class PTaskTplAction {
     public HttpResult<?> findTaskTplTree() {
         //获取通讯规约
         PWsdProtocolVO pWsdProtocolVO = new PWsdProtocolVO();//此处加条件 例如是否可用等
-        //pWsdProtocolVO.setStatus("可用");
+        pWsdProtocolVO.setStatus("1");
         List<PWsdProtocolVO> pWsdProtocolVOList = pWsdProtocolService.findByWhere(pWsdProtocolVO);
         //获取采集任务模板
         PTaskTplVO pTaskTplVO = new PTaskTplVO();//此处加条件 例如是否可用等
