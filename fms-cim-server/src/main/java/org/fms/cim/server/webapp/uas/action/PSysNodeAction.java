@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,15 +40,15 @@ public class PSysNodeAction {
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PSysNodeVO pSysNodeVO) {
-        MessageuUtil msg=verificationObj(pSysNodeVO);
-        if(msg.getCode()==1){
+        MessageuUtil msg = verificationObj(pSysNodeVO);
+        if (msg.getCode() == 1) {
             int i = pSysNodeService.insert(pSysNodeVO);
             if (i > 0) {
                 return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
             } else {
                 return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
             }
-        }else{
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, msg.getMsg(), null);
         }
     }
@@ -55,15 +56,15 @@ public class PSysNodeAction {
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PSysNodeVO pSysNodeVO) {
-        MessageuUtil msg=verificationObj(pSysNodeVO);
-        if(msg.getCode()==1){
+        MessageuUtil msg = verificationObj(pSysNodeVO);
+        if (msg.getCode() == 1) {
             int i = pSysNodeService.update(pSysNodeVO);
             if (i > 0) {
                 return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
             } else {
                 return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
             }
-        }else{
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, msg.getMsg(), null);
         }
     }
@@ -71,8 +72,9 @@ public class PSysNodeAction {
 
     /**
      * 验证对象合法
-     *名称和A网地址不允许重复
-     *IP地址合法
+     * 名称和A网地址不允许重复
+     * IP地址合法
+     *
      * @param pSysNodeVO
      * @return
      */
@@ -208,10 +210,10 @@ public class PSysNodeAction {
                     .stream().map(PSysNodeVO::getId).collect(Collectors.toList());//设置选中的
             if (sysNodeVOList != null && sysNodeVOList.size() > 0) {
                 for (PSysNodeVO item : sysNodeVOList) {
-                    if(childIDList.contains(item.getId())){
+                    if (childIDList.contains(item.getId())) {
                         item.setDaGroup(pDaserverGroupVO.getId());
-                    }else{
-                        if(item.getDaGroup()==pDaserverGroupVO.getId()){
+                    } else {
+                        if (item.getDaGroup() == pDaserverGroupVO.getId()) {
                             item.setDaGroup(null);
                         }
                     }
