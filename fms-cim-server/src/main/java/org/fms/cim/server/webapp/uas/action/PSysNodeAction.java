@@ -202,18 +202,23 @@ public class PSysNodeAction {
     public HttpResult<?> updateListDaserverGroup(@RequestBody PDaserverGroupVO pDaserverGroupVO) {
         if (pDaserverGroupVO != null) {
             PSysNodeVO pSysNodeVO = new PSysNodeVO();
-            pSysNodeVO.setDaGroup(pDaserverGroupVO.getId());
+            //pSysNodeVO.setDaGroup(pDaserverGroupVO.getId());
             List<PSysNodeVO> sysNodeVOList = pSysNodeService.findByWhere(pSysNodeVO);//更新前
             List<Long> childIDList = pDaserverGroupVO.getListSysNodeVO()
                     .stream().map(PSysNodeVO::getId).collect(Collectors.toList());//设置选中的
             if (sysNodeVOList != null && sysNodeVOList.size() > 0) {
                 for (PSysNodeVO item : sysNodeVOList) {
-                    Long daserverGroupID = childIDList.contains(item.getId()) ? item.getDaGroup() : null;
-                    item.setDaGroup(daserverGroupID);
+                    if(childIDList.contains(item.getId())){
+                        item.setDaGroup(pDaserverGroupVO.getId());
+                    }else{
+                        if(item.getDaGroup()==pDaserverGroupVO.getId()){
+                            item.setDaGroup(null);
+                        }
+                    }
                 }
                 int num = pSysNodeService.updateListDaserverGroup(sysNodeVOList);
                 if (num == sysNodeVOList.size()) {
-                    return new HttpResult<String>(HttpResult.SUCCESS, "保存成功，保存条数：" + num, null);
+                    return new HttpResult<String>(HttpResult.SUCCESS, "保存成功，保存条数：", null);
                 } else {
                     return new HttpResult<String>(HttpResult.ERROR, "保存失败", null);
                 }
