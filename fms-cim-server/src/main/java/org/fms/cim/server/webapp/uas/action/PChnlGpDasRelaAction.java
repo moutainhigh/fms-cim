@@ -10,7 +10,6 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPChnlGpDasRelaService;
 import org.fms.cim.common.vo.uas.PChnlGpDasRelaVO;
-import org.fms.cim.common.vo.uas.PMpedVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
