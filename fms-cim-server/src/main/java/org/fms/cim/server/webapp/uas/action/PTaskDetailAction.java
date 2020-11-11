@@ -101,8 +101,9 @@ public class PTaskDetailAction {
             pWsdTaskdataRelVO.setProtocolId(modelVO.getProtocolId());//设置规约
             pWsdTaskdataRelVO.setInfopointType(modelVO.getPnType());//设置信息点类型
             pWsdTaskdataRelVO.setTaskID(modelVO.getTaskId());//设置任务ID
+            pWsdTaskdataRelVO.setPageSize(-1);//不设置分页
             List<PWsdTaskdataRelVO> listVO = pTaskDetailService.findByTaskRel(pWsdTaskdataRelVO);
-            return new HttpResult<List<PWsdTaskdataRelVO>>(HttpResult.SUCCESS, "获取成功", listVO);
+            return new HttpResult<>(HttpResult.SUCCESS, "获取成功", listVO);
         } else {
             return new HttpResult<PWsdTaskdataVO>(HttpResult.ERROR, "参数传递错误!", null);
         }
@@ -121,8 +122,9 @@ public class PTaskDetailAction {
             PWsdTaskdataRelVO pWsdTaskdataRelVO = new PWsdTaskdataRelVO();
             pWsdTaskdataRelVO.setProtocolId(modelVO.getProtocolId());//设置规约
             pWsdTaskdataRelVO.setInfopointType(modelVO.getPnType());//设置信息点类型
+            pWsdTaskdataRelVO.setPageSize(-1);//不设置分页
             List<PWsdTaskdataRelVO> listVO = pTaskDetailService.findByTaskRel(pWsdTaskdataRelVO);
-            return new HttpResult<List<PWsdTaskdataRelVO>>(HttpResult.SUCCESS, "获取成功", listVO);
+            return new HttpResult<>(HttpResult.SUCCESS, "获取成功", listVO);
         } else {
             return new HttpResult<PWsdTaskdataVO>(HttpResult.ERROR, "参数传递错误!", null);
         }

@@ -94,7 +94,8 @@ public class PTaskAction {
     @PostMapping(params = "method=findByProtocolID")
     public HttpResult<?> findByProtocolID(@RequestBody Long pWsdProtocolID) {
         PTaskVO pTaskVO = new PTaskVO();
-        pTaskVO.setProtocolId(pWsdProtocolID);
+        pTaskVO.setProtocolId(pWsdProtocolID);//规约赋值
+        pTaskVO.setPageSize(-1);//不设置分页
         List<PTaskVO> listVo = pTaskService.findByWhere(pTaskVO);//获取此规约的任务
         return new HttpResult<List<PTaskVO>>(HttpResult.SUCCESS, "获取成功", listVo);
     }
@@ -110,6 +111,7 @@ public class PTaskAction {
     public HttpResult<?> findByTaskTpl(@RequestBody PTaskTplVO pTaskTplVO) {
         if (pTaskTplVO != null) {
             PTaskRelVO pTaskRelVO = new PTaskRelVO();
+            pTaskRelVO.setPageSize(-1);//设置-1不进行分页
             pTaskRelVO.setProtocolId(pTaskTplVO.getProtocolId());//赋值规约
             List<PTaskRelVO> listVo = pTaskService.findByTaskTpl(pTaskRelVO);//获取此规约全部任务
             if (listVo != null && listVo.size() > 0) {
