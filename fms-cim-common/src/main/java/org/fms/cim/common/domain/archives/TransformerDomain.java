@@ -33,12 +33,12 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 	private String isPubType; // 公用变标志
 	private String transformerLossType; // 变损计算方法
 	private Long businessPlaceCode; // 供电所
-	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:SS",timezone="GMT+8")
 	private Date runDate; // 投运日期
 	private Integer standTime; // 标准时间
 
 	private String voltType; // 供电电压							------
-	private String chargeMan; // 责任人
+	private Long chargeMan; // 责任人
 	private String produceTeam; // 生产班次
 	private String setFormat; // 安装形式
 	private String areaNo; // 片区号
@@ -198,11 +198,11 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 
 	
 
-	public String getChargeMan() {
+	public Long getChargeMan() {
 		return chargeMan;
 	}
 
-	public void setChargeMan(String chargeMan) {
+	public void setChargeMan(Long chargeMan) {
 		this.chargeMan = chargeMan;
 	}
 
