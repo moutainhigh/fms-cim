@@ -227,6 +227,12 @@
         	<if test="transformerId !=null">
                 and TMR.TRANSFORMER_ID = #{transformerId}
             </if>
+        	<if test="meterNo !=null">
+                and M.METER_NO = #{transformerId}
+            </if>
+        	<if test="meterName !=null">
+                and M.METER_NAME = #{meterName}
+            </if>
           
         </where>
     </select>
