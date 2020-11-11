@@ -89,13 +89,7 @@ public class PCalcTplVO extends ManagerParamVO {
         this.lastModifyTime = lastModifyTime;
     }
 
-    public int getWeight() {
-        return weight;
-    }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
 
     public PCalcTplDomain vo2Domain() {
         PCalcTplDomain pCalcTplDomain = ReflectUtil.cast(this, PCalcTplDomain.class);
@@ -103,4 +97,11 @@ public class PCalcTplVO extends ManagerParamVO {
     }
 
 
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
 }

@@ -46,7 +46,7 @@
     <insert id="insert" parameterType="PCalcTplDomain" flushCache="true" useGeneratedKeys="true">
 		insert into P_CALC_TPL
 			(ID,NAME,TYPE,DEFAULT_FLAG,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{name},#{type},#{defaultFlag},#{weigth},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+			VALUES(#{id},#{name},#{type},#{defaultFlag},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
     <update id="update" parameterType="PCalcTplDomain" flushCache="true">
@@ -62,7 +62,7 @@
                 DEFAULT_FLAG = #{defaultFlag},
             </if>
             <if test="weight !=null">
-                WEIGHT = #{weigth},
+                WEIGHT = #{weight},
             </if>
             <if test="creatorId !=null">
                 CREATOR_ID = #{creatorId},
