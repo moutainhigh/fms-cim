@@ -164,6 +164,6 @@ public class PTaskDetailAction {
                 return new HttpResult<String>(HttpResult.ERROR, "保存失败!", null);
             }
         }
-        return new HttpResult<String>(HttpResult.ERROR, "保存成功!", null);
+        return new HttpResult<String>(HttpResult.SUCCESS, "保存成功!", null);
     }
 }
