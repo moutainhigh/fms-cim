@@ -59,6 +59,7 @@
                 and LAST_MODIFY_TIME = #{lastModifyTime}
             </if>
         </where>
+        order by WEIGHT
     </select>
     <insert id="insert" parameterType="PWsdProtocolTaskDomain" flushCache="true" useGeneratedKeys="true">
 		insert into P_WSD_PROTOCOL_TASK
