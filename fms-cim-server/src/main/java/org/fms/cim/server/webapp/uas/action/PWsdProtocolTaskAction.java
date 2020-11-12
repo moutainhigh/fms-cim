@@ -9,6 +9,8 @@ package org.fms.cim.server.webapp.uas.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPWsdProtocolTaskService;
+import org.fms.cim.common.vo.uas.DropSqlDetVO;
+import org.fms.cim.common.vo.uas.PTaskRelVO;
 import org.fms.cim.common.vo.uas.PWsdProtocolTaskVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ControllerAdvice
@@ -79,5 +82,31 @@ public class PWsdProtocolTaskAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PWsdProtocolTaskVO pWsdProtocolTaskVO) {
 
         return new HttpResultPagination(pWsdProtocolTaskVO, pWsdProtocolTaskService.findByWhere(pWsdProtocolTaskVO));
+    }
+
+    /**
+     * 通过规约获取采集任务类型列表
+     *
+     * @param pWsdProtocolID 规约ID
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByWsdProtocol")
+    public HttpResult<?> findByWsdProtocol(@RequestBody Long pWsdProtocolID) {
+        PWsdProtocolTaskVO modelVO = new PWsdProtocolTaskVO();
+        modelVO.setProtocolId(pWsdProtocolID);
+        modelVO.setStatus("1");
+        List<PWsdProtocolTaskVO> listVO = pWsdProtocolTaskService.findByWhere(modelVO);
+        List<DropSqlDetVO> listSql = new ArrayList<>();
+        if (listVO != null && listVO.size() > 0) {
+            for (PWsdProtocolTaskVO item : listVO) {
+                DropSqlDetVO sqlModel = new DropSqlDetVO();
+                sqlModel.setParamKey(item.getId());
+                sqlModel.setParamValue(item.getName());
+                sqlModel.setFilter(pWsdProtocolID != null ? pWsdProtocolID.toString() : "");
+                listSql.add(sqlModel);
+            }
+        }
+        return new HttpResult<>(HttpResult.SUCCESS, "获取成功", listSql);
     }
 }

@@ -90,6 +90,12 @@ public class PCalcTplDomain extends Page implements MybatisEntity {
         this.lastModifyTime = lastModifyTime;
     }
 
+
+    public PCalcTplVO domain2VO() {
+        PCalcTplVO pCalcTplVO = ReflectUtil.cast(this, PCalcTplVO.class);
+        return pCalcTplVO;
+    }
+
     public Integer getWeight() {
         return weight;
     }
@@ -97,10 +103,4 @@ public class PCalcTplDomain extends Page implements MybatisEntity {
     public void setWeight(Integer weight) {
         this.weight = weight;
     }
-
-    public PCalcTplVO domain2VO() {
-        PCalcTplVO pCalcTplVO = ReflectUtil.cast(this, PCalcTplVO.class);
-        return pCalcTplVO;
-    }
-
 }

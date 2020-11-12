@@ -7,6 +7,7 @@ package org.fms.cim.server.webapp.archives.service;
 
 import java.util.List;
 
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.cim.common.domain.archives.PMpedDomain;
 import org.fms.cim.common.service.IPmpedService;
 import org.fms.cim.server.webapp.archives.dao.PMpedDAO;
@@ -52,5 +53,9 @@ public class PmpedServiceImpl implements IPmpedService {
 		// TODO Auto-generated method stub
 		return pmpedReadDAO.findByWhere(t);
 	}
-	
+
+	@Override
+	public int updateList(List<PMpedDomain> list) {
+		return pmpedWriteDAO.updateList(list);
+	}
 }

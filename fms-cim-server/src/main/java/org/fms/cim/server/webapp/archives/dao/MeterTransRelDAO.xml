@@ -13,7 +13,7 @@
     <select id="getTransformerByNoMeterRel" parameterType="MeterDomain"
             resultType="TransformerDomain" useCache="false">
         select
-        T.ID,T.TRANSFORMER_NO,T.DESK_NAME,T.CAPACITY,TA.TRANSFORMER_ASSETS_NO,TA.TRANSFORMER_MODEL_TYPE
+        T.ID,T.TRANSFORMER_NO,T.DESK_NAME,T.RATED_CAPACITY,TA.TRANSFORMER_ASSETS_NO,TA.TRANSFORMER_MODEL_TYPE
         from TRANSFORMER_INFO T LEFT JOIN TRANSFORMER_ASSETS_INFO TA ON T.TRANSFORMER_ASSETS_ID = TA.ID
         <where>
             <if test="transformerAssetsNo !=null">
@@ -31,7 +31,7 @@
     </select>
     <select id="getTransformerByMeterRel" parameterType="MeterDomain" resultType="MeterDomain" >
         select
-        T.ID,T.TRANSFORMER_NO,T.DESK_NAME,T.CAPACITY,
+        T.ID,T.TRANSFORMER_NO,T.DESK_NAME,T.RATED_CAPACITY,
         TA.TRANSFORMER_ASSETS_NO,TA.TRANSFORMER_MODEL_TYPE,
         TM.TRANSFORMER_GROUP_NO,TM.MS_TYPE
 

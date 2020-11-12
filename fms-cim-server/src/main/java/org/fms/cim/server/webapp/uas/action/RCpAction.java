@@ -94,8 +94,7 @@ public class RCpAction {
         if(tgInfoVO!=null){
             RCpVO modelVO=new RCpVO();
             modelVO.setRelaObjId(tgInfoVO.getId());
-            modelVO.setPageCurrent(tgInfoVO.getPageCurrent());
-            modelVO.setPageSize(tgInfoVO.getPageSize());
+            modelVO.setPageSize(-1);
             //通过台区ID获取采集点，此处分页参数未用
             return new HttpResultPagination(modelVO, rCpService.findByWhere(modelVO));
         }else{

@@ -7,6 +7,7 @@
 package org.fms.cim.common.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.common.vo.uas.DropSqlDetVO;
 import org.fms.cim.common.vo.uas.DropSqlVO;
 import org.fms.cim.common.vo.uas.SystemCommonConfigVO;
 
@@ -27,5 +28,5 @@ public interface IDropSqlService {
 
     public List<DropSqlVO> findByWhere(DropSqlVO dropSqlVO);
 
-    public List<SystemCommonConfigVO> getBaseDropDict(String selectSql);
+    public List<DropSqlDetVO> getBaseDropDict(String selectSql);
 }

@@ -28,17 +28,17 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 	private Long transformerAssetsId; // 变压器资产ID
 	private String transformerNo; // 变压器编号
 	private String deskName; // 变压器名称
-	private BigDecimal capacity; // 变压器容量					----
+	private String ratedCapacity; // 变压器容量					----
 	private String transformerGroupNo; // 变压器组号
 	private String isPubType; // 公用变标志
 	private String transformerLossType; // 变损计算方法
 	private Long businessPlaceCode; // 供电所
-	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:SS",timezone="GMT+8")
 	private Date runDate; // 投运日期
 	private Integer standTime; // 标准时间
 
 	private String voltType; // 供电电压							------
-	private String chargeMan; // 责任人
+	private Long chargeMan; // 责任人
 	private String produceTeam; // 生产班次
 	private String setFormat; // 安装形式
 	private String areaNo; // 片区号
@@ -159,12 +159,12 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 		this.deskName = deskName;
 	}
 
-	public BigDecimal getCapacity() {
-		return capacity;
+	public String getRatedCapacity() {
+		return ratedCapacity;
 	}
 
-	public void setCapacity(BigDecimal capacity) {
-		this.capacity = capacity;
+	public void setRatedCapacity(String ratedCapacity) {
+		this.ratedCapacity = ratedCapacity;
 	}
 
 	public String getTransformerGroupNo() {
@@ -198,11 +198,11 @@ public class TransformerDomain extends ManagerParamEntity implements MybatisEnti
 
 	
 
-	public String getChargeMan() {
+	public Long getChargeMan() {
 		return chargeMan;
 	}
 
-	public void setChargeMan(String chargeMan) {
+	public void setChargeMan(Long chargeMan) {
 		this.chargeMan = chargeMan;
 	}
 

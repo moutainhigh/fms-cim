@@ -138,18 +138,18 @@ public class MeterAction {
 
         MeterDomain t = GsonUtils.readValue(body, MeterDomain.class);
         //计费表必须有电价
-        if (Objects.equals(t.getMeterType(), (byte) 0) && t.getPriceType() == null) {
-            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计量点信息失败，计费计量点必须选择电价"));
+        if ((t.getMeterType().equals("1")) && t.getPriceType() == null) {
+            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计费点信息失败，计费计量点必须选择电价"));
         }
         //基本电费判断
-        if (!Objects.equals(t.getBaseMoneyFlag(), (byte) 0) && t.getBasicPrice() == null) {
-            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计量点信息失败，需要计算基本电费时必须选择基本电费电价"));
+        if (!(t.getBaseMoneyFlag().equals("0")) && t.getBasicPrice() == null) {
+            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计费点信息失败，需要计算基本电费时必须选择基本电费电价"));
 
-        } else if (Objects.equals(t.getBaseMoneyFlag(), (byte) 2) && t.getChargingCapacity() == null) {
-            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计量点信息失败，基本电费按容量计算时必须填写计费容量"));
+        } else if ((t.getBaseMoneyFlag().equals("2")) && t.getChargingCapacity() == null) {
+            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计费点信息失败，基本电费按容量计算时必须填写计费容量"));
 
-        } else if (Objects.equals(t.getBaseMoneyFlag(), (byte) 1) && t.getNeedIndex() == null) {
-            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计量点信息失败，基本电费按需要计算时必须填写最大需量"));
+        } else if ((t.getBaseMoneyFlag().equals("1")) && t.getNeedIndex() == null) {
+            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计费点信息失败，基本电费按需要计算时必须填写最大需量"));
 
         }
 
@@ -159,7 +159,7 @@ public class MeterAction {
         tt.setMeterNo(t.getMeterNo());
         int count = meterService.findByNo(tt).size();
         if (count > 0) {
-            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计量点信息失败，计量点号重复"));
+            return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计费点信息失败，计费点号重复"));
         }
         // 算费次数，前台不传默认为1次
         if (t.getCountTimes() == null) {
@@ -168,9 +168,9 @@ public class MeterAction {
         t.setCreateDate(new Date());
         System.out.println(t);
         if (meterService.insert(t) > 0) {
-            return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "新增计量点信息成功"));
+            return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "新增计费点信息成功"));
         }
-        return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计量点信息失败"));
+        return Mono.just(new HttpResult<>(HttpResult.ERROR, "新增计费点信息失败"));
     }
 
     /**
@@ -186,9 +186,9 @@ public class MeterAction {
 
         int count = meterService.update(t);
         if (count > 0) {
-            return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "修改计量点信息成功"));
+            return Mono.just(new HttpResult<>(HttpResult.SUCCESS, "修改计费点信息成功"));
         }
-        return Mono.just(new HttpResult<>(HttpResult.ERROR, "修改计量点信息失败"));
+        return Mono.just(new HttpResult<>(HttpResult.ERROR, "修改计费点信息失败"));
     }
 
     /**

@@ -64,6 +64,37 @@ public class MeterMpedRelAction {
 	public Mono<HttpResult> addBank(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException {
 		MeterMpedRelDomain t = GsonUtils.readValue(body, MeterMpedRelDomain.class);
+		
+		String pss = t.getPhaseSeq();
+		MeterMpedRelDomain tt = new MeterMpedRelDomain();
+		
+		tt.setMeterId(t.getMeterId());
+		
+		List<MeterMpedRelDomain> list =  meterMpedRelService.findByWhere(tt);
+		
+		if(list.size()>0) {
+			for(int i=0;i<list.size();i++) {
+				String ps = list.get(i).getPhaseSeq();
+				if(pss.equals(ps)) {
+					switch(pss) {
+						case "1":{
+							return Mono.just(new HttpResult(HttpResult.ERROR, "已存在相序A，请选择其他相序"));
+						}
+						case "2":{
+							return Mono.just(new HttpResult(HttpResult.ERROR, "已存在相序B，请选择其他相序"));
+						}
+						case "3":{
+							return Mono.just(new HttpResult(HttpResult.ERROR, "已存在相序C，请选择其他相序"));
+						}
+						case "4":{
+							return Mono.just(new HttpResult(HttpResult.ERROR, "已存在相序D，不能继续选择相序"));
+						}
+					}
+					
+				}
+				
+			}
+		}
 		t.setCreateDate(new Date());
 		int count = meterMpedRelService.insert(t);
 		

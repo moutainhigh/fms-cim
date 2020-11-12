@@ -35,6 +35,14 @@ public class ABusDomain extends ManagerParamEntity implements MybatisEntity {
     private Date createDate; //创建时间
     private Long lastModifierId; //最后修改者
     private String lastModifierTime; //最后修改时间
+    private String  subsName;
+    
+	public String getSubsName() {
+		return subsName;
+	}
+	public void setSubsName(String subsName) {
+		this.subsName = subsName;
+	}
 	public Long getId() {
 		return id;
 	}

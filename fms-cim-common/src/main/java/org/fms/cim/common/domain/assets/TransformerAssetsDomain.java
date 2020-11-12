@@ -68,7 +68,7 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 	private BigDecimal secondCurrent; // 2次电流
 	private String companyAssetsNo; // COMPANY_ASSETS_NO  局资产
 	private String propertyNo; // PROPERTY_NO  财产号
-	private BigDecimal ratedCapacity; // 额定容量						------
+	private String ratedCapacity; // 额定容量						------
 	private List<Long> ids;
 	
 	
@@ -380,11 +380,11 @@ public class TransformerAssetsDomain extends ManagerParamEntity implements Mybat
 		this.propertyNo = propertyNo;
 	}
 
-	public BigDecimal getRatedCapacity() {
+	public String getRatedCapacity() {
 		return ratedCapacity;
 	}
 
-	public void setRatedCapacity(BigDecimal ratedCapacity) {
+	public void setRatedCapacity(String ratedCapacity) {
 		this.ratedCapacity = ratedCapacity;
 	}
 
