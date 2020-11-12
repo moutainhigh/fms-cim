@@ -12,8 +12,8 @@ import java.util.List;
 
 import org.fms.cim.common.domain.assets.TransformerAssetsDomain;
 import org.fms.cim.common.service.ITransformerAssetsService;
-import org.fms.cim.common.strategy.no.SequenceEnvironment;
-import org.fms.cim.common.strategy.no.SequenceStrategy;
+import org.fms.cim.server.strategy.no.SequenceEnvironment;
+import org.fms.cim.server.strategy.no.SequenceStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
