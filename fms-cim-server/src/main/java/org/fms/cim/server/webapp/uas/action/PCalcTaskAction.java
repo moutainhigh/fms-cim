@@ -10,6 +10,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPCalcTaskService;
 import org.fms.cim.common.vo.uas.*;
+import org.fms.cim.server.webapp.uas.helper.UtilityHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
@@ -104,5 +106,16 @@ public class PCalcTaskAction {
         } else {
             return new HttpResultPagination(null, null);
         }
+    }
+
+    /**
+     * 获取计算任务数据类型
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=getCalcTaskDataType")
+    public HttpResult<?> getCalcTaskDataType() {
+        Map<Integer,String> map= UtilityHelper.getDataType();
+        return new HttpResult<>(HttpResult.SUCCESS, "获取成功", map);
     }
 }
