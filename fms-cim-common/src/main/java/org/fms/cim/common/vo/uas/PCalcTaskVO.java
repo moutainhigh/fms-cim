@@ -12,6 +12,7 @@ import org.fms.cim.common.domain.uas.PCalcTaskDomain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class PCalcTaskVO extends ManagerParamVO {
 
@@ -41,6 +42,7 @@ public class PCalcTaskVO extends ManagerParamVO {
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
+    private List<PCalcTaskDataTypeVO> dataTypeList;//数据类型
 
     public Long getId() {
         return id;
@@ -224,4 +226,11 @@ public class PCalcTaskVO extends ManagerParamVO {
     }
 
 
+    public List<PCalcTaskDataTypeVO> getDataTypeList() {
+        return dataTypeList;
+    }
+
+    public void setDataTypeList(List<PCalcTaskDataTypeVO> dataTypeList) {
+        this.dataTypeList = dataTypeList;
+    }
 }

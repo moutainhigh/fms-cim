@@ -6,6 +6,7 @@
  **/
 package org.fms.cim.server.webapp.uas.action;
 
+import com.alibaba.druid.sql.visitor.functions.Char;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPCalcTaskService;
@@ -20,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PCalcTask")
@@ -34,27 +33,45 @@ public class PCalcTaskAction {
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PCalcTaskVO pCalcTaskVO) {
-        int i = pCalcTaskService.insert(pCalcTaskVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+        if (pCalcTaskVO != null) {
+            pCalcTaskVO.setGltsFlag(getCalcTaskDataType(pCalcTaskVO.getDataTypeList()));
+            int i = pCalcTaskService.insert(pCalcTaskVO);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PCalcTaskVO pCalcTaskVO) {
-        int i = pCalcTaskService.update(pCalcTaskVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+        if (pCalcTaskVO != null) {
+            pCalcTaskVO.setGltsFlag(getCalcTaskDataType(pCalcTaskVO.getDataTypeList()));
+            int i = pCalcTaskService.update(pCalcTaskVO);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
+    }
 
+    private String getCalcTaskDataType(List<PCalcTaskDataTypeVO> list) {
+        char[] dataType = UtilityHelper.caclTaskDataType.toCharArray();//获取默认
+        if (list != null && list.size() > 0) {
+            for (PCalcTaskDataTypeVO item : list) {
+                if (item.getIsSelect() == 1) {
+                    dataType[item.getKey()] = '1';
+                }
+            }
+        }
+        return dataType.toString();
     }
 
     @ResponseBody
@@ -68,13 +85,22 @@ public class PCalcTaskAction {
     @PostMapping(params = "method=findByKey")
     public HttpResult<?> findByKey(@RequestBody PCalcTaskVO pCalcTaskVO) {
         PCalcTaskVO modelVo = pCalcTaskService.findByKey(pCalcTaskVO);
-
         if (modelVo != null) {
-            return new HttpResult<PCalcTaskVO>(HttpResult.SUCCESS, "获取成功", modelVo);
+            if (modelVo.getGltsFlag() != null && modelVo.getGltsFlag().length() == 64) {
+                modelVo.setDataTypeList(UtilityHelper.getDataType());//获取对象
+                char[] dataType = modelVo.getGltsFlag().toCharArray();//获取默认
+                for (PCalcTaskDataTypeVO item : modelVo.getDataTypeList()) {
+                    if (dataType[item.getKey()] == '1') {
+                        item.setIsSelect(1);
+                    }
+                }
+                return new HttpResult<>(HttpResult.SUCCESS, "获取成功", modelVo);
+            } else {
+                return new HttpResult<>(HttpResult.ERROR, "功率、费率标识错误，获取失败!", null);
+            }
         } else {
-            return new HttpResult<PCalcTaskVO>(HttpResult.ERROR, "未检索到相关数据!", null);
+            return new HttpResult<>(HttpResult.ERROR, "未检索到相关数据!", null);
         }
-
     }
 
     @ResponseBody
@@ -110,12 +136,13 @@ public class PCalcTaskAction {
 
     /**
      * 获取计算任务数据类型
+     *
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=getCalcTaskDataType")
     public HttpResult<?> getCalcTaskDataType() {
-        Map<Integer,String> map= UtilityHelper.getDataType();
-        return new HttpResult<>(HttpResult.SUCCESS, "获取成功", map);
+        List<PCalcTaskDataTypeVO> list = UtilityHelper.getDataType();
+        return new HttpResult<>(HttpResult.SUCCESS, "获取成功", list);
     }
 }

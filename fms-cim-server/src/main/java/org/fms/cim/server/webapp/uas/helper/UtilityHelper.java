@@ -1,9 +1,18 @@
 package org.fms.cim.server.webapp.uas.helper;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.fms.cim.common.vo.uas.PCalcTaskDataTypeVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UtilityHelper {
+
+    public static final String caclTaskDataType="000000000000000" +
+            "000000000000000" +
+            "000000000000000" +
+            "000000000000000" +
+            "000000000000000" +
+            "000000000000000" ;
 
     /**
      * 用正则表达式进行判断ip地址
@@ -41,75 +50,75 @@ public class UtilityHelper {
         return phoneNumber.matches(regex);
     }
 
-    public static Map<Integer, String> getDataType() {
-        Map<Integer, String> map = new HashMap<>();
+    public static List<PCalcTaskDataTypeVO> getDataType() {
+        List<PCalcTaskDataTypeVO> dataTypeList=new ArrayList<>();
         for (int i = 1; i < 65; i++) {
             switch (i) {
                 case 1:
-                    map.put(i, "正向有功（总）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向有功（总）"));
                     break;
                 case 2:
-                    map.put(i, "正向有功（尖）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向有功（尖）"));
                     break;
                 case 3:
-                    map.put(i, "正向有功（峰）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向有功（峰）"));
                     break;
                 case 4:
-                    map.put(i, "正向有功（平）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向有功（平）"));
                     break;
                 case 5:
-                    map.put(i, "正向有功（谷）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向有功（谷）"));
                     break;
                 case 9:
-                    map.put(i, "反向有功（总）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向有功（总）"));
                     break;
                 case 10:
-                    map.put(i, "反向有功（尖）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向有功（尖）"));
                     break;
                 case 11:
-                    map.put(i, "反向有功（峰）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向有功（峰）"));
                     break;
                 case 12:
-                    map.put(i, "反向有功（平）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向有功（平）"));
                     break;
                 case 13:
-                    map.put(i, "反向有功（谷）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向有功（谷）"));
                     break;
                 case 17:
-                    map.put(i, "正向无功（总）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向无功（总）"));
                     break;
                 case 18:
-                    map.put(i, "正向无功（尖）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向无功（尖）"));
                     break;
                 case 19:
-                    map.put(i, "正向无功（峰）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向无功（峰）"));
                     break;
                 case 20:
-                    map.put(i, "正向无功（平）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向无功（平）"));
                     break;
                 case 21:
-                    map.put(i, "正向无功（谷）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"正向无功（谷）"));
                     break;
                 case 25:
-                    map.put(i, "反向无功（总）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向无功（总）"));
                     break;
                 case 26:
-                    map.put(i, "反向无功（尖）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向无功（尖）"));
                     break;
                 case 27:
-                    map.put(i, "反向无功（峰）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向无功（峰）"));
                     break;
                 case 28:
-                    map.put(i, "反向无功（平）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向无功（平）"));
                     break;
                 case 29:
-                    map.put(i, "反向无功（谷）");
+                    dataTypeList.add(new PCalcTaskDataTypeVO(i,"反向无功（谷）"));
                     break;
                 default:
-                    map.put(i, "");
+                    //dataTypeList.add(new CalcTaskDataType(i,""));
                     break;
             }
         }
-        return map;
+        return dataTypeList;
     }
 }
