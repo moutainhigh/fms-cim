@@ -113,19 +113,27 @@ public class PCalcTaskAction {
     /**
      * 通过任务模板获取任务列表
      *
-     * @param pCalcTplVO 任务模板对象
+     * @param modelVO 任务模板对象
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=findByRelTpl")
-    public HttpResultPagination<?> findByRelTpl(@RequestBody PCalcTplVO pCalcTplVO) {
-        if (pCalcTplVO != null) {
+    public HttpResultPagination<?> findByRelTpl(@RequestBody PCalcTplVO modelVO) {
+        if (modelVO != null) {
             PCalcTaskRelVO pCalcTaskRelVO = new PCalcTaskRelVO();
-            pCalcTaskRelVO.setObjtype(pCalcTplVO.getType());//获取适用范围下所有的点
+            pCalcTaskRelVO.setObjtype(modelVO.getType());//获取适用范围下所有的任务
+            pCalcTaskRelVO.setPageSize(-1);//不分页
+            pCalcTaskRelVO.setTplID(modelVO.getId());
             List<PCalcTaskRelVO> pCalcTaskRelVOList = pCalcTaskService.findByRelTpl(pCalcTaskRelVO);
             if (pCalcTaskRelVOList != null && pCalcTaskRelVOList.size() > 0) {
                 for (PCalcTaskRelVO item : pCalcTaskRelVOList) {
-                    item.setIsSelect(item.getTplID() == pCalcTplVO.getId() ? 1 : 0);
+                    if(item.getTplID() == modelVO.getId()){
+                        item.setIsSelect(1);
+                    }else{
+                        item.setIsSelect(0);
+                        item.setRelID(null);
+                        item.setTplID(null);
+                    }
                 }
             }
             return new HttpResultPagination(pCalcTaskRelVO, pCalcTaskRelVOList);

@@ -131,8 +131,8 @@ public class PCalcTplAction {
 
     @ResponseBody
     @PostMapping(params = "method=findByWhere")
-    public HttpResultPagination<?> findByWhere(@RequestBody PCalcTplVO pCalcTplVO) {
-
-        return new HttpResultPagination(pCalcTplVO, pCalcTplService.findByWhere(pCalcTplVO));
+    public HttpResultPagination<?> findByWhere(@RequestBody PCalcTplVO modelVO) {
+        modelVO.setPageSize(-1);//此处不分页
+        return new HttpResultPagination(modelVO, pCalcTplService.findByWhere(modelVO));
     }
 }
