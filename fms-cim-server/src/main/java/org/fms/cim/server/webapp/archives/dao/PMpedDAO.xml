@@ -170,6 +170,7 @@
                 and LAST_MODIFY_TIME = #{lastModifyTime}
             </if>
         </where>
+        order by ID
     </select>
 
     <insert id="insert" parameterType="PMpedDomain" useGeneratedKeys="true" keyProperty="id" flushCache="true">

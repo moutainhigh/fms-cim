@@ -66,6 +66,7 @@
                 and LAST_MODIFIER_TIME = #{lastModifierTime}
             </if>
         </where>
+        order by ID
     </select>
 
     <insert id="insert" parameterType="ABusDomain" useGeneratedKeys="true" keyProperty="id" flushCache="true">
