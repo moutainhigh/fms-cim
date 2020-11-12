@@ -181,77 +181,20 @@
     </delete>
     <select id="findByTaskTpl" parameterType="PTaskRelDomain"
             resultType="PTaskRelDomain" useCache="true">
-        select p.*,t.ID as REL_ID,t.TPL_ID from P_TASK p
+        select p.ID,p.CODE,p.NAME,p.PROTOCOL_ID,p.TASK_ID,p.TASK_NO,p.PN_TYPE,
+        p.OBJ_PROP,p.TASK_BEGINTIME,p.TASK_CYCLE,p.CYCLE_UNIT,p.DATA_DENSITY,
+        p.FREEZE_TYPE,p.MAX_DATACYCLE,p.MAX_FAILNUM,p.REPEAT_CYCLE,p.PRIORITY,
+        p.TASK_SRC,p.STATUS,p.WEIGHT,p.CREATOR_ID,p.CREATE_DATE,p.LAST_MODIFIER_ID,p.LAST_MODIFY_TIME,
+        t.ID as REL_ID,t.TPL_ID from P_TASK p
         left join
         P_TASK_TPL_DETAIL t
         on p.ID=t.TASK_ID
+        and (t.TPL_ID is NULL or t.TPL_ID =#{tplID})
         <where>
-            <if test="id !=null">
-                and p.ID = #{id}
-            </if>
-            <if test="code !=null">
-                and p.CODE = #{code}
-            </if>
-            <if test="name !=null">
-                and p.NAME = #{name}
-            </if>
             <if test="protocolId !=null">
                 and p.PROTOCOL_ID = #{protocolId}
             </if>
-            <if test="taskId !=null">
-                and p.TASK_ID = #{taskId}
-            </if>
-            <if test="taskNo !=null">
-                and p.TASK_NO = #{taskNo}
-            </if>
-            <if test="pnType !=null">
-                and p.PN_TYPE = #{pnType}
-            </if>
-            <if test="objProp !=null">
-                and p.OBJ_PROP = #{objProp}
-            </if>
-            <if test="taskBegintime !=null">
-                and p.TASK_BEGINTIME = #{taskBegintime}
-            </if>
-            <if test="taskCycle !=null">
-                and p.TASK_CYCLE = #{taskCycle}
-            </if>
-            <if test="cycleUnit !=null">
-                and p.CYCLE_UNIT = #{cycleUnit}
-            </if>
-            <if test="dataDensity !=null">
-                and p.DATA_DENSITY = #{dataDensity}
-            </if>
-            <if test="freezeType !=null">
-                and p.FREEZE_TYPE = #{freezeType}
-            </if>
-            <if test="maxDatacycle !=null">
-                and p.MAX_DATACYCLE = #{maxDatacycle}
-            </if>
-            <if test="maxFailnum !=null">
-                and p.MAX_FAILNUM = #{maxFailnum}
-            </if>
-            <if test="repeatCycle !=null">
-                and p.REPEAT_CYCLE = #{repeatCycle}
-            </if>
-            <if test="priority !=null">
-                and p.PRIORITY = #{priority}
-            </if>
-            <if test="taskSrc !=null">
-                and p.TASK_SRC = #{taskSrc}
-            </if>
-            <if test="status !=null">
-                and p.STATUS = #{status}
-            </if>
-            <if test="weight !=null">
-                and p.WEIGHT = #{weight}
-            </if>
-            <if test="relID !=null">
-                and t.REL_ID = #{relID}
-            </if>
-            <if test="tplID !=null">
-                and t.TPL_ID = #{tplID}
-            </if>
         </where>
+        order by p.WEIGHT
     </select>
 </mapper>

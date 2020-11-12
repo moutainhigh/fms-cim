@@ -103,20 +103,26 @@ public class PTaskAction {
     /**
      * 通过任务模板获取任务列表
      *
-     * @param pTaskTplVO 任务模板
+     * @param modelVO 任务模板
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=findByTaskTpl")
-    public HttpResult<?> findByTaskTpl(@RequestBody PTaskTplVO pTaskTplVO) {
-        if (pTaskTplVO != null) {
+    public HttpResult<?> findByTaskTpl(@RequestBody PTaskTplVO modelVO) {
+        if (modelVO != null) {
             PTaskRelVO pTaskRelVO = new PTaskRelVO();
             pTaskRelVO.setPageSize(-1);//设置-1不进行分页
-            pTaskRelVO.setProtocolId(pTaskTplVO.getProtocolId());//赋值规约
+            pTaskRelVO.setProtocolId(modelVO.getProtocolId());//赋值规约
             List<PTaskRelVO> listVo = pTaskService.findByTaskTpl(pTaskRelVO);//获取此规约全部任务
             if (listVo != null && listVo.size() > 0) {
                 for (PTaskRelVO item : listVo) {
-                    item.setIsSelect(item.getTplID() == pTaskTplVO.getId() ? 1 : 0);
+                    if(item.getTplID() == modelVO.getId()){
+                        item.setIsSelect(1);
+                    }else{
+                        item.setIsSelect(0);
+                        item.setRelID(null);
+                        item.setTplID(null);
+                    }
                 }
             }
             return new HttpResult<List<PTaskRelVO>>(HttpResult.SUCCESS, "获取成功", listVo);
