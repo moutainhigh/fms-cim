@@ -107,7 +107,7 @@
                 and p.STATUS = #{status}
             </if>
             <if test="taskID !=null">
-                and t.TASK_ID = #{taskID}
+                and t.TASK_ID != #{taskID}
             </if>
         </where>
         order by REL_WEIGHT
@@ -132,7 +132,7 @@
                 and p.STATUS = #{status}
             </if>
             <if test="taskID !=null">
-                and t.TASK_ID != #{taskID}
+                and t.TASK_ID = #{taskID}
             </if>
         </where>
         order by WEIGHT
