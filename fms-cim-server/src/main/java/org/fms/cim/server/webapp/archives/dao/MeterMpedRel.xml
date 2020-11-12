@@ -47,7 +47,7 @@ select R.ID,R.METER_ID,R.MPED_ID,R.PHASE_SEQ,R.FUNCTION_CODE,R.POWER_DIRECTION,R
 </if>
 
 </where>
-order by ID
+order by ID desc
 </select>
 <insert id="insert" parameterType="MeterMpedRelDomain" flushCache="true">
 insert into METER_MPED_REL_INFO(ID,METER_ID,MPED_ID,PHASE_SEQ,FUNCTION_CODE,POWER_DIRECTION,TS_FLAG,CREATE_DATE,STATUS,FACTOR_NUM,WRITE_SN) values (#{id},#{meterId},#{mpedId},#{phaseSeq},#{functionCode},#{powerDirection},#{tsFlag},#{createDate},#{status},#{factorNum},#{writeSn})
