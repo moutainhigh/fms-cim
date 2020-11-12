@@ -31,7 +31,7 @@
 	<select id="findByWhere" parameterType="UserDomain"
 		resultType="UserDomain" useCache="true">
 		select
-		hu.*,c.CUSTOMER_NO,c.CUSTOMER_NAME,T.TG_NAME,W.WRITE_SECT_NO,W.WRITE_SECT_NAME,L.LINE_CODE
+		hu.*,c.CUSTOMER_NO,c.CUSTOMER_NAME,T.TG_NAME,W.WRITE_SECT_NO,W.WRITE_SECT_NAME,L.LINE_CODE,L.LINE_NAME
 		from (
 		select
 		<include refid="Base_Column_List" />
