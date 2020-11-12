@@ -97,6 +97,9 @@
             <if test="type !=null">
                 and TYPE = #{type}
             </if>
+            <if test='defaultFlag="1"'>
+                and DEFAULT_FLAG = #{defaultFlag}
+            </if>
         </where>
     </select>
 </mapper>

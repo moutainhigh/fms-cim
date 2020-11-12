@@ -85,7 +85,7 @@ public class PCalcTplAction {
         MessageuUtil msg = new MessageuUtil();
         if (modelVO != null) {
             if (StringUtils.isNotBlank(modelVO.getType())) {
-                if (modelVO.getType().equals("1")) {//是否通用下拉  1-是 0-否
+                if (modelVO.getDefaultFlag().equals("1")) {//是否通用下拉  1-是 0-否
                     int repeatNum = pCalcTplService.verifyDefaultUniqueness(modelVO);
                     if(repeatNum>0){
                         msg.setCode(0);
