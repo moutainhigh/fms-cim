@@ -11,6 +11,8 @@ import java.util.List;
 import org.fms.cim.common.service.IRCpService;
 import org.fms.cim.common.vo.uas.RCpVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -58,8 +60,11 @@ public class RCpServiceImpl implements IRCpService {
 	public List<RCpVO> findByWhere(RCpVO rCpVO) {
 
 		try {
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
 			HttpResultPagination<RCpVO> httpResultPagination = titanTemplate.post("CIM-SERVER",
-					"cimServer/RCp?method=initializeMany", null, rCpVO,
+					"cimServer/RCp?method=findByWhere", httpHeaders, rCpVO,
 					new TypeReference<HttpResultPagination<RCpVO>>() {
 					});
 			return httpResultPagination.getList();
