@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import org.fms.cim.common.domain.archives.TgInfoDomain;
 import org.fms.cim.common.service.ITgInfoService;
 import org.fms.cim.common.vo.uas.TgInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;

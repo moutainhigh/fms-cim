@@ -1,43 +1,42 @@
-package org.fms.cim.common.strategy.no;
+package org.fms.cim.server.strategy.no;
 
 import org.fms.cim.common.domain.archives.SysSequenceNoDomain;
 import org.fms.cim.common.service.ISysSequenceNoService;
-import org.fms.cim.common.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
-import com.riozenc.titanTool.annotation.TransactionService;
+import org.springframework.stereotype.Service;
 
 /**
- * 互感器号生成规则 年份+6位流水号 如2019000001
+ * 变压器号生成规则 6位流水号 如000001
  */
-@TransactionService
-public class InductorSequenceStrategy implements SequenceStrategy{
+@Service
+public class TransSequenceStrategy implements SequenceStrategy{
 
     @Autowired
     @Qualifier("sysSequenceNoServiceImpl")
     private ISysSequenceNoService sysSequenceNoService;
     @Override
     public String generateSequenceNo(String condition) {
-        String mon=CommonUtil.getYMD().get(0)+CommonUtil.getYMD().get(1);
         SysSequenceNoDomain sysSequenceNo = new SysSequenceNoDomain();
-        sysSequenceNo.setCode("INDUCTOR");
+        sysSequenceNo.setCode("TRANS");
         sysSequenceNo.setFormat("000000");
-        sysSequenceNo.setMon(mon);
-        sysSequenceNo.setName("互感器号规则(HG)");
+        sysSequenceNo.setName("变压器号规则(HG)");
+        //sysSequenceNo.setMon(CommonUtil.getYMD().get(0)+CommonUtil.getYMD()
+        // .get(1));
         String maxNo = sysSequenceNoService.genSequenceNo(sysSequenceNo);
-        return mon+maxNo;
+        return maxNo;
     }
 
     @Override
-    public String generateSequenceNo(String condition, int size) {
-        String mon=CommonUtil.getYMD().get(0)+CommonUtil.getYMD().get(1);
+    public String generateSequenceNo(String condition,int size) {
         SysSequenceNoDomain sysSequenceNo = new SysSequenceNoDomain();
-        sysSequenceNo.setCode("INDUCTOR");
+        sysSequenceNo.setCode("TRANS");
         sysSequenceNo.setFormat("000000");
-        sysSequenceNo.setMon(mon);
-        sysSequenceNo.setName("互感器号规则(HG)");
+        sysSequenceNo.setName("变压器号规则(HG)");
+        //sysSequenceNo.setMon(CommonUtil.getYMD().get(0)+CommonUtil.getYMD()
+        // .get(1));
         String maxNo =  sysSequenceNoService.genSequenceNo(sysSequenceNo, size);
         return maxNo;
     }
+
 }

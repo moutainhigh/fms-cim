@@ -11,14 +11,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.fms.cim.common.domain.archives.MeterDomain;
 import org.fms.cim.common.domain.archives.MeterInductorAssetsRelDomain;
 import org.fms.cim.common.domain.archives.MeterInformationEntity;
 import org.fms.cim.common.domain.archives.MeterMeterAssetsRelDomain;
-import org.fms.cim.common.domain.archives.SystemCommonConfigDomain;
 import org.fms.cim.common.domain.archives.UserDomain;
 import org.fms.cim.common.domain.archives.WriteSectDomain;
 import org.fms.cim.common.domain.assets.InductorAssetsDomain;

@@ -15,7 +15,7 @@ import java.util.Map;
 import org.fms.cim.common.domain.archives.SettlementDomain;
 import org.fms.cim.common.domain.archives.SettlementMeterRelDomain;
 import org.fms.cim.common.service.ISettlementService;
-import org.fms.cim.common.strategy.no.SequenceStrategy;
+import org.fms.cim.server.strategy.no.SequenceStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;

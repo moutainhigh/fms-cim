@@ -2,7 +2,6 @@ package org.fms.cim.server.webapp.archives.action;
 
 import java.io.IOException;
 
-import org.fms.cim.common.domain.archives.PMpedDomain;
 import org.fms.cim.common.domain.archives.SDevIrDomain;
 import org.fms.cim.common.service.ISdevIrService;
 import org.springframework.beans.factory.annotation.Autowired;

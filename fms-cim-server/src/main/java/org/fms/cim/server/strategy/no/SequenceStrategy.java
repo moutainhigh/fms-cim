@@ -1,4 +1,4 @@
-package org.fms.cim.common.strategy.no;
+package org.fms.cim.server.strategy.no;
 
 public interface SequenceStrategy {
     public String generateSequenceNo(String condition);

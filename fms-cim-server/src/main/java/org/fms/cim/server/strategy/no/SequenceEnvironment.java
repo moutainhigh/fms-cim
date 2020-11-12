@@ -1,4 +1,4 @@
-package org.fms.cim.common.strategy.no;
+package org.fms.cim.server.strategy.no;
 
 /**
  * 自定义号 环境角色

@@ -1,4 +1,4 @@
-package org.fms.cim.common.strategy.no;
+package org.fms.cim.server.strategy.no;
 
 import org.fms.cim.common.domain.archives.SysSequenceNoDomain;
 import org.fms.cim.common.service.ISysSequenceNoService;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * 变压器号生成规则 6位流水号 如000001
+ * 收费流水号 15位流水号 如000001
  */
 @Service
-public class TransSequenceStrategy implements SequenceStrategy{
+public class ChargeFlowNoStrategy implements SequenceStrategy{
 
     @Autowired
     @Qualifier("sysSequenceNoServiceImpl")
@@ -18,9 +18,9 @@ public class TransSequenceStrategy implements SequenceStrategy{
     @Override
     public String generateSequenceNo(String condition) {
         SysSequenceNoDomain sysSequenceNo = new SysSequenceNoDomain();
-        sysSequenceNo.setCode("TRANS");
-        sysSequenceNo.setFormat("000000");
-        sysSequenceNo.setName("变压器号规则(HG)");
+        sysSequenceNo.setCode("FLOW_NO");
+        //sysSequenceNo.setFormat("000000000000000");
+        sysSequenceNo.setName("收费流水号(HG)");
         //sysSequenceNo.setMon(CommonUtil.getYMD().get(0)+CommonUtil.getYMD()
         // .get(1));
         String maxNo = sysSequenceNoService.genSequenceNo(sysSequenceNo);
@@ -28,11 +28,11 @@ public class TransSequenceStrategy implements SequenceStrategy{
     }
 
     @Override
-    public String generateSequenceNo(String condition,int size) {
+    public String generateSequenceNo(String condition, int size) {
         SysSequenceNoDomain sysSequenceNo = new SysSequenceNoDomain();
-        sysSequenceNo.setCode("TRANS");
-        sysSequenceNo.setFormat("000000");
-        sysSequenceNo.setName("变压器号规则(HG)");
+        sysSequenceNo.setCode("FLOW_NO");
+        //sysSequenceNo.setFormat("000000000000000");
+        sysSequenceNo.setName("收费流水号(HG)");
         //sysSequenceNo.setMon(CommonUtil.getYMD().get(0)+CommonUtil.getYMD()
         // .get(1));
         String maxNo =  sysSequenceNoService.genSequenceNo(sysSequenceNo, size);

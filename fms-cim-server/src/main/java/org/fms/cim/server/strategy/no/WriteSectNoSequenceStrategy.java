@@ -1,4 +1,4 @@
-package org.fms.cim.common.strategy.no;
+package org.fms.cim.server.strategy.no;
 
 import org.fms.cim.common.domain.archives.SysSequenceNoDomain;
 import org.fms.cim.common.service.ISysSequenceNoService;
