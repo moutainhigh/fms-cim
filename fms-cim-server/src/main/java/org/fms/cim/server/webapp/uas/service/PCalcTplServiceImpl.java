@@ -10,6 +10,8 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+import org.fms.cim.common.vo.uas.PCalcTaskVO;
 import org.fms.cim.server.webapp.uas.dao.PCalcTplDAO;
 import org.fms.cim.common.domain.uas.PCalcTplDomain;
 import org.fms.cim.common.service.IPCalcTplService;
@@ -75,4 +77,8 @@ public class PCalcTplServiceImpl implements IPCalcTplService {
         return ReflectUtil.cast(lstDomain, PCalcTplVO.class);
     }
 
+    @Override
+    public int verifyDefaultUniqueness(PCalcTplVO modelVO){
+        return pCalcTplReadDAO.verifyDefaultUniqueness(modelVO.vo2Domain());
+    }
 }

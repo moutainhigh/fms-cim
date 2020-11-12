@@ -13,6 +13,7 @@ import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.cim.common.domain.uas.PCalcTaskRelDomain;
 import org.fms.cim.common.domain.uas.PCalcTplDomain;
+import org.fms.cim.common.vo.uas.PCalcTaskVO;
 
 import java.util.List;
 
@@ -53,5 +54,7 @@ public class PCalcTplDAO extends AbstractTransactionDAOSupport implements BaseDA
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
-
+    public int verifyDefaultUniqueness(PCalcTplDomain pCalcTplDomain){
+        return getPersistanceManager().load(getNamespace() + ".verifyDefaultUniqueness", pCalcTplDomain);
+    }
 }

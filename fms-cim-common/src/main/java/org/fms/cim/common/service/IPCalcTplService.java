@@ -8,6 +8,7 @@
 package org.fms.cim.common.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.cim.common.vo.uas.PCalcTaskVO;
 import org.fms.cim.common.vo.uas.PCalcTplVO;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface IPCalcTplService {
     public PCalcTplVO findByKey(PCalcTplVO pCalcTplVO);
 
     public List<PCalcTplVO> findByWhere(PCalcTplVO pCalcTplVO);
+
+    public int verifyDefaultUniqueness(PCalcTplVO modelVO);
 }

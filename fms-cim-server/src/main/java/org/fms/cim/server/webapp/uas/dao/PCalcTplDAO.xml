@@ -87,4 +87,16 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="verifyDefaultUniqueness" parameterType="PCalcTplDomain"
+            resultType="Integer" useCache="true">
+        select COUNT(1) from P_CALC_TPL
+        <where>
+            <if test="id !=null">
+                and ID != #{id}
+            </if>
+            <if test="type !=null">
+                and TYPE = #{type}
+            </if>
+        </where>
+    </select>
 </mapper>
