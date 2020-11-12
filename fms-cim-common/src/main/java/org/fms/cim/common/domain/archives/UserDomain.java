@@ -52,6 +52,7 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 	private String customerName;
 	private String tgName; // 台区名称
 	private String lineCode;
+	private String lineName;//线路名称LINE_NAME 
 	private Integer startMon;
 	private Integer endMon;
 	private Date endDate;
@@ -70,6 +71,14 @@ public class UserDomain extends ManagerParamEntity implements MybatisEntity {
 	private String lastModifierTime;//最后修改时间LAST_MODIFIER_TIME varchar(20) 
 	
 	
+	public String getLineName() {
+		return lineName;
+	}
+
+	public void setLineName(String lineName) {
+		this.lineName = lineName;
+	}
+
 	public String getType() {
 		return type;
 	}
