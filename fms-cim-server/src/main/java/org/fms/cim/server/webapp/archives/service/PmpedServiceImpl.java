@@ -49,6 +49,12 @@ public class PmpedServiceImpl implements IPmpedService {
 	}
 
 	@Override
+	public List<PMpedDomain> getPMpedBySDevIr(PMpedDomain t) {
+		// TODO Auto-generated method stub
+		return pmpedReadDAO.getPMpedBySDevIr(t);
+	}
+	
+	@Override
 	public List<PMpedDomain> findByWhere(PMpedDomain t) {
 		// TODO Auto-generated method stub
 		return pmpedReadDAO.findByWhere(t);

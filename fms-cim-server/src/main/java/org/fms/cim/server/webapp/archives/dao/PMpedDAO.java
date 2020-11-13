@@ -43,6 +43,13 @@ public class PMpedDAO extends AbstractTransactionDAOSupport implements BaseDAO<P
 		return getPersistanceManager().find(getNamespace() + ".findByWhere", t);
 	}
 
+	
+	@PaginationSupport
+	public List<PMpedDomain> getPMpedBySDevIr(PMpedDomain t) {
+		// TODO Auto-generated method stub
+		return getPersistanceManager().find(getNamespace() + ".getPMpedBySDevIr", t);
+	}
+	
 	public int updateList(List<PMpedDomain> listDomain) {
 		return getPersistanceManager().updateList(getNamespace() + ".update", listDomain);
 	}

@@ -15,4 +15,6 @@ public interface IPmpedService extends BaseService<PMpedDomain> {
 
     public int updateList(List<PMpedDomain> updateList);
 
+	public List<PMpedDomain> getPMpedBySDevIr(PMpedDomain t);
+
 }

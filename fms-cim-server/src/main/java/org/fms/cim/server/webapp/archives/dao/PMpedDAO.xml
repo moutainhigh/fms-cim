@@ -20,154 +20,170 @@
 
         </where>
     </select>
+    <select id="getPMpedBySDevIr" parameterType="PMpedDomain"
+            resultType="PMpedDomain" useCache="true">
+        SELECT
+		(SELECT TYPE_CODE FROM S_DEV_IR WHERE METER_ASSET_NO IS NOT NULL AND MPED_ID = p.ID ORDER BY IR_DATE DESC LIMIT 0,1) AS METER_ASSET_TYPE_CODE,
+ 		(SELECT TYPE_CODE FROM S_DEV_IR WHERE TA_ASSET_NO IS NOT NULL AND MPED_ID = p.ID ORDER BY IR_DATE DESC LIMIT 0,1)  AS TA_ASSET_TYPE_CODE,
+ 		(SELECT TYPE_CODE FROM S_DEV_IR WHERE TA_ASSET_NO IS NOT NULL AND MPED_ID = p.ID ORDER BY IR_DATE DESC LIMIT 0,1) AS TV_ASSET_TYPE_CODE,
+ 		p.*
+		FROM
+		P_MPED p
+		LEFT JOIN S_DEV_IR s ON s.MPED_ID = p.ID
+        <where>
+            and ID = #{id}
+
+        </where>
+    </select>
+    
     <select id="findByWhere" parameterType="PMpedDomain"
             resultType="PMpedDomain" useCache="true">
         select
-       <include refid="Base_Column_List"/>
-        from P_MPED
+        P.*,C.NAME
+        from P_MPED P LEFT JOIN P_CALC_TPL C ON P.CALC_TPL_ID=C.ID
         <where>
             <if test="code !=null">
-                and CODE = #{code}
+                and P.CODE = #{code}
             </if>
             <if test="name !=null">
-                and NAME = #{name}
+                and P.NAME = #{name}
             </if>
             <if test="mpedIndex !=null">
-                and MPED_INDEX = #{mpedIndex}
+                and P.MPED_INDEX = #{mpedIndex}
             </if>
             <if test="cpId !=null">
-                and CP_ID = #{cpId}
+                and P.CP_ID = #{cpId}
             </if>
             <if test="mpId !=null">
-                and MP_ID = #{mpId}
+                and P.MP_ID = #{mpId}
             </if>
             <if test="meterId !=null">
-                and METER_ID = #{meterId}
+                and P.METER_ID = #{meterId}
             </if>
             <if test="mainFlag !=null">
-                and MAIN_FLAG = #{mainFlag}
+                and P.MAIN_FLAG = #{mainFlag}
             </if>
             <if test="mMpedId !=null">
-                and M_MPED_ID = #{mMpedId}
+                and P.M_MPED_ID = #{mMpedId}
             </if>
             <if test="pMpedId !=null">
-                and P_MPED_ID = #{pMpedId}
+                and P.P_MPED_ID = #{pMpedId}
             </if>
             <if test="pMpedId !=null">
-                and E_MPED_ID = #{pMpedId}
+                and P.E_MPED_ID = #{pMpedId}
             </if>            
             <if test="voltCode !=null">
-                and VOLT_CODE = #{voltCode}
+                and P.VOLT_CODE = #{voltCode}
             </if>
             <if test="consId !=null">
-                and CONS_ID = #{consId}
+                and P.CONS_ID = #{consId}
             </if>
             <if test="tgId !=null">
-                and TG_ID = #{tgId}
+                and P.TG_ID = #{tgId}
             </if>
             <if test="lineId !=null">
-                and LINE_ID = #{lineId}
+                and P.LINE_ID = #{lineId}
             </if>
             
             <if test="subsId !=null">
-                and SUBS_ID = #{subsId}
+                and P.SUBS_ID = #{subsId}
             </if>
             <if test="tranId !=null">
-                and TRAN_ID = #{tranId}
+                and P.TRAN_ID = #{tranId}
             </if>
             <if test="capId !=null">
-                and CAP_ID = #{capId}
+                and P.CAP_ID = #{capId}
             </if>
             <if test="businessPlaceCode !=null">
-                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+                and P.BUSINESS_PLACE_CODE = #{businessPlaceCode}
             </if>
             <if test="mpedProp !=null">
-                and MPED_PROP = #{mpedProp}
+                and P.MPED_PROP = #{mpedProp}
             </if>
             <if test="mpType !=null">
-                and MP_TYPE = #{mpType}
+                and P.MP_TYPE = #{mpType}
             </if>
             <if test="sideCode !=null">
-                and SIDE_CODE = #{sideCode}
+                and P.SIDE_CODE = #{sideCode}
             </if>
             <if test="switchId !=null">
-                and SWITCH_ID = #{switchId}
+                and P.SWITCH_ID = #{switchId}
             </if>
             <if test="switchNo !=null">
-                and SWITCH_NO = #{switchNo}
+                and P.SWITCH_NO = #{switchNo}
             </if>
             <if test="meterBoxId !=null">
-                and METER_BOX_ID = #{meterBoxId}
+                and P.METER_BOX_ID = #{meterBoxId}
             </if>            
             <if test="measMode !=null">
-                and MEAS_MODE = #{measMode}
+                and P.MEAS_MODE = #{measMode}
             </if>
             <if test="wiringMode !=null">
-                and WIRING_MODE = #{wiringMode}
+                and P.WIRING_MODE = #{wiringMode}
             </if>
             <if test="statusCode !=null">
-                and STATUS_CODE = #{statusCode}
+                and P.STATUS_CODE = #{statusCode}
             </if>
             <if test="voltType !=null">
-                and VOLT_TYPE = #{voltType}
+                and P.VOLT_TYPE = #{voltType}
             </if>
             
             <if test="datainterval !=null">
-                and DATAINTERVAL = #{datainterval}
+                and P.DATAINTERVAL = #{datainterval}
             </if>
             <if test="incrementFlag !=null">
-                and INCREMENT_FLAG = #{incrementFlag}
+                and P.INCREMENT_FLAG = #{incrementFlag}
             </if>
             <if test="calcTplId !=null">
-                and CALC_TPL_ID = #{calcTplId}
+                and P.CALC_TPL_ID = #{calcTplId}
             </if>
             <if test="calcScheme !=null">
-                and CALC_SCHEME = #{calcScheme}
+                and P.CALC_SCHEME = #{calcScheme}
             </if>
             <if test="chkTplId !=null">
-                and CHK_TPL_ID = #{chkTplId}
+                and P.CHK_TPL_ID = #{chkTplId}
             </if>
             <if test="qCalcFlag !=null">
-                and Q_CALC_FLAG = #{qCalcFlag}
+                and P.Q_CALC_FLAG = #{qCalcFlag}
             </if>
             <if test="mpCalcMode !=null">
-                and MP_CALC_MODE = #{mpCalcMode}
+                and P.MP_CALC_MODE = #{mpCalcMode}
             </if>
             <if test="guid !=null">
-                and GUID = #{guid}
+                and P.GUID = #{guid}
             </if>
             <if test="dataSrc !=null">
-                and DATA_SRC = #{dataSrc}
+                and P.DATA_SRC = #{dataSrc}
             </if>
             <if test="dataId !=null">
-                and DATA_ID = #{dataId}
+                and P.DATA_ID = #{dataId}
             </if>            
             <if test="areaCode !=null">
-                and AREA_CODE = #{areaCode}
+                and P.AREA_CODE = #{areaCode}
             </if>
             <if test="weight !=null">
-                and WEIGHT = #{weight}
+                and P.WEIGHT = #{weight}
             </if>
             <if test="mpCalcType !=null">
-                and MP_CALC_TYPE = #{mpCalcType}
+                and P.MP_CALC_TYPE = #{mpCalcType}
             </if>
             <if test="settleMpedId !=null">
-                and SETTLE_MPED_ID = #{settleMpedId}
+                and P.SETTLE_MPED_ID = #{settleMpedId}
             </if>
              <if test="meterClass !=null">
-                and METER_CLASS = #{meterClass}
+                and P.METER_CLASS = #{meterClass}
             </if>            
             <if test="creatorId !=null">
-                and CREATOR_ID = #{creatorId}
+                and P.CREATOR_ID = #{creatorId}
             </if>
             <if test="createDate !=null">
-                and CREATE_DATE = #{createDate}
+                and P.CREATE_DATE = #{createDate}
             </if>
             <if test="lastModifierId !=null">
-                and LAST_MODIFIER_ID = #{lastModifierId}
+                and P.LAST_MODIFIER_ID = #{lastModifierId}
             </if>
             <if test="lastModifyTime !=null">
-                and LAST_MODIFY_TIME = #{lastModifyTime}
+                and P.LAST_MODIFY_TIME = #{lastModifyTime}
             </if>
         </where>
         order by ID desc
