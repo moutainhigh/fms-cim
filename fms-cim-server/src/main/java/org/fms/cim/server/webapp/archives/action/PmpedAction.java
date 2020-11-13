@@ -45,6 +45,15 @@ public class PmpedAction {
 
         return new HttpResultPagination(t, pmpedService.findByWhere(t));
     }
+    
+    @ResponseBody
+    @PostMapping(params = "method=getPMpedBySDevIr")
+    public HttpResultPagination<?> getPMpedBySDevIr(@RequestBody String body)
+            throws JsonParseException, JsonMappingException, IOException {
+        PMpedDomain t = GsonUtils.readValue(body, PMpedDomain.class);
+
+        return new HttpResultPagination(t, pmpedService.getPMpedBySDevIr(t));
+    }
 
     @ResponseBody
     @PostMapping(params = "method=getPmpedByKey")

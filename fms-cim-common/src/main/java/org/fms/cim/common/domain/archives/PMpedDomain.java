@@ -34,7 +34,7 @@ public class PMpedDomain extends ManagerParamEntity implements MybatisEntity {
     private Long subsId; //厂站标识
     private Long tranId; //变压器编码
     private Long capId; //电容器编码
-    private String businessPlaceCode; //供电单位
+    private Long businessPlaceCode; //供电单位
     private String mpedProp; //测量点属性
     private String mpType; //测量点类型
     private String sideCode; //挂表位置
@@ -65,8 +65,45 @@ public class PMpedDomain extends ManagerParamEntity implements MybatisEntity {
     private Date createDate; //创建时间
     private Long lastModifierId; //最后修改者
     private String lastModifyTime; //最后修改时间
+    private String calcTplName;
+    private Long meterAssetTypeCode;//METER_ASSET_TYPE_CODE
+    private Long taAssetTyoeCode;//TA_ASSET_TYPE_CODE
+    private Long tvAssetTyoeCode;//TV_ASSET_TYPE_CODE
+    
+    
+    public Long getMeterAssetTypeCode() {
+		return meterAssetTypeCode;
+	}
 
-    public Long getId() {
+	public void setMeterAssetTypeCode(Long meterAssetTypeCode) {
+		this.meterAssetTypeCode = meterAssetTypeCode;
+	}
+
+	public Long getTaAssetTyoeCode() {
+		return taAssetTyoeCode;
+	}
+
+	public void setTaAssetTyoeCode(Long taAssetTyoeCode) {
+		this.taAssetTyoeCode = taAssetTyoeCode;
+	}
+
+	public Long getTvAssetTyoeCode() {
+		return tvAssetTyoeCode;
+	}
+
+	public void setTvAssetTyoeCode(Long tvAssetTyoeCode) {
+		this.tvAssetTyoeCode = tvAssetTyoeCode;
+	}
+
+	public String getCalcTplName() {
+		return calcTplName;
+	}
+
+	public void setCalcTplName(String calcTplName) {
+		this.calcTplName = calcTplName;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -210,15 +247,17 @@ public class PMpedDomain extends ManagerParamEntity implements MybatisEntity {
         this.capId = capId;
     }
 
-    public String getBusinessPlaceCode() {
-        return businessPlaceCode;
-    }
+  
 
-    public void setBusinessPlaceCode(String businessPlaceCode) {
-        this.businessPlaceCode = businessPlaceCode;
-    }
+    public Long getBusinessPlaceCode() {
+		return businessPlaceCode;
+	}
 
-    public String getMpedProp() {
+	public void setBusinessPlaceCode(Long businessPlaceCode) {
+		this.businessPlaceCode = businessPlaceCode;
+	}
+
+	public String getMpedProp() {
         return mpedProp;
     }
 
