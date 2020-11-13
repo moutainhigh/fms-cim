@@ -87,31 +87,6 @@
             and ID = #{id}
         </where>
     </delete>
-    <select id="findByTaskNoRel" parameterType="PWsdTaskdataRelDomain"
-            resultType="PWsdTaskdataRelDomain" useCache="true">
-        select p.*,t.ID as REL_ID,t.TASK_ID,t.WEIGHT as REL_WEIGHT from P_WSD_TASKDATA p
-        left join
-        P_TASK_DETAIL t
-        on p.ID =t.DATA_ID
-        <where>
-            <if test="protocolId !=null">
-                and p.PROTOCOL_ID = #{protocolId}
-            </if>
-            <if test="infopointType !=null">
-                and p.INFOPOINT_TYPE = #{infopointType}
-            </if>
-            <if test="infopointDatatype !=null">
-                and p.INFOPOINT_DATATYPE = #{infopointDatatype}
-            </if>
-            <if test="status !=null">
-                and p.STATUS = #{status}
-            </if>
-            <if test="taskID !=null">
-                and t.TASK_ID != #{taskID}
-            </if>
-        </where>
-        order by REL_WEIGHT
-    </select>
     <select id="findByTaskRel" parameterType="PWsdTaskdataRelDomain"
             resultType="PWsdTaskdataRelDomain" useCache="true">
         select p.*,t.ID as REL_ID,t.TASK_ID,t.WEIGHT as REL_WEIGHT from P_TASK_DETAIL t

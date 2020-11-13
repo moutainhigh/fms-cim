@@ -138,14 +138,20 @@ public class PmpedAction {
     @ResponseBody
     @PostMapping(params = "method=updateList")
     public HttpResult<?> updateList(@RequestBody List<PMpedDomain> list) {
-        int i = pmpedService.updateList(list);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "保存成功", null);
+        if (list != null) {
+            if (list.size() > 0) {
+                int i = pmpedService.updateList(list);
+                if (i > 0) {
+                    return new HttpResult<String>(HttpResult.SUCCESS, "保存成功", null);
+                } else {
+                    return new HttpResult<String>(HttpResult.ERROR, "保存失败", null);
+                }
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "暂无保存内容", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "保存失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
 }

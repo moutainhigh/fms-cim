@@ -56,6 +56,7 @@
                 and LAST_MODIFY_TIME = #{lastModifyTime}
             </if>
         </where>
+        order by WEIGHT
     </select>
     <insert id="insert" parameterType="PWsdTaskdataDomain" flushCache="true" useGeneratedKeys="true">
 		insert into P_WSD_TASKDATA

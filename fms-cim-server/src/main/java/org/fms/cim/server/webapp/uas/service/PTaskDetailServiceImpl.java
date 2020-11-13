@@ -87,18 +87,6 @@ public class PTaskDetailServiceImpl implements IPTaskDetailService {
         return ReflectUtil.cast(lstDomain, PWsdTaskdataRelVO.class);
     }
 
-    @Override
-    public List<PWsdTaskdataRelVO> findByTaskNoRel(PWsdTaskdataRelVO modelVO) {
-        PWsdTaskdataRelDomain modelDomain = modelVO.vo2Domain();
-        List<PWsdTaskdataRelDomain> lstDomain = pTaskDetailReadDAO.findByTaskNoRel(modelDomain);
-        modelVO.setTotalRow(modelDomain.getTotalRow());
-        modelVO.setPageCurrent(modelDomain.getPageCurrent());
-        modelVO.setDbName(modelDomain.getDbName());
-        modelVO.setPageSize(modelDomain.getPageSize());
-
-        return ReflectUtil.cast(lstDomain, PWsdTaskdataRelVO.class);
-    }
-
     public int insertList(List<PTaskDetailVO> insertList){
         return pTaskDetailWriteDAO.insertList(ReflectUtil.cast(insertList, PTaskDetailDomain.class));
     }

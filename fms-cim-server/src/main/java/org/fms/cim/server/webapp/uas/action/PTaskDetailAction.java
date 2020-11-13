@@ -9,6 +9,7 @@ package org.fms.cim.server.webapp.uas.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.cim.common.service.IPTaskDetailService;
+import org.fms.cim.common.service.IPWsdTaskdataService;
 import org.fms.cim.common.vo.uas.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +31,10 @@ public class PTaskDetailAction {
     @Autowired
     @Qualifier("PTaskDetailServiceImpl")
     private IPTaskDetailService pTaskDetailService;
+
+    @Autowired
+    @Qualifier("PWsdTaskdataServiceImpl")
+    private IPWsdTaskdataService pWsdTaskdataService;
 
     @ResponseBody
     @PostMapping(params = "method=insert")
@@ -119,11 +124,11 @@ public class PTaskDetailAction {
     @PostMapping(params = "method=findByTaskAllRel")
     public HttpResult<?> findByTaskAllRel(@RequestBody PTaskRelVO modelVO) {
         if (modelVO != null) {
-            PWsdTaskdataRelVO pWsdTaskdataRelVO = new PWsdTaskdataRelVO();
-            pWsdTaskdataRelVO.setProtocolId(modelVO.getProtocolId());//设置规约
-            pWsdTaskdataRelVO.setInfopointType(modelVO.getPnType());//设置信息点类型
-            pWsdTaskdataRelVO.setPageSize(-1);//不设置分页
-            List<PWsdTaskdataRelVO> listVO = pTaskDetailService.findByTaskRel(pWsdTaskdataRelVO);
+            PWsdTaskdataVO dataVO = new PWsdTaskdataVO();
+            dataVO.setProtocolId(modelVO.getProtocolId());//设置规约
+            dataVO.setInfopointType(modelVO.getPnType());//设置信息点类型
+            dataVO.setPageSize(-1);//不设置分页
+            List<PWsdTaskdataVO> listVO = pWsdTaskdataService.findByWhere(dataVO);
             return new HttpResult<>(HttpResult.SUCCESS, "获取成功", listVO);
         } else {
             return new HttpResult<PWsdTaskdataVO>(HttpResult.ERROR, "参数传递错误!", null);
