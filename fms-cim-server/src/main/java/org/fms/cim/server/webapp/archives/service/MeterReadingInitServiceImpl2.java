@@ -116,13 +116,13 @@ public class MeterReadingInitServiceImpl2 implements IMeterReadingInitService {
 		if (deptIds.size() == 0) {
 			return new HttpResult(HttpResult.ERROR, "用户无管理单位");
 		}
-		HashMap<String, Object> remap = getCurrentMon(deptIds);
+//		HashMap<String, Object> remap = getCurrentMon(deptIds);
 		String mon = "202001";
-		if (!(boolean) remap.get("result")) {
-			return new HttpResult(HttpResult.ERROR, remap.get("massage").toString());
-		}else {
-			mon = remap.get("mon").toString();
-		}
+//		if (!(boolean) remap.get("result")) {
+//			return new HttpResult(HttpResult.ERROR, remap.get("massage").toString());
+//		}else {
+//			mon = remap.get("mon").toString();
+//		}
 
 		List<MeterDomain> meterList = meterService.getMeterByUserIds(userIdList);
 

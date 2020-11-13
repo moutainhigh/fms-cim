@@ -227,6 +227,9 @@
         	<if test="transformerId !=null">
                 and TMR.TRANSFORMER_ID = #{transformerId}
             </if>
+             <if test="meterName !=null">
+                and M.METER_NAME like CONCAT('%',#{meterName},'%')
+            </if>
           
         </where>
     </select>

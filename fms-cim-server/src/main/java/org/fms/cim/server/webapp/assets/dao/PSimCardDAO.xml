@@ -24,10 +24,10 @@
         from P_SIM_CARD
         <where>
          	<if test="cardNo !=null">
-                and CARD_NO = #{cardNo}
+                and CARD_NO like CONCAT('%',#{cardNo},'%')
             </if>
             <if test="gprsCode !=null">
-                and GPRS_CODE = #{gprsCode}
+                and GPRS_CODE like CONCAT('%',#{gprsCode},'%')
             </if>
             <if test="cardType !=null">
                 and CARD_TYPE = #{cardType}
@@ -79,6 +79,7 @@
             </if>
             
         </where>
+        <!--  ORDER BY    DESC-->
     </select>
 
     <insert id="insert" parameterType="PSimCardDomain" useGeneratedKeys="true" keyProperty="id" flushCache="true">
