@@ -66,32 +66,34 @@ public class PMpedDomain extends ManagerParamEntity implements MybatisEntity {
     private Long lastModifierId; //最后修改者
     private String lastModifyTime; //最后修改时间
     private String calcTplName;
-    private Long meterAssetTypeCode;//METER_ASSET_TYPE_CODE
-    private Long taAssetTyoeCode;//TA_ASSET_TYPE_CODE
-    private Long tvAssetTyoeCode;//TV_ASSET_TYPE_CODE
+    private String meterAssetTypeCode;//METER_ASSET_TYPE_CODE
+    private String taAssetTyoeCode;//TA_ASSET_TYPE_CODE
+    private String tvAssetTyoeCode;//TV_ASSET_TYPE_CODE
     
     
-    public Long getMeterAssetTypeCode() {
+   
+
+	public String getMeterAssetTypeCode() {
 		return meterAssetTypeCode;
 	}
 
-	public void setMeterAssetTypeCode(Long meterAssetTypeCode) {
+	public void setMeterAssetTypeCode(String meterAssetTypeCode) {
 		this.meterAssetTypeCode = meterAssetTypeCode;
 	}
 
-	public Long getTaAssetTyoeCode() {
+	public String getTaAssetTyoeCode() {
 		return taAssetTyoeCode;
 	}
 
-	public void setTaAssetTyoeCode(Long taAssetTyoeCode) {
+	public void setTaAssetTyoeCode(String taAssetTyoeCode) {
 		this.taAssetTyoeCode = taAssetTyoeCode;
 	}
 
-	public Long getTvAssetTyoeCode() {
+	public String getTvAssetTyoeCode() {
 		return tvAssetTyoeCode;
 	}
 
-	public void setTvAssetTyoeCode(Long tvAssetTyoeCode) {
+	public void setTvAssetTyoeCode(String tvAssetTyoeCode) {
 		this.tvAssetTyoeCode = tvAssetTyoeCode;
 	}
 
