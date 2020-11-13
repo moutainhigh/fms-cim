@@ -1,3 +1,4 @@
+﻿
 /**
  * Auth:riozenc
  * Date:2019年3月14日 上午8:50:19
@@ -44,6 +45,15 @@ public class PmpedAction {
         PMpedDomain t = GsonUtils.readValue(body, PMpedDomain.class);
 
         return new HttpResultPagination(t, pmpedService.findByWhere(t));
+    }
+    
+    @ResponseBody
+    @PostMapping(params = "method=getPMpedBySDevIr")
+    public HttpResultPagination<?> getPMpedBySDevIr(@RequestBody String body)
+            throws JsonParseException, JsonMappingException, IOException {
+        PMpedDomain t = GsonUtils.readValue(body, PMpedDomain.class);
+
+        return new HttpResultPagination(t, pmpedService.getPMpedBySDevIr(t));
     }
 
     @ResponseBody
@@ -155,3 +165,5 @@ public class PmpedAction {
     }
 
 }
+
+
